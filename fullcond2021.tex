@@ -1,0 +1,154 @@
+\documentclass[11pt]{article}
+\usepackage[sort,longnamesfirst]{natbib}
+%\usepackage{psfig}
+\usepackage{amsmath}%
+\newcommand{\bthet}{ \mbox{\boldmath $\theta$}}
+\newcommand{\bY}{ \mbox{\boldmath $Y$}}
+\newcommand{\bOne}{ {\bf 1} }
+\newcommand{\lambdaT}{\lambda_{\theta}}
+\newcommand{\bTheta}{ \mbox{\boldmath $\Theta$}}
+\begin{document}
+\pagestyle{empty}
+\begin{center}
+\Large
+%{\bf Penn State Summer School in Astrostatistics}\\
+{\bf Penn State Astrostatistics MCMC tutorial} \\
+\large
+Murali Haran, Penn State Dept. of Statistics \\\vspace{0.2in}
+{\bf  \underline{Bayesian change point model: full conditional distributions}}\\
+\end{center}
+Our goal is to draw samples from the 3-dimensional
+{\bf posterior} distribution $f(k,\theta,\lambda\mid {\bf Y})$  The posterior distribution is 
+\begin{equation}\label{joint}
+\begin{split}
+f(k,\theta,\lambda \mid {\bf Y}) & \propto \prod_{i=1}^k
+\frac{\theta^{Y_i} e^{-\theta}}{Y_i !} \prod_{i=k+1}^n
+\frac{\lambda^{Y_i} e^{-\lambda}}{Y_i !} \frac{1}{n-2} 1 (k\in
+\{2,3,\dots, n-2\})\\
+& \times  \frac{1}{\Gamma(0.5)b_1^{0.5}} \theta^{-0.5} e^{-\theta/b_1}
+\times \frac{1}{\Gamma(0.5)b_2^{0.5}} \lambda^{-0.5}
+e^{-\lambda/b_2}\\
+& 
+%\\ & \times \frac{e^{-1/b_1}}{b_1} \frac{e^{-1/b_2}}{b_2} \times \frac{1}{n}% IG()=\frac{e^{-1/\beta x}} {\Gamma(\alpha) \beta^{\alpha} x^{\alpha + 1}}
+\end{split}
+\end{equation}
+$1 (k\in \{2,3,\dots, n-2\}) $ is an indicator function, meaning it is
+1 if $k \in \{2,3,\dots, n-2\}$ and 0 otherwise. \\
+Note: The reason we have a formula for what $f$ is proportional to
+(hence $\propto$ rather than =) instead of an exact description of the 
+function is because the missing constant (the normalizing constant)
+can only be computed by integrating the above function. Fortunately,
+the Metropolis-Hastings algorithm does not require knowledge of this 
+normalizing constant.\\
+
+\noindent From (\ref{joint}) we can obtain full conditional distributions for
+each parameter by ignoring all terms that are constant with respect to
+the parameter. Sometimes these full conditional distributions are well
+known distributions such as the Gamma or Normal. That occurs
+ when using ``conjugate priors'' and can simplify the construction of the MCMC algorithm though it does not
+necessarily lead to a more efficient algorithm. 
+\\
+Full conditional for $\theta$:
+\begin{equation*}
+\begin{split}
+  f(\theta\mid k,\lambda ,{\bf Y}) & \propto \prod_{i=1}^k
+  \frac{\theta^{Y_i} e^{-\theta}}{Y_i !} \times
+  \frac{1}{\Gamma(0.5)b_1^{0.5}} \theta^{-0.5} e^{-\theta/b_1}\\
+  & \propto \theta^{\sum_{i=1}^k Y_i-0.5} e^{-\theta(k+ 1/b_1)}  \\
+  \mbox{ by staring at the form of the density } & \propto \mbox{Gamma}\left(\sum_{i=1}^k Y_i + 0.5, \frac{b_1}{k b_1+1}\right)
+\end{split}
+\end{equation*}
+Full conditional for $\lambda$:
+\begin{equation*}
+\begin{split}
+f(\lambda\mid k,\theta, {\bf Y}) & \propto \prod_{i=k+1}^n \frac{\lambda^{Y_i} e^{-\lambda}}{Y_i !} \times \frac{1}{\Gamma(0.5)b_2^{0.5}} \lambda^{-0.5} e^{-\lambda/b_2} \\
+\mbox{ by staring at the form of the density } & \propto \mbox{Gamma}\left(\sum_{i=k+1}^n Y_i + 0.5, \frac{b_2}{(n-k) b_2+1}\right)
+\end{split}
+\end{equation*}
+Full conditional for $k$:
+\begin{equation*}
+\begin{split}
+f(k\mid\theta,\lambda, {\bf Y}) & \propto \prod_{i=1}^k
+\frac{\theta^{Y_i} e^{-\theta}}{Y_i !} \prod_{i=k+1}^n
+\frac{\lambda^{Y_i} e^{-\lambda}}{Y_i !} 1 (k\in \{2,3,\dots, n-2\})\\
+& \propto \theta^{\sum_{i=1}^k Y_i} \lambda ^{\sum_{i=k+1}^n Y_i} e^{-k \theta - (n-k) \lambda}.
+\end{split}
+\end{equation*}
+We are now in a position to run the Metropolis-Hastings algorithm.\\\\
+Note: $\theta,\lambda $ have full conditional
+distributions that are well known and easy to sample from. We can
+therefore perform Gibbs updates on them where the draw is from their
+full conditional. However, the full conditional for k is not a
+standard distribution so we need to use the more general
+Metropolis-Hastings update instead of a Gibbs update.\\\\
+% Note 2: The Inverse Gamma density is said to be a {\bf conjugate}
+% prior in this case since it results in a posterior that is also
+% Inverse Gamma and therefore trivial to sample. As such, this density
+% is mathematically convenient (due to its conjugacy property) but does
+% not necessarily result in a better MCMC sampler. Also, it has poorly
+% behaved moments; it may be better to adopt another prior
+% density (such as a Gamma) instead.\\\\
+
+\newpage
+\noindent {\bf The Metropolis-Hastings algorithm}:
+\begin{enumerate}
+\item Pick a starting value for the Markov chain, say $(\theta^0,\lambda^0,k^0)=(1,1,20)$.
+\item `Update' each variable in turn:
+  \begin{enumerate}
+  \item Sample $\theta^i \sim f(\theta\mid k,\lambda,{\bf Y})$
+    using the most up to date values of $k,\lambda$ (Gibbs
+    update using the derived Gamma density).
+  \item Sample $\lambda^i \sim f(\lambda\mid k,\theta,{\bf Y})$
+    using the most up to date values of $k,\theta$. (Gibbs
+    update using the derived Gamma density).
+  % \item Sample $b_1^i \sim f(b_1 \mid k,\theta,\lambda,b_2, {\bf Y})$
+  %   using the most upto date values of $k,\theta,\lambda,b_2$. (Gibbs
+  %   update using the derived Gamma density).
+  % \item Sample $b_2^i \sim f(b_2 \mid k,\theta,\lambda,b_1, {\bf Y})$
+  %   using the most upto date values of $k,\theta,\lambda,b_1$. (Gibbs
+  %   update using the derived Gamma density).
+  \item Sample $k \sim f(k \mid \theta,\lambda,{\bf Y})$ using
+    the most upto date values of $k,\theta,\lambda$. This
+    requires a Metropolis-Hastings update:
+    \begin{enumerate}
+    \item `Propose' a new value for k, $k^*$ according to a proposal
+      distribution say $q(k \mid \theta,\lambda,{\bf Y})$. In
+      our simple example we pick  $q(k\mid\theta,\lambda,{\bf Y})
+       = \mbox{Unif}\{2,\dots,m-1\}$ where $m$ is the length of the
+     vector (time series) {\bf Y}.
+   \item Compute the Metropolis-Hastings accept-reject ratio,
+     $$\alpha(k,k^*)=\min\left(\frac{f(k^* \mid \theta,\lambda,{\bf Y}) q(k \mid \theta,\lambda,{\bf Y})}{f(k \mid
+         \theta,\lambda,{\bf Y}) q(k^* \mid \theta,\lambda,{\bf Y})},1 \right)$$
+   \item Accept the new value $k^*$ with probability $\alpha(k,k^*)$,
+     otherwise `reject' $k^*$, i.e., the next value of $k$ remains the
+     same as before.
+\end{enumerate}
+\item You now have a new Markov chain state $(\theta^1,\lambda^1,k^1)$
+  \end{enumerate}
+\item Return to step \#2 N-1 times to produce a Markov chain of length $N$.
+\end{enumerate}
+
+Now if we want to produce an approximation to any expectation with
+respect to the posterior, say $E_f(g(X))$. Simple examples of
+expectations for the above problems are $E_f(\theta \mid \bY)$,
+$E_f(\lambda \mid \bY)$ , $E_f(k \mid \bY)$ or slightly more complicated
+ones like $P_f(\theta <5\mid \bY)$, or $E_f(\lambda/\theta \mid 
+\bY)$. Using MCMC, these are easy to approximate by just taking
+averages of the samples generated by the algorithm. It is also easy to
+obtain an approximation to their distribution, for example to look at
+the posterior distribution of $\lambda/\theta \mid \bY)$, one can just
+look at a histogram of the ratio of $\lambda$ and $\theta$ values
+produced by the algorithm. 
+
+That's essentially all there is to MCMC recipe basics! Important details to work out:
+\begin{itemize}
+\item How do we choose $N$ so we feel confident in our approximations
+  based on the MCMC algorithm?
+  \item How do we try to ensure that our starting values have not had
+    an undue influence on our results? 
+  \end{itemize}
+  Both the above questions require getting a sense of how reliable our
+  approximations are. Like in most of statistics, this involves getting
+  a handle on the bias and the variance of the Monte Carlo
+  approximation. 
+\end{document}

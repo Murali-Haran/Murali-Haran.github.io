@@ -1,0 +1,148 @@
+//To compile: gcc -o batchmeans batchmeans.c -lm 
+// To run: ./batchmeans <filename>
+#include<stdio.h>
+#include<stdlib.h>
+#include <stddef.h> 
+#include <string.h>
+//#define MATHLIB_STANDALONE 1
+//#include <Rmath.h>
+
+#define MAXLENGTH 1000000  // 100 million
+#define MAXBUF 5000 
+#define VERBOSE 0 // 1=> print descriptions of output
+
+// assume that the vector values are g(x_1),..,g(x_n)
+// and expectation of interest is E(g(x))
+// n is the length of the vector, and vec is the vector
+// bs is the batchsize. Default is sqrt(n), if bs==0, use cuberoot of n
+int cbm(int n,double *vec,int bs,double *bmres)
+{
+  double est,serr,sigmahatsq; 
+  int a,b,Nbm; // batch number and batch size, product
+  int i,k;
+  double *Y;
+
+  if (bs) // if sqroot (default)
+    {   
+      b=(int ) sqrt(n);
+      a=n/b; // use 'div' operator
+    }
+  else //cuberoot
+    {   
+      b=(int ) pow(n,1/3);
+      a=n/b; // use 'div' operator
+    }
+
+  Y=(double *)malloc(a*sizeof(double)); //memory allocation for batch means
+
+  // computing batch means according to batch sizes
+  est=0.0;
+  for (k=0;k<a;k++) 
+    {
+      Y[k]=0.0;
+      for (i=(k*b);i<=(k*b+b-1);i++)
+	Y[k] = Y[k] + vec[i];
+      est=est + Y[k];
+      Y[k]=Y[k]/b; 
+    }
+
+  est=est/(a*b); // grand mean
+  //  printf("est=%f\n",est);
+
+  sigmahatsq=0.0;
+  for (k=0;k<a;k++) 
+    sigmahatsq=sigmahatsq+(Y[k]-est)*(Y[k]-est);
+
+  sigmahatsq=sigmahatsq*b/(a-1);
+  serr=sqrt(sigmahatsq/n);
+
+  bmres[0]=est;
+  bmres[1]=serr;
+
+  return(1);
+}
+
+int readvec(char *filepath,double *X)
+{
+  FILE *fs = NULL;
+  int i,j;
+  char *buf; // buffer to read file into
+  char *dat=NULL; // contains data
+  char *delims=" "; // delimiters for space separated data
+
+  fs = fopen(filepath,"r");
+  if(fs==NULL) 
+    { 
+      printf("\nCould not open input file %s.Exiting...\n",filepath); 
+      getchar(); 
+      exit(0); 
+    }
+  
+  i = 0;
+
+  while ((!feof(fs))) // until reach end of file
+    {
+      buf = (char *)malloc(MAXBUF);
+      if(fgets(buf,MAXBUF,fs) != NULL) // get MAXBUF-1 characters from file into buf
+	{
+	  dat = strtok(buf,delims); // parse buf (assuming space-separation), dat contains first element
+	  if (i==MAXLENGTH)
+	    printf("warning, max size exceeded\n");
+	  while (dat!=NULL)
+	    {
+	      X[i]= atof(dat);// convert string into float
+	      i=i+1;
+	      dat = strtok(NULL,delims); // get remainder of buf then parse using space delimiting
+	    }
+	}
+      free(buf);
+    }
+ 
+  fclose(fs);
+
+  return(i);
+
+}
+// cropMCMC <filename1> <filename2>
+// where <filename1> contains model output
+// and <filename2> contains survey data output
+int main(int argc, char *argv[]) 
+{
+  double X[MAXLENGTH];
+  //  double serr;
+  double bmres[2]; // keep batch means estimate and s.error
+  int veclen;
+  char *inputpath;
+  int strlength;
+
+  if (argc<2)
+    {
+      printf("Error ! Need filename from which to read MCMC output vector.\n");
+      printf("usage: %s <filename>\n",argv[0]);
+      //      printf("See smcmc.README for details\n");
+      exit(1);
+    }
+
+  else
+    {
+      strlength = strlen(argv[1]);
+      inputpath = malloc(strlength*sizeof(char));
+      sprintf(inputpath,"%s",argv[1]);
+    }
+
+  // read in vector given filename
+  // each value is a double on a different line of the file
+  //  printf("Please enter filename for (univariate) MCMC output\n");
+  //  scanf("%s",inputpath);
+  veclen=readvec(inputpath,X);  // read vector into X and return vector length, 
+  // alternatively  X = readvec(inputpath,X)
+  // inside readvec: 
+
+  cbm(veclen,X,1,bmres); // compute s.error using batch means
+  if (VERBOSE)
+    printf("chain length=%d,batch means est=%f,serr=%f\n",veclen,bmres[0],bmres[1]);
+  else 
+    printf("%d,%f,%f\n",veclen,bmres[0],bmres[1]);
+  
+  return EXIT_SUCCESS;
+}

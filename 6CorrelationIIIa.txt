@@ -1,0 +1,279 @@
+###################################################
+#
+#	You can "plug in" either of the following 2 proposals
+#	Both rq and logdqrho are needed. The rq and logdqrho   
+#	must match each other on each model (compare the code).
+#
+###################################################
+
+#############  Gaussian proposal #################
+
+rqrho <- function(model)	{	# Gaussian proposal
+	if(model == 1) return(0)
+	return(rnorm(1,propmean,propsd))
+}
+
+logdqrho <- function(model, param)	{	# Gaussian proposal
+	if(model == 1) return(0)
+	return(dnorm(param,propmean,propsd,log=TRUE))
+}
+
+#############  Uniform proposal ##################
+
+rqrho <- function(model)	{	# Uniform proposal
+	if(model == 1) return(0)
+	return(runif(1,-1,1))
+}
+
+logdqrho <- function(model, param)	{	# Uniform proposal
+	if(model == 1) return(0)
+	return(log(0.5))
+
+#	Comment: It is tempting to think that since the
+#	prior on the alternative proposal is flat, we can just
+#	ignore it. Nothing could be further from the truth!
+#	The prior may be flat, but it is defined on (-1,1) so
+#	it is equal to 1/2 and the alpha you compute will  
+#	be off by a factor of 2 if you don't take this into account.
+
+}
+
+############# Log Beta_{m|n} ######################
+
+logbeta <- function(model, rho, s, t, a, b)	{
+
+#	Note that it is essential that Sxx, Syy and Sxy be computed
+#	for each sample in Part 3 of the problem, since they depend
+#	on a and b which are themselves being sampled!!!
+
+	Sxx <- sum((x-a)^2)
+	Syy <- sum((y-b)^2)
+	Sxy <- sum((x-a)*(y-b))
+
+	w <- (
+		- (N+1)*log(s*t)	# Includes Jeffreys prior on s and t
+			# as well as part of likelihood
+		- (N/2)*log(1-rho^2)	# Part of likelihood
+		- 1/(2*(1-rho^2))*(Sxx/s^2+Syy/t^2-2*rho*Sxy/(s*t))
+			# Remaining likelihood
+		+ log(pmodels[model]/qmodels[model]) 	
+			# Prior and proposal on model
+		+ logdprho(model, rho) - logdqrho(model, rho)
+			# Prior and proposal on rho
+	)
+#	Comment: The last line can be deleted IFF the proposal is uniform
+#	on the alternative, because it evaluates to 0 (the two terms
+#	cancel). But if you use the Gaussian proposal, you can't delete
+#	this line.
+
+#	Also, q's on r, s, a, b will cancel because of the symmetric 
+#	proposals I used, so I have not included them in my code.
+
+#	You delete items like this from your code *at your peril*. Be sure
+#	to check that you have not changed the value of what you're 
+#	computing when you delete code!!!
+
+	return(w)
+}
+
+############# Log prior(rho) #####################
+
+logdprho <- function(model, param)	{	# Uniform prior
+	if(model == 1) return(0)
+	return(log(0.5))
+	
+#	Comment: It may seem that the prior on the alternative
+#	is flat and can be ignored; but it is actually flat(-1,1), 
+#	so it evaluates to 1/2. Now if you compare the code for
+#	this function with the code for the logdqrho for the
+#	uniform proposal, you'll see that the effect of the two
+#	cancels exactly even if you ignore the alternative 
+#	hypothesis; but if you use the Gaussian proposal,
+#	and ignore this, your calculation of alpha will be off 
+#	by a factor of 2.
+#
+#	Calculating with both proposals gives a clue: You should
+#	get the same result, except for sampling error. But if
+#	you get different results from the two proposals, that's
+#	a clue that there's something wrong with your code.
+
+}
+
+####################################################
+#
+#	This function samples M and r in a M-H step
+#
+####################################################
+
+samplem <- function()	{
+
+	mstar <- sample(c(1,2),1,replace=TRUE,qmodels)
+	rhostar <- rqrho(mstar)
+	if(rhostar>-1 && rhostar<1)	{
+	
+		logalpha <- logbeta(mstar,rhostar,s,t, a, b) - logbeta(m,rho,s,t, a, b)
+		u <- log(runif(1,0,1))
+
+		if(u < logalpha)	{
+			m <<- mstar
+			rho <<- rhostar
+			acceptm <<- acceptm+1
+		}
+	}
+	if(m == 2)	{
+		rhos <<- append(rhos,rho)
+		m2 <<- m2+1
+	}
+	ms <<- append(ms,m)
+}
+
+####################################################
+#
+#	These functions sample s, t, a and b in symmetric
+#	M-H steps
+#
+####################################################
+
+samples <- function(ds)	{
+	
+	sstar <- s + runif(1,-ds,ds)
+	if(sstar>0)	{
+		logalpha <- logbeta(m,rho,sstar,t, a, b) - logbeta(m,rho,s,t, a, b)
+		logu <- log(runif(1,0,1))
+	
+		if(logu < logalpha)	{
+			s <<- sstar
+			accepts <<- accepts + 1
+		}
+	}
+	ss <<- append(ss,s)	
+}
+
+samplet <- function(dt)	{
+
+	tstar <- t + runif(1,-dt,dt)
+	if(tstar>0)	{
+		logalpha <- logbeta(m,rho,s,tstar, a, b) - logbeta(m,rho,s,t, a, b)
+		logu <- log(runif(1,0,1))
+	
+		if(logu < logalpha)	{
+			t <<- tstar
+			acceptt <<- acceptt + 1
+		}
+	}
+	ts <<- append(ts,t)	
+}
+
+samplea <- function(da)	{
+	astar <- a + runif(1,-da,da)
+	{
+		logalpha <- logbeta(m,rho,s,t, astar, b) - logbeta(m,rho,s,t, a, b)
+		logu <- log(runif(1,0,1))
+	
+		if(logu < logalpha)	{
+			a <<- astar
+			accepta <<- accepta + 1
+		}
+	}
+	as <<- append(as,a)	
+}
+
+sampleb <- function(db)	{
+	bstar <- b + runif(1,-db,db)
+	{
+		logalpha <- logbeta(m,rho,s,t, a, bstar) - logbeta(m,rho,s,t, a, b)
+		logu <- log(runif(1,0,1))
+	
+		if(logu < logalpha)	{
+			b <<- bstar
+			acceptb <<- acceptb + 1
+		}
+	}
+	bs <<- append(bs,b)	
+}
+
+####################################################
+#	
+#	This function samples all variables in turn. It
+#	first samples M and r in a single M-H step
+#	Then we can sample other parameters a, b, ... if
+#	they are part of the problem.
+#
+####################################################
+
+sample1 <- function(ds=0.8,dt=0.8,da=0.5,db=0.5)	{
+	samplem()
+	samples(ds)	# Delete for Part 1
+	samplet(dt)	# Delete for Part 1
+	samplea(da)	# Delete for Parts 1 & 2
+	sampleb(db)	# Delete for Parts 1 & 2
+}
+
+samplen <- function(n=3000,ds=3,dt=3, da=4, db=4)	{
+	# I find that you need about 3000 samples to get decent
+	# sampling for parts 2 and 3.
+	
+	m <<- 1	#	Start on model 1.
+
+#	Starting values for a, b, s, t are chosen to be
+#	close to correct so there will be a short "burn-in"
+
+	a <<- mean(x)
+	b <<- mean(y)
+	s <<- sqrt(var(x))
+	t <<- sqrt(var(y))
+	
+#	Starting value for rho is probably not critical.
+
+	rho <<- 0
+
+#	Initialize other variables for storing results etc.
+	
+	N <<- length(x)
+
+	ms <<- NULL
+	as <<- NULL
+	bs <<- NULL
+	ss <<- NULL
+	ts <<- NULL
+	rhos <<- NULL
+	
+	acceptm <<- 0
+	accepta <<- 0
+	acceptb <<- 0
+	accepts <<- 0
+	acceptt <<- 0
+	m2 <<- 0
+
+#	Proposals and priors on models
+
+	qmodels <<- c(0.5,0.5)
+	pmodels <<- c(0.5,0.5)
+
+#	Do the sampling and print minimal results.
+
+	for(i in 1:n)	{
+		sample1(ds,dt,da,db)
+	}
+	cat("Odds on m1 = ", (n-m2)/m2,"\n")
+}
+
+############### Data #######################
+
+#	The following two items are for the Gaussian proposal
+#	and are gotten from looking at the results for a
+#	"training sample"
+
+propmean <- 0.6
+propvar <- 0.07	# Best to make this a bit large, so as to
+				# properly sample the tails of the distribution
+propsd <- sqrt(propvar)
+
+#	The data I gave you
+
+x <- c(4.17,2.46,3.26,5.89,3.73,-2.63,-2.50,1.45,6.47,-2.12)
+y <- c(7.30,2.24,6.13,4.84,-0.25,0.91,-5.12,1.82,4.50,0.20)
+
+#	My results: Part 1 Odds=0.16; Part 2, 0.174; Part 3, 0.25
+
+

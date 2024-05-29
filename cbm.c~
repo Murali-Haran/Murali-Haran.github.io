@@ -1,0 +1,149 @@
+/* Author: Murali Haran, Statistics Department, Penn State University  */
+/* Version: November, 2006 */
+/* A C function for computing consistent batch means estimate of standard error from:  */
+/* Citation: Galin L. Jones, Murali Haran, Brian S. Caffo, and Ronald Neath, "Fixed-Width Output Analysis for Markov Chain Monte Carlo" (2006), Journal of the American Statistical Association, 101:1537--1547 */
+
+/* To compile: gcc -o cbm cbm.c -lm  */
+/* To run: ./cbm <filename> mcmclen numcol */
+/* file is assumed to contain a matrix of output from MCMC */
+/* with mcmclen number of rows(chain length) and numcol number of columns (parameters) */
+
+#include<stdio.h>
+#include<stdlib.h>
+#include <stddef.h> 
+#include <string.h>
+/* #define MATHLIB_STANDALONE 1 */
+/* #include <Rmath.h> */
+/* #define NUMIT 1000   */
+/* #define NUMCOL 1324  */
+#define VERBOSE 0 // 1=> print descriptions of output
+
+/*  assume that the vector values are g(x_1),..,g(x_n) */
+/*  and expectation of interest is E(g(x)) */
+/*  n is the length of the vector, and vec is the vector */
+/*  bs is the batchsize. Default is sqrt(n), if bs==0, use cuberoot of n */
+int cbm(int n,double *vec,int bs,double *bmres)
+{
+  double est,serr,sigmahatsq; 
+  int a,b,Nbm; /*  batch number and batch size, product */
+  int i,k;
+  double *Y;
+
+  if (bs) /*  if sqroot (default) */
+    {   
+      b=(int ) sqrt(n);
+      a=n/b; /*  use 'div' operator */
+    }
+  else /* cuberoot */
+    {   
+      b=(int ) pow(n,1/3);
+      a=n/b; /*  use 'div' operator */
+    }
+
+  Y=(double *)malloc(a*sizeof(double)); /* memory allocation for batch means */
+
+  /*  computing batch means according to batch sizes */
+  est=0.0;
+  for (k=0;k<a;k++) 
+    {
+      Y[k]=0.0;
+      for (i=(k*b);i<=(k*b+b-1);i++)
+	Y[k] = Y[k] + vec[i];
+      est=est + Y[k];
+      Y[k]=Y[k]/b; 
+    }
+
+  est=est/(a*b);  /* grand mean */
+  /*   printf("est=%f\n",est); */
+
+  sigmahatsq=0.0;
+  for (k=0;k<a;k++) 
+    sigmahatsq=sigmahatsq+(Y[k]-est)*(Y[k]-est);
+
+  sigmahatsq=sigmahatsq*b/(a-1);
+  serr=sqrt(sigmahatsq/n);
+
+  bmres[0]=est;
+  bmres[1]=serr;
+
+  return(1);
+}
+
+int main(int argc, char *argv[]) 
+{
+  FILE *fs = NULL;
+/*   double mcmc[NUMCOL][NUMIT]; */
+/*   double X[NUMIT]; /\* each column (temporary) *\/ */
+/*   double allres[NUMCOL][2]; /\* put together results from all columns *\/ */
+  double **mcmc;
+  double *X; /* each column (temporary) */
+  double **allres; /* put together results from all columns */
+  double bmres[2]; /*  keep batch means estimate and s.error */
+  int veclen;
+  char *inputpath;
+  int strlength;
+  int i,j;
+  
+  int mcmclen, numcol;
+
+  if (argc<4)
+    {
+      printf("Error ! Need filename from which to read MCMC output vector, length of Markov chain, number of parameters (columns).\n");
+      printf("usage: %s <filename> mcmclen numcol\n",argv[0]);
+      exit(1);
+    }
+
+  else
+    {
+      strlength = strlen(argv[1]);
+      inputpath = malloc(strlength*sizeof(char)+1); /* CHECK this added 1 to avoid strange errors*/
+      sprintf(inputpath,"%s",argv[1]);
+
+      mcmclen = atoi(argv[2]); 
+      numcol = atoi(argv[3]); 
+    }
+
+  /* allocate memory according to length of MCMC run and number of columns */
+  /* X[mcmclen] */
+  X=(double *) malloc(mcmclen*sizeof(double));
+
+  /* mcmc[numcol][mcmclen] */
+  mcmc = (double **) malloc(numcol*sizeof(double));
+  for (i=0;i<numcol;i++)
+    mcmc[i] = (double *) malloc (mcmclen*sizeof(double));
+
+  /* allres[numcol][2] */
+  allres = (double **) malloc(numcol*sizeof(double));
+  for (i=0;i<numcol;i++)
+    allres[i] = (double *) malloc (2*sizeof(double));
+
+  /* read in matrix */
+  fs = fopen(inputpath,"r");
+  if(fs==NULL) 
+    { 
+      fprintf(stderr,"\nCould not open input file %s .Exiting...\n",inputpath); 
+      getchar(); 
+      exit(0); 
+    }
+
+  /* read in as transpose (may be inefficient) */
+  for (i=0;i<mcmclen;i++)
+    for (j=0;j<numcol;j++)
+      fscanf(fs,"%lf ",&mcmc[j][i]);
+
+  /* compute the cbm estimates for each column */
+  for (j=0;j<numcol;j++)
+    {
+/*       for (i=0;i<mcmclen;i++) */
+/* 	X[i]=mcmc[j][i];  /\* X is now ith column of the matrix *\/ */
+      cbm(i,mcmc[j],1,bmres);
+/*       cbm(mcmclen,X,1,bmres);  compute s.error using batch means */
+
+      allres[j][0]=bmres[0];
+      allres[j][1]=bmres[1];
+    }
+  for (j=0;j<numcol;j++)
+    printf("%f %f\n",allres[j][0],allres[j][1]);
+  
+  return EXIT_SUCCESS;
+}

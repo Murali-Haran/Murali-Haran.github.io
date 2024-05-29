@@ -1,0 +1,176 @@
+This is pdfTeX, Version 3.14159-1.10b (Web2C 7.4.5) (format=pdflatex 2006.1.19)  9 JUN 2006 18:26
+**\nonstopmode\input{fullcond.tex}
+(./fullcond.tex (/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2001/04/21 v1.4e Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size11.clo
+File: size11.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf/tex/latex/natbib/natbib.sty
+Package: natbib 2000/07/24 7.0a (PWD)
+\bibhang=\skip43
+\bibsep=\skip44
+LaTeX Info: Redefining \cite on input line 508.
+\c@NAT@ctr=\count87
+)
+(/usr/share/texmf/tex/generic/misc/psfig.sty
+\@unused=\write3
+\ps@stream=\read1
+\p@intvaluex=\dimen103
+\p@intvaluey=\dimen104
+
+psfig/tex 1.10-dvips
+) (/usr/share/texmf/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip45
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/share/texmf/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks14
+\ex@=\dimen105
+))
+(/usr/share/texmf/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen106
+)
+(/usr/share/texmf/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count88
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count89
+\leftroot@=\count90
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count91
+\DOTSCASE@=\count92
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen107
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
+\dotsspace@=\muskip10
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
+\tag@help=\toks15
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
+\andhelp@=\toks16
+\eqnshift@=\dimen108
+\alignsep@=\dimen109
+\tagshift@=\dimen110
+\tagwidth@=\dimen111
+\totwidth@=\dimen112
+\lineht@=\dimen113
+\@envbody=\toks17
+\multlinegap=\skip46
+\multlinetaggap=\skip47
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+) (./fullcond.aux)
+\openout1 = `fullcond.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--34
+
+ []
+
+[1
+
+{/usr/share/texmf/dvips/config/pdftex.map}]
+Overfull \hbox (3.49834pt too wide) detected at line 67
+/cmmi10@10.95pt/f/cmr10@10.95pt/(/cmmi10@10.95pt/b[]/cmsy10@10.95pt/j/cmmi10@10
+.95pt/k; ^^R; ^^U; b[]; /cmbx10@10.95pt/Y/cmr10@10.95pt/) /cmsy10@10.95pt// []/
+cmmi10@10.95pt/e[] /cmsy10@10.95pt/^^B [] / /cmmi10@10.95pt/b[]e[] /cmsy10@10.9
+5pt// /cmmi10@10.95pt/IG/cmr10@10.95pt/(0/cmmi10@10.95pt/:/cmr10@10.95pt/5/cmmi
+10@10.95pt/; /cmr10@10.95pt/1/cmmi10@10.95pt/=/cmr10@10.95pt/(/cmmi10@10.95pt/^
+^R /cmr10@10.95pt/+ 1))
+ []
+
+
+Overfull \hbox (12.64694pt too wide) detected at line 71
+/cmmi10@10.95pt/f/cmr10@10.95pt/(/cmmi10@10.95pt/b[]/cmsy10@10.95pt/j/cmmi10@10
+.95pt/k; ^^R; ^^U; b[]/cmsy10@10.95pt/j/cmbx10@10.95pt/Y/cmr10@10.95pt/) /cmsy1
+0@10.95pt// ^^B[]/cmmi10@10.95pt/e[] /cmsy10@10.95pt/^^B [] / /cmmi10@10.95pt/b
+[]e[] /cmsy10@10.95pt// /cmmi10@10.95pt/IG/cmr10@10.95pt/(0/cmmi10@10.95pt/:/cm
+r10@10.95pt/5/cmmi10@10.95pt/; /cmr10@10.95pt/1/cmmi10@10.95pt/=/cmr10@10.95pt/
+(/cmmi10@10.95pt/^^U /cmr10@10.95pt/+ 1))
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--86
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--86
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--86
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--86
+
+ []
+
+[2] [3] (./fullcond.aux) ) 
+Here is how much of TeX's memory you used:
+ 1315 strings out of 95437
+ 14202 string characters out of 1190233
+ 69353 words of memory out of 1000001
+ 4359 multiletter control sequences out of 10000+50000
+ 10031 words of font info for 36 fonts, out of 500000 for 1000
+ 14 hyphenation exceptions out of 1000
+ 28i,16n,20p,271b,301s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 49 PDF objects out of 300000
+ 0 named destinations out of 131072
+ 0 words of extra memory for PDF output out of 65536
+</usr/share/texmf/fonts/type1/public/tt2001/fmex8.pfb
+>{/usr/share/texmf/dvips/tetex/f7b6d320.enc}</usr/share/texmf/fonts/type1/blues
+ky/cm/cmr6.pfb>{/usr/share/texmf/dvips/tetex/bbad153f.enc}</usr/share/texmf/fon
+ts/type1/bluesky/cm/cmsy8.pfb>{/usr/share/texmf/dvips/tetex/aae443f0.enc}</usr/
+share/texmf/fonts/type1/bluesky/cm/cmmi6.pfb></usr/share/texmf/fonts/type1/blue
+sky/cm/cmex10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi8.pfb></usr/shar
+e/texmf/fonts/type1/bluesky/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/bluesky
+/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi10.pfb></usr/share/te
+xmf/fonts/type1/bluesky/cm/cmbx10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/
+cmr10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr12.pfb></usr/share/texmf/
+fonts/type1/bluesky/cm/cmbx12.pfb>
+Output written on fullcond.pdf (3 pages, 74184 bytes).

@@ -1,0 +1,368 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>CASt R: An application of Markov chain Monte Carlo</title>
+</head>
+<body style="background-color: rgb(255, 248, 229);">
+<div style="text-align: center;"><big><big><span
+ style="color: rgb(204, 0, 0);"><span style="font-weight: bold;">A Markov chain Monte Carlo example
+</span>
+ <br>
+</span></span></big></big></div> 
+<CENTER>
+<FONT SIZE=3> Summer School in Astrostatistics, Center for Astrostatistics, Penn State University <br>
+<FONT SIZE=3> Murali Haran, Dept. of Statistics, Penn State University 
+</FONT> <BR><br>
+</CENTER>
+
+This module works through a single example of a Markov chain Monte
+Carlo (a general name for Metropolis-Hastings and Gibbs sampling
+algorithms) for drawing samples from a multidimensional
+distribution. We describe a model that is easy to specify but requires
+samples from a relatively complicated distribution for which classical
+Monte Carlo sampling methods are impractical. We describe how to
+implement a Markov chain Monte Carlo (MCMC) algorithm for this
+example. <br><br>
+
+The purpose of this is twofold: first to illustrate how MCMC
+algorithms are easy to implement (at least in principle) in situations
+where classical Monte Carlo methods do not work; second to provide a
+glimpse of practical MCMC implementation issues. It is difficult to
+work through a truly complex example of a Metropolis-Hastings
+algorithm in a short tutorial. Our example is therefore necessarily
+simple but working through it should provide a beginning MCMC user
+a taste for how to implement an MCMC procedure for a problem
+where classical Monte Carlo methods are unusable.  
+
+<br> <br> <big><big><span style="color: rgb(204, 0, 0);"><span
+style="font-weight: bold;"><small><span style="font-weight: bold;">
+Introduction </span></small></span></span></big></big><br> <br> Monte
+Carlo methods are a collection of techniques that use pseudo-random
+(computer simulated) values to estimate solutions to mathematical
+problems.  In this tutorial, we will focus on using Monte Carlo for
+Bayesian inference. In particular, we will use it for the evaluation
+of expectations with respect to a probability distribution. Monte
+Carlo methods can also be used for a variety of other purposes,
+including estimating maxima or minima of functions (as in
+likelihood-based inference).
+
+Monte Carlo works as follows: Suppose we want to estimate an
+expectation of a function g(x) with respect to the probability
+distribution <FONT FACE="Symbol">&pi</FONT>. We denote this desired
+quantity as follows <FONT FACE="Symbol">&mu</FONT>= E<SUB><FONT
+FACE="Symbol">&pi</FONT></SUB>g(x). Often, <FONT
+FACE="Symbol">&mu</FONT> is analytically intractable (the integration
+or summation required is too complicated). A Monte Carlo estimate of
+<FONT FACE="Symbol">&mu</FONT> is obtained by simulating N
+psuedo-random values from the distribution <FONT
+FACE="Symbol">&pi</FONT>, say
+X<SUB>1</SUB>,X<SUB>2</SUB>,..,X<SUB>N</SUB> and simply taking the
+average of g(X<SUB>1</SUB>),g(X<SUB>2</SUB>),..,g(X<SUB>N</SUB>) to
+estimate <FONT FACE="Symbol">&mu</FONT>. As N (number of samples) gets
+large, the estimate converges to the true expectation <FONT
+FACE="Symbol">&mu</FONT>.  <br> A toy example to calculate the P(-1< X
+< 0) when X is a Normal(0,1) random variable: <br>
+ <b> xs = rnorm(10000) # simulate 10,000 draws from N(0,1) </b> <br>
+ <b> xcount = sum((xs>-1) & (xs<0)) # count number of draws between -1 and 0 </b> <br>
+ <b> xcount/10000 # Monte Carlo estimate of probability </b> <br>
+ <b> pnorm(0)-pnorm(-1) # Compare it to R's answer (cdf at 0) - (cdf at -1) </b> 
+<br><br>
+
+ R has random number generators for most standard distributions and
+there are many more general algorithms (such as rejection sampling)
+for producing independent and identically distributed (i.i.d.) draws
+from <FONT FACE="Symbol">&pi</FONT>. However, for complicated
+distributions, even producing pseudo-random i.i.d. draws from <FONT
+FACE="Symbol">&pi</FONT> is often infeasible. In such cases, the
+Metropolis-Hastings algorithm is used to produce a Markov chain say
+X<SUB>1</SUB>,X<SUB>2</SUB>,..,X<SUB>N</SUB> where the X<SUB>i</SUB>'s are
+<i> dependent </i> draws that are <i> approximately </i> from the
+desired distribution. As before, the average of
+g(X<SUB>1</SUB>),g(X<SUB>2</SUB>),..,g(X<SUB>N</SUB>) is an estimate
+that converges to <FONT FACE="Symbol">&mu</FONT> as N gets large. The
+Metropolis-Hastings algorithm is very general and hence very
+useful. In the following example we will see how it can be used for
+inference for a model/problem where it would otherwise be impossible
+to compute desired expectations.
+
+<br> <br> <big><big><span style="color: rgb(204, 0, 0);"><span
+style="font-weight: bold;"><small><span style="font-weight: bold;">
+Problem and model description
+</span></small></span></span></big></big><br> <br> Our example uses a
+dataset from the Chandra Orion Ultradeep Project (COUP). More
+information on this is available at: <a
+href="http://astrostatistics.psu.edu/datasets/Chandra_flares.html">
+CASt Chandra Flares data set </a>
+
+The raw data, which arrives as a Poisson process, gives the individual
+photon arrival times (in seconds) and their energies (in keV). The
+processed data we consider here is obtained by grouping the events
+into evenly-spaced time bins (10,000 seconds width). <br> <br>
+
+Our goal for this data analysis is to identify the change point and
+estimate the intensities of the Poisson process before and after the
+change point.
+
+We describe a Bayesian model for this change point problem (Carlin
+and Louis, 2000). Let Yt be the number of occurrences of some event at
+time t. The process is observed for times 1 through n and we assume
+that there is a change at time k, i.e., after time k, the event counts
+are significantly different (higher or lower than before). The
+mathematical description of the model is provided in <a
+href="chptmodel.pdf"> change point model (pdf)
+</a>. While this is a simple model, it is adequate for illustrating
+some basic principles for constructing an MCMC algorithm.
+
+<br><br>
+We first read in the data:
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">chptdat = read.table("http://www.stat.psu.edu/~mharan/MCMCtut/COUP551_rates.dat",skip=1)
+</span><br>
+We can begin with a simple time series plot as exploratory
+analysis. 
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;"> Y=chptdat[,2] # store data in Y</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">ts.plot(Y,main="Time series plot of change point data")</span><br>
+The plot suggests that the change point is around 30 (CHECK THIS) 
+<br> <big><big><span style="color: rgb(204, 0, 0);"><span
+ style="font-weight: bold;"><small><span style="font-weight: bold;"> 
+<br> 
+
+Setting up the MCMC algorithm
+<br>
+</span></small></span></span></big></big><br> 
+Our goal is to simulate multiple draws from the posterior distribution
+which is a multidimensional distribution known only upto a
+(normalizing) constant. From this multidimensional distribution, we
+can easily derive the conditional distribution of each of the
+individual parameters (one dimension at a time). This is described in
+<a href="fullcond.pdf"> full conditional distributions (pdf) </a>.
+
+<br> <br> <big><big><span style="color: rgb(204, 0, 0);"><span
+ style="font-weight: bold;"><small><span style="font-weight: bold;">
+Programming an MCMC algorithm in R
+</span></small></span></span></big></big><br> <br> 
+
+We will need an editor for our program: we can use Wordpad (available
+under the Start button menu under Accessories). Note: it is <b> highly
+recommended </b> that you use a more sophisticated editor such as
+emacs or WINedit since these editors 'understand' R programs (as long
+as you provide the program filename with a .R extension). WINedit and
+emacs will automatically format/indent your code and color it which is
+an enormous help with debugging R code. Without this help it will be
+very difficult to write anything but the most trivial R programs.
+
+<br>
+
+Please save code from
+<a href="MCMCchpt.R"> MCMC template in R</a> into a file and open this
+file using the editor. Save this file as MCMCchpt.R . <br> <br>
+
+Note that in this version of the code, all parameters are sampled except for k (which is fixed at our guessed change point).<br>
+To load the program from the file MCMCchpt.R we use the "source" command.
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;"> source("filepathname/MCMCchpt.R") # with appropriate filepathname
+</span>
+<br> We can now run the MCMC algorithm:
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;"> mchain <- mhsampler(NUMIT=1000,dat=Y) # call the function with appropriate arguments
+</span> <br>
+<br> <big><big><span style="color: rgb(204, 0, 0);"><span
+ style="font-weight: bold;"><small><span style="font-weight: bold;">
+MCMC output analysis
+</span></small></span></span></big></big><br> <br>
+
+Now that we have output from our sampler, we can treat these
+samples as data from which we can estimate quantities of
+interest. For instance, to estimate the expectation of a marginal
+distribution for a particular parameter, we would simply average all
+draws for that parameter. There are a variety of different ways we
+could use the draws from the posterior for inference about the
+posterior distribution.
+
+For instance: <br> 
+to obtain an estimate of E(theta) we would type:<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">mean(mchain[1,])</span><br>
+to get estimates for means for all parameters:<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">apply(mchain,1,mean) # compute means by row (for all parameters at once)</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">apply(mchain,1,median) # compute medians by row (for all parameters at once)</span><br>
+to obtain an estimate of the entire posterior distribution: <br>
+&nbsp;&nbsp; <span style="font-weight: bold;">plot(density(mchain[1,]),main="smoothed density plot for theta posterior")</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">plot(density(mchain[2,]),main="smoothed density plot for lambda posterior")</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">hist(mchain[3,],main="histogram for k posterior")</span><br>
+to find the probability that lambda is greater than 3 <br>
+&nbsp;&nbsp; <span style="font-weight: bold;">sum(mchain[2,]>3)/length(mchain[2,])</span><br><br>
+
+Now comment out the line that fixes k at our guess:<br>
+&nbsp;&nbsp; <span style="font-weight: bold;"> # currk <- KGUESS </span><br><br>
+
+Rerun the sampler with k also sampled. 
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;"> mchain <- mhsampler(NUMIT=1000,dat=Y) 
+</span> <br><br>
+With the new output, you
+can repeat the calculations above (finding means, plotting density
+estimates etc.) <br>
+<br>
+You can also study how your estimate for the expectation of the posterior distribution for k changes with each iteration.
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;"> estvssamp(mchain[3,]) </span><br><br>
+
+We would like to assess whether our Markov chain is moving around
+quickly enough to produce good estimates (this property is often
+called 'good mixing'). While this is in general difficult to do
+rigorously,
+<u> estimates of the autocorrelation </u> in the samples is an informal but
+useful check. To obtain sample autocorrelations we use the acf plot function:<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">acf(mchain[1,],main="acf plot for theta")</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">acf(mchain[2,],main="acf plot for lambda")</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">acf(mchain[3,],main="acf plot for k")</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">acf(mchain[4,],main="acf plot for b1")</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">acf(mchain[5,],main="acf plot for b2")</span><br><br>
+
+If the samples are heavily autocorrelated we should rethink our
+sampling scheme or, at the very least, run the chain for much
+longer. Note that the autocorrelations are negligible for all
+parameters except k which is heavily autocorrelated. This is easily resolved for this example since
+the sampler is fast (we can run the chain as long as we need to). <br> <br>
+
+Why are there such strong autocorrelations for k? The acceptance rate
+for k proposals (printed out with each MCMC run) are well below 10%
+which suggests that k values are stagnant more than 90% of the time. A
+better proposal for the Metropolis-Hastings update of a parameter can
+help improve acceptance rates which often, in turn, reduces
+autocorrelations. Try another proposal for k and see how it affects
+autocorrelations. In complicated problems, carefully constructed
+proposals can have a major impact on the efficiency of the MCMC
+algorithm.
+<br><br>
+
+<u> How do we choose starting values?</u> In general, any value we
+believe would be reasonable under the posterior distribution will
+suffice. You can experiment with different starting values. For
+instance: modify the starting value for k in the function (for
+instance, try setting k=10), "source" the function in R and run the
+sampler again as follows:
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;"> mchain2 <- mhsampler(NUMIT=1000,dat=Y)</span><br>
+You can study how your estimate for the expectation of the posterior distribution for k changes with each iteration.
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;"> estvssamp(mchain2[3,]) </span><br>
+
+<br> <big><big><span style="color: rgb(204, 0, 0);"><span
+ style="font-weight: bold;"><small><span style="font-weight: bold;">
+Assessing accuracy and determining chain length
+</span></small></span></span></big></big><br> <br>
+There are two important issues to consider when we have draws from
+an MCMC algorithm: (1) how do we assess the
+accuracy of our estimates based on the sample (how do we compute Monte
+Carlo standard errors?) (2) how long do we run the chain before we
+feel confident that our results are reasonably accurate ? <a
+href="convdetails.html"> Notes regarding these issues </a>.  <br><br>
+
+There are many ways to compute Monte Carlo standard errors. We
+describe a simple but reasonable way of calculating it: <a
+href="batchmeans.R"> the Batch Means method in R </a> and <a
+href="batchmeans.pdf">  a brief description (pdf) </a>. Related reading: <a
+href="geyer.pdf"> Practical Markov chain Monte Carlo </a> and the
+references therein. <br> <br>
+
+To compute MC s.error via batch means, download the bm
+function from the batchmeans.R file above and source the file into
+R. We can now calculate standard error estimates for each of the five
+parameter estimates:<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">bm(mchain[1,])</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">bm(mchain[2,])</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">bm(mchain[3,])</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">bm(mchain[4,])</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">bm(mchain[5,])</span><br><br>
+
+Are these standard errors acceptable ? <br><br>
+
+There is a vast literature on different proposals for dealing with the
+latter issue (how long to run the chain) but they are all heuristics
+at best. The links at the bottom of this page (see section titled
+"Some resources") provide references to learn more about suggested
+solutions. One method that is fairly simple, theoretically justified
+in some cases and seems to work reasonably well in practice is as
+follows: run the MCMC algorithm and periodically
+compute Monte Carlo standard errors. Once the Monte Carlo standard
+errors are below some (user-defined) threshold, stop the
+simulation (Jones, Haran, Caffo and Neath, 2006).
+
+Often MCMC users do not run their simulations long enough. For
+ complicated problems run lengths in the millions (or more) are
+ typically suggested. For our example run
+ the MCMC algorithm again, this time for 100000 iterations (set
+ NUMIT=100000). 
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;"> mchain2 <- mhsampler(NUMIT=100000,dat=Y)</span><br><br>
+
+You can now obtain estimates of the posterior
+ distribution of the parameters as before and compute the new Monte
+ Carlo standard error. Note whether the estimates and corresponding MC
+ standard error have changed with respect to the previous sampler.
+ <br> <br>
+
+<big><big><span style="color: rgb(204, 0, 0);"><span
+ style="font-weight: bold;"><small><span style="font-weight: bold;">
+Making changes to the model
+</span></small></span></span></big></big><br> <br>
+
+If we were to change the prior distributions on some of the individual
+parameters, only relatively minor changes may be needed in the
+program. For instance if the Inverse Gamma prior on b1 and b2 were
+replaced by Gamma(0.01,100) priors on them, we would only have to
+change the lines in the code corresponding to the updates of b1 and b2
+(we would need to perform a Metropolis-Hastings update of each
+parameter). The rest of the code would remain unchanged. Modifying the
+program to make it sample from the posterior for the <a
+href="chptmodel2.pdf"> modified model </a> is a useful exercise. For
+the modified full conditionals see <a href="fullcond2.pdf"> modified
+full conditional distributions. </a>
+<br> <br>
+
+An obvious modification to this model would be to allow for more than
+one change point.  A very sophisticated model that may be useful in
+many change point problems is one where the number of change points is
+also treated as unknown. In this case the <i>number</i> of Poisson
+parameters (only two of them in our example: theta and lambda) is also
+unknown. The posterior distribution is then a mixture over
+distributions of varying dimensions (the dimensions change with the
+number of change points in the model). This requires an advanced
+version of the Metropolis-Hastings algorithm known as <b>
+reversible-jump Metropolis Hastings</b> due to Peter Green. Some
+related information is available at <a
+href="http://www.stats.bris.ac.uk/~peter/HSSS/jumpws.html"> the HSSS
+variable dimension MCMC workshop </a>
+
+
+<br><br> <big><big><span style="color: rgb(204, 0, 0);"><span
+style="font-weight: bold;"><small><span style="font-weight: bold;">
+Some resources </span></small></span></span></big></big>
+<br><br> The <a
+href="http://www.maths.lth.se/help/R/.R/library/coda/html/00Index.html">
+"CODA" package</a> and <a
+href="http://www.maths.lth.se/help/R/.R/library/boa/html/00Index.html">
+"BOA" package</a> in R implement many well known output analysis
+techniques. Charlie Geyer's <a
+href="http://cran.r-project.org/doc/packages/mcmc.pdf"> MCMC package
+in R </a> is another free resource. There is also MCMC software from
+the popular <a
+href="http://www.mrc-bsu.cam.ac.uk/bugs/winbugs/contents.shtml">
+WINBugs project </a>.
+<br> <br> In
+addition to deciding how long to run the sampler and how to compute
+Monte Carlo standard error, there are many possibilities for choosing
+how to update the parameters and more sophisticated methods used to
+make the Markov chain move around the posterior distribution
+efficiently. The literature on such methods is vast. The following <a
+href="suppl.html"> references </a> are a useful starting point.
+
+<br><br>
+<b> Acknowledgment: </b> The model is borrowed from  Chapter 5 of "Bayes and Empirical Bayes Methods for Data Analysis" by Carlin and Louis (2000). The data example was provided by Konstantin Getman (Penn State University).
+
+</body>
+</html>

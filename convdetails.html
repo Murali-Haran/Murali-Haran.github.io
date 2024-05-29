@@ -1,0 +1,21 @@
+
+Note for (1) Computing standard errors for a Monte Carlo estimate for
+an i.i.d. (classical Monte Carlo) sampler is easy. Simply obtain the
+sample standard deviation of the g(xi) values and divide by square
+root of n (the number of samples).
+
+Since Markov chains produce dependent draws, computing precise Monte
+Carlo standard errors for such samplers is a very difficult problem in
+general.
+
+<br><br> Note for (2) Draws produced by classical Monte Carlo methods
+(such as rejection sampling) produced draws from the correct
+distribution. The MCMC algorithm produces draws that are
+asymptotically from the correct distribution. All the draws we see
+after a finite number of iterations are therefore only approximately
+from the correct distribution. Determining how long we have to run the
+chain before we feel sufficiently confident that the MCMC algorithm
+has produced reasonably accurate draws from the distribution is
+therefore a very difficult problem. Most rigorous solutions are too
+specific or tailored towards relatively simple situations while more
+general approaches tend to be heuristic.

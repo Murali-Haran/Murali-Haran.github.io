@@ -1,0 +1,51 @@
+\documentclass[11pt]{article}
+\usepackage[sort,longnamesfirst]{natbib}
+\usepackage{psfig}
+\usepackage{amsmath}%
+\newcommand{\bthet}{ \mbox{\boldmath $\theta$}}
+\newcommand{\bOne}{ {\bf 1} }
+\newcommand{\lambdaT}{\lambda_{\theta}}
+\newcommand{\bTheta}{ \mbox{\boldmath $\Theta$}}
+\begin{document}
+\pagestyle{empty}
+\begin{center}
+\Large
+{\bf  Markov chain Monte Carlo exercise}\\
+\end{center}
+% Suggestion: please start this homework as early as possible as it is
+% likely to be more time consuming than your previous assignments.\\
+\normalsize
+Consider the following hierarchical changepoint model for the number
+of occurrences $Y_i$ of some event during time interval $i$ with change point $k$.
+\begin{equation*}
+\begin{split}
+Y_i |k,\theta,\lambda \sim & \mbox{Poisson}(\theta) \mbox{ for } i=1,\dots,k\\
+Y_i |k,\theta,\lambda \sim & \mbox{Poisson}(\lambda) \mbox{ for } i=k+1,\dots,n
+\end{split}
+\end{equation*}
+Assume the following prior distributions:
+$$\theta|b_1 \sim  G(0.5,b_1), \lambda|b_2 \sim  G(0.5,b_2)$$
+$$b_1 \sim  G(1,1), b_2 \sim  G(1,1)$$
+$$ k \sim \mbox{Discrete Uniform}(1,\dots,n)$$
+
+$k,\theta,\lambda$ are independent and $b_1,b_2$ are independent. \\ Assume the Gamma density parameterization G$(\alpha,\beta) = \frac{1}{\Gamma(\alpha)\beta^{\alpha}} x^{\alpha-1} e^{-x/\beta}$\\\\
+Inference for this model is therefore based on the 5-dimensional
+posterior distribution $f(k,\theta,\lambda,b_1,b_2| {\bf Y})$ where
+{\bf Y}=$(Y_1,\dots,Y_n)$. Apply this model to the data set available from the webpage 
+INSERT WEBPAGE.\\\\
+(1) Use the Metropolis-Hastings algorithm for simulating from the
+posterior distribution $f(k,\theta,\lambda,b_1,b_2| {\bf Y})$.
+Include an estimated density plot based on your samples for each of
+the 5 parameters.\\
+(2) The parameters of interest here are $k,\theta,\lambda$: report
+your MCMC estimates of their means.\\% and 95\% confidence intervals for these 3 parameters. One easy
+% way to construct a 95\% confidence interval based on your samples is
+% to simply use sample quantiles (for e.g. the ``quantile'' command in {\tt R}).\\
+(3) Compute Monte Carlo standard errors for your mean estimates for
+$k,\theta,\lambda$ using the batch means method (this will be covered on 4/15/05).\\\\
+As before, you should use heuristics such as plots of your estimates,
+autocorrelations, and acceptance rates to help guide you through the
+simulation process. Include the most relevant plots in your report.\\
+%$a_1=a_2=0.5,c_1=c_2=1,d_1=d_2=1$
+% (Simple) Monte Carlo maximum likelihood problem:\\
+\end{document}

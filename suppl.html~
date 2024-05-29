@@ -1,0 +1,19 @@
+<hr> Some references for Markov chain Monte Carlo methods<hr>
+<br> 
+<LI> Gilks, W. R. (ed), Richardson, S. (ed), and Spiegelhalter, D. J.(ed) (1996), ``Markov chain Monte Carlo in practice'', Chapman & Hall Ltd (London; New York) <br>
+Note: well written chapters by several different experts on a variety of topics from MCMC basics to specialized applications of MCMC. Useful practical advice for first time MCMC users although the information is somewhat dated. <br> <br> 
+
+<LI> Liu, Jun S. (2001), "Monte Carlo strategies in scientific computing", Springer-Verlag Inc (Berlin; New York). <br>
+Note: this book has descriptions about a few advanced MCMC strategies along with a thorough treatment of Importance Sampling and Sequential Importance Sampling. It is hence rather specialized. <br><br> 
+
+<LI> Robert, Christian P. and Casella, George (2004), "Monte Carlo statistical methods", Second Edition, Springer-Verlag Inc (Berlin; New York). <br>
+Note: comprehensive treatment of Monte Carlo methods (including MCMC, Importance Sampling and recently developed techniques) with plenty of related theoretical details. The level of the text is generally more advanced than the other two (notation is often measure-theoretic). The book is an excellent reference though it may be a hard read for a new MCMC user. <br> <br>
+
+Other references for Monte Carlo and Statistical Computing: <br>
+<LI> Carlin and Louis (2000) "Bayes and Empirical Bayes Methods for Data Analysis" (Chapman and Hall): Chapter 5<br>
+<LI> Givens and Hoeting (2005) "Computational Statistics" (Wiley): Chapters 6,7 and 8 (Ch.8 is on more advanced topics)<br>
+<LI> Gentle (2002) "Elements of Computational Statistics" (Springer): only Chapter 2 is really relevant <br>
+<LI> Gentle (2003) "Elements of Computational Statistics" (Second Edition, Springer): only Chapter 4 is really relevant <br>
+<LI> Thisted "Elements of Statistical Computing" <br>
+<LI> Ripley (1987) "Stochastic Simulation"<br> <br>
+Charlie Geyer's web page on <a href="http://www.stat.umn.edu/~charlie/mcmc/diag.html"> on  MCMC diagnostics </a>.
