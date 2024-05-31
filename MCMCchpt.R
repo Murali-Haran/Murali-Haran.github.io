@@ -1,21 +1,19 @@
+######################################################################
 ## Markov chain Monte Carlo algorithm for a Bayesian (single) change point model
-## read in the data
-## chptdat = read.table("chpt.dat",header=T)
-## Y = chptdat$Ener
-## chptdat = read.table("coal.dat",header=T)
-## Y = chptdat$Deaths
-## Y = read.table("http://personal.psu.edu/muh10/MCMCtut/COUP551_rates.dat", skip = 1)
-KGUESS = 10 # our guess for k based on exploratory data analysis
-## Note: this function is not written in the most efficient way since its purpose is primarily instructive
+######################################################################
 
-## function with default values for length of chain, data set variable, b1, b2
+## read in the data
+## Y = read.table("https://murali-haran.github.io/COUP551_rates.dat", skip = 1)
+## Y = Y[,2] # only need second column
+
+## function with default values for length of chain, data set, and hyperparameters b1, b2
 mhsampler = function(NUMIT=1000,dat=Y, b1 = 100, b2 = 100) 
   {
     n = length(dat)
     cat("n=",n,"\n")
     ## set up
     ## NUMIT x 3 matrix to store Markov chain values
-    ## each row corresponds to one of 3 parameters in order: theta,lambda,k,b1,b2
+    ## each row corresponds to one of 3 parameters in order: theta,lambda,k
     ## each column corresponds to a single state of the Markov chain
     mchain = matrix(NA, 3, NUMIT)
     acc = 0 # count number of accepted proposals (for k only)
@@ -23,7 +21,6 @@ mhsampler = function(NUMIT=1000,dat=Y, b1 = 100, b2 = 100)
     ## starting values for Markov chain
     ## This is somewhat arbitrary but any method that produces reasonable values for each parameter is usually adequate.
     ## For instance, we can use approximate prior means or approximate MLEs.
-    
     kinit = floor(n/2) # approximately halfway between 1 and n
     mchain[,1] = c(1,1,kinit)
     

@@ -221,13 +221,13 @@ some basic principles for constructing an MCMC algorithm.
 <br><br>
 We first read in the data:
 <br>
-&nbsp;&nbsp; <span style="font-weight: bold;">chptdat = read.table("http://personal.psu.edu/muh10/MCMCtut/COUP551_rates.dat",skip=1)
+&nbsp;&nbsp; <span style="font-weight: bold;">Y = read.table("https://murali-haran.github.io/COUP551_rates.dat", skip = 1)
 </span><br>
 <i> Note: This data set is just a convenient subset of the actual data set (see reference below.)</i> <br> <br>
 We can begin with a simple time series plot as exploratory
 analysis. 
 <br>
-&nbsp;&nbsp; <span style="font-weight: bold;"> Y=chptdat[,2] # store data in Y</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;"> Y=Y[,2] # store data in Y</span><br>
 &nbsp;&nbsp; <span style="font-weight: bold;">ts.plot(Y,main="Time series plot of change point data")</span><br>
 The plot suggests that the change point may be around 10.
 <br> <big><big><span style="color: rgb(204, 0, 0);"><span
@@ -318,8 +318,6 @@ useful check. To obtain sample autocorrelations we use the acf plot function:<br
 &nbsp;&nbsp; <span style="font-weight: bold;">acf(mchain[1,],main="acf plot for theta")</span><br>
 &nbsp;&nbsp; <span style="font-weight: bold;">acf(mchain[2,],main="acf plot for lambda")</span><br>
 &nbsp;&nbsp; <span style="font-weight: bold;">acf(mchain[3,],main="acf plot for k")</span><br>
-&nbsp;&nbsp; <span style="font-weight: bold;">acf(mchain[4,],main="acf plot for b1")</span><br>
-&nbsp;&nbsp; <span style="font-weight: bold;">acf(mchain[5,],main="acf plot for b2")</span><br><br>
 
 If the samples are heavily autocorrelated we should rethink our
 sampling scheme or, at the very least, run the chain for much
@@ -401,8 +399,6 @@ parameter estimates:<br>
 &nbsp;&nbsp; <span style="font-weight: bold;">bm(mchain[1,])</span><br>
 &nbsp;&nbsp; <span style="font-weight: bold;">bm(mchain[2,])</span><br>
 &nbsp;&nbsp; <span style="font-weight: bold;">bm(mchain[3,])</span><br>
-&nbsp;&nbsp; <span style="font-weight: bold;">bm(mchain[4,])</span><br>
-&nbsp;&nbsp; <span style="font-weight: bold;">bm(mchain[5,])</span><br><br>
 
 Are these standard errors acceptable ? <br><br>
 
