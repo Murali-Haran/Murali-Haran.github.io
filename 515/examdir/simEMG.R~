@@ -1,0 +1,22 @@
+##################################################
+## simulate data
+## given parameters and actual heights and s.devs
+## from a dataset
+## simulate age using EMG distribution
+## age ~ EMG(mu=b + m*height, sigmasq, k)
+## E.g. simdata(m=10, b = 2000, k=10000)
+##################################################
+simdata = function(m,b,k, cosmodat)
+  {
+    height=cosmodat$height
+    age=cosmodat$age
+    sigmavals=sqrt(cosmodat$uncert)
+    n = length(height)
+    
+    mu = b + m*height
+    simvals = rep(NA, n)
+    for (i in 1:n)
+      simvals[i] = rexpgauss(1, mu[i], sigmavals[i], k)
+
+    return(list(height=cosmodat$height, age=simvals, uncert=cosmodat$uncert))
+  }

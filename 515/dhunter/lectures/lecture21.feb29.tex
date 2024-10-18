@@ -1,0 +1,63 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Feb.~29}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+Midterm exam:  7:00pm tonight, Feb.~29 in 105 Willard.
+(NB:  Change of room!)
+\item 
+HW \#6 will be due on Friday (Mar.~2) at 2:30.
+\end{itemize}
+\end{frame}
+
+\startframe{6.2 Continuous-Time Markov chains}
+Given a continuous-time, discrete-space MC, let us define
+$P(t)$ to be the implied transition probability matrix at
+time $t$.  What properties can we establish for $P(t)$?
+(NB:  Not easy to compute $P(t)$ in general.)
+\begin{itemize}
+\item $P(0) = ??$
+\item $\sum_j P_{ij}(t) = ??$
+\item $P(s)P(t) = ??$
+\end{itemize}
+\end{frame}
+
+\startframe{6.8 Computing the Transition Probabilities}
+The generator (or rate) matrix $R$:
+\begin{itemize}
+\item Take $r_{ij} = \mbox{rate of $i\to j$ transitions}$, $i\ne j$.
+\item Take $r_{ii} = -\sum_{j\ne i} r_{ij}$.
+\item This implies $\sum_{j} r_{ij} = \ldots$
+\end{itemize}
+What is $R$ for the on-off process?  A homogeneous Poisson process?
+\end{frame}
+
+\startframe{6.4 The Transition Probability Function}
+The entries of $R$ were introduced much earlier (but not in this form).
+\begin{itemize}
+\item Take $q_{ij} = \mbox{rate of $i\to j$ transitions}$, $i\ne j$.
+\item Take $v_{i}$ so that $P_{ij}=q_{ij}/v_{i}$.
+\item Clearly this implies $v_i=\sum_{j\ne i} q_{ij}$.
+\end{itemize}
+\end{frame}
+
+\startframe{6.4 The Transition Probability Function}
+Lemma:
+\begin{itemize}
+\item $\lim_{h\to0} \frac{1-P_{ii}(h)}{h} = v_i$
+\item $\lim_{h\to 0} \frac{P_{ij}(h)}{h} = q_{ij}$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

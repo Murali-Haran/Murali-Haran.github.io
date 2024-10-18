@@ -1,0 +1,156 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Jan.~25}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+No new reading for Friday; you should be through
+section 4.4
+\item Tomorrow's office hours will end a bit early, at 3:45.  
+(So I'll start a bit early too.)
+\end{itemize}
+\end{frame}
+
+\startframe{4.3 Classification of States}
+Gambler's Ruin:
+\begin{itemize}
+\item Start with $i$ dollars, $0\le i\le N$.
+\item Play independent games, winning each with probability $p$.
+\item Bet 1 dollar per game (win \$1 if you win, lose \$1 if you lose)
+\item Continue until you have \$0 or $\$N$, then stay there.  
+
+(Modify a random walk so that
+0 and $N$ become absorbing states.)
+\end{itemize}
+\end{frame}
+
+\startframe{4.3 Classification of States}
+State $i$ is recurrent if and only if, conditional on $X_0=i$, 
+\begin{itemize}
+\item $P(\mbox{ever revisiting $i$}) = 1$
+\item $E(\#\{T>0:  X_T = i\}) = \infty$.
+\item $\sum_{n=1}^\infty P_{ii}^n = \infty$.
+\end{itemize}
+\end{frame}
+
+\startframe{4.3 Classification of States}
+\begin{columns}
+\begin{column}{2.5in}
+Random walk in one dimension:
+
+\vspace{2ex}
+\begin{tikzpicture}[scale=1]
+%\tikz{
+\def \lx{-3.1} \def \ux{3.1} \def \ly{-1.2} \def\uy{1.2}
+%\draw (\lx,\ly) rectangle (\ux,\uy);
+% grid with dot at origin for helping place objects in rectangle:
+%\draw[step=.5, very thin] (\lx,\ly) grid (\ux,\uy); 
+\filldraw (0,0) circle (.05);
+\draw[dotted] (\lx, 0) -- (\ux, 0);
+\foreach \x in {-3, -2, -1, 0, 1, 2, 3}
+  {\draw (\x, -.25) -- (\x, .25);
+  \draw (\x, -.75) node {$\x$};
+  }
+\draw[<-, very thick] (-1, 0) -- (0,0);
+\draw[<-, very thick] (1, 0) -- (0,0);
+\draw (.5, .5) node {$p$};
+\draw (-.5, .5) node {$1-p$};
+\end{tikzpicture}
+\end{column}
+\begin{column}{2.5in}
+\begin{itemize}
+\item
+$P(X_{t+1}=i+1 \mid X_t=i) = p$
+\item
+$P(X_{t+1}=i-1 \mid X_t=i) = 1-p$
+\item
+What is $P_{ii}^{2n}$?  
+\item
+What is $\sum_{n=1}^\infty P_{ii}^{2n}$?
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\startframe{4.3 Classification of States}
+\begin{columns}
+\begin{column}{2.5in}
+Random walk in two dimensions:
+
+\vspace{2ex}
+\tikz{
+\def \lx{-1.6} \def \ux{1.6} \def \ly{-1.1} \def\uy{1.1}
+%\draw (\lx,\ly) rectangle (\ux,\uy);
+% grid with dot at origin for helping place objects in rectangle:
+\draw[step=.5, dotted] (\lx,\ly) grid (\ux,\uy); 
+\filldraw (0,0) circle (.05);
+\draw[dotted] (\lx, 0) -- (\ux, 0);
+\draw[<-, very thick] (-.5, 0) -- (0,0);
+\draw[<-, very thick] (.5, 0) -- (0,0);
+\draw[<-, very thick] (0, -.5) -- (0,0);
+\draw[<-, very thick] (0, .5) -- (0,0);
+}
+\end{column}
+\begin{column}{2.5in}
+\begin{itemize}
+\item
+Four possible choices at each step.
+\item 
+Consider the case when all 4 directions are equally likely.
+\item
+What is $P_{ii}^{2n}$?  
+\item
+What is $\sum_{n=1}^\infty P_{ii}^{2n}$?
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\startframe{4.3 Classification of States}
+Random walk in three dimensions:
+\begin{itemize}
+\item
+Six possible choices at each step.
+\item 
+Consider the case when all 6 directions are equally likely.
+\item
+What is $P_{ii}^{2n}$?  
+\item
+What is $\sum_{n=1}^\infty P_{ii}^{2n}$?
+\end{itemize}
+\end{frame}
+
+
+\startframe{4.3 Classification of States}
+Gambler's ruin:
+\begin{itemize}
+\item
+The (equivalence) classes are $\{0\}, \{1, \ldots, n-1\}, \{n\}$.
+\item Which classes are recurrent, and which are transient?
+\item What is the probability that we wind up at $N$ dollars
+(as a function of $X_0=i$)?
+\end{itemize}
+\end{frame}
+
+
+\startframe{4.3 Classification of States}
+\question{If all of the states of a Markov chain communicate with each other,
+the chain is said to be}
+{irreducible}
+{accessible}
+{recurrent}
+{transient}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

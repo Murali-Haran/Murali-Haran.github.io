@@ -1,0 +1,78 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Mar.~2}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+For Monday, March 12:  Read Sections 6.4, 6.5
+\item HW \#7 will not be due until sometime during the week of March 19.
+\end{itemize}
+\end{frame}
+
+\startframe{6.8 Computing the Transition Probabilities}
+The generator (or rate) matrix $R$:
+\begin{itemize}
+\item Take $r_{ij} = \mbox{rate of $i\to j$ transitions}$, $i\ne j$.
+\item Take $r_{ii} = -\sum_{j\ne i} r_{ij}$.
+\item This implies $\sum_{j} r_{ij} = \ldots$
+\end{itemize}
+What is $R$ for the on-off process?  A homogeneous Poisson process?
+\end{frame}
+
+\startframe{6.2 Continuous-Time Markov chains}
+Recall:
+\begin{itemize}
+\item $P_{ij}(t) = P[ X(t)= j \mid X(0)=i]$ for all $i$ and $j$.
+\item $P(t)$ is the implied transition probability matrix at
+time $t$.  
+\end{itemize}
+\end{frame}
+
+\startframe{6.4 The Transition Probability Function}
+Lemma:
+\begin{itemize}
+\item $\lim_{h\to0} \frac{1-P_{ii}(h)}{h} = -r_{ii}$ \qquad  (in book, $-r_{ii}=v_i$).
+\item $\lim_{h\to 0} \frac{P_{ij}(h)}{h} = r_{ij}$ for $i\ne j$
+\qquad (in book, $r_{ij}=q_{ij}$).
+\end{itemize}
+\end{frame}
+
+\startframe{6.4 The Transition Probability Function}
+\begin{itemize}
+\item $P(t)$ is not generally easy to calculate given $R$.
+\item We can derive helpful equations as follows:
+\item
+What is 
+\[
+\lim_{h\to0} \frac{P_{ij}(t+h) - P_{ij}(t)}{h}?
+\]
+\end{itemize}
+\end{frame}
+
+\startframe{6.4 The Transition Probability Function}
+Kolmogorov's forward and backward equations:
+\begin{itemize}
+\item Backward:  $P'(t) = RP(t)$ (always true).
+\item Forward:  $P'(t) = P(t)R$ (require ``regularity conditions'').
+\end{itemize}
+\end{frame}
+
+\startframe{6.4 The Transition Probability Function}
+From $P'(t) = RP(t)$, plug in $t=0$ to obtain
+\[
+R = P'(0).
+\]
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

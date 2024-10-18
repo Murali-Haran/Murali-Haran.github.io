@@ -1,0 +1,117 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Apr.~23}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+Take-home final is on ANGEL.  It is due at 5pm on May 2.
+\item 
+Please fill out SRTEs!
+\end{itemize}
+\end{frame}
+
+
+\startframe{Markov chain Monte Carlo}
+Special cases of VAATMH:  Gibbs and Metropolis updates
+\begin{itemize}
+\item  Recall full MH acceptance probability
+\item Metropolis:  $q(y_i\mid x_i, x_{-i}) = q(x_i\mid y_i, x_{-i})$
+\item Gibbs:  $q(y_i \mid x_i, x_{-i}) = \pi(y_i \mid x_{-i})$
+\end{itemize}
+\[
+\alpha(x_i, y_i \mid x_{-i}) = \min
+\left\{ 1,
+\frac{\pi(y_i \mid x_{-i}) q(x_i\mid y_i, x_{-i})}{ \pi(x_i \mid x_{-i}) q(y_i\mid x_i, x_{-i})}
+\right\}
+\]
+%\notes{
+%}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+Why VAATMH works:
+\begin{itemize}
+\item Suppose $\vec x = (x_1, x_2)^\top$.
+\item Take Markov transition densities 
+$k_{1\mid 2} (y_1 \mid x_1, x_2)$ and
+$k_{2\mid 1} (y_2 \mid x_1, x_2)$.
+\item Then the transition density for both updates is
+\[
+k[ (y_1, y_2) \mid (x_1, x_2) ] =
+k_{1\mid 2} (y_1 \mid x_1, x_2) k_{2\mid 1}(y_2 \mid y_1, x_2).
+\]
+\end{itemize}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+Why VAATMH works:
+\begin{itemize}
+\item
+$k[ (y_1, y_2) \mid (x_1, x_2) ] =
+k_{1\mid 2} (y_1 \mid x_1, x_2) k_{2\mid 1}(y_2 \mid y_1, x_2)$.
+\item Show $\pi(\vec y) = \int k(\vec y \mid \vec x) \pi(\vec x) \, d\vec x$.
+\end{itemize}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+MCMC standard errors for estimate of $E_\pi g(X)$
+\begin{itemize}
+\item Batch means idea (where $n=ab$):
+\[
+\mbox{Let}\quad
+Y_1 = \frac{X_1+ \cdots + X_b}{b}, 
+Y_2 = \frac{X_{b+1}+ \cdots + X_{2b}}{b}, \ldots
+\]
+\item Then $\hat\sigma^2 = \frac{1}{a-1} \sum_{i=1}^a b(Y_i - \hat\mu)^2$.
+And $\widehat{\mbox{MCMCse}} = \hat\sigma^2/\sqrt{n}$.
+\item Jones et al (2006):  Take, for example, $b=\sqrt{N}$.
+\end{itemize}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+\begin{itemize}
+\item 
+Effective sample size
+(ESS) may be defined as 
+\[
+\mbox{ESS} = n \left( \frac{ \Var(\hat\mu_{\rm iid}) }
+{ \Var(\hat\mu_{\rm corr}) } \right).
+\]
+\item For a stationary chain, we may write this as $\mbox{ESS} = n/\kappa_n$, where
+\[
+\kappa_n=1 + 2\sum_{i=1}^{n-1} \frac{n-i}{n}\Corr(X_1, X_{1+i}).
+\]
+\end{itemize}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+How to estimate $\kappa=1+2\sum_{i=1}^\infty \rho_i$, the ``autocorrelation time''.
+\begin{itemize}
+\item Take $\hat\kappa = 1 + \sum_{i=1}^k \hat \rho_i$.
+\item How to choose $k$?  
+  \begin{itemize}
+  \item  Smallest $k$ with $|\hat \rho_i | < .1$
+  \item IMSE (Initial Monotone Sequence Estimator) (Geyer, 1992)
+  
+  Take $k=2m+1$, where $\hat\rho_{2m}+\hat\rho_{2m+1}>0$ and\ldots
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+A word on ``burnin'' and ``thinning''\ldots
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+
+
+

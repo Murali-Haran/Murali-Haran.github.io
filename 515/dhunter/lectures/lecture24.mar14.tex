@@ -1,0 +1,184 @@
+\documentclass[handout]{beamer}
+\usepackage{beamerthemeshadow}
+\usepackage{amssymb}
+\usepackage{pgfpages}
+
+\def\E{\mathop{\rm E\,}\nolimits}
+\def\Var{\mathop{\rm Var\,}\nolimits}
+\def\Cov{\mathop{\rm Cov\,}\nolimits}
+\def\Corr{\mathop{\rm Corr\,}\nolimits}
+\newcommand{\eid}{{\stackrel{\cal{D}}{=}}}
+\newcommand{\cip}{{\stackrel{{P}}{\to}}}
+\def\bR{\mathbb{R}}	% real line
+\def\startframe#1{\begin{frame}[t,fragile] \frametitle{\thedate \hfill {#1}} }
+
+\mode<presentation>
+{
+%  \setbeamertemplate{background canvas}
+  \usetheme{boxes}
+  \usecolortheme{notblackscreen}
+
+%  \usetheme{default}
+%  \setbeamercovered{transparent}
+}
+%\beamertemplatetransparentcovereddynamic
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\setbeamersize{text margin left=0.1in}
+\setbeamersize{text margin right=0.1in}
+
+
+
+
+\begin{document}
+
+
+\def \thedate{Mar.~14}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tiny
+
+\startframe{6.3 Birth and Death Processes}
+{\em Recall that we have been discussing birth and death models.}
+
+\vspace{2ex}
+How do you find the expected time until the population reaches $n$?
+\begin{itemize}
+\item Idea:  Find the expected time to reach $i+1$ starting in $i$.  Call this $T_i$,
+and show how to use conditioning as we've done in the past to find $E(T_i)$
+(at least, in terms of $E(T_{i-1})$, which is enough because we know
+that $E(T_0)=1/\lambda_0$.  Why is this?)
+\item When using conditioning above, make sure to introduce the indicator
+\[
+Y_i = I\{\mbox{The first transition from $i$ is to $i+1$} \},
+\]
+then derive 
+\[
+E(T_i \mid Y_i) = \frac{1}{\lambda_i + \mu_i} + (1-Y_i)[ E(T_{i-1}) + E(T_i)].
+\]
+{\em Question:  What is $\E Y_i$?}
+This expression will be useful later on as well.
+\item We can then answer the original question:  $\sum_{i=X_0}^{n-1} E(T_i)$.
+\end{itemize}
+
+{\em Continued on next page:  Finding variance.}
+\end{frame}
+
+\startframe{6.3 Birth and Death Processes}
+What about the variance of the time until the population reaches $n$?
+\begin{itemize}
+\item Why can we claim that the answer equals 
+\[
+\Var \sum_{i=X_0}^{n-1} T_i =
+\sum_{i=X_0}^{n-1} \Var(T_i)?
+\]
+({\em Use the fact that the $T_i$ independent above because of the Markovian 
+property.})
+\item It remains to find $\Var (T_i)$.  Use conditioning:
+\[
+\Var (T_i) = \Var [ E(T_i \mid Y_i)] + E[ \Var(T_i \mid Y_i)].
+\]
+\item We already found $E(T_i \mid Y_i)$ above.  What is $\Var[E(T_i \mid Y_i)]$?
+\item Show how to derive
+\[
+\Var(T_i \mid Y_i) = \frac{1}{(\lambda_i+\mu_i)^2} + (1-Y_i)
+[ \Var(T_{i=1}) + \Var(T_i)].
+\]
+{\em Use the fact that the time until the next transition is exponential with
+variance $1/(\lambda_i+\mu_i)^2$, along with independence the results from the Markov 
+property.}
+\item Based on the above answer, what is $E[\Var(T_i \mid Y_i)]?$
+\item Now put it all together to find $\Var(T_i)$ in terms of 
+$\Var(T_{i-1})$, $E(T_i)$, and $E(T_{i-1})$.
+\end{itemize}
+
+\vspace{2ex}
+Special cases:
+\begin{itemize}
+\item What happens to the formulas for $E(T_i)$ and $\Var(T_i)$
+in simple cases like $\lambda_i=\mu_i$?
+\item What about
+$\lambda_i=\lambda$ and $\mu_i=\mu$?
+\end{itemize}
+\end{frame}
+
+\startframe{6.5 Limiting probabilities}
+Recall Section 4.4, where we thought about limiting probabilities and stationary
+(long-term) probabilities.  
+\begin{itemize}
+\item
+If the former existed, so did the latter but not conversely:
+You could have a periodic chain with unique stationary probabilities but
+no limiting probabilities.
+\item In the continuous-time situation, periodicity is not an issue!  (Discuss why 
+this is true.)  
+\item Therefore, the situation regarding 
+limiting probabilities is in some sense simpler here than in Chapter 4.
+\end{itemize}
+
+\vspace{2ex}
+Suppose that $\lim_{t\to\infty}P_{ij}(t)$ exists and is independent of $i$ for all $i, j$.
+{\em Later, we'll discuss conditions that assure this.}
+\begin{itemize}
+\item Let $\pi_j = \lim_{t\to\infty}P_{ij}(t)$ as in Chapter 4.  {\em Warning:
+The book uses $P_j$ instead of $\pi_j$, which could be confusing on a couple levels,
+not least because the letter $P$ is already overused in Chapter 6.}
+\item Consider the Kolmogorov forward and backward equations:
+\begin{eqnarray*}
+P'(t) &=& RP(t) \\
+P'(t) &=& P(t)R
+\end{eqnarray*}
+By our assumption, $P(t)$ converges to limit, say $P^\infty$, where
+\[
+P^\infty = \begin{bmatrix}
+\qquad \pi^\top \qquad \\
+\qquad \pi^\top \qquad \\
+\vdots
+\end{bmatrix},
+\]
+as $t\to\infty$?
+\end{itemize}
+\end{frame}
+
+\startframe{6.5 Limiting probabilities}
+Continued from previous slide:
+\begin{itemize}
+\item Suppose it is legal to claim that 
+\begin{eqnarray*}
+RP^\infty &=& \lim_{t\to\infty}RP(t) \\
+P^\infty R&=& \lim_{t\to\infty}P(t) R 
+\end{eqnarray*}
+by interchanging summation and limits.
+\item Then we could claim that $\lim_{t\to\infty}P'(t)$ exists and that
+\begin{eqnarray*}
+\lim_{t\to\infty} P'(t) &=& RP^\infty \\
+\lim_{t\to\infty} P'(t) &=& P^\infty R.
+\end{eqnarray*}
+\item However, if $\lim_{t\to\infty}P'(t)$ exists then it must be the zero matrix.
+(A function like $P_{ij}(t)$, bounded between zero and one, cannot have a slope
+that converges to a nonzero real number!)
+\item We conclude that if both of the exchanges of sums and limits are legal, and the
+forward equations are valid in the first place, then
+\begin{eqnarray*}
+RP^\infty = P^\infty R = 0.
+\end{eqnarray*}
+These equations can help solve for $P^\infty$, together with the fact
+that every row of $P^\infty$ sums to one and all rows equal $\pi^\top$.
+\end{itemize}
+
+
+
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

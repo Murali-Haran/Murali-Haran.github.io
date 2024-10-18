@@ -1,0 +1,104 @@
+---
+title: "Homework 5 due Thursday Feb 23 at 10am"
+output: html_document
+---
+
+## Returning to roulette problem from last homework
+
+Q1. (Reminder) When we play roulette we start with a particular sum of
+money, e.g., we may have $100 in our wallet. Then what's in our wallet
+impacts how much and how long we can bet.  For example, with $100 in
+our wallet we cannot place a $200 bet. Also, depending on our
+winnings, we may be able to place 200 $1 bets or we may run out of
+money before then.
+
+For your first function, augment the `betRed` function to accept an
+additional parameter called `wallet` that contains the starting amount
+of money. Call this new function `betRed2`. Give `wallet` a default
+value so that it runs like the original `betRed` function if the
+default value of `wallet is used`.
+
+The return value from this function should be the net gain.  As
+before, this is the winnings less the losses. However, if at some
+point in your betting, you no longer have enough funds to place a bet
+then you can't continue your betting. Write your function in 3
+different ways.
+
+1(a). Use a while loop. Show the result of a test of your function.
+
+1(b). Use a for loop.  Show the result of a test.
+
+1(c). Do not use a loop of any kind. Instead you may find it useful to
+use these two commands (as discussed in class): cumsum and which.  Show the result of a test.
+
+1(d). For a specific example, compare the time taken by functions from 1(a) and 1(c) using the system.time command (as discussed in class). 
+
+1(e). Suppose you have $1000 to bet (that is what you have in your wallet). Select two betting strategies and compare them to each other (you may use any function you like from above). Reminder: In order to compare them you must repeat the betting strategy simulation many times (e.g. 10,000 times) and look at the distribution of results from the simulations. Report a plot and any other summary that would be useful for this comparison. State your preference and explain (in just 1-2 sentences) your reason for preferring one strategy over the other. 
+
+## St.Petersburg Paradox
+
+Q2. Read through the following function to simulate the St. Petersburg's
+Paradox. State what its inputs are (the type, what it/they specify)
+and the outputs (the type, what it/they are). Please explain very
+clearly but briefly (just a few sentences) what the function
+does. (Yes, you can read about the St. Petersburg paradox online! This
+is fine, even encouraged. Just make sure that you still focus
+specifically on what *this* function below does!)
+
+```{r}
+double.num = function(numBets) {
+   
+  if (!is.numeric(numBets)) stop("numBets must be numeric")
+  outcomes = c(-1, 1)
+  
+  for (i in 1:numBets) {
+    winLoss = sample(outcomes, size = 1)
+    if (winLoss > 0) return(i)
+  }
+  return(NA)
+}
+```
+
+
+Q3. Add a check to this function for `numBets`. Our function expects
+that `numBets` is a single number. If it contains more numbers, then
+the function should use only the first and it should issue a warning
+to that effect. Call this revised function `double.revised`. Test that
+it works as expected and show your tests here (below).
+
+```{r, collapse = TRUE, error=TRUE}
+
+```
+
+
+Q4. Write a new function that takes a dollar amount rather than the
+number of bets as input. This should be a required parameter called
+`wallet`.  Your code needs to determine the maximum number of bets
+that can be placed given the value provided for `wallet`.  (Remember
+that the number of bets should be an integer). To help you, recall
+that 1 + 2 is 4-1 and 1 + 2 + 4 is 8 - 1 and 1 + 2 + 4 + 8 is 16 - 1.
+Do you see a pattern?
+
+This function should return the gain. Note that the gain is one of two
+possible values: 1 or the total amount lost. Call this function
+`double.gain`.
+
+Be sure to test this function and include at least 2 tests below as usual.
+
+Q5. Write a new function that can accept either the number of bets to
+place or the amount in the wallet or both.  The number of bets,
+`numBets`, is required. The wallet, called `wallet`, has a default
+value which you are to set to the largest amount of money needed if
+all `numBets` are placed.  This function returns gain. Note that your
+code should check that `numBets` and `wallet` are compatible, i.e.,
+that there is enough money in the wallet for the number of bets
+requested. If not, then lower the number of bets to a value that
+matches the size of the wallet and issue a warning that explains the
+problem and provides the revised number of bets. (To do this you can
+`paste` text together with objects, e.g.,
+
+```{r}
+x = 2
+paste("The value of x is ", x, "Were you surprised?")
+```
+Write your function and test your function. Include both below.

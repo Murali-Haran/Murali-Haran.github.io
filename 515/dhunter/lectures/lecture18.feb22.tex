@@ -1,0 +1,137 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Feb.~22}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+HW\#5 is due {\em ELECTRONICALLY} on Friday.
+\item 
+Midterm exam:  7:00pm on Wednesday, Feb.~29 in 220 Willard.
+\item New STAT 515 brief course description:
+\begin{quotation}
+Conditional probability and expectation, Markov chains, Poisson processes, Continuous-time Markov chains, Monte Carlo methods, Markov chain Monte Carlo
+\end{quotation}
+\end{itemize}
+\end{frame}
+
+\startframe{5.4.1 Nonhomogeneous Poisson Processes}
+Notice a slight change from the homogeneous version:
+\begin{itemize}
+\item Counts of events in disjoint time intervals are independent.
+\item $P[N(s+h)-N(s)=1] = \lambda(s) h + o(h)$ as $h\to 0$.
+\item $P[N(s+h)-N(s)\ge2] = o(h)$ as $h\to 0$.
+\item Technically, we should also say $N(0)=0$.
+\end{itemize}
+\end{frame}
+
+\startframe{5.4.1 Nonhomogeneous Poisson Processes}
+\begin{itemize}
+\item
+In a nonhomogeneous Poisson process,
+$N(s+t)-N(s)$ is Poisson distributed with mean
+\[
+\int_s^{s+t} \lambda(y)\,dy.
+\]
+\item
+If we define $m(t) = \int_0^t \lambda(y)\,dy$, then this is just
+$m(s+t)-m(s)$.
+\item
+What is the distribution of the waiting time until the first event?
+\end{itemize}
+\end{frame}
+
+\startframe{Midterm practice}
+\question{Suppose that two light bulbs are both working today.  In the future,
+\begin{itemize}
+\item If 2 bulbs are working, with probability .02, the next day 1 will be.
+\item If 1 bulb is working, with probability .05, the next day 0 will be.
+\item If 0 bulbs are working, with probability 1, the next day 2 will be.
+\end{itemize}
+What is the expected wait time between replacement $(0\to 2)$ events?
+}
+{35 days}
+{55 days}
+{67 days}
+{71 days}
+\end{frame}
+
+\startframe{}
+\question{The subject of Chapter 6 is \rule{1in}{0.01in}
+Markov chains.}
+{discrete-time, discrete-space}
+{discrete-time, continuous-space}
+{continuous-time, discrete-space}
+{continuous-time, continuous-space}
+\end{frame}
+
+\startframe{5.3 The Poisson Process}
+{\em Review from Monday:  }  
+Poisson processes add:
+\begin{itemize}
+\item
+If $N_1(t)$ and $N_2(t)$ are Poisson processes with rates $\lambda_1$ and $\lambda_2$, 
+then $M(t) = N_1(t)+N_2(t)$ is a Poisson process with rate $\lambda_1+\lambda_2$.
+\item
+Similarly, suppose we label each event $M(t)$ as type-1 or type-2 with probabilities
+$\lambda_1/(\lambda_1+\lambda_2)$ and 
+$\lambda_2/(\lambda_1+\lambda_2)$, respectively.  Then the counting process for each
+type of event is separately a Poisson process.
+\end{itemize}
+\end{frame}
+
+\startframe{6.2 Continuous-Time Markov chains}
+Consider a continuous-time, discrete-space MC, $\{X(t) : t\in[0,\infty)\}$:
+\begin{itemize}
+\item The chain stays in each state for a random (real-valued) time.
+\item When the chain switches, it picks from the possible states according to
+some discrete-time Markov chain.
+\item Markov property:  
+Conditional on the present, what happens next is independent of the past.
+\item Homogeneity:  The chain's behavior at time $t$ does not
+depend on $t$.
+\end{itemize}
+\end{frame}
+
+\startframe{6.2 Continuous-Time Markov chains}
+Let $T_i$ be the time when the MC leaves state $i$,
+given that $X(0)=i$.
+\begin{itemize}
+\item How is $T_i$ distributed?
+\item Claim:  $T_i$ has the memoryless property.
+(What does this imply?)
+\end{itemize}
+\end{frame}
+
+\startframe{6.2 Continuous-Time Markov chains}
+Examples:
+\begin{itemize}
+\item Any Poisson process
+\item On-off process
+\item Continuous-time random walk
+\end{itemize}
+\end{frame}
+
+\startframe{6.2 Continuous-Time Markov chains}
+Given a continuous-time, discrete-space MC, let us define
+$P(t)$ to be the implied transition probability matrix at
+time $t$.  What properties can we establish for $P(t)$?
+(NB:  Not easy to compute $P(t)$ in general.)
+\begin{itemize}
+\item $P(0) = ??$
+\item $\sum_j P_{ij}(t) = ??$
+\item $P(s)P(t) = ??$
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

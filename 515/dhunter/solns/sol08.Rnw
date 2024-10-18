@@ -1,0 +1,264 @@
+\documentclass{article}
+\usepackage{url}
+\usepackage{amsmath,bm}%
+\usepackage{amsfonts}%
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-.5in}
+\setlength{\evensidemargin}{-.5in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textheight}{9.4in}
+
+\newcommand{\beaa}{\begin{eqnarray*}}
+\newcommand{\eeaa}{\end{eqnarray*}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\def\E{\mathop{\rm E\,}\nolimits}
+\def\Var{\mathop{\rm Var\,}\nolimits}
+\def\Cov{\mathop{\rm Cov\,}\nolimits}
+\def\Corr{\mathop{\rm Corr\,}\nolimits}
+\def\logit{\mathop{\rm logit\,}\nolimits}
+\newcommand{\eid}{{\stackrel{\cal{D}}{=}}}
+\newcommand{\cip}{{\stackrel{{P}}{\to}}}
+\def\bR{\mathbb{R}}     % real line
+
+\begin{document}
+
+\begin{center}
+{\bf STAT 515}
+
+{\bf Homework \#8 WITH SOLUTIONS}
+
+\end{center}
+
+\begin{enumerate}
+
+  \item The matrix exponential function is defined as
+  \[
+  \exp\{ M \} = \sum_{i=0}^\infty \frac{M^i}{i!}.
+  \]
+  However, this definition does not provide a suitable method for calculating
+  $\exp\{M\}$ for a given $M$. One simple alternative is to use one of the two
+  formulas
+  \[
+  \exp \{ M \} = \lim_{n\to\infty} \left( I + \frac{M}{n} \right) ^n
+  = \lim_{n\to\infty} \left[ \left(I - \frac{M}{n} \right)^{-1} \right]^n.
+  \]
+  For the post office problem on HW \#7, the rate matrix is given by
+  \[
+  R = \begin{bmatrix}
+  -8 & 8 & 0 & 0 & 0 \\
+  12 & -20 & 8 & 0 & 0 \\
+  0 & 12 & -20 & 8 & 0 \\
+  0 & 0 & 12 & -20 & 8 \\
+  0 & 0 & 0 & 12 & -12
+  \end{bmatrix},
+  \]
+  where rates are in hours. Approximate the value of $\exp \{.5R\}$, which is
+  the transition probability matrix for a time step of 30 minutes, using two
+  methods:
+
+    \begin{enumerate}
+
+    \item For successively larger powers of 2, i.e., $n=2, 4, 8, \ldots$, find
+    the value of $( I + .5R/n) ^n$. Continue until the change in each entry is
+    smaller than $10^{-5}$. Report your final value of $n$ and your final
+    approximation of $\exp \{.5R\}$.
+    \begin{quotation}{\bf Solution:}
+    First, let's set up the $R$ matrix:
+<<>>=
+R <- matrix(c(-8, 12, 0, 0, 0, 8, -20, 12, 0, 0, 0, 8, -20, 
+              12, 0, 0, 0, 8, -20, 12, 0, 0, 0, 8, -12),   5, 5)
+@
+    Next, we'll use a loop to continue trying larger and larger $n$,
+    starting with $n=2$ and doubling it at every step,
+    until the maximum change is smaller than $10^{-5}$:
+<<>>=
+lastAnswer <- matrix(0, 5, 5)
+finished <- FALSE
+k <- 0
+n <- 1
+while (!finished) {
+  k <- k+1
+  n <- n*2 # double the n
+  answer <- diag(5) + .5*R/n 
+  for (j in 1:k) { # raise answer to the nth power by squaring repeatedly
+    answer <- answer %*% answer
+  }
+  finished <- all(abs(answer - lastAnswer) < 1e-5) # check for convergence
+  lastAnswer <- answer
+}
+lastAnswer
+n
+@
+    So the desired accuracy required $n=2^{15}= 32{,}768$.
+    \end{quotation}
+    
+    \item Repeat the same procedure as in part (a) but use $[(I-.5R/n)^{-1}]^n$
+    instead.
+    \begin{quotation}{\bf Solution:}
+    This requires only minor modifications to the code above:
+<<>>=
+lastAnswer <- matrix(0, 5, 5)
+finished <- FALSE
+k <- 0
+n <- 1
+while (!finished) {
+  k <- k+1
+  n <- n*2 # double the n
+  answer <- solve(diag(5) - .5*R/n) 
+  for (j in 1:k) { # raise answer to the nth power by squaring repeatedly
+    answer <- answer %*% answer
+  }
+  finished <- all(abs(answer - lastAnswer) < 1e-5) # check for convergence
+  lastAnswer <- answer
+}
+lastAnswer
+n
+@
+    This example also required $n=2^{15}=32{,}768$.
+    \end{quotation}
+    
+
+    \item Use the {\tt expm} function in R or Matlab to evaluate $\exp \{.5R\}$
+    and compare with the two approximations you obtained.
+    
+    {\em In R, you will have to install and load the package called {\tt
+    Matrix}. Do this using {\tt install.packages("Matrix")} and then {\tt
+    library(Matrix)}.} 
+    \begin{quotation}{\bf Solution:}
+<<>>=
+library(Matrix)
+expm(.5*R)
+@
+    The answers in parts (a) and (b) are very close to the {\tt expm} answer.
+    \end{quotation}
+        
+    \end{enumerate}
+
+  \item Problem 3 in homework \#7 described two video game machines at an
+  amusement park. For video game $i$, each period when it is being used is
+  exponentially distributed with mean $1/\alpha_i$ hours and each period when it
+  is not being used is exponentially distributed with mean $1/\beta_i$ hours,
+  independent of the other machine. Furthermore, $\alpha_1=2$, $\alpha_2=3$,
+  $\beta_1=5$, and $\beta_2=6$.
+  
+    \begin{enumerate}
+    
+    \item If neither machine is in use when the park opens at 8:00am, find the
+    probability that both machines are in use at 9:30am.
+    \begin{quotation}{\bf Solution:}
+    To find the answer, we can find the probability transition matrix $P(1.5)$,
+    which is given by the matrix exponential $\exp\{ 1.5 R\}$:
+<<>>=
+R <- matrix(c(-11, 3, 2, 0, 6, -8, 0, 2, 5, 0, -8, 3, 0, 5, 6, -5), 4, 4)
+expm(1.5*R)
+@
+    The answer is the probability that starting in the first state at time zero,
+    the chain is in the fourth state at time 1.5:
+<<>>=
+expm(1.5*R)[1,4]
+@    
+    \end{quotation}
+    
+    
+    \item Simulate 10,000 realizations of the Markov chain and give a 95\%
+    confidence interval for the probability in part (a) based on your
+    simulation. Does your empirical estimate agree with the theoretical value?
+    \begin{quotation}{\bf Solution:}
+    I will make some minor changes to the code used in homework \#7, problem 
+    3(c):
+<<>>=
+n <- 10000
+finalState <- rep(0, n)
+maxTime <- 1.5 # This is the cutoff time.
+for (count in 1:n) {
+  currentTime <- 0
+  currentState <- 1 # Assume that we always start in state 1 at time 0
+  finished <- FALSE # We'll set this to TRUE when it's time to stop.
+  while (!finished) {
+    deltaTime <- rexp(1, rate = -R[currentState, currentState])
+    if (currentTime + deltaTime > maxTime) {
+      # Now we need to finish this chain and declare the final state decided
+      finalState[count] <- currentState
+      deltaTime <- maxTime - currentTime
+      finished <- TRUE
+    }
+    currentTime <- currentTime + deltaTime
+    possibleMoves <- (1:4)[-currentState]
+    currentState <- sample(possibleMoves, 1, prob=R[currentState,possibleMoves])
+  }
+}
+table(finalState) / n
+@
+    Notice how close the four probabilities are to the first row (really, all rows) of the
+    matrix found in part (a).  Here is a 95\% confidence interval for the probability
+    of ending in the fourth state:
+<<>>=
+phat <- sum(finalState==4) / n
+phat + c(-1.96, 1.96) * sqrt(phat * (1-phat) / n)
+@    
+    \end{quotation}    
+    
+    \end{enumerate}
+  
+  \item Suppose that $X_1, X_2, X_3, X_4$ are i.i.d.~from a uniform$(0,1)$
+  distribution. Let $S=X_1+X_2+X_3+X_4$.
+  
+    \begin{enumerate}
+  
+    \item Find $P(S<1)$ exactly using a four-dimensional integral. (Hint: This
+    is not too difficult.)
+    \begin{quotation}{\bf Solution:}
+    The joint density on the four-dimensional hypercube $(0,1)^4$ is just the
+    constant 1.  The probability of $S<1$ is found by integrating 
+    this density over the region where $S<1$:
+    \begin{eqnarray*}
+    \int_0^1 \int_0^{1-w} \int_0^{1-w-x} \int_0^{1-w-x-y} dz\, dy\, dx\, dw &=&
+    \int_0^1 \int_0^{1-w} \int_0^{1-w-x} (1-w-x-y)\, dy\, dx\, dw \\ &=&
+    \frac12\int_0^1 \int_0^{1-w} \frac12 (1-w-x)^2 \, dx\, dw \\ &=&
+    \frac16 \int_0^1 (1-w)^3 \, dw \\ &=&
+    \frac1{24}.
+    \end{eqnarray*}
+    \end{quotation}
+        
+    \item Now consider $P(S<1.5)$. This is much more difficult to find
+    analytically. Instead, use Monte Carlo simulation to approximate this
+    probability. Give a 99\% confidence interval for the true probability, and
+    use a large enough sample so that your interval is no wider than $0.01$.
+    Report the sample size you used in addition to the interval.
+    \begin{quotation}{\bf Solution:}
+    Since we are finding a proportion, and the standard deviation of 
+    a sample proportion is not more than $1/\sqrt{4n}$, we could 
+    take $n$ large enough
+    so that $2.58/\sqrt{4n} < .005$ since the 99\% confidence interval is 
+    $\hat p\pm 2.58\times (\mbox{standard error})$.  This leads to $n$ larger than
+    about 66,000.  Let's use 100,000 just for a nice round number:
+<<>>=
+n <- 1e6
+x <- matrix(runif(4*n), ncol=4)
+phat <- sum(rowSums(x)<1.5) / n
+phat + c(-2.58, 2.58) * sqrt(phat * (1-phat) / n)
+@
+    So the 99\% confidence interval obtained from a sample of size 100,000
+    has a width of much less than 0.01 (the width is about 0.002).
+    \end{quotation}
+        
+    \item The central limit theorem approximation to $P(S<1.5)$ is $P(Y<1.5)$,
+    where $Y$ is a normal random variable with the same mean and variance as
+    $S$. Based on your answer to part (b), how good does the central limit
+    theorem approximation appear in this case?
+    \begin{quotation}{\bf Solution:}
+    Since $X_i$ has mean 1/2 and variance 1/12, $S$ has mean 2 and variance 
+    1/3.  Thus, the central limit theorem approximation is 
+<<>>=
+pnorm(1.5, mean=2, sd=1/sqrt(3))
+@
+    \end{quotation}
+        
+    \end{enumerate}
+
+\end{enumerate}
+
+\end{document}
+

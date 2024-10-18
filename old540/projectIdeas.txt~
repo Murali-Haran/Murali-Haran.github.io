@@ -1,0 +1,8 @@
+Roughly 50-50 optimization and Monte Carlo
+
+Comparison: F. Caron, A. Doucet. Efficient Bayesian Inference for generalized Bradley-Terry Models. Journal of Computational and Graphical Statistics, vol. 21(1), pp. 174-196, 2012 and the MM algorithm for Bradley-Terry by D. Hunter
+
+Stochastic Gradient MCMC by Ma, Chen and Fox: https://arxiv.org/abs/1506.04696
+
+Jianqing Fan: Sparse Learning and Distributed PCA with Control of
+Statistical Errors and Computing Resources

@@ -1,0 +1,236 @@
+\documentclass{article}
+\usepackage{url}
+\pagestyle{empty}
+\setlength{\textwidth}{6in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textheight}{9.5in}
+
+\def\Var{{\mbox{Var}}}
+
+\begin{document}
+
+\begin{center}
+{\bf STAT 515}
+
+{\bf Homework \#1 WITH SOLUTIONS}
+\end{center}
+
+\begin{enumerate}
+
+  \item A fair 6-sided die is rolled repeatedly. Let $X$ equal the number of
+  rolls required to obtain the first 5 and $Y$ the number required to obtain the
+  first 6. Calculate
+
+  \begin{enumerate}
+
+  \item $E(X)$  
+    \begin{quotation} {\bf Solution:}
+Since $X$ is a geometric random variable with parameter $p=1/6$, $E(X)=1/p=6$.  
+    \end{quotation}
+
+  \item $E(X \mid Y=1)$
+    \begin{quotation} {\bf Solution:}  The fact that $Y=1$ is equivalent to the fact that
+    a 6 is rolled on the first roll.  Starting with the second roll, however, we're back to the
+    same situation in part (a), so all we need to do is add in the first roll, which is obviously
+    not a 5:
+    \[
+    E(X \mid Y=1) = 1 + E(X) = 7
+    \]
+    \end{quotation}
+
+  \item $E(X \mid Y=5)$
+    \begin{quotation} {\bf Solution:}
+    Here, $Y=5$ means that there are no 6's on rolls~1 through~4, so conditioning
+    on $I\{ X\le 4\}$ gives
+    \[
+    P(X = k \mid Y=5, 1\le X\le 4) = 
+    \frac{(4/5)^{k-1}(1/5)}{1-(4/5)^4} \qquad \mbox{for $k=1, 2, 3, 4$.}
+    \]
+    We may therefore use brute force to calculate 
+    \[
+    E(X\mid Y=5, X\le 4) = \frac{(1/5)}{1-(4/5)^4} \left[ 1 + 2(4/5) + 3(4/5)^2 + 4(4/5)^3 \right] = 2.225.
+    \]
+    On the other hand, if $X>5$, then we're back to the same situation as part (a) starting
+    at the sixth roll, which means that 
+    \[
+    E(X \mid Y=5, X>5) = 5+E(X) = 11.
+    \]
+    Thus, the final answer is a weighted average of the two:
+    \begin{eqnarray*}
+    E(X \mid Y=5) 
+    &=& E \left[ E(X \mid Y=5, I\{X\le 4\}) \right] \\
+    &=& 2.225 P(X \le 4 \mid Y=5) + 11P(X>5\mid Y=5) \\
+    &=& 2.225 [1-(4/5)^4] + 11(4/5)^4 = 5.8192.
+    \end{eqnarray*}
+    \end{quotation}
+
+  \end{enumerate}
+
+  \item Suppose that $X$ is exponentially distributed with parameter $\lambda$;
+  i.e., $E(X)=1/\lambda$. Calculate $P(X-2 \le t\mid X>2)$ for an arbitrary
+  $t>0$. Based on your answer, what is the conditional distribution of $X-2$
+  given $X>2$?
+    \begin{quotation} {\bf Solution:}
+    The cumulative distribution function of $X$ is $F(t) = 1-e^{-t\lambda}$ for $t>0$.  Thus,
+    \[
+    P(X-2 \le t\mid X>2) = \frac{P(2<X\le t+2)}{P(X>2)} = \frac{F(t+2)-F(2)}{1-F(2)} = 
+    \frac{e^{-2\lambda} - e^{-(t+2)\lambda}}{e^{-2\lambda}} = 1-e^{-t\lambda}.
+    \]
+    This is the original cdf of $X$, which means that given $X>2$, the conditional
+    distribution of $X-2$ is simply exponential with mean $1/\lambda$.
+    \end{quotation}
+
+  \item A coin having probability $p$ of resulting in heads is successively
+  flipped until the $r$th head appears. Let $X$ be the total number of flips
+  required. Then $X$ is called a {\em negative binomial} random variable with
+  parameters $r$ and $p$. (NB: A geometric random variable results in the
+  special case $r=1$.)
+
+  Argue that the probability mass function of $X$ is given by
+  \[
+  p(k) = {{n-1}\choose{r-1}} p^r(1-p)^{n-r} \quad\mbox{for k=r, r+1, \ldots}.
+  \]
+  {\bf Hint:}  How many successes must there be in the first $n-1$ trials?
+    \begin{quotation} {\bf Solution:}
+    First, please note that the pmf I gave (above) is completely incorrect: It should not use both
+    $n$ and $k$, since there should be only a single variable used for the total number of flips.
+    It is probably better to use $k$ (in the hint too!), avoiding $n$ altogether because of its 
+    association with the binomial distribution.  Here is the correct mass function:
+    \[
+    p(k) = {{k-1}\choose{r-1}} p^r(1-p)^{k-r} \quad\mbox{for k=r, r+1, \ldots}.
+    \]
+    To obtain $X=k$, we must get a string of exactly $r$ heads and $k-r$ tails,
+    where the last flip is heads.
+    Each such string occurs with probability $p^r(1-p)^{k-r}$, so to find $P(X=k)$
+    it remains only to count the number of such strings and then multiply by
+    $p^r(1-p)^{k-r}$.  Since the last flip must be heads, the number of strings is equal
+    to the number of ways to get $r-1$ heads in the first $k-1$ flips, which is simply
+    ${{k-1}\choose{r-1}}$.
+    \end{quotation}
+
+  \item Suppose that $X_1$ and $X_2$ are independent geometric random variables
+  with the same parameter $p$. Prove that the conditional distribution of $X_1$
+  given $X_1+X_2=n+1$, for some positive integer $n$, is discrete uniform.
+
+  {\bf Hint:} The sum of independent geometric random variables with the same
+  mean is negative binomial.
+    \begin{quotation} {\bf Solution:}
+    Since $X_1$ can take values $1, \ldots, n$, we calculate for $k=1, \ldots, n$:
+    \begin{eqnarray*}
+    P(X_1=k \mid X_1+X_2 = n+1) 
+    &=& \frac{P(X_1=k)P(X_2=n+1-k)}{P(X_1+X_2=n+1)} \\
+    &=& \frac{p(1-p)^{k-1}p(1-p)^{n-k}}{ {n\choose 1} p^2(1-p)^{n-1}} = \frac1n.
+    \end{eqnarray*}
+    \end{quotation}
+
+  \item\label{party} Suppose that you arrive at a party, along with a random
+  number, $X$, of additional people, where $X\sim\mbox{Poisson}(10)$. The times
+  at which people (including you) arrive at the party are independent
+  uniform(0,1) random variables.
+
+  \begin{enumerate}
+
+    \item Find the expected number of people who arrive before you.
+
+    \item Find the variance of the number of people who arrive before you.
+      \begin{quotation} {\bf Solution:}
+      Let $N$ denote the number of people who arrive before you and $T$ the time
+      when you arrive.  I will give three different solutions:
+      \begin{enumerate}
+      \item  
+      Conditional on $X$, by symmetry it is equally likely that you are the 1 through
+      $(X+1)$th person to arrive.  Therefore, $N$ is discrete uniform on $0, \ldots, X$
+      conditional on $X$.  This means that $E(N\mid X)=X/2$ and $\Var(N\mid X)=X(X+2)/12$.
+      Thus, we obtain
+      \begin{eqnarray*}
+      E(N) &=&  E[E(N\mid X)] = E[X/2] = 5, \\
+      \Var(N) &=& E[\Var(N \mid X)] + \Var[E(N\mid X)] = 
+      \frac1{12}E[X^2+2X] + \Var[X/2] \\
+      &=&
+      \frac{110 + 20}{12} + \frac{10}{4} 
+      =\frac{40}{3}.
+      \end{eqnarray*}
+      \item
+      Conditional on $X$ and $T$, $N$ is binomial with parameters $X$ and $T$.
+      Furthermore, $X$ and $T$ are independent.
+      Therefore, using $E(X^2)=110$ and $E(T^2)=1/3$,
+      \begin{eqnarray*}
+      E(N) &=&  E[E(N\mid X,T)] = E[XT] = E[X]E[T] = 5, \\
+      \Var(N) &=& E[\Var(N \mid X,T)] + \Var[E(N\mid X,T)] = 
+      E[XT(1-T)] + \Var[XT] \\
+      &=& E(XT) - E(XT^2) + E(X^2T^2) - [E(XT)]^2 \\ 
+      &=& 5 - \frac{10}{3} + \frac{110}{3} - 25 = \frac{40}{3}
+      \end{eqnarray*}
+      \item
+      This idea is from one of the students who came to office hours:
+      Conditional on $T$, $N$ is Poisson$(10T)$.  One way to see this 
+      is to note that the arrival times of the other people define a Poisson process,
+      which is something we'll study later in the course.
+      We conclude that
+      \begin{eqnarray*}
+      E(N) &=&  E[E(N\mid T)] = E[10T] = 5, \\
+      \Var(N) &=& E[\Var(N \mid T)] + \Var[E(N\mid T)] = 
+      E[10T] + \Var[10T] = 5 + \frac{100}{12} = \frac{40}{3}.
+      \end{eqnarray*}
+      \end{enumerate}
+      \end{quotation}
+
+  \end{enumerate}
+
+  \item A short simulation exercise: Estimate the answers you obtained for
+  Problem~\ref{party} above via simulation. You already have the answer so you
+  can compare your estimates with the answer. Use 1000 replications of the
+  process (one replicate of the process = one randomly sampled party.)
+
+  \begin{itemize}
+
+      \item First download and install {\tt R}; see the course webpage,
+      \url{http://sites.stat.psu.edu/~dhunter/515/}, for a link to ``R
+      statistical software links'' provided by Dr.~Haran.
+
+      \item You can find a simple example for random variate simulation here:
+      \url{http://www.stat.psu.edu/~dhunter/515/hw/hw1ex.R}. You can adapt this
+      example to estimate the expectation and variance for this problem.
+
+  \end{itemize}
+
+  Ideally, you should also be reporting simulation (Monte Carlo) standard errors
+  for your estimates; we will discuss this later in the course.
+
+  Because this is your first assignment and your {\tt R} code here will be quite
+  short, please include a printout of your {\tt R} code with the assignment.
+
+      \begin{quotation} {\bf Solution:}
+      Using R code that can be found in \url{http://sites.stat.psu.edu/~dhunter/515/hw/sol01Code.R},
+      I obtained the sample mean and variance shown below.  (NB:  You can type the following
+      \url{source} command directly into R to obtain similar results.)
+      \begin{verbatim}
+> source("http://sites.stat.psu.edu/~dhunter/515/hw/sol01Code.R")
+[1] 4.909 
+[1] 13.47019
+      \end{verbatim}
+      Since these are only sample estimates, it makes sense to report measures of 
+      the uncertainty of these estimates.  For instance, we might consider a simple 95\%
+      confidence interval for the true mean, which is given by
+      $4.91 \pm 2\sqrt{13.47/1000}$, or $(4.68, 5.14)$.
+      
+      For the sake of completeness, here is the code from
+      \url{http://sites.stat.psu.edu/~dhunter/515/hw/sol01Code.R}:
+      \begin{verbatim}
+# Exercise 6:
+N <- 1:1000
+for(i in 1:1000) {
+  X <- rpois(1,10)
+  mytime <- runif(1)
+  N[i] <- sum(runif(X)<mytime)
+}
+print(mean(N))
+print(var(N))
+      \end{verbatim}
+      \end{quotation}
+
+\end{enumerate}
+
+\end{document}
+

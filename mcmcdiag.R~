@@ -1,0 +1,14 @@
+## some helper functions to look at MCMC output
+meantrack=function(mchain,thin=1)
+  {
+    endindex=seq(1,length(mchain),by=thin) # compute mean up to endindex
+    
+    listlen=length(endindex)
+    
+    runningmean=rep(NA,listlen)
+
+    for (i in 1:listlen)
+      runningmean[i]=mean(mchain[1:endindex[i]])
+
+    plot(endindex,runningmean,xlab="samples",ylab="estimate of mean")
+  }

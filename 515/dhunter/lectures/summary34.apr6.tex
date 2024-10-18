@@ -1,0 +1,142 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Apr.~6}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+HW \#10 is due on Friday, April 13 at 2:30pm.
+\item 
+All homework must be turned in electronically from now on.
+\item 
+Only 2 more homeworks!  (Only best 10 out of 11 grades will count.)
+\end{itemize}
+\notes{It is not clear when HW 11 will be due---possibly Apr.~20.  
+We discussed the due date of the take-home midterm, which still has
+not been set.
+}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Importance sampling can be unstable:
+\begin{itemize}
+\item Suppose $q(x)$ is small for some $x$ where $g(x)f(x)$ is big.  
+\item Then $g(x)f(x)/q(x)$ will have extreme outliers that are rare.
+\item If these values are rare enough, we may never see them and thus
+we may underestimate the M.C. standard error.
+\end{itemize}
+\notes{
+These are facts we have already discussed.  The final point is
+quite important, though, and it will effect one of the problems
+in homework \#10.
+}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Importance sampling standard errors
+\begin{itemize}
+\item Plain importance sampling:  Easy
+\item Ratio importance sampling:  Use delta method to derive
+\[
+{\Var} \left( \frac{ \frac1n\sum_i A_i}{\frac1n\sum_i B_i} \right) \approx
+\frac{1}{\mu_B^2}
+\begin{bmatrix}
+1 & \frac{-\mu_A}{\mu_B}
+\end{bmatrix}
+\begin{bmatrix}
+\sigma^2_A & \sigma_{AB} \\ \sigma_{AB} & \sigma^2_B
+\end{bmatrix}
+\begin{bmatrix}
+1 \\ \frac{-\mu_A}{\mu_B}
+\end{bmatrix}
+\]
+\end{itemize}
+\notes{
+The delta method expression is based on the lengthy in-class derivation we
+did on Apr. 2.  It will be used in HW \#10.
+}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+(Ratio) importance sampling application:
+\begin{itemize}
+\item Goal:  Estimate $\mu(\theta) = \E_{f_\theta} g(X)$ for $\theta\in\Theta$.
+\item Plain Monte Carlo sampling:  Draw new sample for each $\theta\in\Theta$.
+\item Importance sampling:  Draw a {\em single} sample from $q(x)$, etc.
+\item Ratio importance sampling:  When normalizing ``constant'' unknown.
+\end{itemize}
+\notes{Since is it quite common to know $f_\theta$ only up to a constant, 
+the ratio importance sampling method is often useful.  The word ``constant'' is in
+quotation marks above because this constant might depend on $\theta$.  In other
+words, we might have $f_\theta(x) = \alpha(\theta) r_\theta(x)$.  But the point is
+that $\alpha(\theta)$ does not depend on $x$.
+}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Ratio importance sampling for $\mu(\theta)= \E_{f_\theta} g(X)$:
+\begin{itemize}
+\item Estimate:  $\tilde\mu = \sum_{i=1}^n g(X_i)w\theta(X_i)$, where
+\[
+w_\theta(X_i) = \frac{r_\theta(X_i)/q(X_i)}{\sum_{j=1}^n r_\theta(X_j)/q(X_j)}
+\]
+and $f_\theta(x) = \alpha(\theta) r_\theta(x)$.
+\end{itemize}
+\notes{This is simply another way to view ratio importance sampling:  A
+weighted average of the $g(X_i)$ values.  In this case, the weights 
+depend on $\theta$, but it is useful to realize that the same sample
+of $X_i$ can be used for any $\theta$, and only the weights must
+be recalculated for different $\theta$.
+}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Ratio importance sampling for $\mu(\theta)= \E_{f_\theta} g(X)$:
+\begin{itemize}
+\item Estimate:  $\tilde\mu = \sum_{i=1}^n g(X_i)w\theta(X_i)$.
+\item Need $q(x)>0$ whenever $f_\theta(x)>0$ for any $\theta$.  
+\item Ideally, $q(x)$ not near zero whenever $f_\theta(x)$ large for any $x$,
+though this may be hard to do.
+\end{itemize}
+\notes{
+We did not discuss this slide, but it was included just to repeat the warning
+about $q$ being too near zero.  
+}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Related:  Monte Carlo MLE
+\begin{itemize}
+\item
+Given $X\sim f_\theta(x) = \exp\{\theta^\top s(x)\} / c(\theta)$,
+write  log-likelihood as
+\[
+\ell(\theta) = \ell(\theta_0) + (\theta-\theta_0)^\top s(X) - 
+\log E_{\theta_0} \exp\{( \theta-\theta_0)^\top s(Y)\}.
+\]
+\item Use $Y_1, \ldots, Y_m\sim f_{\theta_0}$ to approximate
+$\ell(\theta)-\ell(\theta_0)$.
+\end{itemize}
+\notes{
+We spent quite a bit of time discussing this slide.  The technique of Monte Carlo
+MLE is closely related to importance sampling (there is a small technical 
+difference), and one of the HW\#10 problems involves approximating 
+a log-likelihood function using Monte Carlo techniques.
+}
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+
+
+

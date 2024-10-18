@@ -1,0 +1,23 @@
+
+\documentclass{article}
+\usepackage{amsmath, amsfonts,hyperref}
+\usepackage{url}
+\pagestyle{empty}
+\setlength{\textwidth}{6in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{9in}
+
+\begin{document}
+%\pagestyle{empty}
+\begin{center}
+\Large
+{\bf Homework 6, Stat 515, Spring 2015}\\
+\normalsize
+Due Wednesday, March 4, 2015 \underline{{\bf beginning of class}}\\
+\end{center}
+
+\begin{enumerate}%{\bf Textbook problems:} {\it Ch.4:} 2,3,5,8, 11,13.\\
+  \end{enumerate}
+
+\end{document}

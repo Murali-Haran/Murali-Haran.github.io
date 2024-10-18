@@ -1,0 +1,87 @@
+
+\documentclass{article}
+\usepackage{amsmath, amsfonts,hyperref}
+\usepackage{url}
+\pagestyle{empty}
+\setlength{\textwidth}{6in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{9in}
+
+\begin{document}
+%\pagestyle{empty}
+\begin{center}
+\Large
+{\bf Homework 3, Stat 515, Spring 2015}\\
+\normalsize
+Due Wednesday, February 11, 2015 \underline{{\bf beginning of class}}\\
+\end{center}
+\begin{enumerate}%{\bf Textbook problems:} {\it Ch.4:} 2,3,5,8, 11,13.\\
+\item Ehrenfest diffusion: 
+\begin{enumerate}
+\item Simulate the simple Ehrenfest diffusion process (following the
+  description in the Ross book) with total number of particles,
+  $m=50$. Start the process at $X_1=5$. Run the process for 10,000
+  iterations and draw a histogram of the resulting values of $X_t$ (in
+  {\tt R}, use the {\tt hist} command). You can also obtain an
+  approximation to the density based on these samples by using the
+  command {\tt plot(density(SampleVectorName), main="Approximate
+    Density of Ehrenfest Diffusion Samples")}.
+\item Read through the argument provided for deriving the stationary
+  distribution of the Ehrenfest diffusion. State the stationary
+  distribution $\pi$ for the particular Ehrenfest diffusion you are
+  considering above. Now simulate 10,000 draws from the stationary
+  distribution of the Ehrenfest diffusion (you may need to use the
+  command {\tt rbinom}) and overlay a density plot of its samples on
+  top of the previous plot by using {\tt
+    lines(density(BinomialSampleVectorName),lty=2)}. Make sure you provide a
+  clear heading for the plot 
+  this plot clearly
+\item State the results from class that explains what you observe from
+  your comparisons above. 
+\item Compare the proportion of values greater than 15 for the
+  binomial distribution using {\tt pbinom}, and estimate this quantity
+  using the two sets of samples you just generated. Report the true
+  value along with your two estimates. Notice that you can use both
+  sets of samples, the Markov chain as well as the iid sampler, to
+  approximate this probability (expectation with respect to Binomial).
+\item Start the process at $X_1=5$ and obtain $X_3$ for the Ehrenfest
+  diffusion. Repeat this 10,000 times and obtain a histogram for
+  $X_3$. Now start the process at $X_1 \sim \pi$ where $\pi$ is the
+  stationary distribution above and again obtain $X_3$ for the
+  Ehrenfest diffusion 10,000 times. Compare these two histograms to
+  the Binomial distribution above. Briefly explain what you observe
+  and why. 
+\end{enumerate}
+% Branching processes
+\item Consider a branching process where $X_0=1$ and every individual at the $i$th generation has probability $p_j$ of having $j$ offspring, with $p_0=1/2,p_1=1/6, p_2=1/3$. Let $X_t$ be the state of the process at time $t$.
+\begin{enumerate}
+\item Let the probability this process will go extinct be $\pi_0$. Calculate $\pi_0$.
+% Branching processes simulation exercise
+\item What are the expected value and variance of $X_2$?
+\item Now simulate 10,000 realizations of the process up to $t=2$, i.e., $X_0,X_1,X_2$. Plot the histogram of $X_2$, and report the sample mean and variance. Compare them to the theoretical mean and variance obtained from the previous problem. The code available here might be useful for this problem:\url{http://www.stat.psu.edu/~mharan/515/hwdir/hw04ex.R} .
+\item Now simulate 10,000 realizations of the branching process. Let
+  $L$ be the time taken before extinction. Show a histogram of
+  $L$. Note that since a particular realization of the branching
+  process may be extremely long or, for some processes, be infinite
+  (since it may never go extinct), it is useful to impose
+  (artificially) a very large upper limit for the length of the branching process when simulating realizations. 
+\end{enumerate}
+
+% % Using first principles definition of Poisson process Ross Stoch Proc. pg.66
+% \item Consider a Poisson process $N(t)$ with rate $\lambda$. Prove the
+%   following result: Given that $N(t)=n$, the n arrival times
+%   $S_1,\dots,S_n$ have the same distribution as the order statistics
+%   corresponding to $n$ independent random variables uniformly
+%   distributed on the interval $(0,t)$, i.e., $$P(S_1=t_1,\dots,S_n=t_n
+%   \mid N(t)=n)=\frac{n!}{t^n} I(0<t_1<\dots <t_n).  $$
+%   Use a ``first
+%   principles'' argument, i.e., I would like you to do a proof that
+%   utilizes Assumptions 3 and 4 in the ``first principles'' definition of the
+%   Poisson process (as will be discussed in class.) Do not use the conditioning argument in the book.
+% % simple problem; adapted from Problem 5 in Ross book
+% \item The lifetime of a light bulb is known to be exponentially distributed with a mean of 3 years. If the lightbulb has been working for 4 years already, what is the probability it will still be working 3 years later? 
+% % reworded Ross problem 9
+% \item The lifetime of two machines are independent exponential($\lambda_1$) and exponential($\lambda_2$) respectively. Suppose machine 1 starts working now and the second machine is put to use $t$ units of time later. What is the probability  machine 1 will fail before machine 2? 
+\end{enumerate}
+\end{document}

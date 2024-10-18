@@ -1,0 +1,233 @@
+% \theoremstyle{remark}
+% \newtheorem{example}{Example}
+% \usepackage{geometry}
+% %\geometry{hmargin=1.025in,vmargin={1.25in,0.75in},nohead,footskip=0.5in}
+% \geometry{hmargin=2.5cm,vmargin={2.5cm,2.5cm},nohead,footskip=0.5in}
+% \renewcommand{\baselinestretch}{1.21} 
+\newcommand{\Real}{{\mathbb R}}
+\newcommand{\boldY}{{\bf Y}}
+\newcommand{\boldZ}{{\bf Z}}
+\newcommand{\boldR}{{\bf R}}
+\newcommand{\boldz}{{\bf z}}
+\newcommand{\boldC}{{\bf C}}
+\newcommand{\boldB}{{\bf B}}
+\newcommand{\boldI}{{\bf I}}
+\newcommand{\btheta}{ \mbox{\boldmath $\theta$}}
+\newcommand{\bphi}{ \mbox{\boldmath $\phi$}}
+\newcommand{\bmu}{ \mbox{\boldmath $\mu$}}
+\newcommand{\bxi}{ \mbox{\boldmath $\xi$}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqstar}{\begin{equation*}}
+\newcommand{\eeqstar}{\end{equation*}}
+\newcommand{\bthet}{ \mbox{\boldmath $\theta$}}
+\newcommand{\blambda}{ \mbox{\boldmath $\lambda$}}
+\newcommand{\bet}{ \mbox{\boldmath $\eta$}}
+\newcommand{\bepsilon}{ \mbox{\boldmath $\epsilon$}}
+\newcommand{\bdelta}{ \mbox{\boldmath $\delta$}}
+\newcommand{\bnu}{ \mbox{\boldmath $\nu$}}
+\newcommand{\bPsi}{ \mbox{\boldmath $\Psi$}}
+\newcommand{\bY}{ {\bf Y} }
+\newcommand{\by}{ {\bf y} }
+\newcommand{\bM}{ {\bf M} }
+\newcommand{\bU}{ {\bf U} }
+\newcommand{\bu}{ {\bf u} }
+\newcommand{\br}{ {\bf r} }
+\newcommand{\bK}{ {\bf K} }
+\newcommand{\bz}{ {\bf z} }
+\newcommand{\bd}{ {\bf d} }
+\newcommand{\bh}{ {\bf h} }
+\newcommand{\bw}{ {\bf w} }
+\newcommand{\bs}{ {\bf s} }
+\newcommand{\bg}{ {\bf g} }
+\newcommand{\bt}{ {\bf t} }
+\newcommand{\bv}{ {\bf v} }
+\newcommand{\bx}{ {\bf x} }
+\newcommand{\bZ}{{\bf Z}}
+\newcommand{\bX}{{\bf X}}
+\newcommand{\bW}{{\bf W}}
+\newcommand{\bE}{{\bf E}}
+\newcommand{\bbeta}{ \mbox{\boldmath $\beta$}}
+\newcommand{\bmuhat}{ \mbox{\boldmath $\hat{\mu}$}}
+\newcommand{\beas}{\begin{eqnarray*}}
+\newcommand{\eeas}{\end{eqnarray*}}
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\baselinestretch}{1.3}
+\newcommand{\Nstar}{N^{*}}
+\newcommand{\taustar}{\tau^{*}}
+\newcommand{\alphatilde}{\tilde{\alpha}}
+\newcommand{\lambdaT}{\lambda_{\theta}}
+%\newcommand{\xprime}{x^{'}}
+%\newcommand{\mprime}{m^{'}}
+\newcommand{\bOne}{ {\bf 1} }
+\newcommand{\bZero}{ {\bf 0} }
+\newcommand{\xprime}{x'}
+\newcommand{\nprime}{n'}
+\newcommand{\mprime}{m'}
+\newcommand{\bTheta}{ \mbox{\boldmath $\Theta$}}
+
+\newcommand{\Cset}{\cal C}
+\newcommand{\taueps}{\tau_{\epsilon}}
+\newcommand{\Galpha}{G_{\alpha}}
+\newcommand{\boldzpr}{{\bf z^{'}}}
+\newcommand{\alphapr}{\alpha^{'}}
+\newcommand{\tauepspr}{\taueps^{'}}
+\newcommand{\Nkappa}{N_{\kappa}}
+\def\baro{\vskip  .2truecm\hfill \hrule height.5pt \vskip  .2truecm}
+\def\barba{\vskip -.1truecm\hfill \hrule height.5pt \vskip .4truecm}
+\newcommand{\Matern}{Mat\'{e}rn }
+\newcommand{\Rcode}{{\color{green} {R command: }}}
+\newcommand{\bigoh}{\mathcal{O}}
+\newcommand{\figtwobytwo}[4]
+{
+\begin{tabular}{cc}
+    {{\resizebox*{0.47\textwidth}{0.35\textheight}
+        {\rotatebox{0}{\includegraphics{#1}}}} \par}&
+    {{\resizebox*{0.47\textwidth}{0.35\textheight}
+        {\rotatebox{0}{\includegraphics{#2}}}} \par}\\
+    {{\resizebox*{0.47\textwidth}{0.35\textheight}
+        {\rotatebox{0}{\includegraphics{#3}}}} \par}&
+    {{\resizebox*{0.47\textwidth}{0.35\textheight}
+        {\rotatebox{0}{\includegraphics{#4}}}} \par}\\
+\end{tabular}
+}
+\newcommand{\figtwobytwoA}[4]
+{
+\begin{tabular}{cc}
+    {{\resizebox*{0.35\textwidth}{0.2\textheight}
+        {\rotatebox{0}{\includegraphics{#1}}}} \par}&
+    {{\resizebox*{0.35\textwidth}{0.2\textheight}
+        {\rotatebox{0}{\includegraphics{#2}}}} \par}\\
+    {{\resizebox*{0.35\textwidth}{0.2\textheight}
+        {\rotatebox{0}{\includegraphics{#3}}}} \par}&
+    {{\resizebox*{0.35\textwidth}{0.2\textheight}
+        {\rotatebox{0}{\includegraphics{#4}}}} \par}\\
+\end{tabular}
+}
+\newcommand{\figtwo}[2]
+{
+\begin{tabular}{cc}
+    {{\resizebox*{0.35\textwidth}{0.2\textheight}
+        {\rotatebox{0}{\includegraphics{#1}}}} \par}&
+    {{\resizebox*{0.35\textwidth}{0.2\textheight}
+        {\rotatebox{0}{\includegraphics{#2}}}} \par}\\
+\end{tabular}
+}
+\newcommand{\figtwoA}[2]
+{
+\begin{tabular}{cc}
+%    {{\resizebox*{0.33\textwidth}{0.24\textheight}
+    {{\resizebox*{0.45\textwidth}{0.45\textheight}
+        {\rotatebox{0}{\includegraphics{#1}}}} \par}&
+    {{\resizebox*{0.45\textwidth}{0.45\textheight}
+        {\rotatebox{0}{\includegraphics{#2}}}} \par}\\
+\end{tabular}
+}
+\newcommand{\figtwoB}[2]
+{
+\begin{tabular}{cc}
+%    {{\resizebox*{0.33\textwidth}{0.24\textheight}
+    {{\resizebox*{0.6\textwidth}{0.7\textheight}
+        {\rotatebox{0}{\includegraphics{#1}}}} \par}&
+    {{\resizebox*{0.6\textwidth}{0.7\textheight}
+        {\rotatebox{0}{\includegraphics{#2}}}} \par}\\
+\end{tabular}
+}
+\newcommand{\figtwoC}[4]
+{
+\begin{tabular}{cc}
+%    {{\resizebox*{0.33\textwidth}{0.24\textheight}
+  #3 & #4 \\
+    {{\resizebox*{0.47\textwidth}{0.55\textheight}
+        {\rotatebox{0}{\includegraphics{#1}}}} \par}
+     &
+    {{\resizebox*{0.47\textwidth}{0.55\textheight}
+        {\rotatebox{0}{\includegraphics{#2}}}} \par}\\
+\end{tabular}
+}
+
+\newcommand{\figone}[1]
+{
+  \begin{center}
+    {{\resizebox*{0.95\textwidth}{0.7\textheight}
+        {\rotatebox{270}{\includegraphics{#1}}}} \par}
+  \end{center}
+  }
+
+\newcommand{\figonesmall}[1]
+{
+  \begin{center}
+    {{\resizebox*{0.475\textwidth}{0.35\textheight}
+        {\rotatebox{0}{\includegraphics{#1}}}} \par}
+  \end{center}
+  }
+
+\newcommand{\figonerotate}[1]
+{
+  \begin{center}
+    {{\resizebox*{0.7\textwidth}{0.7\textheight}
+%    {{\resizebox*{0.95\textwidth}{0.7\textheight}
+        {\rotatebox{0}{\includegraphics{#1}}}} \par}
+  \end{center}
+  }
+\newcommand{\figonerotatemedium}[1]
+{
+  \begin{center}
+%    {{\resizebox*{0.95\textwidth}{0.7\textheight}
+%    {{\resizebox*{0.855\textwidth}{0.63\textheight}
+    {{\resizebox*{0.665\textwidth}{0.49\textheight} % with image-transform-autocrop in gimp (R map files)
+        {\rotatebox{0}{\includegraphics{#1}}}} \par}
+  \end{center}
+  }
+\newcommand{\figonerotatemediumsmall}[1]
+{
+  \begin{center}
+%    {{\resizebox*{0.95\textwidth}{0.7\textheight}
+%    {{\resizebox*{0.855\textwidth}{0.63\textheight}
+    {{\resizebox*{0.532\textwidth}{0.392\textheight} % with image-transform-autocrop in gimp (R map files)
+        {\rotatebox{0}{\includegraphics{#1}}}} \par}
+  \end{center}
+  }
+% this one preserves perspective (so circle stays a circle)
+\newcommand{\figonerotatepersp}[1]
+{
+  \begin{center}
+    {{\resizebox*{0.6\textwidth}{0.7\textheight}
+%    {{\resizebox*{0.95\textwidth}{0.7\textheight}
+        {\rotatebox{0}{\includegraphics{#1}}}} \par}
+  \end{center}
+  }
+
+% this one preserves perspective (so circle stays a circle)
+\newcommand{\figonerotatebig}[1]
+{
+  \begin{center}
+%    {{\resizebox*{0.6\textwidth}{0.7\textheight}
+    {{\resizebox*{0.95\textwidth}{0.9\textheight}
+        {\rotatebox{0}{\includegraphics{#1}}}} \par}
+  \end{center}
+  }
+
+\newcommand{\head}[1]
+{
+  \begin{center}
+      {\huge {\color{blue} #1}}
+    \end{center}
+  }
+\definecolor{pink}{rgb}{1,0.5,0.5}
+% 2 x 2 fill up the entire slide, also allow labeling
+\newcommand{\figtwobytwoB}[8]
+{
+\begin{tabular}{cc}
+  #5 & #6\\
+    {{\resizebox*{0.5\textwidth}{0.3\textheight}
+        {\rotatebox{0}{\includegraphics{#1}}}} \par}&
+    {{\resizebox*{0.5\textwidth}{0.3\textheight}
+        {\rotatebox{0}{\includegraphics{#2}}}} \par}\\
+  #7 & #8\\
+    {{\resizebox*{0.5\textwidth}{0.3\textheight}
+        {\rotatebox{0}{\includegraphics{#3}}}} \par}&
+    {{\resizebox*{0.5\textwidth}{0.3\textheight}
+        {\rotatebox{0}{\includegraphics{#4}}}} \par}\\
+\end{tabular}
+}

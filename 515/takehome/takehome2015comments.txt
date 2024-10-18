@@ -1,0 +1,105 @@
+Amal Agarwal: 29 
+nice writeup and correct code. Missing acc rates; should have perhaps run the code for a little longer to get more reliable approx.
+
+Meridith Bartley: 28
+coding error for #1: -2 -- due to incorrect likelihood fn.
+clear writeup
+
+Gregory Bopp: 30
+Great writeup, extra long run length of chains, looked at plots of data etc. Nicely done!
+
+Geng-Yuan Chen: 29
+Writeup was a little hard to read (-1) though it had lots of good diagnostics/information
+
+Meng Chen: 29
+no errors, good long Markov chain. Some missing information about tuning/acceptance rates. 
+
+Yukun Chen: 29
+some missing information about how the tuning parameters were obtained, acceptance rates.
+
+Yunsi Chen: 25
+-1 x 3 (errors in results): -3
+chain not run long enough; poor coding practices (not taking logs, not enough information about tuning: -2
+
+John Ensley: 28
+#1: coding error -2
+Otherwise, good writeup and seems correct. missing info about tuning parameters
+
+Qingzhou Feng: 25
+-2 mistake in likelihood fn
+-2 missing info about diagnostics, tuning parameter selection etc.
+-1 poorly written code/slow etc.
+
+Mauricio Do Nascimiento: 28
+missing information about tuning; code produces correct estimates but those were not reported!
+
+Xiao Gan: 27
+unclear writeup; missing info about proposal distr. -1
+missing info about how to use tuning/proposal fn -1
+inefficient code -1
+
+Elena Hadjicosta: 30
+No errors, well writen writeup
+
+Dafang He: 27
+2(e) is missing: -1
+missing info about tuning: -1
+error in code for #3: -1
+
+Sandilya Kambampati: 27
+problems running code (NAs produced) -2
+errors in results -1
+
+Wanjun Liu: 29
+correct; some missing info about tuning parameters
+
+Ardalan Mirshani: 29
+correct and well written; missing some info about tuning
+
+Jacob Parsons: 29
+missing some info in writeup but code is okay
+
+Justin Petrovich: 26
+-2 for late submission
+-2 for error in results
+
+Sayali Phadke: 20
+#1: error in code/likelihood -2
+#2: error in prior -1
+code not running -2
+#3: missing -5
+
+Abhishek Rao: 26
+correlation and acc ratio calculation code are missing from R file: -1
+#2: estimate is incorrect -2
+#2 and #3: not a good sampler (too low acc rate) -1
+
+Ben Sheng: 30
+very well written and correct
+
+Bradley Thompson:  21
+3+3 (-2 for incorrect code, -2 for poor writeup/poorly labeled figures)
+8+3 (-2 for incorrect code, -2 for poor writeup, missing diagnostic plots)
+4 (-1 for not getting the correct answer)
+
+Gang Yang: 29
+missing info about proposal selection
+
+Bing Yao: 27
+missing info about tuning/proposals -1
+#2: incorrect estimates -1 
+Starting values? 
+Maybe not enough sample length? -1
+
+Zheye Yuan: 27
+Inefficient code 
+error in code -- acceptance ratio is off
+missing info about tuning, starting values etc. 
+
+Edward Zechmann: 26
+error in likelihood function: -1
+missing info about alg construction: -1
+code does not run: -2
+
+Ling Zhang: 29
+missing info about tuning parameters/proposal. Didn't check acc rate 

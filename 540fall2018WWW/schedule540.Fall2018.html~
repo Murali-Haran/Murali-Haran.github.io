@@ -1,0 +1,33 @@
+<TITLE> Computationally Intensive Statistical Inference, Fall 2018  </TITLE>
+<center>
+ Rough schedule for Stat 540, subject to change (check back often) <br>
+<!-- Sections refer to the lecture notes. <br><br> -->
+ <table border="7" >
+<tr> <th scope = "col">Date</th> <th scope = "col">Topics</th>
+
+<tr><td> Week 1 (Aug 20) <td> Computing Basics; Computational complexity
+<tr><td> Week 2 (Aug 27)  <td> Numerical Linear Algebra
+<tr><td> Week 3 (Sep 3)  <td> Numerical Linear Algebra
+<tr><td> Week 4 (Sep 10)   <td> Monte Carlo, Basic random variate generation, Rejection sampling
+<tr><td> Week 5  (Sep 17)  <td> <!-- Ratio-of-uniforms, --> Importance sampling, auxiliary variable methods
+<tr><td> Week 6  (Sep 24) <td>  Importance sampling; Markov chain Monte Carlo intro
+<tr><td> Week 7  (Oct 1) <td> Markov chain Monte Carlo 
+<tr><td> Week 8  (Oct 8)  <td> Markov chain Monte Carlo; Statistical inference overview
+<tr><td>  <td> <font color="#FF0000"> Project proposals due Oct 9 </font>
+  <tr><td> Week 9 (Oct 15) <td> Likelihood-based: ML, Penalized ML, Bayesian inference<!-- Generalized Estimating Equations (GEE) and Bayesian inference; 1D optimization-->
+<tr><td> Week 10 (Oct 22) <td> Newton-Raphson/Fisher-scoring, gradient descent <!-- (Nelder-Mead, MOM/Generalized MOM, Minimum distance, estimating equations, generalized estimating equations)-->
+<tr><td>  <td> <font color="#FF0000"> Project proposals: revisions due Oct 30 </font>
+<tr><td> Week 11 (Oct 29) <td> Stochastic gradient descent, MM algorithms
+<tr><td> Week 12 (Nov 5) <td> MM and EM algorithms, Bootstrap
+<tr><td> Week 13 (Nov 12) <td>  Bootstrap; Select topics TBD,
+  e.g. computing with expensive likelihoods (e.g. ABC, composite
+  likelihood), methods for high-dimensional problems <!-- proximal methods -->
+<tr><td> <em> Thanksgiving </em> <td> No classes
+<tr><td> Week 14 (Nov 26) <td> Final project presentations: Nov 27, 28 29
+<tr><td> Week 15 (Dec 3) <td> Final project presentations: Dec 4, 6
+<tr><td>  Dec 11 (Monday) <td>  <font color="#FF0000"> Final project writeups due at midnight (11:59 pm) </font>
+<tr><td>  Dec 13 (Wednesday)<td>  <font color="#FF0000"> Evaluation of other students' project writeups due at midnight (11:59 pm) </font>
+</table>
+</center>
+</body>
+</html>

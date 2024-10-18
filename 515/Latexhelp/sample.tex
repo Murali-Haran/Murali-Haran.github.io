@@ -1,0 +1,72 @@
+\documentclass[12pt]{article}
+\usepackage[sort,longnamesfirst]{natbib}
+\usepackage{amsbsy,amsmath,amsthm,amssymb,graphicx}
+\usepackage{subfigure}
+\usepackage{geometry}
+\geometry{hmargin=2.5cm,vmargin={2.5cm,2.5cm},footskip=0.5in}
+\renewcommand{\baselinestretch}{1.25}
+\setlength{\baselineskip}{0.3in} \setlength{\parskip}{.05in}
+
+\begin{document}
+
+\title{A Silly LaTeX document}
+%\date{}
+\maketitle
+\section{Introduction}\label{sec:intro}
+This is my introduction to blahdiblah which I will tell you about in the main section.
+
+\section{Main Work}\label{sec:main}
+There is where I woof about everything I did, including talking about symbols like $\alpha,\beta, \theta$ and writing pointless equations like: 
+\begin{equation}\label{eqn:woof} 
+E_P f = \frac{E_H\{\sum_{t=0}^Lf(X_t)
+  I_{N_t=1}\}} {E_H\{\sum_{t=0}^L I_{N_t=1}\}}.  
+\end{equation} 
+Later on I can refer to this equation by saying, why don't you look at
+equation (\ref{eqn:woof}) which comes right after Section
+(\ref{sec:intro}). I can also confuse you with an illustrative figure
+of my research results.
+
+Sometimes, you may decide to create an equation without a label, which can either be done as: 
+$$ x^2 = y^2 + z^2$$ or 
+\begin{equation*} 
+  x^2 = y^2 + z^2 
+\end{equation*} and occasionally you may decide to have multiple lines of equations such as: 
+\begin{equation}
+  \begin{split}
+    P(X \leq x | X \mbox{accepted}) = & P\left(X \leq x | U \leq \frac{h(X)}{K q(X)}\right)\\
+  = & \frac{P\left(X \leq x, U \leq \frac{h(X)}{K q(X)}\right)}{P(U \leq \frac{h(X)}{K q(X)})}\\
+  = & \frac{E_q\left(P(X \leq x, U \leq \frac{h(X)}{K q(X)}| X\right)}{E_q\left(P(U \leq \frac{h(X)}{K q(X)} | X\right)}
+  \end{split}
+\end{equation}
+
+\begin{figure}\label{fig:foo}
+\begin{center}
+  \rotatebox{0}{\includegraphics[height=3.5in,width=3.0in]{southpark.jpg}}
+\end{center}
+\end{figure}
+
+Later on, I can refer to the figure as Figure \ref{fig:foo}. 
+% You can comment out lines by putting a percent sign in front of the lines.
+Sometimes it is also nice to summarize results into a table such as Table \ref{tab:results} below.
+\begin{table}
+  \caption{\label{tab:results} My Results}
+  \centering
+    \begin{tabular}{|c|c|c|c|c|}
+      \hline
+      data set
+%      & \multicolumn{2}{c|} {samples/sec} & \multicolumn{2}{c|} {acceptance rates}\\
+%      \cline{2-5}
+      & perfect & rejection & perfect & rejection\\
+      \hline
+      breast cancer      & 0.91 & 0.90 & 0.009 & 0.008\\
+      colo-rectal cancer & 4.3 & 4.5 & 0.043 & 0.043\\
+      \hline
+    \end{tabular}
+\end{table}
+
+\section{Summary}\label{sec:model}
+I told you everything in Section \ref{sec:main}. If that makes no sense, refer to (add reference).
+
+\bibliographystyle{apalike} 
+%\bibliography{samplebib}
+\end{document}

@@ -1,0 +1,109 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Feb.~20}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item
+For Wednesday,
+read Sections 6.1 and 6.2.
+\item 
+HW\#5 is due {\em ELECTRONICALLY} on Friday.
+\item 
+See example code and .Rnw solutions files for homework
+\item
+Tentatively:  Midterm on Wednesday, Feb. 29 in evening.
+\end{itemize}
+\end{frame}
+
+\startframe{5.3 The Poisson Process}
+Proof of Poisson approximation to binomial:
+\begin{itemize}
+\item Poisson MGF:  $M(t) = \exp\{\lambda e^t - \lambda\}$
+\item Binomial MGF:  $M(t) = (1+pe^t -p)^n$
+\item Let $p=\lambda/n$ and see what happens as $n\to\infty$.
+\end{itemize}
+\end{frame}
+
+
+\startframe{5.3 The Poisson Process}
+\begin{itemize}
+\item
+Let $S_0=0$ and $S_1, S_2, \ldots$ are the times of events in a Poisson process.
+\item
+Let $T_i=S_i-S_{i-1}$ for $i=1, 2, \ldots$ be the times between events.
+\item 
+How are the $T_i$ distributed?
+\end{itemize}
+\end{frame}
+
+\startframe{5.3 The Poisson Process}
+\question{In a Poisson process with rate $\lambda$, what is the distribution of
+the waiting time until the $n$th event?}
+{Exponential}
+{Gamma}
+{Lognormal}
+{Uniform}
+\end{frame}
+
+\startframe{5.3 The Poisson Process}
+\question{Let $X_1, \ldots, X_n$ be independent exponential random variables
+with rates $\lambda_1, \ldots, \lambda_n$, respectively, and $X_{(1)}=\min_{1\le i\le n} X_i$.
+What is $P(X_1=X_{(1)})$?}
+{$\lambda_1$}
+{$\lambda_2+\cdots + \lambda_n$}
+{$\lambda_1/(\lambda_1+\cdots + \lambda_n)$}
+{$1/(\lambda_2+\cdots + \lambda_n)$}
+\end{frame}
+
+\startframe{5.3 The Poisson Process}
+Poisson processes add:
+\begin{itemize}
+\item
+If $N_1(t)$ and $N_2(t)$ are Poisson processes with rates $\lambda_1$ and $\lambda_2$, 
+then $M(t) = N_1(t)+N_2(t)$ is a Poisson process with rate $\lambda_1+\lambda_2$.
+\item
+Similarly, suppose we label each event $M(t)$ as type-1 or type-2 with probabilities
+$\lambda_1/(\lambda_1+\lambda_2)$ and 
+$\lambda_2/(\lambda_1+\lambda_2)$, respectively.  Then the counting process for each
+type of event is separately a Poisson process.
+\end{itemize}
+\end{frame}
+
+\startframe{5.4.1 Nonhomogeneous Poisson Processes}
+Notice a slight change from the homogeneous version:
+\begin{itemize}
+\item Counts of events in disjoint time intervals are independent.
+\item $P[N(s+h)-N(s)=1] = \lambda(s) h + o(h)$ as $h\to 0$.
+\item $P[N(s+h)-N(s)\ge2] = o(h)$ as $h\to 0$.
+\item Technically, we should also say $N(0)=0$.
+\end{itemize}
+\end{frame}
+
+\startframe{5.4.1 Nonhomogeneous Poisson Processes}
+\begin{itemize}
+\item
+In a nonhomogeneous Poisson process,
+$N(s+t)-N(s)$ is Poisson distributed with mean
+\[
+\int_s^{s+t} \lambda(y)\,dy.
+\]
+\item
+If we define $m(t) = \int_0^t \lambda(y)\,dy$, then this is just
+$m(s+t)-m(s)$.
+\item
+What is the distribution of the waiting time until the first event?
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

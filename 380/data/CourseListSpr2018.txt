@@ -1,0 +1,894 @@
+95 class section(s) found
+ STAT 100 - Statistical Concepts and Reasoning 
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21801
+001-LEC
+Regular
+MoFr 3:35PM - 4:25PM
+Osmond Lab 117
+Meridith Bartley
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+27584
+001L-LAB
+Regular
+Tu 10:35AM - 11:50AM
+Boucke Bldg 214
+Dennis Pearl
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+22545
+002L-LAB
+Regular
+Tu 1:35PM - 2:50PM
+Boucke Bldg 111
+Dennis Pearl
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21802
+901-LEC
+Regular
+Tu 6:00PM - 9:00PM
+Thomas Bldg 117
+Brian Sonak
+01/08/2018 - 04/27/2018
+Closed
+ STAT 200 - Elementary Statistics 
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21650
+001-LEC
+Regular
+TuTh 9:05AM - 9:55AM
+Forum Bldg 105
+Daisy Philtron
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26393
+001L-LAB
+Regular
+WeFr 9:05AM - 9:55AM
+Boucke Bldg 111
+Patricia Buchanan
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26394
+002L-LAB
+Regular
+WeFr 10:10AM - 11:00AM
+Boucke Bldg 214
+Patricia Buchanan
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26427
+003L-LAB
+Regular
+WeFr 11:15AM - 12:05PM
+Boucke Bldg 214
+Patricia Buchanan
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26432
+004L-LAB
+Regular
+WeFr 12:20PM - 1:10PM
+Boucke Bldg 214
+Daisy Philtron
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26311
+005-LEC
+Regular
+TuTh 9:05AM - 9:55AM
+Forum Bldg 111
+Patricia Buchanan
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26452
+005L-LAB
+Regular
+TuTh 3:35PM - 4:25PM
+Boucke Bldg 111
+Patricia Buchanan
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+27468
+006-LEC
+Regular
+TuTh 8:00AM - 8:50AM
+Forum Bldg 105
+Daisy Philtron
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26453
+006L-LAB
+Regular
+TuTh 12:20PM - 1:10PM
+Boucke Bldg 111
+Patricia Buchanan
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26447
+007L-LAB
+Regular
+WeFr 3:35PM - 4:25PM
+Boucke Bldg 214
+Jennifer Shook
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26315
+008L-LAB
+Regular
+TuTh 12:20PM - 1:10PM
+Boucke Bldg 214
+Daisy Philtron
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26310
+009-LEC
+Regular
+TuTh 8:00AM - 8:50AM
+Thomas Bldg 100
+Jennifer Shook
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26438
+009L-LAB
+Regular
+WeFr 9:05AM - 9:55AM
+Boucke Bldg 214
+Jennifer Shook
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26439
+010L-LAB
+Regular
+WeFr 10:10AM - 11:00AM
+Boucke Bldg 111
+Jennifer Shook
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26440
+011L-LAB
+Regular
+WeFr 11:15AM - 12:05PM
+Boucke Bldg 111
+Jennifer Shook
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26442
+012L-LAB
+Regular
+WeFr 12:20PM - 1:10PM
+Westgate Bldg W201
+Jennifer Shook
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26443
+013L-LAB
+Regular
+WeFr 1:25PM - 2:15PM
+Boucke Bldg 111
+Jennifer Shook
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26444
+014L-LAB
+Regular
+WeFr 2:30PM - 3:20PM
+Boucke Bldg 111
+Jennifer Shook
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26445
+015L-LAB
+Regular
+WeFr 12:20PM - 1:10PM
+Boucke Bldg 111
+Jennifer Shook
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26448
+016L-LAB
+Regular
+WeFr 4:40PM - 5:30PM
+Boucke Bldg 111
+Jennifer Shook
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26435
+017L-LAB
+Regular
+WeFr 2:30PM - 3:20PM
+Boucke Bldg 214
+Daisy Philtron
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26309
+020-LEC
+Regular
+MoWe 9:05AM - 9:55AM
+Forum Bldg 111
+Patricia Buchanan
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26313
+021L-LAB
+Regular
+WeFr 3:35PM - 4:25PM
+Boucke Bldg 111
+Staff
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26314
+022L-LAB
+Regular
+TuTh 3:35PM - 4:25PM
+Boucke Bldg 214
+Benjamin Straub, 
+Daisy Philtron
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26392
+024L-LAB
+Regular
+WeFr 8:00AM - 8:50AM
+Boucke Bldg 111
+Nicholas Sterge, 
+Patricia Buchanan
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26449
+025L-LAB
+Regular
+TuTh 8:00AM - 8:50AM
+Boucke Bldg 214
+Wanjun Liu
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26451
+026L-LAB
+Regular
+TuTh 9:05AM - 9:55AM
+Boucke Bldg 214
+Wanjun Liu
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26434
+027L-LAB
+Regular
+WeFr 1:25PM - 2:15PM
+Boucke Bldg 214
+Daisy Philtron
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+29609
+028L-LAB
+Regular
+TuTh 6:00PM - 6:50PM
+Boucke Bldg 214
+Staff
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26437
+19L-LAB
+Regular
+WeFr 4:40PM - 5:30PM
+Boucke Bldg 214
+Keon Woo Kim
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26454
+901-LEC
+Regular
+Th 6:00PM - 10:00PM
+Thomas Bldg 220
+Eric Speight
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+30455
+901L-LAB
+Regular
+Th 9:00PM - 10:15PM
+Huck Life Sciences Bldg 004
+Eric Speight
+01/08/2018 - 04/27/2018
+Open
+ STAT 240 - Introduction to Biometry 
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21699
+001-LEC
+Regular
+MoFr 8:00AM - 8:50AM
+Wartik Lab 105
+Bruce Lord
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+22580
+001L-LAB
+Regular
+We 8:00AM - 8:50AM
+Willard Bldg 064
+Bruce Lord
+01/08/2018 - 04/27/2018
+Open
+ STAT 250 - Introduction to Biostatistics 
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21705
+001-LEC
+Regular
+MoWe 10:10AM - 11:00AM
+Thomas Bldg 101
+Michelle  Paret
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+22581
+001L-LAB
+Regular
+Fr 8:00AM - 8:50AM
+Boucke Bldg 214
+Michelle  Paret
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21706
+002L-LAB
+Regular
+Fr 9:05AM - 9:55AM
+Westgate Bldg W201
+Michelle  Paret
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21707
+003L-LAB
+Regular
+Fr 10:10AM - 11:00AM
+Huck Life Sciences Bldg 007
+Michelle  Paret
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+30129
+004L-LAB
+Regular
+Fr 1:25PM - 2:15PM
+Huck Life Sciences Bldg 007
+Michelle  Paret
+01/08/2018 - 04/27/2018
+Closed
+ STAT 318 - Elementary Probability 
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+22583
+001-LEC
+Regular
+TuTh 9:05AM - 10:20AM
+Thomas Bldg 216
+Panayiotis  Constantinou
+01/08/2018 - 04/27/2018
+Closed
+Notes: This is a combined section class
+ STAT 319 - Applied Statistics in Science 
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+22584
+001-LEC
+Regular
+MoWeFr 9:05AM - 9:55AM
+Willard Bldg 075
+Priyangi Bulathsinhala
+01/08/2018 - 04/27/2018
+Closed
+Notes: This is a combined section class
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+22585
+002-LEC
+Regular
+MoWeFr 10:10AM - 11:00AM
+Mueller Lab 008
+Priyangi Bulathsinhala
+01/08/2018 - 04/27/2018
+Closed
+Notes: This is a combined section class
+ STAT 380 - Data Science Through Statistical Reasoning and Computation 
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+22621
+001-LEC
+Regular
+TuTh 10:35AM - 11:50AM
+Wartik Lab 107
+Murali Haran
+01/08/2018 - 04/27/2018
+Closed
+ STAT 401 - Experimental Methods 
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21713
+001-LEC
+Regular
+MoFr 8:00AM - 8:50AM
+Chemistry Bldg 102
+Armine Bagyan
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+22586
+001L-LAB
+Regular
+We 8:00AM - 8:50AM
+Boucke Bldg 214
+Armine Bagyan
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21714
+002-LEC
+Regular
+WeFr 3:35PM - 4:25PM
+Willard Bldg 358
+Michael Akritas
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+22588
+002L-LAB
+Regular
+Mo 3:35PM - 4:25PM
+Boucke Bldg 214
+Michael Akritas
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+26330
+003-LEC
+Regular
+WeFr 2:30PM - 3:20PM
+Osmond Lab 117
+Trinetri Ghosh
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+27439
+003L-LAB
+Regular
+Mo 2:30PM - 3:20PM
+Boucke Bldg 111
+Trinetri Ghosh
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+28761
+004-LEC
+Regular
+MoWe 10:10AM - 11:00AM
+TBA
+Rackley Building 104
+TBA
+Mengyan Li
+Zheye  Yuan
+01/08/2018 - 04/27/2018
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+28787
+004L-LAB
+Regular
+Fr 10:10AM - 11:00AM
+Keller Bldg 210
+Mengyan Li
+01/08/2018 - 04/27/2018
+Open
+ STAT 414 - Introduction to Probability Theory 
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21715
+001-LEC
+Regular
+MoWeFr 10:10AM - 11:00AM
+Willard Bldg 073
+Arkady Tempelman
+01/08/2018 - 04/27/2018
+Closed
+Notes: This is a combined section class
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21716
+002-LEC
+Regular
+MoWeFr 9:05AM - 9:55AM
+Sackett Bldg 108
+Yuan Ke
+01/08/2018 - 04/27/2018
+Closed
+Notes: This is a combined section class
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21717
+003-LEC
+Regular
+MoWeFr 8:00AM - 8:50AM
+Willard Bldg 075
+Yuan Ke
+01/08/2018 - 04/27/2018
+Open
+Notes: This is a combined section class
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21718
+004-LEC
+Regular
+TuTh 1:35PM - 2:50PM
+Leonhard Bldg 102
+Daisy Philtron
+01/08/2018 - 04/27/2018
+Open
+Notes: This is a combined section class
+ STAT 415 - Introduction to Mathematical Statistics 
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21721
+001-LEC
+Regular
+MoWeFr 9:05AM - 9:55AM
+Walker Building 109
+Dennis Lin, 
+Siddharth Vishwanath
+01/08/2018 - 04/27/2018
+Closed
+Notes: This is a combined section class
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21722
+002-LEC
+Regular
+MoWeFr 10:10AM - 11:00AM
+Forest Resources Building 106
+Dennis Lin
+01/08/2018 - 04/27/2018
+Closed
+Notes: This is a combined section class
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21723
+003-LEC
+Regular
+TuTh 9:05AM - 10:20AM
+Willard Bldg 258
+Yanyuan Ma
+01/08/2018 - 04/27/2018
+Closed
+Notes: This is a combined section class
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+23091
+004-LEC
+Regular
+TuTh 10:35AM - 11:50AM
+Willard Bldg 062
+Bharath Kumar Sriperumbudur
+01/08/2018 - 04/27/2018
+Open
+Notes: This is a combined section class
+ STAT 416 - Stochastic Modeling 
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21725
+001-LEC
+Regular
+MoWeFr 1:25PM - 2:15PM
+Willard Bldg 267
+Armine Bagyan
+01/08/2018 - 04/27/2018
+Open
+Notes: This is a combined section class
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21726
+002-LEC
+Regular
+MoWeFr 11:15AM - 12:05PM
+Boucke Bldg 106
+Armine Bagyan
+01/08/2018 - 04/27/2018
+Closed
+Notes: This is a combined section class
+ STAT 418 - Introduction to Probability and Stochastic Processes for Engineering 
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21727
+001-LEC
+Regular
+MoWeFr 2:30PM - 3:20PM
+Wartik Lab 107
+Elena Hadjicosta
+01/08/2018 - 04/27/2018
+Closed
+Notes: This is a combined section class
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21728
+002-LEC
+Regular
+TuTh 1:35PM - 2:50PM
+Hammond Bldg 220
+Donald Richards
+01/08/2018 - 04/27/2018
+Closed
+Notes: This is a combined section class
+ STAT 440 - Computational Statistics 
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21729
+001-LEC
+Regular
+TuTh 9:05AM - 10:20AM
+Patterson Bldg 304
+Matthew Reimherr
+01/08/2018 - 04/27/2018
+Closed
+ STAT 460 - Intermediate Applied Statistics 
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21731
+001-LEC
+Regular
+MoWe 1:25PM - 2:15PM
+Business Bldg 208
+Durland Shumway
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+22590
+001L-LAB
+Regular
+Fr 1:25PM - 2:15PM
+Willard Bldg 064
+Durland Shumway
+01/08/2018 - 04/27/2018
+Open
+ STAT 461 - Analysis of Variance 
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21732
+001-LEC
+Regular
+TuTh 1:35PM - 2:50PM
+Wartik Lab 106
+Durland Shumway
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+22591
+001L-LAB
+Regular
+Fr 10:10AM - 11:00AM
+Boucke Bldg 112
+Durland Shumway
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21733
+002-LEC
+Regular
+MoFr 1:25PM - 2:15PM
+Wartik Lab 107
+Michelle  Paret
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+22592
+002L-LAB
+Regular
+We 1:25PM - 2:15PM
+Boucke Bldg 112
+Michelle  Paret
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+23107
+003-LEC
+Regular
+MoFr 11:15AM - 12:05PM
+Ferguson Bldg 005
+Michelle  Paret
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+23108
+003L-LAB
+Regular
+We 11:15AM - 12:05PM
+Willard Bldg 064
+Michelle  Paret
+01/08/2018 - 04/27/2018
+Closed
+ STAT 462 - Applied Regression Analysis 
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21734
+001-LEC
+Regular
+MoWe 8:00AM - 8:50AM
+Thomas Bldg 216
+Lingzhou Xue
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+22593
+001L-LAB
+Regular
+Fr 8:00AM - 8:50AM
+Boucke Bldg 112
+Lingzhou Xue
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21735
+002-LEC
+Regular
+MoFr 10:10AM - 11:00AM
+Wartik Lab 106
+Junli Lin
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+22594
+002L-LAB
+Regular
+We 10:10AM - 11:00AM
+Boucke Bldg 112
+Junli Lin
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+23094
+003-LEC
+Regular
+MoFr 3:35PM - 4:25PM
+Thomas Bldg 215
+Andrew Wiesner
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+23095
+003L-LAB
+Regular
+We 3:35PM - 4:25PM
+Boucke Bldg 112
+Andrew Wiesner
+01/08/2018 - 04/27/2018
+Closed
+ STAT 463 - Applied Time Series Analysis 
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21736
+001-LEC
+Regular
+MoWeFr 11:15AM - 12:05PM
+Wartik Lab 105
+Scott Roths
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21737
+002-LEC
+Regular
+TuTh 9:05AM - 10:20AM
+Business Bldg 208
+Andrew Wiesner
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+29380
+003-LEC
+Regular
+MoWeFr 1:25PM - 2:15PM
+Forest Resources Building 106
+Scott Roths
+01/08/2018 - 04/27/2018
+Closed
+ STAT 470 - Problem Solving and Communication in Applied Statistics 
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+22597
+001-LEC
+Regular
+TuTh 9:05AM - 10:20AM
+Ferguson Bldg 105
+Kirsten Eilertson
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+23076
+002-LEC
+Regular
+TuTh 10:35AM - 11:50AM
+Ferguson Bldg 105
+Kirsten Eilertson
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+29301
+003-LEC
+Regular
+TuTh 3:05PM - 4:20PM
+Sparks Bldg 006
+Kirsten Eilertson
+01/08/2018 - 04/27/2018
+Closed
+ STAT 480 - Introduction to SAS 
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21738
+001-LEC
+Regular
+Fr 10:10AM - 11:00AM
+Willard Bldg 064
+Bruce Lord
+01/08/2018 - 04/27/2018
+Closed
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21739
+002-LEC
+Regular
+TBA
+TBA
+Bruce Lord
+01/08/2018 - 04/27/2018
+Closed
+ STAT 494 - Research Project 
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+30907
+001-RSC
+Regular
+TBA
+TBA
+Matthew Beckman
+01/08/2018 - 04/27/2018
+Closed
+ STAT 494H - Research Project 
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21744
+001-RSC
+Regular
+TBA
+TBA
+Staff
+TBA
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+23273
+002-RSC
+Regular
+TBA
+TBA
+Staff
+TBA
+Open
+ STAT 496 - Independent Studies 
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+21745
+001-IND
+Regular
+TBA
+TBA
+Dennis Pearl
+01/08/2018 - 04/27/2018
+Open
+Class	Section	Days & Times	Room	Instructor	Meeting Dates	Status
+23250
+002-IND

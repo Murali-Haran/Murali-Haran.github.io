@@ -1,0 +1,84 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Mar.~19}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+HW \#7 is now due on Friday, March 23.
+\end{itemize}
+\end{frame}
+
+\startframe{6.5 Limiting Probabilities}
+\begin{itemize}
+\item Starting from the forward equations, we derived:
+$0 = P^\infty R$.
+\item Why not 
+$0 = R P^\infty $ starting from the backward equations?
+\item 
+Notation warning:  Here, I'm using $\pi$ to denote the limiting probabilities
+(the rows of $P^\infty$).  The book uses $P_1, P_2, \ldots$; the
+$\pi_i$ are something different in Section 6.6!
+\end{itemize}
+\end{frame}
+
+\startframe{6.5 Limiting Probabilities}
+The equations can be used to find the limiting $\pi$ vector:
+\begin{itemize}
+\item Another way to write $0 = P^\infty R$ is
+\[
+v_j\pi_j = \sum_{i\ne j} q_{ij}\pi_i
+\quad\mbox{for all $j$.}
+\]
+{\em Why is this ``balance condition'' different from ``detailed balance''?}
+\end{itemize}
+\end{frame}
+
+\startframe{6.5 Limiting Probabilities}
+Sufficient conditions for the existence of the limiting probabilities $\pi_j$:
+\begin{itemize}
+\item Irreducibility (all states communicate)
+\item Positive recurrence (mean time to return to each state is finite)
+\end{itemize}
+When the limiting probabilities exist, we say the chain is ergodic.
+\end{frame}
+
+\startframe{6.5 Limiting Probabilities}
+%\begin{itemize}
+%\item
+Re-interpretation of 
+$v_j\pi_j = \sum_{i\ne j} q_{ij}\pi_i$
+%\quad\mbox{
+for all $j$:
+\begin{itemize}
+\item
+In the long run,
+the rate of leaving state $j$ is the same as the rate
+of entering state $j$.
+\item Apply this to birth-death processes to find $\pi$ for such a process.
+\item Looking ahead to Section 6.6:  In fact, a birth-death process must be time-reversible.
+\end{itemize}
+\end{frame}
+
+\startframe{6.6 Time reversibility}
+\begin{itemize}
+\item Analogue to Section~4.8:  A continuous-time ergodic Markov chain is
+time-reversible with limiting probabilities $\pi_i$ if and only if
+\[
+\pi_i q_{ij} = \pi_j q_{ji} \quad\mbox{for all pairs $i,j$.}
+\]
+{\em (The \# of $i\to j$ and $j\to i$ transitions per unit time are the same.)}
+\item This is {\em detailed balance}.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

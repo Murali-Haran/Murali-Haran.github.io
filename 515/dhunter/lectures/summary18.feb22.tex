@@ -1,0 +1,134 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Feb.~22}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+HW\#5 is due {\em ELECTRONICALLY} on Friday.
+\item 
+Midterm exam:  7:00pm on Wednesday, Feb.~29 in 220 Willard.
+\item New STAT 515 brief course description:
+\begin{quotation}
+Conditional probability and expectation, Markov chains, Poisson processes, Continuous-time Markov chains, Monte Carlo methods, Markov chain Monte Carlo
+\end{quotation}
+\end{itemize}
+\notes{I'm going to see whether it's possible to move the midterm exam to a larger room. 
+Obviously, I'll announce this in class if the room changes.
+The midterm will cover the parts of Chapters 3, 4, and 5 that we've reviewed so far;
+in other words, it will cover the first half of the brief course description above.}
+\end{frame}
+
+\startframe{5.4.1 Nonhomogeneous Poisson Processes}
+Notice a slight change from the homogeneous version:
+\begin{itemize}
+\item Counts of events in disjoint time intervals are independent.
+\item $P[N(s+h)-N(s)=1] = \lambda(s) h + o(h)$ as $h\to 0$.
+\item $P[N(s+h)-N(s)\ge2] = o(h)$ as $h\to 0$.
+\item Technically, we should also say $N(0)=0$.
+\end{itemize}
+\notes{The difference is $\lambda(s)h$ instead of $\lambda h$.  Everything else is the
+same.}
+\end{frame}
+
+\startframe{5.4.1 Nonhomogeneous Poisson Processes}
+\begin{itemize}
+\item
+In a nonhomogeneous Poisson process,
+$N(s+t)-N(s)$ is Poisson distributed with mean
+\[
+\int_s^{s+t} \lambda(y)\,dy.
+\]
+\item
+If we define $m(t) = \int_0^t \lambda(y)\,dy$, then this is just
+$m(s+t)-m(s)$.
+\item
+What is the distribution of the waiting time until the first event?
+\end{itemize}
+\notes{Answer:  We derived the cdf of $T_1$, as follows:
+\[
+F_{T_1}(t) = 1-\exp\{-m(t)\}.
+\]
+This is not necessary a simple distribution.  
+}
+\end{frame}
+
+\startframe{Midterm practice}
+\question{Suppose that two light bulbs are both working today.  In the future,
+\begin{itemize}
+\item If 2 bulbs are working, with probability .02, the next day 1 will be.
+\item If 1 bulb is working, with probability .05, the next day 0 will be.
+\item If 0 bulbs are working, with probability 1, the next day 2 will be.
+\end{itemize}
+What is the expected wait time between replacement $(0\to 2)$ events?
+}
+{35 days}
+{55 days}
+{67 days}
+{71 days}
+\notes{Answer:  D.  We wrote down the transition probability matrix for
+a 3-state Markov chain that can help with this solution.  Alternatively,
+notice that the wait times to get from 2 to 1, 1 to 0, and 0 to 2 are all
+geometric random variables in this case, and the respective means
+are 50, 20, and 1.}
+\end{frame}
+
+\startframe{}
+\question{The subject of Chapter 6 is \rule{1in}{0.01in}
+Markov chains.}
+{discrete-time, discrete-space}
+{discrete-time, continuous-space}
+{continuous-time, discrete-space}
+{continuous-time, continuous-space}
+\notes{Answer:  C.  As Dr.~Haran puts it, this
+course will cover the DD, CD, and DC cases.  We have
+done DD and we now move to CD.}
+\end{frame}
+
+\startframe{5.3 The Poisson Process}
+{\em Review from Monday:  }  
+Poisson processes add:
+\begin{itemize}
+\item
+If $N_1(t)$ and $N_2(t)$ are Poisson processes with rates $\lambda_1$ and $\lambda_2$, 
+then $M(t) = N_1(t)+N_2(t)$ is a Poisson process with rate $\lambda_1+\lambda_2$.
+\item
+Similarly, suppose we label each event $M(t)$ as type-1 or type-2 with probabilities
+$\lambda_1/(\lambda_1+\lambda_2)$ and 
+$\lambda_2/(\lambda_1+\lambda_2)$, respectively.  Then the counting process for each
+type of event is separately a Poisson process.
+\end{itemize}
+\notes{The latter fact, which may be referred to as {\em thinning}
+a Poisson process, will be especially important as we study continuous-time
+Markov chains.}
+\end{frame}
+
+\startframe{6.2 Continuous-Time Markov chains}
+Consider a continuous-time, discrete-space MC, $\{X(t) : t\in[0,\infty)\}$:
+\begin{itemize}
+\item The chain stays in each state for a random (real-valued) time.
+\item When the chain switches, it picks from the possible states according to
+some discrete-time Markov chain.
+\item Markov property:  
+Conditional on the present, what happens next is independent of the past.
+\item Homogeneity:  The chain's behavior at time $t$ does not
+depend on $t$.
+\end{itemize}
+\notes{
+We discussed these assumptions in class.  The last two assumptions
+imply that the time spent in any state is exponentially distributed.  
+We will prove this fact in the next class.
+}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

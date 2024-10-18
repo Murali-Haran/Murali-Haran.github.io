@@ -1,0 +1,88 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Mar.~16}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+For Monday, March 19:  Read Sections 6.6, 6.8
+\item HW \#7 is due on Wednesday, March 21.  (Discuss?)
+\end{itemize}
+\end{frame}
+
+\startframe{6.5 Limiting Probabilities}
+Recall Section 4.4:
+\begin{itemize}
+\item
+If limiting probabilities existed, so did unique stationary (long-term) probabilities.
+\item Not conversely!  (Why not?)
+\item In Chapter 6, life is simpler in a certain sense.
+\end{itemize}
+\end{frame}
+
+
+\startframe{6.5 Limiting Probabilities}
+\begin{itemize}
+\item Suppose that $\lim_{t\to\infty}P_{ij}(t)$ exists and is independent of $i$ for all $i, j$.
+\item Denote $P^\infty= \lim_{t\to\infty}P_{ij}(t)$ with each row the same.  (How to label?)
+\item Derive:
+$0 = P^\infty R$.
+\end{itemize}
+\end{frame}
+
+\startframe{6.5 Limiting Probabilities}
+The equations can be used to find the limiting $\pi$ vector:
+\begin{itemize}
+\item Another way to write $0 = P^\infty R$ is
+\[
+v_j\pi_j = \sum_{i\ne j} q_{ij}\pi_i
+\quad\mbox{for all $j$.}
+\]
+\item Find $\pi$ if
+\[
+R=
+\begin{bmatrix}
+-\lambda_1 & \lambda_1 \\
+\lambda_2 & -\lambda_2 
+\end{bmatrix}.
+\]
+\end{itemize}
+\end{frame}
+
+\startframe{6.5 Limiting Probabilities}
+Sufficient conditions for the existence of the limiting probabilities $\pi_j$:
+\begin{itemize}
+\item Irreducibility (all states communicate)
+\item Positive recurrence (mean time to return to each state is finite)
+\end{itemize}
+When the limiting probabilities exist, we say the chain is ergodic.
+\end{frame}
+
+\startframe{6.5 Limiting Probabilities}
+%\begin{itemize}
+%\item
+Re-interpretation of 
+$v_j\pi_j = \sum_{i\ne j} q_{ij}\pi_i$
+%\quad\mbox{
+for all $j$:
+\begin{itemize}
+\item
+In the long run,
+the rate of leaving state $j$ is the same as the rate
+of entering state $j$.
+\item Apply this to birth-death processes.
+\item Looking ahead to Section 6.6:  In fact, a birth-death process must be time-reversible.
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

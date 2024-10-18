@@ -1,0 +1,99 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Jan.~27}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+Read Sections 4.5.1 and 4.7 (both editions)
+\item 
+The next homework will not be posted until Monday; it will be due sometime the week
+ of Feb.~6.
+\end{itemize}
+\notes{Also, I posted some more R code to serve as a companion to HW \#2. 
+I will continue to do this whenever it seems necessary, so please continue
+to ask R-related questions on email or in office hours so that I can tailor these
+supplementary materials in the future.}
+\end{frame}
+
+\startframe{4.3 Classification of States}
+\question{If all of the states of a Markov chain communicate with each other,
+the chain is said to be}
+{irreducible}
+{ergodic}
+{recurrent}
+{transient}
+\notes{Correct answer:  A.  Obviously this is nothing but a terminology question.}
+\end{frame}
+
+\startframe{4.3 Classification of States}
+\question{If $P$ is the transition matrix for a Markov chain, what does the symbol
+$P_{ij}^n$ mean?}
+{$(P^n)_{ij}$}
+{$(P_{ij})^n$}
+{$nP_{ij}$}
+{$P_{ij}$}
+\notes{Correct answer:  A.  C and D are silly answers; I only put them in because 
+I needed 4 choices.  The important thing to remember here is that the ambiguous notation
+$P_{ij}^n$ refers to the $i,j$th entry of $P^n$, which has a very meaningful interpretation 
+for a Markov chain.  On the other hand, $(P_{ij})^n$ does not have a useful interpretation.
+}
+\end{frame}
+
+
+\startframe{4.3 Classification of States}
+Gambler's ruin:
+\begin{itemize}
+
+\item Start with $i$ dollars, $0\le i\le N$.
+\item Bet 1 dollar per game (win \$1 if you win, lose \$1 if you lose)
+\item Continue until you have \$0 or $\$N$, then stay there.  
+\item
+The communicating classes are $\{0\}, \{1, \ldots, N-1\}, \{N\}$.
+\item What is the probability that we wind up at $N$ dollars
+(given $X_0=i$)?
+\end{itemize}
+\notes{
+We derived the answer to the final question using essentially the
+technique seen in Section 4.5.1 of the textbook.  This is a very useful
+example, emphasizing the importance of conditioning and, occasionally,
+recurrence relationships when analyzing Markov chain behavior.
+}
+\end{frame}
+
+\startframe{4.3 Classification of States}
+Theorem:  
+Recurrence (or transience) is a class property.
+
+How do we prove this?
+\notes{On the next slide are three equivalent ways to characterize
+recurrent states.  We decided that $\sum_{n=1}^\infty P_{ii}^n = \infty$
+was the most useful of the three for this situation, and I asked you
+to try to prove that if $\sum_{n=1}^\infty P_{ii}^n = \infty$ and 
+there exist $k$ and $m$ with $P_{ij}^k>0$ and $P_{ji}^m>0$, then
+$\sum_{n=1}^\infty P_{jj}^n = \infty$.  Check Section 4.3 if you get stuck;
+we'll wrap this up next Monday.
+}
+\end{frame}
+
+\startframe{4.3 Classification of States}
+State $i$ is recurrent if and only if, conditional on $X_0=i$, 
+\begin{itemize}
+\item $P(\mbox{ever revisiting $i$}) = 1$
+\item $E(\#\{T>0:  X_T = i\}) = \infty$.
+\item $\sum_{n=1}^\infty P_{ii}^n = \infty$.
+\end{itemize}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

@@ -1,0 +1,32 @@
+<TITLE> Data Science through Statistical Reasoning and Computation, Spring 2017  </TITLE>
+<center>
+Tentative schedule for STAT 380<br> Data Science through Statistical Reasoning and Computation, Spring 2017 <b> (check
+back often!) </b> <br>
+<!-- Sections refer to the ??? textbook -->
+ <table border="7" >
+<tr> <th scope = "col">Date</th> <th scope = "col">Topics</th> <th scope = "col"> Reading</th>
+
+<tr><td> Week 1 (Jan 9) <td> R basics review <td> 1.1-7, 1.13-15
+<tr><td> Week 2 (Jan 16)  <td> Vectorized operations and EDA <td> 1.8-9, 2.7
+<tr><td> Week 3 (Jan 23)  <td> Graphics <td> 3.1-5
+<tr><td> Week 4 (Jan 30)   <td> Data structures <td> 1.10-11, 2.4-6, 4.2
+<tr><td> Week 5  (Feb 6)  <td> Lists, Functions <td> 5.1-6
+<tr><td> Week 6  (Feb 13) <td> Functions; Debugging and style; Monte Carlo basics <td> 5.7, 7.1-3, 15.11
+<tr><td> Week 7  (Feb 20) <td> Scope/environment; more on Monte Carlo/simulation <td> 5.8-9
+<tr><td> Week 8  (Feb 27)  <td> Review and midterm <td> 
+<tr><td>           <td><font color="#FF0000"> 
+ IN CLASS Midterm exam: Thursday, March 2 </font>
+<tr><td>   (March 6) <td> <em> spring break </em>
+<tr><td> Week 9 (March 13) <td> Shell <td>  2.1-3, 10.1-5
+<tr><td> Week 10 (March 20) <td> Regular expressions and text mining <td> 8.1-5, 15.9
+<tr><td> Week 11 (March 27) <td> XML and simple web scraping <td> 11.2-3, 4.4
+<tr><td> Week 12 (April 3) <td> SQL <td> 9.1-5
+<tr><td> Week 13 (April 10) <td> Special topics: resampling <td> 6.1-2, 6.4
+<tr><td> Week 14 (April 17) <td> Special topics: neerest neighbor <td> 6.4, 15.1
+<tr><td> Week 15 (April 24) <td> Review <td> 
+<tr><td> May 1  <td><font color="#FF0000"> Comprehensive final: Wednesday 5/3/2017 10:10am-12pm Health and Hum Dev 254
+ </font> 
+</table>
+</center>
+</body>
+</html>

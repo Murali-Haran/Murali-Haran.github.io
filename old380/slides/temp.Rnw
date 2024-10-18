@@ -1,0 +1,8 @@
+THIS (BELOW) WORKS:
+<<echo=TRUE,fig.height=5>>=
+class(3.5)
+class("Hello there")
+class(TRUE)
+@
+
+

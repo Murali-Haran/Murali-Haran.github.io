@@ -1,0 +1,16 @@
+Some specifics for <b> statistical computing in C </b>: <br>
+You should avoid writing your own random number generators --- you
+will definitely be wasting time 'reinventing the wheel', are likely to
+make mistakes, are likely to write less efficient code and are
+probably not using the state of the art random number
+generators. Simply use R random number generators by linking directly
+to the R libraries in the following way: <br>
+Add the following to the top of your C program: <br>
+#include "matrix.h" <br>
+#define MATHLIB_STANDALONE 1<br>
+#include &lt;R.math.h&gt; <br>   <!-- &quot;Rmath.h&quot;  <br> <br> --->
+and compile your program foo.c as follows: gcc -o foo foo.c -lm -lRmath <br> <br>
+Of course, this assumes that you already have R installed in the right place on your machine. <br> <br>
+
+For matrix operations, a well established set of libraries is <a href="http://www.netlib.org/lapack/lug/"> lapack </a>  <br>
+For sparse matrix operations, an excellent option is <a href="http://www.tau.ac.il/~stoledo/taucs/"> TAUCS </a> 

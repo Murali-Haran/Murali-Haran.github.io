@@ -1,0 +1,6 @@
+(from Peter Hoff) Do a sim study: (1) how does coverage of a z-interval change with sample size for sim. from Model A, Model B, (2) come up with a situation where you break coverage, (3) how about coverage of a t-interval? (4) What if you account for uncertainty in variance used in t-interval (studying whether t-interval coverage issues are due to poor estimate of variance or some other reason)
+
+Simulate epidemics: some version of time series SIR model? Answer questions based on simulation. (Basic Monte Carlo)
+
+Later: lin GP -- MLE sim study (good reason to learn how to use tryCatch). What happens if we try to estimate 3 parameters instead of just 1? How does uncertainty grow?
+

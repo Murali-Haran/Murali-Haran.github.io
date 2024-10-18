@@ -1,0 +1,52 @@
+## from Ch. 12 of Lange textbook
+target <- function(x)
+  {
+    val <- abs(x-1) + abs(x-3) + abs(x-4) + abs(x-8) + abs(x-10)
+    return(val)
+  }
+
+xs <- seq(0,10, length=100)
+ys <- sapply(xs, target)
+plot(xs, ys, type="l")
+
+## toy example with medians
+myY <- rgamma(10, 10, 1)
+medianTarget <- function(mu, dat=myY)
+  {
+    val <- sum(abs(dat-mu))
+    return(val)
+  }
+
+xs <- seq(3,20, length=100)
+ys <- sapply(xs, medianTarget)
+plot(xs, ys, type="l")
+
+
+
+surrogate <- function(mu,currval=8,dat=myY)
+  {
+    val <- sum((dat-mu)^2/(2*abs(dat-currval))) + sum(0.5*abs(dat - currval))
+    return(val)
+  }
+  
+ysSurr <- sapply(xs, surrogate)
+lines(xs, ysSurr, col="red")
+
+currval <- 4 # starting value
+for (i in 1:10)
+  {
+    plot(xs, ys, type="l")
+    newsurrogate <- function(mu)
+      return(surrogate(mu, currval))
+    currval <- optim(currval, newsurrogate)$par
+    points(currval, medianTarget(currval), col="blue",pch=19)
+    ysSurr <- sapply(xs, newsurrogate)
+    lines(xs, ysSurr, col="red")
+
+    readline(prompt = cat("Pause at iteration ",i," with current val=",currval,"(press enter)\n"))
+  }
+
+## correct answer (median)
+median(myY)
+#9.766966
+

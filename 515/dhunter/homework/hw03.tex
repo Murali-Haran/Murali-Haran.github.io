@@ -1,0 +1,114 @@
+\documentclass{article}
+\usepackage{url}
+\usepackage{amsmath,bm}
+\usepackage{amsfonts}
+\pagestyle{empty}
+\setlength{\textwidth}{6in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{9.25in}
+
+\begin{document}
+
+\begin{center}
+{\bf STAT 515}
+
+{\bf Homework \#3, due Wednesday, Feb. 8 at 2:30pm}
+\end{center}
+
+{\it Please make every assignment easier to grade by neatly organizing your
+writeup and clearly labeling your final answers when appropriate.}
+
+\begin{enumerate}
+
+  %% 4. 44 understanding how transience affects M.C. behavior
+  \item Suppose that a population consists of a fixed number, $2m$, of genes in
+  any generation. Each gene is one of two possible genetic types. If any
+  generation has exactly $i$ (of its $2m$) genes of type 1, then for any $0\le
+  j\le 2m$, the next generation will have exactly $j$ genes of type 1 with
+  binomial probability 
+  \[ 
+  {{2m}\choose j} \left( \frac{i}{2m} \right)^j \left( \frac{2m-i}{2m}
+  \right)^{2m-j}.  
+  \]
+  Let $X_n$ denote the number of type 1 genes in the $n$th generation, 
+  and assume $X_0=m$.
+
+  \begin{enumerate}
+
+    \item Find $E(X_n)$.
+
+    \item Suppose that $m=6$. What is the probability that $X_n=m$ for some
+    $n>0$?
+
+    \item If $m=6$, what is the expected number of generations in which all
+    genes except one are of the same type?
+
+  \end{enumerate}
+
+  %4.20, plus an extra magic square activity
+  \item A transition matrix $P$ is called {\em doubly stochastic} if each
+  of its column sums equals one.  
+  
+  \begin{enumerate}
+  
+    \item If an irreducible, aperiodic Markov chain has finitely many states and
+    its transition matrix is doubly stochastic, prove that its limiting probability
+    distribution is discrete uniform.
+    
+    \item Find a doubly stochastic transition matrix $P$ for a Markov chain with
+    three states such that every entry of $P$ is a different integer multiple of
+    $1/12$ and such that $P_{11}=0$ and $P_{22}=1/2$. Calculate the matrix
+    $P^{10}$ (i.e., the tenth power of $P$). Explain why all nine entries of
+    $P^{10}$ should be nearly the same.
+
+  \end{enumerate}
+
+  % 4. 24 understanding stationarity, limiting, marginal distri. of M.C. states.
+  \item Consider three urns, one colored red, one white, and one blue.
+  The red urn contains 1 red and 3 blue balls; the white urn contains
+  3 white balls, 2 red balls, and 1 blue ball; the blue urn contains
+  4 white balls, 3 red balls, and 2 blue balls.  At the initial stage,
+  a ball is randomly selected from the red urn and then returned to
+  that (red) urn. At every subsequent stage, a ball is randomly selected
+  from the urn whose color is the same as that of the ball previously
+  selected and is then returned to the urn from which it was drawn. 
+
+  \begin{enumerate}
+
+    \item Explain why this process is a Markov chain, then define an appropriate
+    transition probability matrix to describe it.
+
+    \item Does this process have a stationary distribution? Justify your answer.
+
+    \item Explain why this process has a limiting distribution.
+
+    \item In the long run, what proportion of the selected balls are red? What
+    proportion are white? What proportion are blue?
+
+    \item Simulate a Markov chain of length 100,000 using the information
+    provided above and count the proportion of times the chain was in each of
+    the states. Compare this to your answer.
+
+    \item Suppose you have taken 4 steps, i.e., you start with the initial
+    distribution to obtain $X_0$ and use the transition probability matrix above
+    to obtain state $X_4$ of the Markov chain. What proportion of times would
+    you expect $X_4$ to be red, white, and blue, respectively?
+ 
+    \item Now simulate 10,000 realizations of the random variable $X_4$ using
+    the initial distribution and transition probability matrix for this process.
+    Calculate the proportion of times in your simulations that $X_4$ is red,
+    white, and blue. Compare these proportions to your theoretically obtained
+    answers above.
+
+  \end{enumerate} 
+
+  % 4.66 
+  \item Suppose that in a branching process, the expected number of offspring of
+  a given individual equals $4/5$. Find the expected number of individuals that
+  ever exist in this population, assuming that $X_0=n$.
+
+\end{enumerate}
+
+\end{document}
+

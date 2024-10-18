@@ -1,0 +1,53 @@
+
+\documentclass{article}
+\usepackage{amsmath, amsfonts,hyperref}
+\usepackage{url}
+\pagestyle{empty}
+\setlength{\textwidth}{6in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{9in}
+
+\begin{document}
+%\pagestyle{empty}
+\begin{center}
+\Large
+{\bf Homework 8, Stat 515, Spring 2015}\\
+\normalsize
+Due Wednesday, April 15, 2015 \underline{{\bf beginning of class}}\\
+Important things to keep in mind when writing {\tt R} code: 
+\begin{enumerate}
+\item Organization: using functions where possible (modularization). 
+\item Appearance: justification (indent) (for the last, using Rstudio or emacs will be helpful). 
+\item Well commented code.
+\item Sensible variable names: generally use descriptive names wherever possible.
+\end{enumerate}
+\end{center}
+
+\begin{enumerate}
+\item Write a program to simulate a non-homogeneous Poisson process on
+  the interval $(0,10)$ where the intensity function is $\lambda(t)=
+  $. Simulate the process by first simulating the total number of
+  counts on the interval, then use rejection sampling to sample from
+  the conditional distribution of the location of the points given the
+  total number of points on the interval.
+
+\item Let $\{X(t), t>0\}$ be Brownian motion with 0 drift and variance parameter $\sigma^2$. Suppose $X(1)=B$. 
+\begin{enumerate}
+\item What is the joint distribution of $X(s_1), X(s_2)$ for $s_1,s_2 \in (0,1)$? Clearly explain the main steps in your justification.
+\item Suppose $\sigma^2=3$, $B=10$, $s_1=0.1, s_2=0.3$. What is the correlation between $X(s_1)$ and $X(s_2)$? 
+\item Let $0<s_1<s_2<1$ and $\sigma^2=3$, $B=10$. Plot the correlation between $X(s_1), X(s_2)$ as a function of the distance, $d=\mid s_1-s_2\mid$.
+\end{enumerate}
+\item For the problem above, assume $\sigma^2=3$, $B=10$. Now assume
+  that $s_1,s_2$ are the order statistics of two Uniform(0,1) random
+  variates. Use Monte Carlo to approximate the probability that the
+  correlation between $X(s_1)$ and $X(s_2)$ is greater than
+  0.1. 
+\begin{enumerate}
+\item Provide pseudocode for your algorithm. (A clear description of your algorithm without using specific programming language.) 
+\item Report your Monte Carlo sample size and your Monte Carlo standard error.
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

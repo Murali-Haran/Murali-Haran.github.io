@@ -1,0 +1,112 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Apr.~4}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+HW \#9 is due on Friday, April 6 at 2:30pm.
+\item 
+All homework must be turned in electronically from now on.
+\item 
+Something I had not noticed regarding Problem \#2:
+You can use 5 uniforms to simulate a beta(3,2).  
+\end{itemize}
+\notes{
+We discussed the fact that if $U_1, \ldots, U_5 \sim \mbox{unif}(0,1)$,
+then
+\[
+\frac{ \log(U_1U_2U_3)}{\log(U_1U_2U_3U_4U_5)} \sim \mbox{Beta}(3,2).
+\]
+We also discussed the fact that $\log(U_1U_2U_3)$ and $\log U_1+\log U_2
++\log U_3$ are the same thing mathematically, though they are NOT the same
+thing in computer math:  In computer math, the first expression is faster to evaluate 
+but less stable numerically because of the increased possibility of underflow.
+}
+\end{frame}
+
+
+\startframe{Monte Carlo methods}
+Importance sampling standard errors
+\begin{itemize}
+\item Plain importance sampling:  Easy
+\item Ratio importance sampling:  Use delta method to derive
+\[
+\Var \left[ \sqrt{n} ( \tilde \mu - \mu)  \right] \approx \tilde\sigma^2,
+\]
+where $\tilde \sigma^2 = \alpha^2 (1,-\mu) \Sigma (1,-\mu)^\top$ and $\Sigma=\ldots$
+\end{itemize}
+\notes{This is simply a reminder about the delta-method result from
+class on Monday.  We didn't discuss it today, though later we'll use it to approximate
+Monte Carlo standard errors for ratio importance sampling estimators.
+}
+\end{frame}
+
+
+\startframe{Monte Carlo methods}
+Importance Sampling Example:  What is $P(X>4.5)$ for $X\sim N(0,1)$?
+\begin{itemize}
+\item Try naive approach.
+\item Try importance sampling with $q(x) = \exp\{-(x-4.5)\} I\{x>4.5\}$.
+\item Try ratio importance sampling.  (Careful!)
+\item This type of rare event problem often good for importance sampling.
+\end{itemize}
+\notes{
+We demonstrated in R first the naive approach:\\
+\ \\  
+{\tt mean(rnorm(1e6) $>$ 4.5)}\\
+\ \\
+and an importance sampling approach using the $q$ given above:\\
+\ \\
+{\tt K=4.5; x=rexp(1e4)+K; mean((x>4.5)*dnorm(x)/exp(K-x))}
+}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Lessons learned:
+\begin{itemize}
+\item Plain importance sampling needs %, $q$ must be chosen so that
+$g(x)f(x)>0 \Rightarrow q(x)>0$.
+\item Ratio importance sampling needs %, $q$ must be chosen so that
+$f(x)>0 \Rightarrow q(x)>0$.
+\item (Can use different samples for numerator 
+and denominator.)
+\end{itemize}
+\notes{We discussed this issue at length.  It was illustrated using a value of 
+{\tt K=5} in the example on the previous slide.  More generally, importance sampling
+can run into trouble whenever $q(x)$ is very small for values of $x$ where 
+$g(x) f(x)$ is large.
+It can be very difficult to diagnose the problems this causes, so it should simply be
+planned for and avoided.
+}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Ratio importance sampling application:
+\begin{itemize}
+\item Goal:  Estimate $\mu(\theta) = \E_{f_\theta} g(X)$ for $\theta\in\Theta$.
+\item Plain importance sampling:  Draw new sample for each $\theta\in\Theta$.
+\item Ratio importance sampling:  Draw a {\em single} sample from $q(x)$\ldots
+
+(Need: $f_\theta(x)>0$ implies $q(x)>0$ for all $\theta$.)
+\end{itemize}
+\notes{
+We only started to discuss this, but it is an important topic because the need to
+estimate a function $\mu(\theta)$ that is difficult to evaluate is actually somewhat
+common.  We'll continue this discussion on Friday.
+}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+
+
+

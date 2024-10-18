@@ -1,0 +1,66 @@
+<hr> Some useful links for LaTex<hr>
+<ul>
+<LI> Windows: 
+
+<ul>
+<li> Winedt: <a href="http://www.winedt.com/"> LaTeX editor/environment for Windows </a> This appears to be a decent environment but does have the downside that it may not be completely free (on the other hand, you can obtain it for a 30 day trial period and then ignore the pop-ups!) 
+<li> miktek: <a href="http://leptir.ifs.hr/~mpinter/miktex.html"> LaTeX on Windows </a> 
+<li> <a href="http://cerium.raunvis.hi.is/~tpr/latex/#Editor"> LaTeX setup for Windows </a>
+</ul> 
+
+<LI> Macintosh: 
+<ul>
+<li> Texshop: <a href="http://www.uoregon.edu/~koch/texshop/"> environment for Mac </a>
+</ul>
+<li> <b> Emacs:  </b> <br>
+It is very helpful to use a good editor for latex. My personal preference is emacs (it works across all platforms) so here is some information for emacs (you can search online for information on LaTex with other editors): <br>
+Installation  of <u> auctex </u> (for latex-mode in emacs): <a href="http://savannah.gnu.org/projects/auctex"> auctex </a> <br>
+(you will typically install this as root in: /usr/share/emacs/site-lisp/) <br>
+In your .emacs file you will need the line:  (require 'tex-site) <br>
+Here is an <a href="Latexhelp/.emacs"> example </a> of a .emacs file.<br><br>
+
+<LI> General: 
+<ul>
+<li> <a href="http://ems.calumet.purdue.edu/mcss/kevinlee/mathwriting/"> Mathematical Writing Tips </a> 
+<li> <a href="http://cs.bilgi.edu.tr/pages/CSDN/symbols.pdf"> Symbols Guide 1 </a> 
+<li> <a href="http://www.artofproblemsolving.com/LaTeX/AoPS_L_GuideSym.php"> Symbols Guide 2 </a>
+<li> <a href="http://omega.albany.edu:8008/Symbols.html"> Symbols Guide 3 </a> 
+<li> <a href="http://amath.colorado.edu/documentation/LaTeX/basics/steps/help_latex.html"> LaTex documentation </a> 
+</ul>
+
+<LI>  Some  basics (should work in general, but the commands are aimed at Linux systems)
+<ul> 
+<li> <b> A sample LaTex file: </b> <a href="Latexhelp/sample.tex"> sample.tex </a>  and the associated <a href="Latexhelp/southpark.jpg">  jpg file </a> (you need to download both for the example to work)
+<li> <b> To compile a LaTex file on Linux:</b> <br>
+pdflatex sample.tex  <br>
+(this directly produces a pdf file called sample.pdf (you need 'pdflatex' to do this)<br>
+<i> Other ('older') approaches: </i> <br>
+latex sample.tex  % this produces sample.dvi as output <br>
+dvips -o sample.ps sample.dvi  % this produces sample.ps, a postscript file <br>
+dvips -o -Ppdf sample.ps sample.dvi  % this produces sample.ps, a postscript file that can be converted into a pdf file<br>
+ps2pdf sample.ps % this converts the ps to a pdf file <br>
+Of course, you can view the ps file using ggv or gv (ghostview) and the pdf file via xpdf or acroread.
+</ul>
+For <b> PSU theses </b>: <a href="http://www.esm.psu.edu/psuthesis/"> PSU Thesis package </a> 
+<br> <br>
+
+<li> <b> References: using bibtex </b>  <br> 
+Bibtex is a wonderfully simple and remarkably convenient way to add
+references in latex: create a myrefs.bib file where you will paste all
+the references in bibtex format, then add the lines
+\bibliographystyle{apalike} and \bibliography{myrefs} before the
+\end{document} command in your main latex file. In your latex file,
+you would put in references by using \cite and \citep commands. Then,
+compile the files together. Details are given here: <a
+href="http://www.bibtex.org/"> bibtex resource </a>. Another handy <a href="
+http://www.astro.psu.edu/gradinfo/psuthesis/bibs.html"> guide </a>.
+ Plus, you can often simply obtain the references from search
+engines, readily formatted for your use (you don't have to do much
+beyond cutting and pasting the results from the search.) 
+For instance: <br>
+<i> CIS search engine </i> Go to <a href="https://www.statindex.org/psqlQuery"> CIS search </a>, set output format to 'bibtex', and then use the results from your search by pasting it into your myreferences.bib file <br>
+<a href="http://scholar.google.com/"> <i> Scholar google </i> </a> change
+your preferences to 'import into bibtex' : that way, you can get
+bibtex ready references as well though you should typically check to
+make sure it's in the right format and has the right information;
+scholar.google is not always reliable.

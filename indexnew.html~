@@ -1,0 +1,115 @@
+<HTML>
+<HEAD>
+<TITLE> Murali Haran </TITLE>
+</HEAD>
+<body bgcolor=EEE8CD> <!-- C1CDCD -->
+<blockquote>
+<blockquote>
+
+
+<CENTER>
+<FONT SIZE=5> <a href="http://scholar.google.com/scholar?q=murali+haran&hl=en&lr=&btnG=Search"> Murali </a>  <a href="http://www.google.com/search?q=Haran"> Haran </a> *
+</FONT> <BR><BR>
+</CENTER>
+
+<hr>
+<TABLE>
+<TR>
+<!--TD><img src="DSCF0063.jpg" align=absleft></TD-->
+<TD><img src="MuraliADsmall2.jpg" align=absleft></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP> <!-- <H2>Murali Haran</H2> -->
+<b> Office </b>: 421B Thomas (Center for Ecology and Environmental Statistics) <br>
+<b> Mail </b>: 326 Thomas, University Park, PA 16802. <br>
+<b> Phone</b>: 814-863-8126 <br>
+<b> email</b>: m(followed by my last name all in lower case) at stat.psu.edu <br><br>
+<i> During fall 2009, I will be a <a href="http://www.samsi.info/opportunities/index.shtml"> New Researcher Fellow </a> in North Carolina at the <a href="http://www.samsi.info"> SAMSI </a> program on space-time analysis for environmental mapping, epidemiology, and climate change. </i> <br>
+
+<HTML>
+<!-- Assistant Professor <br> Department of Statistics <br> Penn State University <br> -->
+<!-- <br><a href="mailto:mharan@stat.psu.edu">mharan@stat.psu.edu </a> -->
+</td></tr></table>
+<hr>
+<table cellpadding=12>
+<tr><td valign=TOP>
+
+
+<b>Research</b> <BR><BR>
+
+I received my Ph.D. from the School of Statistics at the University of
+Minnesota and a B.S. in Computer Science from Carnegie Mellon
+University. My research interests include statistical computing
+(Markov chain Monte Carlo) and spatial modeling (primarily involving
+Gaussian random fields and Bayesian hierarchical models), with
+applications to problems in ecology, geosciences, geography and
+epidemiology. I have also worked on statistical techniques called
+random forests for applications in software engineering research. For
+more, please see: <A HREF="http://www.stat.psu.edu/~mharan/bio.html">
+<font color="#FF0000"> background and more on my research.</A> </font>
+<br><BR>
+
+<b> Select recent papers </b> (longer list: <a href="pubs.html"> here </a>) <br><BR>
+
+<LI>Goes, M., Urban, N., Tonkonojenkov, R., Haran, M., and Keller, K. (2009)
+<A HREF="http://www.stat.psu.edu/~mharan/jgr_final.pdf"> The skill of different ocean tracers in reducing uncertainties about projections of the Atlantic Meridional Overturning Circulation  </A>,<em> submitted </em> <a href="jgrgoes.bib"> bibtex </a> <br><br><!-- <\! submitted to Journal of Geophysical Research -\\-> > -->
+
+<LI>Tibbits, M.M., Haran, M., Liechty, J.L. (2009)
+<A HREF="http://www.stat.psu.edu/~mharan/parallelmslice.pdf"> Parallel multivariate slice sampling </A>,<em> submitted </em> <a href="parallelmslice.bib"> bibtex </a> <br><br><! submitted to Statistics and Computing  -->
+
+<LI>Bhat, K.S., Haran, M., Tonkonojenkov, R., and Keller, K. (2009)
+<A HREF="http://www.stat.psu.edu/~mharan/climateinfer.pdf"> Inferring likelihoods and climate system characteristics from climate models and multiple tracers </A>,<em> submitted </em> <a href="climateinfer.bib"> bibtex </a> <br><br><!-- submitted to Annals of Applied Statistics  -->
+
+<LI> Recta, V., Haran, M., and Rosenberger, J.L. (2009)
+<A HREF="http://www.stat.psu.edu/~mharan/twostageGP.pdf"> A two-stage model for incidence and prevalence in point-level spatial count data </A>, <em> submitted </em> <a href="twostage.bib"> bibtex </a> <br> <br>
+
+<LI>Haran, M. (2009)
+<A HREF="http://www.stat.psu.edu/~mharan/spatial.final.pdf"> Gaussian random field models for spatial data, </A> to appear in  <em> Handbook of Markov chain Monte Carlo </em>, Editors, Brooks, S.P., Gelman, A.E. Jones, G.L. and Meng, X.L., Springer-Verlag. <a href="spatialmcmc.bib"> bibtex </a> <br> <br>
+
+<LI>Haran, M., Bhat, K.S., Molineros, J, and De Wolf, E. (2009)
+<A HREF="http://www.stat.psu.edu/~mharan/crop1.pdf"> Estimating the risk of a crop epidemic from coincident spatiotemporal processes </A>, <em> accepted for publication in The Journal of Agricultural, Biological and Environmental Statistics, DOI: 10.1198/jabes.2009.08006. </em> <a href="cropepi.bib"> bibtex </a> <br> <br>
+
+<LI> Haran, M. and Tierney, L. (2009), Automated Markov chain Monte Carlo for a class of spatial models, <em> submitted </em> <a href="htspatialmc.bib"> bibtex </a> <br> <br>
+
+<LI>Flegal, J.M., Haran, M., and <a
+href="http://www.stat.umn.edu/~galin"> Jones, G.L.</a> (2008) <A HREF="mcse_rev2.pdf"> Markov chain Monte
+Carlo: Can we trust the third significant figure? </A> 
+ <em> Statistical Science,</em> <b> 23,</b>250--260. <a href="flegal.bib"> bibtex </a> <br>
+Code that implements the consistent batch means
+procedure for MCMC standard errors as described in the paper: <a
+href="http://www.stat.psu.edu/~mharan/batchmeans.R"> R function </a>, <a href="http://www.stat.psu.edu/~mharan/cbm.c"> C function </a> and <a href="http://www.stat.psu.edu/~mharan/bm.m"> Matlab function </a>
+for consistent batch means<br> <br>
+
+<LI>Jones, G.L., Haran, M., Caffo, B.S. and Neath, R. (2006)
+ <A HREF="http://www.bepress.com/jhubiostat/paper72"> Fixed Width Output Analysis for Markov chain Monte Carlo </A> <em>,
+ Journal of the American Statistical Association, 101:1537--1547. </em> <a href="mcsejasa.bib"> bibtex </a> <br> <br>
+
+<HR>
+<b>Teaching</b> <BR><BR>
+
+<LI> <A Href = "http://www.stat.psu.edu/~mharan/515/515.html"> Stochastic Processes and Monte Carlo (STAT 515), spring 2009 </A>, (also spring 2005-2008). <br>
+
+<LI> <A Href = "http://www.stat.psu.edu/~mharan/414/414.html"> Introduction to Probability Theory (STAT 414), spring 2009 </A> <br>
+
+<!-- <LI> <A Href = "http://www.stat.psu.edu/~mharan/200H/200H.html"> Elementary Statistics (STAT 200 (Honors)),</a> fall 2004-2008). <br> -->
+<LI> Elementary Statistics (STAT 200 (Honors)), fall 2004-2008. <br>
+
+<LI> <a href="http://cms.psu.edu"> Advances in Ecology </a> (ECLGY 597B), fall 2006-2008 <br> 
+
+<LI> <A Href = "http://www.stat.psu.edu/~mharan/spatial/spatial.html"> Spatial Models (STAT 597A) </A> fall 2006, 2007. <BR> 
+
+<LI> <A Href = "http://www.stat.psu.edu/~mharan/MCMCtut/MCMC.html"> MCMC Tutorial for Center for Astrostatistics Summer School</A>, June 2005-2009. <BR>
+
+<LI> Elementary Statistics (STAT 200), fall 2004.
+
+<!-- <LI> <A Href = "http://www.stat.psu.edu/~mharan/MCMCtut/MCMC.html"> MCMC Tutorial for Center for Astrostatistics Summer School</A>, June 2005 (also June 2006, 2007). <BR> -->
+
+<!-- <LI> <a href="http://cms.psu.edu"> Stat 200, </a> fall 2004. -->
+<HR>
+
+
+<br>
+<A HREF="http://www.stat.psu.edu/~mharan/index2.html"> Everything Else </A> (non-academic) <br> 
+<br> <br>
+<FONT SIZE=2> * pronunciation guide: "u" is pronounced as in the first "u" in "aluminum" ("aluminium" if you are not American); pretend the "a" in "Murali" is silent.
+</FONT> <br> <br>
+

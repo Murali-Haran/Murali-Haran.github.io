@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<TITLE> Murali Haran </TITLE>
+</HEAD>
+<body background="stucco.gif">
+<blockquote>
+<blockquote>
+
+<!-- <center><img SRC="banner.jpg"></center> -->
+<CENTER>
+<FONT SIZE=6> Murali Haran *
+</FONT> <BR><BR>
+</CENTER>
+<P>
+<HR>
+<P>
+<HTML>
+<b>Teaching</b> <BR>
+<A Href = "http://www.stat.psu.edu/~mharan/classes/spring05/515/"> Stat 515: Stochastic Processes and Simulation</A>, Spring 2005. <BR>
+<A Href = "http://www.stat.psu.edu/~mharan/classes/fall04/200H/"> Stat 200(Honors): Elementary Statistics </A>, Fall 2004. <BR>
+<A Href = "https://cms.psu.edu/frameIndex.htm"> Stat 200 Sections 9-12 (via ANGEL) </A>,   Fall 2004.
+
+<HR>
+<b>Research</b> <BR><BR>
+<!-- Determining simulation length and Monte Carlo standard errors for MCMC: <BR> -->
+<LI>Jones, G.L., <b> Haran, M.</b>, Caffo, B.S. and Neath, R. (2005) "<A HREF="mcse.ps">  Fixed Width Output Analysis for Markov chain Monte Carlo </A>,'' <em> Submitted </em> <br><br>
+
+<!-- <BR> An approximation for perfect sampling from a GMRF model:<BR> -->
+<LI> <b> Haran, M.</b> and <A Href = "http://www.stat.uiowa.edu/~luke">
+Tierney, L.</A>, (2004) ``<A HREF="http://www.stat.psu.edu/~mharan/htspatperf.ps">  "Perfect Sampling for Markov random field models </A>", <em> Under Revision </em>. <br> <br>
+
+<!--  <BR> MCMC block sampling techniques for GMRFs.  <BR> -->
+<LI> <b> Haran, M.</b>, 
+<A Href = "http://www.biostat.umn.edu/~hodges">
+Hodges, J.S.</A>, and <A Href = "http://www.biostat.umn.edu/~brad">
+Carlin, B.P.</A>, (2003) ``<A
+HREF="smcmcspat.ps">
+Accelerating computation in Markov random field models for spatial
+data via structured MCMC,</A>'', <em> Journal of Comp. and
+Graph. Statistics </em>, 12, 249-264. <BR><br>
+
+<!--  <BR> Bayesian modeling for particulate matter exposure data <BR> -->
+<LI> <b> Haran, M.</b>, <A Href = "http://www.biostat.umn.edu/~brad">
+Carlin, B.P.</A>, Adgate, J.L., Ramachandran, G., <A Href =
+"http://www.sph.emory.edu/bios/faculty/waller.html"> Waller, L.A.</A>,
+and <A Href = "http://www.stat.duke.edu/~alan/"> Gelfand, A.E.</A>,
+``<A HREF="http://www.stat.psu.edu/~mharan/hapspgh.ps"> Hierarchical
+Bayes models for relating particulate matter exposure measures,</A>,
+Case Studies in Bayesian Statistics, Volume VI, eds. C.Gatsonis, et
+al., New York: Springer-Verlag, 2002.  <BR><br>
+
+<!-- <LI><b> Haran, M.</b>, Karr, A.F., Orso, A., Porter, A. and Sanil, A.P. (2005) "<A HREF="http://www.stat.psu.edu/~mharan/sengr.ps">  "Using Statistical Techniques to Classify Program Executions,</A>,'' <em> Submitted </em> <BR> <BR> -->
+<LI><b> Haran, M.</b>, Karr, A.F., Orso, A., Porter, A. and Sanil, A.P. (2005) "Using Statistical Techniques to Classify Program Executions" </A> <em> Submitted </em> <BR> <BR>
+Some of my current research projects: <BR>
+<!-- <LI> Probabilistic modeling for web data <BR> -->
+<LI> Perfect samplers for some hierarchical Bayes models<BR>
+<LI> Methods for computing MCMC standard errors <BR>
+<LI> Instrumenting software for predicting failure <BR>
+<!-- <LI> Hierarchical models for connecting PM2.5 exposure to health effects<BR> -->
+<BR>
+Some other general interests: spatial modeling, prior elicitation, measurement error modeling.
+<HR>
+I received my Ph.D. in 2003 from the School of Statistics
+at the University of Minnesota.<BR>
+<A HREF="http://www.stat.psu.edu/~mharan/bio.html"> Brief Bio </A> <BR>
+<HR>
+<FONT SIZE=3> * pronunciation guide: "u" is pronounced as in the first "u" in "aluminum"; pretend the "a" in "Murali" is silent.
+</FONT>
+<HR>
+<A HREF="http://www.stat.psu.edu/~mharan/index2.html"> Everything Else </A>

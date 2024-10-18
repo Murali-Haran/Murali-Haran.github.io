@@ -1,0 +1,64 @@
+
+\documentclass{article}
+\usepackage{amsmath, amsfonts,hyperref}
+\usepackage{url}
+\pagestyle{empty}
+\setlength{\textwidth}{6in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{9in}
+
+\begin{document}
+%\pagestyle{empty}
+\begin{center}
+\Large
+{\bf Hint for Homework 5, Stat 515, Spring 2015}\\
+\normalsize
+Due Wednesday, February 25, 2015 \underline{{\bf beginning of class}}\\
+\end{center}
+
+\begin{enumerate}
+\item Consider a Poisson process $N(t)$ with rate $\lambda$. Prove the
+  following result: Given that $N(t)=n$, the n arrival times
+  $S_1,\dots,S_n$ have the same distribution as the order statistics
+  corresponding to $n$ independent random variables uniformly
+  distributed on the interval $(0,t)$, i.e., $$P(S_1=t_1,\dots,S_n=t_n
+  \mid N(t)=n)=\frac{n!}{t^n} I(0<t_1<\dots <t_n).  $$ Use a ``first
+  principles'' argument, i.e., I would like you to do a proof that
+  utilizes assumption \# 3 and \# 4 in the ``first principles'' definition
+  of the Poisson process. Do not use an argument based on assuming
+  that the counting process over an interval is Poisson distributed
+  (the second definition discussed in class).\\\\
+%Do not use the conditioning argument in the book.
+  % simple problem; adapted from Problem 5 in Ross book
+{\bf Hint:} For any numbers $s_i$ satisfying $0\leq s_1\leq s_2\dots \leq s_n\leq t$, show 
+$$P(S_i\leq s_i, i=1,\dots, n\mid X(t)=n) = \frac{n!}{t^n} \int_0^{s_1}\hdots\int_{x_{n-2}}^{s_{n-1}} \int_{x_{n-1}}^{s_n} dx_n\hdots d x_1, $$
+which is the same as the distribution of the order statistics from a
+sample of $n$ random variates taken from the Uniform($0,t$)
+distribution. First write each $S_i$ in terms of inter-arrival times
+($T_i, i=0, \dots n$). That is, $S_1= T_0, S_2 = T_0 + T_1, \hdots,
+S_n = \sum_{i=0}^{n-1} T_i$. In order to simplify things, while you
+may not use the Poisson distribution (definition 2), you are welcome
+to use the fact that inter-arrival times $T_i$s are independent iid
+exponential random variables. You may also use known facts about
+exponential r.v.s from class, e.g. the distribution of the minimum or
+maximum of independent exponential r.v.s.
+
+\end{enumerate}
+
+% % Using first principles definition of Poisson process Ross Stoch Proc. pg.66
+% \item Consider a Poisson process $N(t)$ with rate $\lambda$. Prove the
+%   following result: Given that $N(t)=n$, the n arrival times
+%   $S_1,\dots,S_n$ have the same distribution as the order statistics
+%   corresponding to $n$ independent random variables uniformly
+%   distributed on the interval $(0,t)$, i.e., $$P(S_1=t_1,\dots,S_n=t_n
+%   \mid N(t)=n)=\frac{n!}{t^n} I(0<t_1<\dots <t_n).  $$
+%   Use a ``first
+%   principles'' argument, i.e., I would like you to do a proof that
+%   utilizes Assumptions 3 and 4 in the ``first principles'' definition of the
+%   Poisson process (as will be discussed in class.) Do not use the conditioning argument in the book.
+% % simple problem; adapted from Problem 5 in Ross book
+% \item The lifetime of a light bulb is known to be exponentially distributed with a mean of 3 years. If the lightbulb has been working for 4 years already, what is the probability it will still be working 3 years later? 
+% % reworded Ross problem 9
+% \item The lifetime of two machines are independent exponential($\lambda_1$) and exponential($\lambda_2$) respectively. Suppose machine 1 starts working now and the second machine is put to use $t$ units of time later. What is the probability  machine 1 will fail before machine 2? 
+\end{document}

@@ -1,0 +1,9 @@
+\frametitle{Summary of functions}
+\begin{itemize}
+\item c()
+\item :
+\item seq()
+\item rep()
+\item sort()
+\item order()
+\end{itemize}

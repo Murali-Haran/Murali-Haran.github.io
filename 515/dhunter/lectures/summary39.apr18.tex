@@ -1,0 +1,96 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Apr.~18}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+Last homework due Next Monday (Apr.~23)
+\item 
+Take-home final exam will be available on Saturday, Apr.~21 and due
+at 5:00pm on Wednesday, May~2.
+\end{itemize}
+\end{frame}
+
+
+\startframe{Markov chain Monte Carlo}
+Bayesian VAATMH example (from Gilks et al (1996), pp. 75--76):
+\begin{itemize}
+\item $Y_1, \ldots, Y_n \stackrel{\rm iid}{\sim} N(\mu, \tau^{-1})$
+\item $\mu \sim N(0,1)$
+\item $\tau \sim \mbox{gamma}(2,1)$
+\end{itemize}
+Devise an MCMC scheme for sampling from the posterior distribution.
+\notes{
+We were in the middle of deriving the full conditionals for $\mu$ and $\tau$ when
+I decided it would be a good exercise for Friday.  So please derive these for Friday, when
+we'll discuss them.
+}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+Special cases of VAATMH:  Gibbs and Metropolis updates
+\begin{itemize}
+\item  Recall full MH acceptance probability
+\item Metropolis:  $q(y_i\mid x_i, x_{-i}) = q(x_i\mid y_i, x_{-i})$
+\item Gibbs:  $q(y_i \mid x_i, x_{-i}) = \pi(y_i \mid x_{-i})$
+\end{itemize}
+\notes{
+The MH acceptance probability for the case of VAATMH is
+\[
+\alpha(x_i, y_i \mid x_{-i}) = \min
+\left\{ 1,
+\frac{\pi(y_i \mid x_{-i}) q(x_i\mid y_i, x_{-i})}{ \pi(x_i \mid x_{-i}) q(y_i\mid x_i, x_{-i})}
+\right\}.
+\]
+}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+Why VAATMH works:
+\begin{itemize}
+\item Suppose $\vec x = (x_1, x_2)^\top$.
+\item Take Markov transition densities 
+$k_{1\mid 2} (y_1 \mid x_1, x_2)$ and
+$k_{2\mid 1} (y_2 \mid x_1, x_2)$.
+\item Then the transition density for both updates is
+\[
+k[ (y_1, y_2) \mid (x_1, x_2) ] =
+k_{1\mid 2} (y_1 \mid x_1, x_2) k_{2\mid 1}(y_2 \mid y_1, x_2).
+\]
+\end{itemize}
+\notes{
+The equations that must be satisfied by $k_{1\mid 2}$ and $k_{2\mid 1}$ are
+\begin{eqnarray*}
+\pi ( y_1 \mid x_2) &=& \int k_{1 \mid 2}( y_1 \mid x_1, x_2) \pi(x_1 \mid x_2) \, dx_1, \\
+\pi ( y_2 \mid x_1) &=& \int k_{2 \mid 1}( y_2 \mid x_1, x_2) \pi(x_2 \mid x_1) \, dx_2
+\end{eqnarray*}
+for all $y_1$ and $y_2$.
+}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+Why VAATMH works:
+\begin{itemize}
+\item
+$k[ (y_1, y_2) \mid (x_1, x_2) ] =
+k_{1\mid 2} (y_1 \mid x_1, x_2) k_{2\mid 1}(y_2 \mid y_1, x_2)$.
+\item Show $\pi(\vec y) = \int k(\vec y \mid \vec x) \pi(\vec x) \, d\vec x$.
+\end{itemize}
+\notes{
+We will prove this on Friday.
+}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+
+
+

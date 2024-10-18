@@ -1,0 +1,404 @@
+%\documentclass[landscape]{article}
+%\documentclass{article}
+\documentclass{report}
+\usepackage{amsmath,doublespace,fullpage,color,graphics,amsfonts}
+\usepackage{indentfirst}
+\usepackage{pstricks}
+\input colordvi
+
+\newcommand{\head}[1]
+{
+  \begin{center}
+      {\huge {\color{blue} #1}}
+    \end{center}
+  }
+
+\newcommand{\figone}[1]
+{
+  \begin{center}
+    {{\resizebox*{0.95\textwidth}{0.7\textheight}
+        {\rotatebox{360}{\includegraphics{#1}}}} \par}
+  \end{center}
+  }
+\newcommand{\figonelabel}[2]
+{
+  \begin{center}
+    {{\resizebox*{0.95\textwidth}{0.7\textheight}
+        {\rotatebox{270}{\includegraphics{#1}}}} \par}
+  \end{center}
+  #2
+  }
+
+\newcommand{\figonesmall}[1]
+{
+  \begin{center}
+    {{\resizebox*{0.475\textwidth}{0.35\textheight}
+        {\rotatebox{270}{\includegraphics{#1}}}} \par}
+  \end{center}
+  }
+%% \newcommand{\figonesmalllabel}[2]
+%% {
+%%   \begin{center}
+%%     {{\resizebox*{0.475\textwidth}{0.35\textheight}
+%%         {\rotatebox{270}{\includegraphics{#1}}}} \par}
+%%     #2
+%%   \end{center}
+%%   }
+
+\newcommand{\figonesmalllabel}[2]
+{
+  \begin{center}
+    {{\resizebox*{0.57\textwidth}{0.42\textheight}
+        {\rotatebox{270}{\includegraphics{#1}}}} \par}
+    #2
+  \end{center}
+}
+
+\newcommand{\figtwo}[4]
+{
+  \begin{tabular}{cc}
+    {{\resizebox*{0.47\textwidth}{0.35\textheight}
+        {\rotatebox{270}{\includegraphics{#1}}}} \par}&
+    {{\resizebox*{0.47\textwidth}{0.35\textheight}
+        {\rotatebox{270}{\includegraphics{#2}}}} \par}\\
+    #3 & #4
+  \end{tabular}
+  }
+
+\newcommand{\figtwosmall}[4]
+{
+  \begin{tabular}{cc}
+    {{\resizebox*{0.4\textwidth}{0.2\textheight}
+        {\rotatebox{270}{\includegraphics{#1}}}} \par}&
+    {{\resizebox*{0.4\textwidth}{0.2\textheight}
+        {\rotatebox{270}{\includegraphics{#2}}}} \par}\\
+    #3 & #4
+  \end{tabular}
+  }
+
+\newcommand{\figthree}[6]
+{
+\begin{tabular}{ccc}
+    {{\resizebox*{0.32\textwidth}{0.23\textheight}
+        {\rotatebox{270}{\includegraphics{#1}}}} \par}&
+    {{\resizebox*{0.32\textwidth}{0.23\textheight}
+        {\rotatebox{270}{\includegraphics{#2}}}} \par}&
+    {{\resizebox*{0.32\textwidth}{0.23\textheight}
+        {\rotatebox{270}{\includegraphics{#3}}}} \par}\\
+    #4 & #5 & #6
+\end{tabular}
+}
+\newcommand{\figtwobytwo}[4]
+{
+\begin{tabular}{cc}
+    {{\resizebox*{0.47\textwidth}{0.35\textheight}
+        {\rotatebox{270}{\includegraphics{#1}}}} \par}&
+    {{\resizebox*{0.47\textwidth}{0.35\textheight}
+        {\rotatebox{270}{\includegraphics{#2}}}} \par}\\
+    {{\resizebox*{0.47\textwidth}{0.35\textheight}
+        {\rotatebox{270}{\includegraphics{#3}}}} \par}&
+    {{\resizebox*{0.47\textwidth}{0.35\textheight}
+        {\rotatebox{270}{\includegraphics{#4}}}} \par}\\
+\end{tabular}
+}
+\newcommand{\bThet}{{\bf \Theta}}
+\newcommand{\bpi}{{\bf \pi}}
+\newcommand{\datU}{{\cal U}}
+\newcommand{\nodeS}{{\cal S}}
+\newcommand{\nodeT}{{\cal T}}
+\newcommand{\nodeD}{{\cal D}}
+\newcommand{\nodeA}{{\cal A}}
+%\newcommand{\Snodelist}{{\alpha_P,\alpha_C,\alpha_S,\alpha_R,\alpha_F,\alpha_{DOWN},\alpha_{TR},\alpha_{CAL},\alpha_{TFEES},\alpha_H,\alpha_X,\alpha_O}}
+\newcommand{\Snodelist}{{\alpha_P,\alpha_C,\alpha_S,\alpha_R,\dots,\alpha_X,\alpha_O}}
+\newcommand{\Snodetrunc}{{\alpha_P,\dots,\alpha_O}} % truncated version
+\begin{document}
+\thispagestyle{empty}
+\pagestyle{plain}
+\phantom{Blah blah blah\\}
+\phantom{Blah blah blah\\}
+\phantom{Blah blah blah\\}
+\phantom{Blah blah blah\\}
+\phantom{Blah blah blah\\}
+\Huge
+\begin{center}
+%% PROBABILISTIC MODELING OF \\
+%% BROWSING BEHAVIOR ON THE \\
+%% WORLDWIDE WEB
+A MODEL FOR BROWSING\\
+BEHAVIOR ON THE \\
+WORLDWIDE WEB
+\end{center}
+\huge
+\phantom{Blah blah blah\\}
+\begin{center}
+Murali Haran\\
+(joint with Alan Karr, and Ashish Sanil)\\
+National Institute of Statistical Sciences.\\
+\LARGE JSM Toronto, August 2004.
+\end{center}
+\newpage \head{THE PROBLEM}
+\begin{itemize}
+\item A critical problem for users of the World Wide Web is that many
+  sites are difficult to navigate, hard to use and have confusing
+  structure.
+\item User behavior may therefore be inconsistent with its structure:
+  worse yet, users may be unable to find content and abandon the site.
+\item Difficult to create easy-to-use sites, and hard to understand how visitors use the site.
+\item Conducting formal user studies: usually too expensive.
+\item An approach: exploit the rich instrumentation in the
+  on-line world.
+%% \begin{itemize}
+%% \item Web servers create voluminous log files that record
+%%   every hit to every page on the site.
+%% \item By processing the log files we
+%%   can create sessions sequences of page views for each user.
+%% \item Web reporting tools can produce simple reports summarizing site
+%%   activity.
+%% \end{itemize}
+%% \item Essentially impossible to relate site activity to site structure from this summary.
+%% \item Bayesian model: (a) are user transitions consistent with the Web
+%%   site structure? (b) make stochastic predictions.
+\end{itemize}
+%\newpage \head{PRELIMINARIES: DATA}
+\newpage \head{MOTIVATING EXAMPLE}
+\underline{Commerce website}:\\ % information from eda.res, eda.res2 files
+Web servers create large log files that record
+every hit to every page on the site.\\
+By processing the log files we can create sequences of page
+views for each user for each session.\\
+%Page sequences are associated with each session.\\
+Instrumentation of user sessions for 6 months in 2002.\\
+\underline{Numbers}:\\
+Visitors: 238595 (820536 including length 1 sessions).\\
+Sessions: 344227 (1034915 including length 1 sessions)\\
+Number of pages, $n_p$: 5575 (5640 including length 1 sessions)
+%Number of nodes, $n_{\tau}$: 316 (mapped from 5575 pages).  
+%% How well does the website usage match the design?\\
+%% Simulate page sequences (for testing purposes).  
+
+\newpage \head{SCALABILITY, INTERPRETABILITY} Since we are interested in how
+users navigate through the website, natural to look at transition
+matrix.\\
+%$\{M_{i,j},\: i,j \in {\cal P}\}$,=set of pages, $M_{i,j}=$P(move from $i$ to $j$)\\
+$M_{i,j}=$P(move from $i$ to $j$), $i,j \in {\cal P}$,=set of pages, \\
+Some problems with this:
+\begin{itemize}
+\item Matrix gets large very quickly (e.g. $5575 \times 5575$).
+\item Hard to interpret a large transition matrix and relate it to design.
+\item Difficult for website designer to describe overall design in
+  terms of individual pages, particularly since individual
+  pages may have been dynamically generated.
+\item No idea of uncertainty associated with the estimate of each transition probability.
+\end{itemize}
+
+\newpage \head{WEBSITE DESIGN}
+\begin{itemize}
+\item Expert information elicited from the user provides
+ list of $n_s$=316 nodes (groupings) of the web pages.
+\item Design is expressed as a tree containing all such nodes.
+\item The transitions consistent with the tree structure:\\
+parent-child (P), child-parent (C), self (R), sibling (S).
+\item Several nodes (6) considered ``special'':\\
+Homepage(H), FAQ (F), Tutorial (U), Downloads (D), Fees (T), Images(I).
+\item A transition to a special node is also considered to be consistent with tree structure.
+\item We can now assess consistency with design.
+\end{itemize}
+%% Level 1 (root): never appear in data \\% 1518146, 1518151, 1518152
+%% Level 2: 18 nodes: CybertraderU and FAQ.\\
+%% Level 3: 96 nodes: Simulator download, Home/Welcome.\\
+%% Level 4: 139 nodes: Cybertrader Pro Images.\\
+%% Level 5: 38 nodes: Fees/Trading is important\\
+%% Level 6: 25 nodes.
+\newpage \head{PARTIAL VIEW OF NODE HIERARCHY}
+\vspace{1in}
+%\figone{treepic4.ps}
+\figone{treepic4.jpg}
+
+\newpage
+\head{DATA REDUCTION}
+\begin{itemize}
+%% \item Page sequence data: $p_1,p_2,\dots,p_n$
+%% \item Node sequence data: translate each page into its
+%%   corresponding node, obtain: $\nu_1,\nu_2,\dots,\nu_n$.
+\item Page sequence data: $p_1,p_2,\dots,p_n \Rightarrow
+  \nu_1,\nu_2,\dots,\nu_n$, by translating each page into
+  corresponding node.
+\item Entry node, $E$, represents all pages outside the website from
+  which the user first entered, $X$ represents all outside
+  destinations. Single session: $E, \nu_1,\nu_2,\dots,\nu_n, X$.
+\item Use node hierarchy information to classify each transition as
+  parent-child (P), sibling (R), other (O) etc.
+%  C, R, S, H, F, U, D, T, I, X, or O (other).
+\item Can build corresponding transition count matrix, $\{TC(i,j)\}$.\\ 
+$TC(i,j)=P$(move from node $i$ of transition type $j$).\\
+(316 $\times$ 12 instead of 5575 $\times$ 5575).
+%% \item Page hierarchy information: build minimal tree that contains all
+%%   nodes that appear in the data. 
+\end{itemize}
+%% \newpage
+%% \item Using above information: now possible to ascertain if the
+%%   transition between nodes $u$ and $v$ represents a parent-child,
+%%   child-parent, or sibling transition. A transition that does not
+%%   qualify as one of these tree-transitions, is then categorized as
+%%   either a self (repeat) transition or a transition to one of the
+%%   special pages (FAQ, homepage, or exit). A transition that does not
+%%   fit into any of these categories is simply categorized as 'other'.
+%% \item Node transition matrix: can classify a transition from any node
+%%   $\nu_i$, to another node $\nu_{i+1}$ as one of 8 possible
+%%   transitions: parent-child (P), child-parent (C), self/repeat (R),
+%%   sibling (S), to FAQ page (F), to homepage (H), to exit (X), to other
+%%   (O). Corresponding transition matrix is of dimension: $n_{\tau}\times n_{\tau}$
+
+\newpage \head{MODEL 1}
+$\nodeS=\{206985, 1517987,\dots\}$: set of $n_s$ (316) nodes.\\
+%$\nodeT=\{P,C,S,R,F,H,'DO,'TR','CA,'TF,X,O\}$ is set of $n_t$ (12) node types.\\
+$\nodeT=\{P,C, R, S, H, F, U, D, T, I, X, O\}$: transition types.\\
+%Let $\nodeD=\{P,C, R, S\}, \nodeA=\{H, F, U, D, T, I\}$.\\
+Let $\datU$ be the data, and all parameters of the model be $\Theta$\\
+$\pi_{i,j}$= probability of a type $j$ transition from node $i$.\\
+$\pi_{E,i}$= transition prob. from entry node to node $i$.
+\begin{equation*}
+  L(\datU | \Theta)= \prod_{i \in \nodeS} \pi_{E,i}^{TC(E,i)} \prod_{i \in \nodeS,j \in \nodeT} \pi_{i,j}^{TC(i,j)}
+\end{equation*}
+Let $\bpi_E$=$\{\pi_{E,i}, i \in \nodeS\}$, $\bpi_i=\{\pi_{i,j}, j \in \nodeT\}$.
+\\Dirichlet priors: $\bpi_i  \sim Dir (\Snodelist)$
+Use Jeffrey's prior for $\Snodetrunc$ (Yang and Berger, 1996).\\
+Dirichlet prior on the entry page probabilities, $\bpi_E$.
+
+\newpage \head{SOME RESULTS} %% If at node $\nu_i$, the odds are greater than
+%% 1 of taking a ``designed'' transition versus a non-designed
+%% transition: user behavior at the node is according to design.\\
+%\frac{\sum_{j \in {\cal D}} \pi_{ij}}{\pi_{iO}}=
+MCMC to obtain posterior distribution: $\bpi_E,\bpi_i|\datU$.\\
+Odds of taking a ``designed'' transition versus a non-designed
+transition from node $\nu_i$ is $\frac{1-\pi_{iO}}{\pi_{iO}}$.\\
+Let 95\% credible interval for $\pi_{iO}|\datU$ be $(l,u)$.\\
+If $0.5 < (l,u)$, $\nu_i$ is ``bad'', if $ (l,u) < 0.5$, $\nu_i$ is ``good''.\\
+%Hypothesis test is then: Does 95\% credible set for $\pi_{jO}$? $p(\pi_0<0.5|\datU)$
+%95\% credible intervals for the transition probabilities to pages of type ``other'':\\
+12.6\% of all nodes are bad.\\
+42.4\% of all nodes are good.\\
+\indent $\Rightarrow$ should redesign website, targeting good nodes.\\
+%For 44.9\% of the pages (interval includes 0.5).\\
+$ p\left( \sum_{k\in \{H, F, U, D, T, I, X\}}\pi_{ik}>\sum_{k\in \{P,C, R, S\}}\pi_{ik}|\datU\right)>0.9$ for around 85\% of nodes, so special nodes are more important destinations than tree-defined transitions. (Good or bad?)
+%Designate nodes with largest median values for $p(\pi_{iO}|\datU)$ as ``poor'' %2.5 percentiles
+%, and smallest median values as ``good''.%97.5 percentiles
+
+\newpage \head{RESULTS: WORST AND BEST NODES}
+{\LARGE
+\underline{BEST NODES}
+\begin{verbatim}
+Download Step1, Download Step2
+Cancellations, Supporting Materials (NAF)
+\end{verbatim}
+} 
+Nodes that are related to simulation are the best (NAF-related, download Steps1,2,..).\\
+Not surprising since download steps are sequential.\\
+{\LARGE
+\underline{WORST NODES}
+\begin{verbatim}
+Flash Demo - CyberX2, Account Information
+CyberTrader Pro Download ,  newsletter
+\end{verbatim}
+} Many of the worst nodes are low in tree hierarchy, have few
+children, many siblings: relationship between consistency with design
+and $\{$level, children or siblings$\}$?  
+
+\newpage \head{ALTERNATIVE
+  MODEL} Let probabilities for a designed transition from $\nu_i$ be
+$\theta_{i1}$, and for a non-designed transition be $\theta_{i0}$.\\
+We can directly model the odds of making a designed transition versus
+a non-designed transition:
+\begin{equation*}
+\log\left( \frac{\theta_{i1}}{\theta_{i0}}\right)=\phi_i
+\end{equation*}
+%% The log odds, $\phi_i$, is modeled as the sum of $\theta_i$, an
+%% overall tendency for the page to encourage users to follow the design,
+%% $l_i$, the level of the node in the hierarchy, $s_i$, the number of
+%% siblings, and $c_i$, the number of children:
+\begin{equation*}
+  \phi_i = \gamma_i + \alpha_L L_i + \alpha_C C_i + \alpha_S S_i 
+\end{equation*}
+$L_i$ is the level of the node in the hierarchy.\\
+$S_i, C_i$ are the number of siblings,children respectively.\\
+$\gamma_i$: how well the node was designed (accounting for $L_i,S_i,C_i$)\\
+Hyperpriors: $\theta_i
+\sim N(\mu,\tau_{\theta}^{-1})$, and mean zero Gaussians for
+$\alpha_L,\alpha_C,\alpha_S$ with appropriate hyperpriors, parameters.
+
+\newpage\head{ALTERNATIVE MODEL: SOME RESULTS} %% \begin{equation*}
+%%   \theta_i \sim N(\mu,\sigma^2),\:\: \beta \sim N(0,\sigma^2_{\beta}),\:\: \eta \sim N(0,\sigma^2_{\eta}),\:\: \gamma \sim N(0,\sigma^2_{\gamma})
+%% \end{equation*}
+%% A study of the distributions of the $\phi_i$s over all $i$: an overall
+%% measure of how user behavior compares to the design. 
+\begin{itemize}
+\item Number of siblings of a node has a negative effect: for every additional sibling, 
+ odds of moving to a non-designated node increases by a factor of 1.3.
+\item Neither level of node in hierarchy, nor the number of children significantly 
+affects how well the node follows the design. % means: -0.28 0.07 -1.09
+\item If $\phi_i<0$, indication that node $i$ is behaving contrary to design.\\
+  Forming credible intervals: 18\% of the nodes exhibit user behavior
+  clearly inconsistent with design. %13\%=(42/316)
+\item Best and worst nodes: roughly same as described before.
+% 1/exp(-0.25)
+%% Model 2 suggests there is a greater mismatch between the web design
+%% and user behavior than Model 1.
+\end{itemize}
+
+%% \newpage\head{MODELS 1 AND 2} Both models are intuitive and seem fairly
+%% reasonable ways to study the behavior of users on the website,
+%% relative to its design.\\
+%% However, they produce somewhat different conclusions: Model 1 suggests
+%% over 40\% of nodes are well designed, and only 12\% are poorly
+%% designed, while Model 1 suggests only 13\% of the nodes are well
+%% designed.\\
+%% (model choice issue)\\
+%% Model 2 can be extended to answer some of the questions that Model 1
+%% answers: can model the probability of picking a specific transition,
+%%  given that user makes a designed transition.
+
+\newpage \head{SUMMARY AND ISSUES}
+\begin{itemize}
+\item Have provided a method that uses expert information to quickly
+  reduce dimensionality and increase interpretability -
+  even more useful for larger websites.
+\item Commerce data: browsing behavior does not appear to completely follow the
+  design of the site (as narrowly defined by the node hierarchy and
+  special pages).
+%\item Need a more thorough analysis and comparison of the two models.
+%% \item Fundamental issue: perhaps problem lies in the description
+%%   of the design of the website%%rather than with the implementation and usability.
+\item Description of the website design:
+\begin{itemize}
+\item Not clear that tree-like structure is adequate: too many
+  common links appear on multiple pages - cannot all be accomodated as
+  `special nodes'.
+\end{itemize}
+%% \item May first need alternative ways to assess both design {\it and}
+%%   usability of websites.
+\end{itemize}
+
+\newpage \head{SUMMARY AND ISSUES}
+\begin{itemize}
+%% \item Too many dynamically generated pages using {\tt Java} scripts - users
+%%   may appear to get from node A to an unrelated node C, when a java
+%%   script acted as intermediate node B: important user transitions
+%%   never get recorded.
+\item Experts' characterization of poor design may not be best:
+%%   drawing any important conclusions.
+\begin{itemize}
+\item Find way to define `lost' users: for eg. frequent transitions
+  to homepage and exit pages - high occurrence implies poor design.
+\item Try to classify whether a particular user visit/sequence was
+  successful - many failures implies poor design. Easy for e-commerce,
+  but very difficult to assess for others.
+%\item Ultimately, data quality dictates how well we can perform.
+\end{itemize}
+\end{itemize}
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

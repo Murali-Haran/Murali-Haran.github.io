@@ -1,0 +1,107 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Feb.~15}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item
+For Friday,
+read the parts of Section 5.3 that you haven't yet finished.
+\item 
+Homework due this Friday; regular office hours Thursday.
+\item
+The midterm will be \ldots ???
+\item 
+The final will be Monday, Apr. 30 at 8:00am.
+\end{itemize}
+\notes{There may have been a misunderstanding about the doodle poll, so
+I asked that everyone edit their previous responses to see whether we can find a
+midterm time that would acceptable for everyone.}
+\end{frame}
+
+\startframe{5.2 The exponential distribution}
+Very important fact:  If $X_1$ and $X_2$ are independent 
+exponential random variables with rates $\lambda_1$ and
+$\lambda_2$, then
+\[
+P(X_1 < X_2) = \frac{\lambda_1}{\lambda_1 + \lambda_2}
+\]
+{\em Where did we use the independence?}
+\notes{Answer:  We relied heavily on the fact that $X_2$ and $X_2\mid X_1$ have the
+same distribution!  This question led to some good discussion.  Among other things, we 
+noticed that
+\[
+P(X_1<X_2 \mid X_1) \quad\mbox{cannot equal}\quad P(X_1 < X_2 \mid X_1=c),
+\]
+but
+\[
+P(c<X_2) = X(c<X_2 \mid X_1=c)
+\]
+is guaranteed by the independence of $X_2$ and $X_1$.
+}
+\end{frame}
+
+\startframe{5.2 The exponential distribution}
+\question{The minimum of a set of $n$ i.i.d.~exponential random variables has what type of distribution?}
+{Exponential}
+{Lognormal}
+{Normal}
+{Gamma}
+\notes{Answer:  A.  We walked through a proof of this fact, which contains an important
+step that is very good to know about:  The probability that the minimum is greater than $m$
+is the same as the probability that every one of the variables is greater than $m$.
+It is also important to know that the minimum has a rate that is the sum of the rates
+of all of the variables.}
+\end{frame}
+
+\startframe{5.2 The exponential distribution}
+Suppose you arrive at a post office having two clerks at 
+a moment when both are busy but nobody else is waiting in line.  
+The service times for clerk $i$ are exponential with rate $\lambda_i$.
+What is the expected amount of time you have to wait in line?
+\notes{The memoryless property tells us that the amount of time each clerk has
+already been helping the current customers is irrelevant.  Since you'll join the
+next open line, the time until this happens is the minimum of the two times, 
+which we know has rate $\lambda_1+\lambda_2$.  So the mean time
+is $1/(\lambda_1+\lambda_2)$.}
+\end{frame}
+
+\startframe{5.3 The Poisson Process}
+Counting processes:
+\begin{itemize}
+\item $N(t)=$number of ``events'' that occur in $[0, t]$.
+\item $N(t)$ is integer-valued and nondecreasing in $t$.
+\item Consider an example\ldots
+\end{itemize}
+\notes{Counting processes are very important stochastic processes.  To
+illustrate this point, I showed the first couple of slides from a talk I gave less than a week ago
+in which counting processes figure prominently.  If you're interested, the full slides can be found
+at \url{http://sites.stat.psu.edu/~dhunter/talks/temple2012_networks.pdf}.}
+\end{frame}
+
+\startframe{5.3 The Poisson Process}
+A Poisson process is a special type of counting process:
+\begin{itemize}
+\item Counts of events in disjoint time intervals are independent.
+\item For any $0\le s<t$, the number of events in $(s,t]$ is Poisson with parameter
+$\lambda(t-s)$.
+\item Technically, we should also say $N(0)=0$.
+\end{itemize}
+\notes{This definition, which basically says that a Poisson process is defined by independent
+increments and Poisson increments, is fairly intuitive, but in Friday's class we will see another
+equivalent definition that makes the Poisson connection less obvious but that arguably makes the
+process more obviously applicable.}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

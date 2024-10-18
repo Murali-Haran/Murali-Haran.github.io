@@ -1,0 +1,30 @@
+<TITLE> TENTATIVE Course schedule for Stochastic Processes and Monte Carlo Methods, Spring 2015</TITLE>
+<center>
+ Rough schedule for Stat 515, subject to change <b> (check back often!) </b> Sections refer to the Ross textbook. <br><br>
+ <table border="7" >
+<tr> <th scope = "col">Date</th> <th scope = "col">Topics</th>
+
+<tr><td> Week 1 (Jan 12)  <td> Computing  probabilities, expectations by conditioning. Markov chain basics: (2.8,3.4,3.5, 4.1)
+<tr><td> Week 2 (Jan 19)  <td>Gambler's ruin, Chapman-Kolmogorov Equations, Classification of states (4.2,4.3)
+
+<tr><td> Week 3 (Jan 26)  <td> Recurrence, Ergodic theorem, limiting probabilities (4.4, 4.5)
+<tr><td> Week 4 (Feb 2)   <td> Reversibility, Ehrenfest Model, Branching Processes (4.8)
+<tr><td> Week 5  (Feb 9) <td>Poisson Processes (5.1-5.3)  <!--completed branching processes on Monday; 2 lectures on Poisson processes -->
+<tr><td> Week 6  (Feb 16) <td> more on Poisson Processes. <!-- 1 lecture on Poisson processes, 2 lectures on continuous time M.C.s (and the Elementary Renewal Theorem ?) -->
+<tr><td> Week 7  (Feb 23) <td> Continuous-time Markov chains, birth-death processes. 
+<tr><td> Week 8  (Mar 2)  <td> Continuous-time Markov chains, Brownian Motion <font color="#FF0000"> Midterm exam on Friday, March 6th </font>  <!-- 2 lectures on continuous time MCs including birth-death processes -->
+<tr><td>  <i> March 9-13 </i>  <td> <i> Spring break </i> 
+<tr><td> Week 9 (Mar 16) <td> Continue with Brownian Motion; martingale basics
+<tr><td> Week 10 (Mar 23) <td> I.i.d. Monte Carlo principles (handouts, 11.1, 11.2.1, 11.2.2)
+<tr><td> Week 11 (Mar 30) <td> Rejection sampling, Importance sampling (handouts)
+<tr><td> Week 12 (Apr 6) <td> Markov chain Monte Carlo (MCMC): basic theory. The Metropolis-Hastings/Gibbs samplers
+<tr><td> Week 13 (Apr 13) <td> M-H variants, MCMC implementation issues <!-- implementation issues, CLT, s.errors (w/o details) --> 
+<!-- All-at-once, Variable-at-a-time, basic theory, why they work, examples -->
+<tr><td> Week 14 (Apr 20) <td> More theory and implementation issues
+<font color="#FF0000"> Take home final </font> out Wednesday, April 20th, <b> due </b> Monday, April 25th <br>
+<tr><td> Week 15 (Apr 27) <td> MCMC for maximum likelihood estimation. Simulation studies.  <br> 
+<tr><td> Week 16 (May 4)  <td><font color="#FF0000"> Final exam: 8:00A-9:50A 009 LIFE SCI  </font> 
+</table>
+</center>
+</body>
+</html>

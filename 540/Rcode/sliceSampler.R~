@@ -1,0 +1,98 @@
+##########################################
+## simulating from Beta pdf
+##########################################
+## sample from slice
+## through accept-reject
+##########################################
+ALPHA=2
+BETA=8
+
+## envelope is Uniform on [0,0] x [1,3.6]
+M= 1000
+set.seed(1)
+unifX = runif(M, 0,1)
+unifY = runif(M, 0,3.6)
+samps = rep(NA, M)
+acc=0
+plot(c(0,1), c(0,3.6),type="n", xlab="X", ylab="Y", main="Slice Sampling using Accept-Reject")
+for (i in 1:M)
+  if (log(unifY[i])<dbeta(unifX[i], ALPHA, BETA, log=TRUE))
+    {
+      acc = acc+1
+      samps[acc] = unifX[i]
+      points(unifX[i], unifY[i],type="p")
+      if ((acc%% 10)==0)
+        readline("press return for more points\n")
+    }
+accrate = acc/M
+samps=samps[1:acc]
+
+## check 
+xs = seq(0,1, length=100)
+ys = sapply(xs, function(x) return(dbeta(x, ALPHA, BETA)))
+plot(xs,ys, type="l")
+lines(density(samps), col="red")
+
+##########################################
+## sample from slice
+## through Gibbs
+##########################################
+set.seed(1)
+M=10000  #10000
+mchain = matrix(NA,M,2)
+## initial value for x, y
+mchain[1,1]=0.5 # X initialized
+mchain[1,2]=0.5 # Y initialized
+stepW = 0.05
+
+plot(c(0,1), c(0,3.6),type="n", xlab="X", ylab="Y", main="Slice Sampling using Metropolis-Hastings")
+points(mchain[1,1], mchain[1,2],col="red", pch=4)
+
+### plot density h(x) on top of this
+xs = seq(0,1, length=100)
+ys = sapply(xs, function(x) return(dbeta(x, ALPHA, BETA)))
+lines(xs,ys)
+
+for (i in 2:M)
+  {
+    currX=mchain[i-1,1]    
+    currY=mchain[i-1,2]
+
+    ## Gibbs update of Y|X
+    mchain[i,2]=runif(1, 0, dbeta(currX, ALPHA, BETA)) # Y|X
+    currY=mchain[i,2] # updated Y
+    points(currX, currY,col="red", pch=4)
+
+    ## define slice (interval) for X|Y
+    slice=c(currX-stepW, currX+stepW)
+    validSlice = FALSE
+    while (!validSlice)
+      {
+       ## points(slice[1], currY,col="blue", pch="|")
+       ## points(slice[2], currY,col="blue", pch="|")
+       ## readline("updating slice\n")
+        if ((dbeta(slice[1], ALPHA, BETA)<currY) && (dbeta(slice[2], ALPHA, BETA)<currY))
+          validSlice=TRUE # done, this is a valid slice
+        else
+          {
+            if (dbeta(slice[1], ALPHA, BETA)>currY)
+              slice[1]=slice[1]-stepW
+            if (dbeta(slice[2], ALPHA, BETA)>currY)
+              slice[2]=slice[2]+stepW
+          }
+      }
+
+    ## Gibbs update of X|Y via a rejection sampling step
+    acceptedX=FALSE
+    while (!acceptedX)
+      {
+        propX =runif(1,slice[1], slice[2]) # proposal for X|Y
+        if (log(currY)<dbeta(propX, ALPHA, BETA, log=TRUE))
+          {
+            acceptedX=TRUE
+            mchain[i,1]=propX
+            currX=propX
+          }
+      }
+#    readline(paste("iteration ",i,"\n"))
+  }

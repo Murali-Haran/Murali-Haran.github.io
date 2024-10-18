@@ -1,0 +1,778 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.7.30)  24 APR 2015 19:44
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**\nonstopmode\nofiles\PassOptionsToPackage{active,tightpage,auctex}{preview}\A
+tBeginDocument{\ifx\ifPreview\undefined\RequirePackage[displaymath,floats,graph
+ics,textmath,sections,footnotes]{preview}[2004/11/05]\fi} \input _region_.tex
+(./_region_.tex  !name(takehome15.tex)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip43
+\bibsep=\skip44
+LaTeX Info: Redefining \cite on input line 694.
+
+
+! LaTeX Error: \makeindex undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.795 \renewcommand\makeindex
+                             {\NAT@makeindex
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+\c@NAT@ctr=\count87
+) (/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip45
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks14
+\ex@=\dimen103
+))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen104
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count88
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count89
+\leftroot@=\count90
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count91
+\DOTSCASE@=\count92
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
+\dotsspace@=\muskip10
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
+\tag@help=\toks15
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
+\andhelp@=\toks16
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks17
+\multlinegap=\skip46
+\multlinetaggap=\skip47
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2004/08/06 v2.20
+\thm@style=\toks19
+\thm@bodyfont=\toks20
+\thm@headfont=\toks21
+\thm@notefont=\toks22
+\thm@headpunct=\toks23
+\thm@preskip=\skip48
+\thm@postskip=\skip49
+\thm@headsep=\skip50
+\dth@everypar=\toks24
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2012/05/28 v1.2 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+\KV@toks@=\toks25
+)
+(/usr/local/texlive/2014/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+)
+\@linkdim=\dimen112
+\Hy@linkcounter=\count100
+\Hy@pagecounter=\count101
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count102
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4443.
+Package hyperref Info: Link nesting OFF on input line 4448.
+Package hyperref Info: Hyper index ON on input line 4451.
+Package hyperref Info: Plain pages OFF on input line 4458.
+Package hyperref Info: Backreferencing OFF on input line 4463.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4688.
+\c@Hy@tempcnt=\count103
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5041.
+\XeTeXLinkMargin=\dimen113
+\Fld@menulength=\count104
+\Field@Width=\dimen114
+\Fld@charsize=\dimen115
+Package hyperref Info: Hyper figures OFF on input line 6295.
+Package hyperref Info: Link nesting OFF on input line 6300.
+Package hyperref Info: Hyper index ON on input line 6303.
+Package hyperref Info: backreferencing OFF on input line 6310.
+Package hyperref Info: Link coloring OFF on input line 6315.
+Package hyperref Info: Link coloring with OCG OFF on input line 6320.
+Package hyperref Info: PDF/A mode OFF on input line 6325.
+LaTeX Info: Redefining \ref on input line 6365.
+LaTeX Info: Redefining \pageref on input line 6369.
+\Hy@abspage=\count105
+\c@Item=\count106
+\c@Hfootnote=\count107
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
+\Fld@listcount=\count108
+\c@bookmark@seq@number=\count109
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip51
+)
+No file _region_.aux.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+(/usr/local/texlive/2014/texmf-dist/tex/latex/preview/preview.sty
+Package: preview 2010/02/14 11.86 (AUCTeX/preview-latex)
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/preview/prtightpage.def
+\PreviewBorder=\dimen116
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/preview/prauctex.def
+No auxiliary output files.
+
+
+\hbadness=\count110
+\hfuzz=\dimen117
+(/usr/local/texlive/2014/texmf-dist/tex/latex/preview/prauctex.cfg))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/preview/prfootnotes.def)
+\pr@snippet=\count111
+\pr@box=\box28
+\pr@output=\toks26
+
+Preview: Fontsize 10.95pt
+Preview: PDFoutput 1
+)
+\AtBeginShipoutBox=\box29
+Package hyperref Info: Link coloring OFF on input line 16.
+ (/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count112
+)
+LaTeX Info: Redefining \ref on input line 16.
+LaTeX Info: Redefining \pageref on input line 16.
+LaTeX Info: Redefining \nameref on input line 16.
+
+ !name(takehome15.tex) !offset(-3) 
+! Preview: Snippet 1 started.
+<-><->
+      
+l.30 \item Consider a regression of a variable $
+                                                Y$ on $X$ where the regressi...
+
+Not a real error.
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 30.
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 30.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Preview: Tightpage -32891 -32891 32891 32891
+! Preview: Snippet 1 ended.(490372+0x576089).
+<-><->
+      
+l.30 \item Consider a regression of a variable $Y$
+                                                   on $X$ where the regressi...
+
+Not a real error.
+
+[1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+! Preview: Snippet 2 started.
+<-><->
+      
+l.30 ...nsider a regression of a variable $Y$ on $
+                                                  X$ where the regression mo...
+
+Not a real error.
+
+! Preview: Snippet 2 ended.(490372+0x650840).
+<-><->
+      
+l.30 ...ider a regression of a variable $Y$ on $X$
+                                                   where the regression mode...
+
+Not a real error.
+
+[2]
+! Preview: Snippet 3 started.
+<-><->
+      
+l.31 $
+      Y_i \sim EMG(\beta_0 + \beta_1X, \sigma_i, \lambda),$
+Not a real error.
+
+! Preview: Snippet 3 ended.(538214+179404x8874556).
+<-><->
+      
+l.31 ...G(\beta_0 + \beta_1X, \sigma_i, \lambda),$
+                                                  
+Not a real error.
+
+[3]
+! Preview: Snippet 4 started.
+<-><->
+      
+l.32 ...y modified Gaussian random variable, EMG($
+                                                  \mu, \sigma, \lambda$), ha...
+
+Not a real error.
+
+! Preview: Snippet 4 ended.(498346+139537x1884829).
+<-><->
+      
+l.32 ...andom variable, EMG($\mu, \sigma, \lambda$
+                                                  ), has pdf
+Not a real error.
+
+[4]
+! Preview: Snippet 5 started.
+<-><->
+      
+l.33 $
+      f(x;\mu, \sigma, \lambda) = \frac{\lambda}{2} \exp(\frac{\lambda}{2} (...
+
+Not a real error.
+
+! Preview: Snippet 5 ended.(1040555+681748x17575206).
+<-><->
+      
+l.33 ...a\sigma^2 - x}{\sqrt(2) \sigma} \right), $
+                                                  
+Not a real error.
+
+[5]
+! Preview: Snippet 6 started.
+<-><->
+      
+l.36 $
+      $\mbox{erfc}(x) = \frac{2}{\pi} \int_x^{\infty} e^{-t^2} dt.$$
+Not a real error.
+
+! Preview: Snippet 6 ended.(1711234+0x28417720).
+<-><->
+      
+l.36 ...rac{2}{\pi} \int_x^{\infty} e^{-t^2} dt.$$
+                                                  
+Not a real error.
+
+[6]
+! Preview: Snippet 7 started.
+<-><->
+      
+l.39 ... a normal error (with standard deviation $
+                                                  \sigma$) added
+Not a real error.
+
+! Preview: Snippet 7 ended.(308974+0x435804).
+<-><->
+      
+l.39 ...al error (with standard deviation $\sigma$
+                                                  ) added
+Not a real error.
+
+[7]
+! Preview: Snippet 8 started.
+<-><->
+      
+l.40 to an exponential error (with rate $
+                                         \lambda$, that is, expected value
+Not a real error.
+
+! Preview: Snippet 8 ended.(498346+0x418612).
+<-><->
+      
+l.40 to an exponential error (with rate $\lambda$
+                                                 , that is, expected value
+Not a real error.
+
+[8]
+! Preview: Snippet 9 started.
+<-><->
+      
+l.41 $
+      1/\lambda$). {\tt R} code for the EMG density function is here: \url{h...
+
+Not a real error.
+
+! Preview: Snippet 9 ended.(538214+179404x1136232).
+<-><->
+      
+l.41 $1/\lambda$
+                ). {\tt R} code for the EMG density function is here: \url{h...
+
+Not a real error.
+
+[9]
+! Preview: Snippet 10 started.
+<-><->
+      
+l.43 \item Assume that $
+                        \beta_0=0, \lambda=2$, and $\sigma_i=1 $ for all
+Not a real error.
+
+! Preview: Snippet 10 ended.(498346+139537x4086016).
+<-><->
+      
+l.43 \item Assume that $\beta_0=0, \lambda=2$
+                                             , and $\sigma_i=1 $ for all
+Not a real error.
+
+[10]
+! Preview: Snippet 11 started.
+<-><->
+      
+l.43 ... Assume that $\beta_0=0, \lambda=2$, and $
+                                                  \sigma_i=1 $ for all
+Not a real error.
+
+! Preview: Snippet 11 ended.(462465+107642x1948113).
+<-><->
+      
+l.43 ... $\beta_0=0, \lambda=2$, and $\sigma_i=1 $
+                                                   for all
+Not a real error.
+
+[11]
+! Preview: Snippet 12 started.
+<-><->
+      
+l.44   $
+        i$. Let the prior for $\beta_1$ be N$(0,10)$ (parameterization:
+Not a real error.
+
+! Preview: Snippet 12 ended.(473287+0x247229).
+<-><->
+      
+l.44   $i$
+          . Let the prior for $\beta_1$ be N$(0,10)$ (parameterization:
+Not a real error.
+
+[12]
+! Preview: Snippet 13 started.
+<-><->
+      
+l.44   $i$. Let the prior for $
+                               \beta_1$ be N$(0,10)$ (parameterization:
+Not a real error.
+
+! Preview: Snippet 13 ended.(498346+139537x717204).
+<-><->
+      
+l.44   $i$. Let the prior for $\beta_1$
+                                        be N$(0,10)$ (parameterization:
+Not a real error.
+
+[13]
+! Preview: Snippet 14 started.
+<-><->
+      
+l.44   $i$. Let the prior for $\beta_1$ be N$
+                                             (0,10)$ (parameterization:
+Not a real error.
+
+! Preview: Snippet 14 ended.(538214+179404x1953520).
+<-><->
+      
+l.44 .... Let the prior for $\beta_1$ be N$(0,10)$
+                                                   (parameterization:
+Not a real error.
+
+[14]
+! Preview: Snippet 15 started.
+<-><->
+      
+l.46   the posterior distribution, $
+                                    \pi(\beta_1\mid {\mathbf Y, X})$ for
+Not a real error.
+
+! Preview: Snippet 15 ended.(538214+179404x3922509).
+<-><->
+      
+l.46 ...ibution, $\pi(\beta_1\mid {\mathbf Y, X})$
+                                                   for
+Not a real error.
+
+[15]
+! Preview: Snippet 16 started.
+<-><->
+      
+l.56   $
+        \beta_1$. This is a point estimate for $\beta_1$. Also report the
+Not a real error.
+
+! Preview: Snippet 16 ended.(498346+139537x717204).
+<-><->
+      
+l.56   $\beta_1$
+                . This is a point estimate for $\beta_1$. Also report the
+Not a real error.
+
+[16]
+! Preview: Snippet 17 started.
+<-><->
+      
+l.56   $\beta_1$. This is a point estimate for $
+                                                \beta_1$. Also report the
+Not a real error.
+
+! Preview: Snippet 17 ended.(498346+139537x717204).
+<-><->
+      
+l.56 ...1$. This is a point estimate for $\beta_1$
+                                                  . Also report the
+Not a real error.
+
+[17]
+! Preview: Snippet 18 started.
+<-><->
+      
+l.58 \item Report a 95\% credible interval for $
+                                                \beta_1$ based on your
+Not a real error.
+
+! Preview: Snippet 18 ended.(498346+139537x717204).
+<-><->
+      
+l.58 ...ort a 95\% credible interval for $\beta_1$
+                                                   based on your
+Not a real error.
+
+[18]
+! Preview: Snippet 19 started.
+<-><->
+      
+l.60 ...intervals. The interpretation is that if $
+                                                  (L,B)$ is the
+Not a real error.
+
+! Preview: Snippet 19 ended.(538214+179404x1945794).
+<-><->
+      
+l.60 ...als. The interpretation is that if $(L,B)$
+                                                   is the
+Not a real error.
+
+[19]
+! Preview: Snippet 20 started.
+<-><->
+      
+l.61   credible interval, $
+                           P(\beta_1 \in (L,B)\mid {\mathbf Y, X})=0.95$. A
+Not a real error.
+
+! Preview: Snippet 20 ended.(538214+179404x9103558).
+<-><->
+      
+l.61 ...beta_1 \in (L,B)\mid {\mathbf Y, X})=0.95$
+                                                  . A
+Not a real error.
+
+[20]
+! Preview: Snippet 21 started.
+<-><->
+      
+l.66 ...Plot an estimate of the posterior pdf of $
+                                                  \beta_1$ from a
+Not a real error.
+
+! Preview: Snippet 21 ended.(498346+139537x717204).
+<-><->
+      
+l.66 ...estimate of the posterior pdf of $\beta_1$
+                                                   from a
+Not a real error.
+
+[21]
+! Preview: Snippet 22 started.
+<-><->
+      
+l.76 \item Now assume that only $
+                                 \sigma_i=1$ is known. Write a
+Not a real error.
+
+! Preview: Snippet 22 ended.(462465+107642x1948113).
+<-><->
+      
+l.76 \item Now assume that only $\sigma_i=1$
+                                             is known. Write a
+Not a real error.
+
+[22]
+! Preview: Snippet 23 started.
+<-><->
+      
+l.78   distribution, $
+                      \pi(\beta_0, \beta_1, \lambda\mid {\mathbf Y, X})$
+Not a real error.
+
+! Preview: Snippet 23 ended.(538214+179404x5696205).
+<-><->
+      
+l.78 ...a_0, \beta_1, \lambda\mid {\mathbf Y, X})$
+                                                  
+Not a real error.
+
+[23]
+! Preview: Snippet 24 started.
+<-><->
+      
+l.79 ...this dataset: \url{exam1B} Assume priors $
+                                                  \beta_0\sim
+Not a real error.
+
+! Preview: Snippet 24 ended.(538214+179404x8883680).
+<-><->
+      
+l.80   N(0,10), \beta_1\sim N(0,10)$
+                                     (parameterization: N(mean, sd)), $\lamb...
+
+Not a real error.
+
+[24]
+! Preview: Snippet 25 started.
+<-><->
+      
+l.80 ...(0,10)$ (parameterization: N(mean, sd)), $
+                                                  \lambda \sim
+Not a real error.
+
+! Preview: Snippet 25 ended.(498346+0x1176097).
+<-><->
+      
+l.81   $
+        Gamma$(0.01, scale=100)$ (w/ Gamma parameterization such that the
+Not a real error.
+
+[25]
+! Preview: Snippet 26 started.
+<-><->
+      
+l.81   $Gamma$
+              (0.01, scale=100)$ (w/ Gamma parameterization such that the
+Not a real error.
+
+! Preview: Snippet 26 ended.(538214+179404x5774758).
+<-><->
+      
+l.81   $Gamma$(0.01, scale=100)$
+                                 (w/ Gamma parameterization such that the
+Not a real error.
+
+[26]
+! Preview: Snippet 27 started.
+<-><->
+      
+l.82   prior expected value of $
+                                \lambda$ is 10).
+Not a real error.
+
+! Preview: Snippet 27 ended.(498346+0x418612).
+<-><->
+      
+l.82   prior expected value of $\lambda$
+                                         is 10).
+Not a real error.
+
+[27]
+! Preview: Snippet 28 started.
+<-><->
+      
+l.87 ...referably in a well organized table, for $
+                                                  \beta_0,
+Not a real error.
+
+! Preview: Snippet 28 ended.(498346+139537x2490900).
+<-><->
+      
+l.88   \beta_1, \lambda$
+                        , the posterior mean w/ estimate of MCMC standard
+Not a real error.
+
+[28]
+! Preview: Snippet 29 started.
+<-><->
+      
+l.90 ...approximation of the correlation between $
+                                                  \beta_0,
+Not a real error.
+
+! Preview: Snippet 29 ended.(498346+139537x1753348).
+<-><->
+      
+l.91   \beta_1$
+               .
+Not a real error.
+
+[29]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 142.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 142.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 142.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 142.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 142.
+ ) 
+Here is how much of TeX's memory you used:
+ 5637 strings out of 493108
+ 80438 string characters out of 6134847
+ 166507 words of memory out of 5000000
+ 9071 multiletter control sequences out of 15000+600000
+ 10336 words of font info for 39 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 29i,6n,26p,446b,408s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
+</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
+sr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
+/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/lo
+cal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local
+/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/
+texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on _region_.pdf (29 pages, 86130 bytes).
+PDF statistics:
+ 137 PDF objects out of 1000 (max. 8388607)
+ 93 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

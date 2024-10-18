@@ -1,0 +1,114 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Mar.~19}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+HW \#7 is now due on Friday, March 23.
+\end{itemize}
+\end{frame}
+
+\startframe{6.5 Limiting Probabilities}
+\begin{itemize}
+\item Starting from the forward equations, we derived:
+$0 = P^\infty R$.
+\item Why not 
+$0 = R P^\infty $ starting from the backward equations?
+\item 
+Notation warning:  Here, I'm using $\pi$ to denote the limiting probabilities
+(the rows of $P^\infty$).  The book uses $P_1, P_2, \ldots$; the
+$\pi_i$ are something different in Section 6.6!
+\end{itemize}
+\notes{
+We discussed the fact that $0=RP^\infty$, while sometimes true, is worthless!  It merely
+restates something we already know, namely, each row of $R$ sums to zero.
+I am going to continue to use $\pi$ to denote the stationary (limiting) probabilities
+of the Markov chain, as in Chapter~4, unlike the use of $\pi$ in Section~6.6.
+}
+\end{frame}
+
+\startframe{6.5 Limiting Probabilities}
+The equations can be used to find the limiting $\pi$ vector:
+\begin{itemize}
+\item Another way to write $0 = P^\infty R$ is
+\[
+v_j\pi_j = \sum_{i\ne j} q_{ij}\pi_i
+\quad\mbox{for all $j$.}
+\]
+{\em Why is this ``balance condition'' different from ``detailed balance''?}
+\end{itemize}
+\notes{The ``balance condition'' states that in a Markov chain at equilibrium, the
+TOTAL transitions into and out of each state $j$ per unit time are equal, while detailed
+balance states that EACH $j\to i$ and $i\to j$ pair has the same number of transitions
+per unit time.  The former is generally true, but the latter is a much stronger condition and it
+is not always true.}
+\end{frame}
+
+\startframe{6.5 Limiting Probabilities}
+Sufficient conditions for the existence of the limiting probabilities $\pi_j$:
+\begin{itemize}
+\item Irreducibility (all states communicate)
+\item Positive recurrence (mean time to return to each state is finite)
+\end{itemize}
+When the limiting probabilities exist, we say the chain is ergodic.
+\notes{Compare this to the similar result for discrete-time chains.  This result is a bit
+simpler, since we don't have to worry about periodicity as with the discrete-time case.}
+\end{frame}
+
+\startframe{6.5 Limiting Probabilities}
+%\begin{itemize}
+%\item
+Re-interpretation of 
+$v_j\pi_j = \sum_{i\ne j} q_{ij}\pi_i$
+%\quad\mbox{
+for all $j$:
+\begin{itemize}
+\item
+In the long run,
+the rate of leaving state $j$ is the same as the rate
+of entering state $j$.
+\item Apply this to birth-death processes to find $\pi$ for such a process.
+\item Looking ahead to Section 6.6:  In fact, a birth-death process must be time-reversible.
+\end{itemize}
+\notes{
+The total balance equations for a birth-death process give:
+\begin{eqnarray*}
+\pi_0 \lambda_0 &=& \pi_1 \mu_1 \\
+\pi_1 (\lambda_1 + \mu_1) &=& \pi_0\lambda_0 + \pi_2 \mu_2 \\
+\pi_2 (\lambda_2 + \mu_2) &=& \pi_1\lambda_1 + \pi_3\mu_3\\
+ &\vdots&
+\end{eqnarray*}
+and these equations may be used (together with $\pi_0 + \pi_1 + \cdots = 1$)
+to find the limiting probabilities for a birth-death process.
+}
+\end{frame}
+
+\startframe{6.6 Time reversibility}
+\begin{itemize}
+\item Analogue to Section~4.8:  A continuous-time ergodic Markov chain is
+time-reversible with limiting probabilities $\pi_i$ if and only if
+\[
+\pi_i q_{ij} = \pi_j q_{ji} \quad\mbox{for all pairs $i,j$.}
+\]
+{\em (The \# of $i\to j$ and $j\to i$ transitions per unit time are the same.)}
+\item This is {\em detailed balance}.
+\end{itemize}
+\notes{This is analogous to the detailed balance condition studied in Chapter~4.
+All birth-death processes satisfy detailed balance:  To see this, simply fix a very long
+time $t$, and count the number of $j\to j+1$ transitions and $j+1\to j$ transitions
+during this time.  The counts must be within one of each other, which means that
+the counts per unit time are converging to the same value.  This is detailed 
+balance.}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

@@ -1,0 +1,85 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Apr.~4}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+HW \#9 is due on Friday, April 6 at 2:30pm.
+\item 
+All homework must be turned in electronically from now on.
+\item 
+Something I had not noticed regarding Problem \#2:
+You can use 5 uniforms to simulate a beta(3,2).  
+\end{itemize}
+\end{frame}
+
+
+\startframe{Monte Carlo methods}
+Importance sampling standard errors
+\begin{itemize}
+\item Plain importance sampling:  Easy
+\item Ratio importance sampling:  Use delta method to derive
+\[
+\Var \left[ \sqrt{n} ( \tilde \mu - \mu)  \right] \approx \tilde\sigma^2,
+\]
+where $\tilde \sigma^2 = \alpha^2 (1,-\mu) \Sigma (1,-\mu)^\top$ and $\Sigma=\ldots$
+\end{itemize}
+\end{frame}
+
+
+\startframe{Monte Carlo methods}
+Importance Sampling Example:  What is $P(X>4.5)$ for $X\sim N(0,1)$?
+\begin{itemize}
+\item Try naive approach.
+\item Try importance sampling with $q(x) = \exp\{-(x-4.5)\} I\{x>4.5\}$.
+\item Try ratio importance sampling.  (Careful!)
+\item This type of rare event problem often good for importance sampling.
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Lessons learned:
+\begin{itemize}
+\item Plain importance sampling needs %, $q$ must be chosen so that
+$g(x)f(x)>0 \Rightarrow q(x)>0$.
+\item Ratio importance sampling needs %, $q$ must be chosen so that
+$f(x)>0 \Rightarrow q(x)>0$.
+\item (Can use different samples for numerator 
+and denominator.)
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Ratio importance sampling application:
+\begin{itemize}
+\item Goal:  Estimate $\mu(\theta) = \E_{f_\theta} g(X)$ for $\theta\in\Theta$.
+\item Plain importance sampling:  Draw new sample for each $\theta\in\Theta$.
+\item Ratio importance sampling:  Draw a {\em single} sample from $q(x)$\ldots
+
+(Need: $f_\theta(x)>0$ implies $q(x)>0$ for all $\theta$.)
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Importance sampling can be unstable:
+\begin{itemize}
+\item Suppose $q(x)$ is small for some $x$ where $g(x)f(x)$ is big.  
+\item Then $g(x)f(x)/q(x)$ will have extreme outliers that are rare.
+\item If these values are rare enough, we may never see them and thus
+we may underestimate the M.C. standard error.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+
+
+

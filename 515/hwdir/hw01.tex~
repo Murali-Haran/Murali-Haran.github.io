@@ -1,0 +1,91 @@
+\documentclass[12pt]{article}
+\usepackage[sort,longnamesfirst]{natbib}
+\usepackage{amsmath, hyperref}%
+\newcommand{\bthet}{ \mbox{\boldmath $\theta$}}
+\newcommand{\bOne}{ {\bf 1} }
+\newcommand{\lambdaT}{\lambda_{\theta}}
+\newcommand{\bTheta}{ \mbox{\boldmath $\Theta$}}
+\begin{document}
+%\pagestyle{empty}
+\begin{center}
+\large
+{\bf Homework 1, Stat 515, Spring 2011}\\
+\normalsize
+Due Monday, January 24, 2011 \underline{{\bf beginning of class}}\\
+\end{center}
+
+\noindent Please read through Chapter 2 to review basic ideas about random
+variables. Make sure you read relevant sections in Chapter 3. For {\tt
+  R} code examples that might be helpful for these problems, take a
+look at \url{http://www.stat.psu.edu/~mharan/515/hwdir/hw1ex.R}  
+
+%, in particular ``the ballot problem.''
+%{\bf Textbook problems:} {\it Ch.1:} 44. {\it Ch.3:} 14,24,29,42,45,80\\
+
+\begin{enumerate}
+%% conditional probability
+\item Assume $X\sim$ Beta($\alpha,\beta$).  Find $E(X\mid X < t)$ where $t\in (0,1)$.
+
+%% calculating expectations by conditioning (Chapter 3, problem 25)
+\item A gambler wins each game with probability $p$. In each of the following cases, determine the expected total number of wins.
+\begin{enumerate}
+\item The gambler will play $n$ games; if he wins $X$ of these games, then he will play an additional $X$ games before stopping. 
+\item The gambler will play until he wins; if it takes him $Y$ games to get this win, then he will play an additional $Y$ games.
+\end{enumerate}
+
+%% Chapter 3, problem 46
+\item 
+\begin{enumerate}
+\item Show that Cov$(X,Y)$=Cov$(X, E(Y\mid X))$.
+\item Suppose that for constants $a$ and $b$ $E(Y\mid X) = a + bX$. Show that $b = \mbox{Cov}(X,Y)/\mbox{Var}(X)$.
+\end{enumerate}
+
+%% Chapter 3, problem 55
+\item Suppose that you arrive at a party, along with a random number
+  of additional people. The number of additional people, $X\sim$
+  Poisson(10). The times at which people (including you) arrive at the
+  party are independent uniform(0,1) random variables.
+\begin{enumerate}
+\item Find the expected number of people who arrive before you.
+\item Find the variance of the number of people who arrive before you.
+\end{enumerate}
+
+%% Chapter 3, problem 80
+\item A coin that comes up heads with probability $p$ is flipped $n$
+  consecutive times. What is the probability that starting with the
+  first flip there are always more heads than tails that have appeared
+  ? Hint: use the solution to the ballot problem (in Chapter 3.)
+
+%{\bf Non-textbook problems:}
+\item Toy drug trial. Consider $n$ trials, each with probability of success
+$p$. Assume the trials are independent given $p$. \\Now, suppose $p
+\sim $Beta($\alpha,\beta),\:\:i=1,\dots,n$. 
+Recall that if $X$ is a Beta r.v.:
+$$ f_X(x)=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)} x^{\alpha -1} (1-x)^{\beta-1} I(0<x<1),\:\: \alpha>0,\beta>0$$
+$$ \text{E}(X)=\frac{\alpha}{\alpha + \beta},\:\:\:\: \text{Var}(X)=\frac{\alpha \beta}{(\alpha + \beta)^2 (\alpha + \beta+1)}.$$
+\begin{enumerate}
+\item Compute the expected value of the total number of successes.
+\item Compute the variance of the total number of successes.
+\end{enumerate}
+
+\item  \noindent A short simulation exercise:
+  \noindent Estimate the answers you obtained for Problem 4 above via
+  simulation. You already have the answer so you can compare your
+  estimates with the answer. Use 1000 replications of the
+  process (one replicate of the process = one randomly sampled party.)
+\begin{itemize}
+\item First download, install {\tt R}; see the course webpage \url{http://www.stat.psu.edu/~mharan/515/Rlinks.html} for useful {\tt R} links.
+\item You can find a simple example for random variate simulation
+  here: \url{http://www.stat.psu.edu/~mharan/515/hwdir/hw1ex.R}. You
+  can adapt this example to estimate the expectation and variance for this problem. 
+\end{itemize}
+Note: Ideally, you should also be reporting simulation (Monte Carlo) standard errors for your estimates; we will discuss this later in the course.
+\end{enumerate}
+
+Because this is your first assignment and your {\tt R} code here will
+be quite short, please include a print out of your {\tt R} code with
+the assignment.  You do not have to type up this assignment, but if
+you want to start getting familiar with LaTeX, try looking at
+\url{http://www.stat.psu.edu/~mharan/515/Latexlinks.html}
+
+\end{document}

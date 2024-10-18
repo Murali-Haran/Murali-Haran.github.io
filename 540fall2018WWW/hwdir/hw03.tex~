@@ -1,0 +1,34 @@
+\documentclass[10pt]{article}
+\usepackage[sort,longnamesfirst]{natbib}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{graphics,enumerate}
+\usepackage{amsmath}%                                                                                                         
+\newcommand{\bthet}{ \mbox{\boldmath $\theta$}}
+\newcommand{\bOne}{ {\bf 1} }
+\newcommand{\trace}{ \mbox{tr}}
+\newcommand{\diag}{ \mbox{diag}}
+\newcommand{\lambdaT}{\lambda_{\theta}}
+\newcommand{\bTheta}{ \mbox{\boldmath $\Theta$}}
+\begin{document}
+
+\begin{center}
+{\bf Penn State STAT 540}
+
+{\bf Homework \#3, due Thursday, Nov 15, 2018}\\
+
+\end{center}
+\noindent What you have to submit in a Canvas submission folder: (i)
+Your {\tt R} code in a file titled PSUemailidHW1.R (e.g. muh10HW1.R),
+(ii) pdf file that contains a clear writeup for the questions below
+named PSUemailidHW1.pdf (e.g. muh10HW1.pdf). Note that
+your code should be readily usable, without any modifications.
+\begin{enumerate}
+%% gradient descent, stochastic gradient descent
+\item 
+%% EM algorithm 
+\item 
+%% bootstrap (w/ above algorithm(s))?
+\item 
+\end{enumerate}
+\end{document}

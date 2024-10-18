@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage{amsmath, amsfonts,hyperref}
+\usepackage{url}
+\pagestyle{empty}
+\setlength{\textwidth}{6in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{9in}
+
+\begin{document}
+%\pagestyle{empty}
+\begin{center}
+\Large
+{\bf Homework 7, Stat 515, Spring 2015}\\
+\normalsize
+Due Wednesday, April 8, 2015 \underline{{\bf beginning of class}}\\
+\end{center}
+
+\begin{enumerate}
+
+%% Brownian Motion
+% \item Hitting times for Brownian motion. Consider a Brownian motion with drift parameter $\mu$ and
+%   variance parameter $\sigma^2$, and $a<x<b$, with $a,x,b$ fixed
+%   quanties. Suppose $X(0)=x$. Let hitting time
+%   $T=\min\{ t\geq 0, X(t)=a \mbox{or } X(t)=b\}$ One can show that 
+
+%% Ross Prob Models book, 8th edition, Ch. 10: 2, 3
+\item Consider $\{ W(t), t\geq 0\}$, a standard Brownian motion process. 
+\begin{enumerate}
+\item Find the conditional distribution of $W(s)\mid W(t_1)=A,
+  W(t_2)=B,$ where $0<t_1<s<t_2$.
+\item Find $E(W(t_1) W(t_2) W(t_3))$ where $0<t_1<t_2<t_3$.
+\end{enumerate}
+
+%% Ross Prob Models book, 8th edition, Ch. 10: 9
+\item Let $\{X(t), t\geq 0\}$ be a Brownian motion with drift
+  coefficient $\mu$ and variance parameter $\sigma^2$.  Find the
+  joint distribution of $X(s), X(t)$ where $0<s<t$.
+
+%% Ross Prob Models book, 8th edition, Ch. 10:  10
+% \item Let $\{X(t), t\geq 0\}$ be a Brownian motion with drift
+%   coefficient $\mu$ and variance parameter $\sigma^2$.  Find the
+%   conditional distribution of $X(t)\mid X(s)=c$ when
+% \begin{enumerate}
+% \item $s<t$?
+% \item $t<s$?
+% \end{enumerate}
+
+%% Martingales
+\item Distinguishing between Markov processes and martingales: 
+\begin{enumerate}
+\item Provide one example of a martingale that is not a Markov process and show why this is the case.
+\item Provide one example of a Markov process that is not a martingale and show why this is the case.
+\end{enumerate}
+
+% Ross, Stoch Proc 2nd edition, pg 300 Wald's Equation, but assume
+% slightly stronger conditions than necessary hold here (do not need bounded stopping time)
+\item Prove the following result: If $X_i, i\geq 1$, are independent
+  and identically distributed (iid) %with $E(\mid X_i\mid) < \infty$
+                                %for all $i\geq 1$
+  and if $N$ is a bounded stopping time for $X_1,X_2,\dots$ with
+  $E(N)< \infty$, then $$ E\left(\sum_{i=1}^N X_i\right) =
+  E(N)E(X)$$. Hint: consider the process $Z_n=\sum_{i=1}^n (X_i -
+  \mu)$.
+
+\item Let $\{X(t), t>0\}$ be standard Brownian motion. Prove that the
+  process $\{M(t), t>0\}$ where $M(t) = \exp\left(\lambda X(t) -
+    \frac{1}{2} \lambda^2 t\right)$, is a martingale.
+
+\item Simulate 3 realizations for each of the following processes on
+  the interval $[0,10]$ on 20 equally spaced points on the interval.
+\begin{enumerate}
+\item Simulate 3 realizations of standard Brownian motion. 
+\item Simulate 3 realizations of Brownian motion with variance parameter
+  $\mu=0, \sigma^2=2$. 
+\item Simulate 3 realizations of Brownian motion with parameters $\sigma^2=2, \mu=3$.
+\end{enumerate}
+Overlay the 3 realizations for each process on the same plot. Hence
+you should submit 3 clearly labeled plots. You do not have to submit
+your code for this problem but you have to provide pseudocode for each
+ simulation algorithm above.
+
+\item Consider a simple symmetric random walk, $S_n=\sum_{i=0}^n X_i$
+  where $X_1,X_2,\dots$ are iid with $P(X_i=1)=1/2=P(X_i=-1)$ and
+  define a random time, $T_{\mbox{max}} \in [0,3]$ at which ${S_n}$ takes on
+  its maximum value $\max\{S_n : 0 \leq n \leq 3\}$. If ${S_n}$ takes its maximum
+  value more than once, assume $T$ is the last such time. 
+\begin{enumerate}
+\item Show analytically that $E(X_T)>0$ and hence $E(X_T) \neq E(X_0)$. This
+  therefore results in an ``unfair game'', as discussed in class. 
+\item Find the expected value of $T$ using Monte Carlo. Write
+  pseudocode for the algorithm and report your estimate along with the
+  Monte Carlo sample size and Monte Carlo standard error.
+\end{enumerate}
+
+% \item Ornstein-Uhlenbeck process: Is it a martingale? Justify your answer. 
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,147 @@
+################################################################
+## Plots with R base 
+## (Without using ggplot2)
+################################################################
+
+load(url("http://www.stat.berkeley.edu/users/nolan/data/babiesLab133.rda"))
+
+## PLOTS FOR graphics.pptx
+## Histogram of mother's wt
+## Note: two different ways to plot, second way involves different x-axis limits
+names(babies)
+par(mfrow=c(1,2))
+hist(babies$wt,main="Y-scale is counts",ylab="count",xlab="Weight(lb)")
+hist(babies$wt,main="Y-scale is density",probability=TRUE,xlab="Weight(lb)",ylab="density",xlim = c(85, 225))
+## could add a rug plot if we wanted
+
+## density plot (kernel density estimate)
+plot(density(babies$wt,main="Y-scale is density",probability=TRUE,xlab="Weight(lb)",ylab="density",xlim = c(85, 225),na.rm=TRUE))
+par(mfrow=c(1,1))
+plot(density(babies$wt, na.rm=TRUE),xlab="Weight(lb)",ylab="density",main="Mother's weight")
+
+### Quantile (q-q) plot
+qqnorm(babies$wt, main="Mother's weight: q-q plot for normal")
+
+### bar plot
+barplot(table(babies$ed[!is.na(babies$ed)]), col=rainbow(5), main="Education of mothers")
+### pie chart
+pie(table(babies$ed[!is.na(babies$ed)]), col=rainbow(5), main="Education of mothers")
+### dot chart/dot plot
+dotchart(as.matrix(table(babies$ed[!is.na(babies$ed)])), main="Dot chart of education of mothers")
+
+## tN <- table(Ni <- stats::rpois(100, lambda = 5))
+## r <- barplot(tN, col = rainbow(20))
+
+## take a look at "parity", i.e., number of siblings
+table(babies$parity)
+
+## plot num of previous pregnancies
+barplot(table(babies$parity),main="Number of Previous Pregnancies")
+
+## birthweight and smoke
+plot(density(babies$bwt[babies$smoke=="Never"], na.rm=TRUE), col="blue", main="Birthweight according to smoking status", xlab="Baby birthweight in lbs")# | babies$smoke=="Current"]))
+lines(density(babies$bwt[babies$smoke=="Current"], na.rm=TRUE), col="red") # | babies$smoke=="Current"]))
+
+##boxplot(bwt~smoke, babies,ylab="birthweight in lbs")
+## Need matrix of counts: education level x smoking status. 5 x 4 matrix
+## E.g. Count education=college and smoke=never
+sum(babies$ed=="College" & babies$smoke=="Never", na.rm=TRUE)
+
+babiesTab=table(babies$smoke, babies$ed)
+colEd = c("red", "orange", "blue", "yellow", "green")
+### stacked barplot
+## first create a matrix. Big category: smoke (4 levels), within each have education level (5 levels (5 colors)).
+barplot(as.matrix(babiesTab),col=colEd, main="Smoking behavior across education levels") #, ylab="Counts of smokers in each category of ed")
+##legend("topleft", c("First","Second","Third","Fourth","Fifth"), cex=1.3, bty="n", fill=colEd)
+legend("topleft", c("Never","Current","Until","Once"), cex=1.3, bty="n", fill=colEd)
+
+## side-by-side boxplots
+barplot(as.matrix(babiesTab),col=colEd, main="Smoking behavior across education levels",beside=TRUE) #, ylab="Counts of smokers in each category of ed")
+##legend("topleft", c("First","Second","Third","Fourth","Fifth"), cex=1.3, bty="n", fill=colEd)
+legend("topleft", c("Never","Current","Until","Once"), cex=1.3, bty="n", fill=colEd)
+## Make this a better plot, adjust for the fact that different educ. categories have different numbers?
+## Look at proportions
+babiesProp=babiesTab
+babiesProp[,1]=babiesTab[,1]/sum(babiesTab[,1])
+babiesProp[,2]=babiesTab[,2]/sum(babiesTab[,2])
+babiesProp[,3]=babiesTab[,3]/sum(babiesTab[,3])
+babiesProp[,4]=babiesTab[,4]/sum(babiesTab[,4])
+babiesProp[,5]=babiesTab[,5]/sum(babiesTab[,5])
+
+barplot(as.matrix(babiesProp),col=colEd, main="Smoking behavior across education levels: proportions",beside=TRUE) #, ylab="Counts of smokers in each category of ed")
+
+##barplot(as.matrix(babiesTab),col=colEd, main="Smoking behavior across education levels") #, ylab="Counts of smokers in each category of ed")
+##legend("topleft", c("First","Second","Third","Fourth","Fifth"), cex=1.3, bty="n", fill=colEd)
+legend("topleft", c("Never","Current","Until","Once"), cex=1.3, bty="n", fill=colEd)
+
+## side-by-side barplots: birthwts by smoking x education
+#colEd = c("red", "orange", "blue", "yellow", "green") ## color code for education levels
+#barplot(as.matrix(babies),ylab="birthweight in lbs")
+
+babiesMat=aggregate(babies,by=list(babies$),mean)
+
+barplot(as.matrix(babies), main="Birthweight", ylab = "Count", cex.lab = 1.5, cex.main = 1.4, beside=TRUE, col=colEd)
+legend("topleft", c("First","Second","Third","Fourth","Fifth"), cex=1.3, bty="n", fill=colEd)
+
+################################################################
+
+# Smoking status and education level
+# Misleading counts rather than proportions
+# Side-by-side bar plots
+plotQL2.1 = 
+  ggplot(babies[!(is.na(babies$smoke) | is.na(babies$ed) ), ], 
+         aes(x = smoke, fill = ed)) + 
+  geom_bar(position = "dodge")
+
+# Aternative normalization within groups
+tableEdSmoke = table(babies$smoke, babies$ed)
+tableEdSmokeC1 = tableEdSmoke/
+  matrix(colSums(tableEdSmoke), nrow = 4, ncol = 5, byrow = TRUE)
+newDF = data.frame(prop = tableEdSmokeC1)
+names(newDF) = c("smoke", "ed", "prop")
+
+plotQL2.2 = 
+  ggplot(data = newDF, 
+         aes(x = smoke, y = prop, fill = ed)) + 
+  geom_bar(stat = 'identity', position = "dodge")
+
+# Line plot - best of the possibilities
+plotQL2.3 = 
+  ggplot(data = newDF, 
+         aes(x = smoke, y = prop, group = ed, color = ed)) + 
+  geom_point(stat = 'identity') +
+  geom_line(stat = 'identity')
+
+
+## mosiac plot - still looking for a nice way to do in ggplot...
+require(vcd)
+vnames = list(set_varnames = c(ed = "", smoke = ""))
+mosaic(~ smoke + ed, data = babies, 
+       expected = ~ ed + smoke,
+       legend = FALSE, shading = TRUE, 
+       labeling_args = vnames, split_vertical = TRUE)
+
+
+## two quantitative variables 
+# Scatter plot with added line (and error band)
+# Points are jittered to avoid over plotting
+
+plotQN2.1 = 
+  ggplot(babies, aes(x = ht, y = dht)) + 
+  geom_point(position = 'jitter', size = 0.5) + 
+  geom_smooth(method = lm) +
+  scale_x_continuous("Mother's Height (in)", limits = c(58, 70)) +
+  scale_y_continuous("Father's Height (in)") +
+  theme_bw()
+
+# Color points by education level and 
+# fit separate lines
+plotQN2.2 = 
+  ggplot(babies[babies$ed %in% c("HS", "Some Col", "College"), ], 
+         aes(x = ht, y = dht, col = ed)) + 
+  geom_point(position = 'jitter', size = 0.5) + 
+  geom_smooth(method = lm) +
+  scale_x_continuous("Mother's Height (in)", limits = c(58, 70)) +
+  scale_y_continuous("Father's Height (in)") +
+  theme_bw()
+

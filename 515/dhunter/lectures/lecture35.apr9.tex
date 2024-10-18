@@ -1,0 +1,115 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Apr.~9}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+All homework must be turned in electronically from now on.
+\item 
+Only 2 more homeworks!  (Only best 10 out of 11 grades will count.)
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Recall:  Monte Carlo MLE
+\begin{itemize}
+\item
+Given $X\sim f_\theta(x) = \exp\{\theta^\top s(x)\} / c(\theta)$,
+write  log-likelihood as
+\[
+\ell(\theta) = \ell(\theta_0) + (\theta-\theta_0)^\top s(X) - 
+\log E_{\theta_0} \exp\{( \theta-\theta_0)^\top s(Y)\}.
+\]
+\item Use $Y_1, \ldots, Y_m\sim f_{\theta_0}$ to approximate
+$\ell(\theta)-\ell(\theta_0)$.
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+\begin{itemize}
+\item Regular importance sampling:  %With $q(x) = f_{\theta_0}(x)$,
+Estimate $E_{f_{\theta_0}} g(X)f_\theta(X)/f_{\theta_0}(X)$ by
+\[
+\left( \sum_i\frac{g(X_i)r_\theta(X_i)}{r_{\theta_0}(X_i)} \right)
+\Bigg/
+\left( \sum_i \frac{r_\theta(X_i)}{r_{\theta_0}(X_i)} \right).
+\]
+\item
+In the case of Monte Carlo MLE, $g$ is irrelevant and we only
+need the denominator.
+\end{itemize}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+\begin{itemize}
+\item Goal:  Estimate $\mu=E_\pi g(X)$ but
+cannot %use Monte Carlo directly since we cannot 
+sample $X_i\sim \pi$ directly.
+\item 
+Importance sampling may be difficult, particularly as dimension increases.
+\item 
+MCMC solution:  Take $\hat\mu = \frac1n\sum g(X_i)$, where
+$X_1, X_2, \ldots$ is a simulated Markov chain with stationary distribution $\pi$.
+\end{itemize}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+Metropolis-Hastings algorithm (recall HW\#4, problem 5):
+\begin{itemize}
+\item Start with $X_0=x_0$.  
+\item For $i=0, 1, \ldots$, 
+Generate $Y \sim q(y\mid x_0)$.
+\item Define $\alpha(x,y) = \min\{1, \pi(y)q(x\mid y) / [\pi(x)q(y\mid x)]$.
+\item Let $X_{i+1}=Y$ with probability $\alpha(x_i,Y)$.
+\end{itemize}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+Metropolis-Hastings algorithm (recall HW\#4, problem 5):
+\begin{itemize}
+\item $X_{i+1} = 
+\begin{cases}
+Y & \mbox{with probability $\min\{1, \pi(Y)q(Y\mid X_i)/[\pi(X_i)q(X_i\mid Y)\}$} \\
+X_i & \mbox{otherwise}
+\end{cases}$
+\item 
+What are the requirements of $q(x\mid y)$?
+\item 
+What can we say about the 
+transition probabilities $P(x,y)$?
+\end{itemize}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+Metropolis-Hastings algorithm example:
+\begin{itemize}
+\item Suppose we observe $Y_1, \ldots, Y_n$
+\item $Y_i \mid \theta \sim N(\theta, 1)$, conditionally independent.
+\item $\theta \sim \mbox{lognormal}(\mu, \sigma)$.
+\item Wanted: A sample from the posterior $\pi(\theta\mid \vec Y)$.
+\end{itemize}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+Metropolis algorithm (``random walk'' M-H):
+\begin{itemize}
+\item Take $q$ so that $q(x\mid y)=q(y\mid x)$.
+\item In this case, $\alpha(x,y) = \min\{1, \pi(y)/\pi(x)\}$.
+\item Example:  Take $Y \mid X_i=x \sim N(x, \tau^2)$.
+\item Consider the tradeoff involved in choosing $\tau^2$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+
+
+

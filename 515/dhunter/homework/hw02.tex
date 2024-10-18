@@ -1,0 +1,121 @@
+\documentclass{article}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{bm}
+\pagestyle{empty}
+\setlength{\textwidth}{6in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{9.25in}
+
+\begin{document}
+
+\begin{center}
+{\bf STAT 515}
+
+{\bf Homework \#2, due Friday, Jan. 27 at 2:30pm}
+\end{center}
+
+{\it Please make every assignment easier to grade by neatly organizing your
+writeup and clearly labeling your final answers when appropriate.}
+   
+
+\begin{enumerate}
+
+  %% Problem 1 from Murali's midterm for spring 2010
+  \item\label{midtermprob} 
+  Consider a Markov chain on $\Omega=\{1, 2, 3, 4, 5, 6\}$ specified by the
+  transition probability matrix\\
+  \begin{equation*}
+    P=
+    \begin{bmatrix}
+      \frac{1}{4} & \frac{3}{4}   & 0  & 0 & 0 & 0\\
+      \frac{1}{2} & \frac{1}{2}   & 0  & 0 & 0 & 0\\
+       0 & 0  & 1  & 0 & 0 & 0\\
+       0 & 0   & \frac{1}{3}  & \frac{2}{3} & 0 & 0\\
+       1 & 0 & 0 & 0 & 0 & 0 \\
+       0 & 0   & 0  & 0 & 0 & 1\\
+    \end{bmatrix}.
+  \end{equation*}
+  \begin{enumerate}
+    
+    \item What are the (communicating) classes of this Markov chain? Is the
+    Markov chain irreducible ?
+    
+    \item Which states are transient and which are recurrent? Justify your
+    answers.
+    
+    \item What is the period of each state of this Markov chain? Is the Markov
+    chain aperiodic ?
+    
+    \item\label{initial} Let $X_0$ be the initial state with distribution
+    $\mbox{\boldmath $\pi$}_0 = (0, \frac{1}{4}, \frac{3}{4}, 0, 0, 0)^\top$
+    corresponding to the probability of being in states $ 1, 2, 3, 4, 5, 6$
+    respectively. Let $X_0, X_1, X_2,\dots$ be the Markov chain constructed
+    using $P$ above. What is E$(X_1)$?
+
+    \item What is Var$(X_1)$?
+
+    \item What is E$(X_3)$?  % additional problem
+
+  \end{enumerate} 
+
+  %% problem 2 and 3 from book, modified.
+  \item Suppose that the probability of rain today depends on weather
+  conditions from the previous three days. If it has rained for the
+  past three days, then it will rain today with probability 0.7; if it
+  did not rain for any of the past three days, then it will rain today
+  with probability 0.1; if it rained each of the past two days but not three days
+  ago, it will rain with probability 0.8; and, in any other case, the weather today will
+  match yesterday's weather with probability 0.6.
+
+  \begin{enumerate}
+  
+  \item Describe this process using a Markov chain, i.e., define a state space
+  and the corresponding transition probability matrix for the process.
+
+  \item Suppose you know that it rained on days one, two, and three. What is the
+  probability that it will rain on day seven? (You are welcome to use a computer
+  for this, but please explain what you did.)
+
+  \end{enumerate}
+
+  % Problem 16 from book
+  \item Prove that if state $i$ is recurrent and state $i$ does not communicate
+  with state $j$, then $P_{ij}=0$.
+
+  {\em This implies that once a process enters a recurrent class of states, it
+  can never leave that class. For this reason, a recurrent class is often
+  referred to as a {\em closed} class.}
+
+  %% computer problem using problem 1 above (from midterm spring 2010)
+  \item Computer problem: Use the Markov chain described in Problem~\ref{midtermprob}
+  and the initial distribution in~\ref{initial}.
+
+  \begin{enumerate}
+
+    \item Simulate a realization of the random variable $X_3$. Repeat this 1000
+    times---i.e., generate 1000 instances of $X_3$---and calculate the average.
+    This is your estimate of $E(X_3)$. (Ideally, you should report some sort of
+    confidence interval, but this is not required.) Compare your estimate with
+    your answer from Problem 1. Since this is a short program, include a
+    printout of your code with your homework.
+  
+    \item Simulate the Markov chain according to Problem 1 and run it for
+    100,000 steps. Now calculate the proportion of times the Markov chain was in
+    the states 1,2,3,4,5,6 respectively. Simulate two more realizations, each
+    also of length 100,000, and again record the proportion of times the Markov
+    chain was in the states 1,2,3,4,5,6 respectively. You only have to report
+    the proportions for each of the three realizations (do not print out your
+    Markov chains or your code for this!)
+
+    \item Use your answer to part (b) to find one or more vectors $\bm v$ such
+    that $\bm v^\top P=\bm v^\top$. Explain your reasoning.
+    % (b) Repeat this exercise but this time use the initial distribution $P(X_0=0)=\frac{1}{8},P(X_0=1)=\frac{3}{4},P(X_0=2)=\frac{1}{8}$. Compare the proportions obtained to your results from (a). Are they similar or different? Explain why.
+
+    \end{enumerate}
+
+\end{enumerate}
+
+\end{document}
+

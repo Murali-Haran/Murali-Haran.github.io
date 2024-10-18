@@ -1,0 +1,133 @@
+\documentclass{article}
+\usepackage{url}
+\usepackage{amsmath,bm}
+\usepackage{amsfonts}
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-.5in}
+\setlength{\evensidemargin}{-.5in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textheight}{9.25in}
+
+\begin{document}
+
+\begin{center}
+{\bf STAT 515}
+
+{\bf Homework \#4, due Friday, Feb. 17 at 2:30pm}
+\end{center}
+
+{\it Please make every assignment easier to grade by neatly organizing your
+writeup and clearly labeling your final answers when appropriate. Try using
+\LaTeX!}
+
+\begin{enumerate}
+
+\item Suppose that in a branching process with $X_0=1$, each individual produces
+some number of offspring that is Poisson with mean 1, independently of all other
+individuals.
+
+  \begin{enumerate}
+
+  \item What is the expected number of generations until the process either dies
+  out or attains size $X_n\ge 5$?
+
+  \item What is the probability that the process will ever attain size $X_n\ge 5$?  
+
+  \end{enumerate}
+
+\item Define a Markov chain on the nonnegative integers as follows:
+$P_{0j}=I\{j=1\}$, and for $i>0$,
+\begin{eqnarray*} 
+P_{ij}&=& 
+  \begin{cases} 
+  i/(i+1) & \mbox{if $j=i+1$} \\ 
+  1/(i+1) & \mbox{if $j=0$}\\ 0 & \mbox{otherwise.} 
+  \end{cases} 
+\end{eqnarray*}
+
+  \begin{enumerate}
+  
+  \item Argue that this chain is irreducible and aperiodic.
+
+  \item Prove that all states are recurrent.
+
+  \item Prove that all states are null recurrent. (You may assume without proof
+  that null recurrence is a class property.)
+
+  \end{enumerate}
+  
+\item Consider the symmetric one-dimensional random walk of Example 4.15 with
+$p=1/2$.
+
+  \begin{enumerate}
+  
+  \item Let $T_{i}$ be the time at which the random walk first revisits state
+  $i$ given that it begins in state $i$. That is, $T_{i} = \inf \{n>0: X_n=i
+  \mid X_0=i\}$. For any $n>0$, find $P(T_i=2n)$.
+   
+  {\bf Hint:\ } Read the ballot problem example of Section~3.5 and the
+  discussion following it.
+   
+  \item Prove that all states are null recurrent by showing that
+  $E(T_i)=\infty$.
+   
+  {\bf Hint:\ } Read the random walk example of Section~4.3 for an idea about
+  how to show this.
+
+  \end{enumerate}
+
+\item Read the random walk example of Section~4.8 and the discussion of the
+Ehrenfest model following it.
+
+  \begin{enumerate}
+
+  \item Simulate the simple Ehrenfest diffusion process with total number of
+  particles $M=30$. Start the process at $X_0=10$. Run the process for 100,000
+  steps and draw a histogram of the resulting values of $X_t$.
+
+  \item On the same histogram, indicate the true values that would be expected
+  from a sample of size 100,000 from a binomial$(n=30, p=1/2)$ distribution.  See
+  the example R code for ideas on how to do this.
+
+  \item Explain what you observe from the comparison in part (b). Is the Markov
+  chain you are simulating ergodic?
+
+  \end{enumerate}
+
+%% time reversibility + MCMC basics (reworded from Murail's HW 4)
+\item Let $Q$ be a transition ``matrix'' for an irreducible Markov chain on the
+set $\mathbb{Z}$ of all integers; i.e., $Q_{ij}=P(X_n=j \mid X_{n-1}=i)$ for all
+$i,j\in\mathbb{Z}$. Assume that $Q_{ij}>0$ if and only if $Q_{ji}>0$ and that
+$Q_{ii}>0$ for all $i$. Also suppose that
+\[
+\sum_{i \in \mathbb{Z}} \pi_i = 1 \quad \mbox{and $\pi_i>0$ for all
+$i\in\mathbb{Z}$}
+\]
+and define
+\[
+\alpha(i,j) = \min\left(\frac{\pi_jQ_{ji}}{\pi_iQ_{ij}}, 1\right) \quad\mbox{for
+all $i,j\in\mathbb{Z}$.}
+\]
+Consider a second Markov chain with transition probabilities given by
+\[
+P_{ij} =  
+  \begin{cases}
+  \alpha(i,j) Q_{ij} &  \mbox{ if  $ j \neq i$}  \\
+  Q_{ii} + \sum_{k\neq i} Q_{ik}(1-\alpha(i,k)) & \mbox{if $i=j$,}
+  \end{cases}
+\]
+Using time reversibility arguments, show that the second Markov chain has
+stationary probabilities $\{\pi_i\}$ and that these stationary probabilities are
+also the limiting probabilities of the Markov chain.
+
+% reworded Ross problem 5.9
+\item The lifetimes of two machines are independent with exponential
+distributions with rates $\lambda_1$ and $\lambda_2$, respectively. Suppose
+machine 1 starts working now and machine 2 starts working $t$ units of time
+later. What is the probability that machine 1 will fail before machine 2?
+
+\end{enumerate}
+
+\end{document}
+

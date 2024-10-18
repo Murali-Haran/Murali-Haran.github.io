@@ -1,0 +1,78 @@
+
+\documentclass{article}
+\usepackage{amsmath, amsfonts,hyperref}
+\usepackage{url}
+\pagestyle{empty}
+\setlength{\textwidth}{6in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{9in}
+
+\begin{document}
+%\pagestyle{empty}
+\begin{center}
+\Large
+{\bf Homework 6 -- Part I, Stat 515, Spring 2015}\\
+\normalsize
+Due Wednesday, March 25, 2015 \underline{{\bf beginning of class}}\\
+\end{center}
+
+\begin{enumerate}
+\item Consider a continuous-time Markov chain on $\{1,2,3 \}$ with generator
+ \begin{equation*}
+   G=
+  \begin{bmatrix}
+    -6 & 2 & 4 \\
+    1 & -2 & 1\\
+    3 & 1 & -4 \\
+  \end{bmatrix}.
+\end{equation*}
+\begin{enumerate}
+\item What is the distribution of the holding times? What is the transition probability matrix of the embedded ``jump chain''?
+\item Simulate two realizations of this Markov chain on the interval
+  (0,50). Assume it starts at 1, that is, $X(0)=1$. Provide pseudocode
+  (sketch of the algorithm), {\tt R} code and a plot for each of the realizations.
+  \end{enumerate}
+{\bf Part II}
+\item A small barbershop is operated by a single barber. It has room
+  for at most two customers. Potential customers arrive as a Poisson
+  process with a rate of three per hour, and the successive service times are
+  independent exponential random variables with mean 0.25 hour. Find:
+\begin{enumerate}
+\item The average number of customers in the shop.
+\item The proportion of potential customers that enter the shop (in
+  the long run). 
+\item If the barber could work twice as fast, how much more business
+  could he do?
+\end{enumerate}
+\item Write {\tt R code} to simulate a single realization over a
+  period of 10 days for the above barbershop. What is the average number of
+  customers in the shop for this realization?
+% birth-death process (Ch.6), problem 14.
+% final 08 problem 7
+\item Customers arrive at a small bank according to a Poisson process
+  with rate 20 per hour. However, they will only enter the bank if
+  there are no more than two customers (including the one being
+  attended to) at the bank.  Assume that the amount of time required
+  to serve a customer is exponentially distributed with mean of 5
+  minutes. In the long run, what fraction of time will there be at
+  least 1 customer in the bank? Solve this problem in two ways:
+\begin{enumerate}
+\item First write out the generator for this continous-time Markov
+  chain and then find the stationary distribution using the generator.
+\item Use the fact that it is a birth-death process and find the
+  stationary distribution $\pi$ that satisfies detailed balance
+  conditions.
+\end{enumerate}
+% birth-death process (Ch.6)
+% P.Olofsson pg.450
+% final 09 problem 
+\item Consider a population where the individual death rate is $\mu>0$
+  and there is constant immigration into the population (immigration
+  always increases the size of the population) according to a Poisson
+  process with rate $\lambda>0$.  Derive the stationary distribution of
+  this process.
+
+  \end{enumerate}
+
+\end{document}

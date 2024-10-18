@@ -1,0 +1,16 @@
+\frametitle{Kaiser study}
+\begin{knitrout}
+ \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+ \begin{alltt}
+load(url("hlp://www.stat.berkeley.edu/
+users/nolan/data/babiesLab133.rda"))
+ \end{alltt}
+ \end{kframe}
+ \end{knitrout}
+\begin{itemize}
+\item Oakland Kaiser mothers
+\item 1960s
+\item Measure the babies weight (in ounces) at birth
+\item All babies: –  Male
+\item Single births (no twins, etc.) – Survived 28 days
+\end{itemize}

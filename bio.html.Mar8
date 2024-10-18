@@ -1,0 +1,53 @@
+<body bgcolor=E6E6FA>
+<HEAD>
+<TITLE> Brief Bio (Murali Haran)</TITLE>
+</HEAD>
+<!-- <body background="stucco.gif"> -->
+<CENTER>
+<FONT SIZE=5> Academic background and research interests
+</FONT> <BR><BR>
+</CENTER>
+I am currently Assistant Professor at the <A HREF="http://www.stat.psu.edu/"> Department of Statistics </A>, Pennsylvania State University.
+
+I have an M.S. and Ph.D. in Statistics from the <A
+HREF="http://www.stat.umn.edu/"> School of Statistics </A> , <A
+HREF="http://www1.umn.edu/tc"> University of Minnesota </A>,
+Minneapolis, MN (June 2003), and I was a postdoctoral fellow at the <A
+HREF="http://www.niss.org/"> National Institute of Statistical
+Sciences </A>, Research Triangle Park, North Carolina (2003-2004). I
+graduated with a B.S. in Computer Science and minors in Statistics and
+Film from <A HREF="http://www.scs.cmu.edu/"> Carnegie Mellon University
+</A>, Pittsburgh, PA. (May 1997).  <BR><br>
+
+My research interests include Markov chain Monte Carlo algorithms and
+hierarchical models for spatial data. I am interested in
+interdisciplinary research and have worked with environmental
+scientists at the <a href="http://enhs.umn.edu/"> School of Public Health</a>, University of Minnesota and
+have recently begun multiple collaborations at Penn State with:
+<UL>
+<LI> <a href="http://www.geog.psu.edu/"> Geography </a> on studying how ecological factors can impact coastal aquatic ecosystems.
+<LI> <a href="http://www.met.psu.edu/"> Meteorology </a> on using large spatiotemporal data sets (e.g. from large oceanic observation systems) to learn about indicators of climate change.
+<LI> <a href="http://www.ppath.cas.psu.edu/"> Plant Pathology </a> on estimating risks of crop epidemics.
+</UL>
+I have also worked with computer scientists on statistical issues in
+software engineering.  <br> <br>
+
+I was jointly advised by <L1> <A
+HREF="http://www.stat.uiowa.edu/~luke"> Luke Tierney</A>* and <L1> <A
+HREF="http://www.biostat.umn.edu/~brad"> Brad Carlin</A>** on my
+dissertation <b>Efficient Perfect and MCMC Sampling Methods for
+Bayesian Spatial and Components of Variance Models</b>.  I worked on
+Bayesian computation for spatial models and some hierarchical
+models. In particular, I investigated sampling techniques for
+hierarchical models that use Gaussian Markov Fields (GMRFs). A major
+portion of my thesis contains work on perfect sampling approaches for
+Bayesian disease mapping models. For more on perfect sampling, see
+D.B.Wilson's <A Href = "http://dbwilson.com/exact/"> website </A>.
+While in graduate school, I also studied hierarchical Bayesian
+modeling techniques used for disease mapping and particulate matter
+exposure studies.
+
+<br> <br>
+<FONT SIZE=2> * A member of the <a href="http://www.r-project.org/contributors.html"> R core group </a> and designer of <a href="http://lib.stat.cmu.edu/xlispstat/"> Xlisp-stat </a>. <br>
+** Author of the books <a href="http://www.amazon.com/exec/obidos/ASIN/1584881704/qid=962030389/sr=1-3/103-4693956-6104567"> Bayes and Empirical Bayes Methods for Data Analysis </a> and  <a href="http://www.amazon.com/exec/obidos/tg/detail/-/158488410X/qid=1073681597/sr=1-1/ref=sr_1_1/104-0636558-1307933?v=glance&s=books/"> Hierarchical Modeling and Analysis for Spatial Data </a>. <br>
+</FONT> <br> <br>

@@ -1,0 +1,178 @@
+\documentclass[10pt]{article}
+\usepackage[sort,longnamesfirst]{natbib}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{graphics,enumerate}
+\usepackage{amsmath}%                                                                                                         
+\newcommand{\bthet}{ \mbox{\boldmath $\theta$}}
+\newcommand{\bOne}{ {\bf 1} }
+\newcommand{\trace}{ \mbox{tr}}
+\newcommand{\diag}{ \mbox{diag}}
+\newcommand{\lambdaT}{\lambda_{\theta}}
+\newcommand{\bTheta}{ \mbox{\boldmath $\Theta$}}
+\begin{document}
+
+\begin{center}
+{\bf Penn State STAT 540}
+
+{\bf Homework \#2, due Tuesday, November 6, 2018}\\
+
+\end{center}
+\noindent Please submit separate files for your R code and your
+writeup (check with the TA, but do not zip the files together!). As
+before, (i) your {\tt R} code in a file titled PSUemailidHW2.R
+(e.g. muh10HW2.R), (ii) pdf file that contains a clear writeup for the
+questions below named PSUemailidHW2.pdf (e.g. muh10HW2.pdf). Note that
+your code should be readily usable, without any modifications. Provide
+enough details about your algorithms -- make it brief, but provide
+enough information so anyone who reads it would be able to construct
+the algorithm (provide pseudocode).
+\begin{enumerate}
+% 1-D M-H alg 
+\item[(1)] The pdf of a logistic distribution is 
+ $$f(x) = \frac{\exp(-(x-\mu)/\gamma) } {\gamma (1 + \exp(-(x-\mu)/\gamma))^2},\:
+ -\infty <\mu < \infty,\: \gamma>0.$$
+ Suppose $X_1,\dots, X_n$ are iid from the logistic distribution with
+ parameters $\mu, \gamma$. The data are
+ \url{https://personal.psu.edu/muh10/540/hw2B.dat} . Assume that the
+ prior distributions are $\mu \sim N(0,5)$, and
+ $\gamma \sim \mbox{Gamma}(\alpha=1,\beta=10)$ where the
+ parameterization of the Gamma pdf is
+ $\frac{1}{\Gamma(\alpha) \beta^\alpha} \gamma^{\alpha-1}
+ e^{-\gamma/\beta}.$
+ Write a Metropolis-Hastings algorithm to simulate from the posterior
+ pdf $\pi(\mu, \gamma\mid X_1,\dots,X_n)$. Plot your approximation to
+ the posterior pdf of $\gamma$ and $\mu$. Report the posterior
+ expectation of each of the following four random variables,
+ $\mu, \gamma, \gamma^2, \mu/\gamma$, and report the Monte Carlo
+ standard errors for each (in {\tt R} you can use the mcse command in
+ the mcmcse package; if you have to write your own code, you can
+ translate it from here
+ \url{https://personal.psu.edu/muh10/batchmeans.R} or
+ \url{https://personal.psu.edu/muh10/cbm.c} ). Also provide a 95\%
+ credible interval for $\mu$ and $\gamma$. Provide pseudocode for the
+ algorithm you implemented. Make sure you report (i) how you obtained
+ the starting value, (ii) how you determined the run length of the
+ Markov chain and how you decided that your approximations were
+ reliable (convergence diagnostics, including relevant plots), (iii)
+ how you tuned the algorithm (adjusted your proposal).
+% The pdf of a logistic distribution is 
+% $$f(x) = \frac{\exp(-(x-\mu)/\gamma) } {\gamma (1 + \exp(-(x-\mu)/\gamma))^2},\:
+% -\infty <\mu < \infty,\: \gamma>0.$$ 
+% Write a Metropolis-Hastings algorithm to simulate from this pdf. You
+% should provide a function that takes in $\mu, \gamma, N$, and produces
+% a Markov chain of length $N$ from a logistic distribution with
+% parameters $\mu, \gamma$. Approximate $E_f(X), E_f(X^2), E_f(X^3)$ for
+% $\mu=3, \gamma=7$. Report your approximations along with Monte Carlo
+% standard errors. Make sure you report (i) how you obtained the starting
+% value, (ii) how you determined the run length of the Markov chain,
+% (iii) how you tuned the algorithm (adjusted your proposal). 
+
+% %% regression with exponentially modified Gaussian distribution
+% \begin{enumerate}
+% \item Consider a regression of a variable $Y$ on $X$ where the regression model is as follows,
+% $Y_i \sim EMG(\beta_0 + \beta_1X, \sigma_i, \lambda),$ 
+% where the exponentially modified Gaussian random variable, EMG($\mu, \sigma, \lambda$), has pdf
+% $f(x;\mu, \sigma, \lambda) = \frac{\lambda}{2} \exp(\frac{\lambda}{2} (2\mu + \lambda\sigma^2 - 2x)) \mbox{erfc}\left(\frac{\mu + \lambda
+% \sigma^2 - x}{\sqrt{2} \sigma} \right), $
+% and erfc is the complementary error function defined as
+% %$$\mbox{erfc} = 1 - \mbox{erf}(x) = \frac{2}{\pi} \int_x^{\infty} e^{-t^2} dt.$$
+% $$\mbox{erfc}(x) = \frac{2}{\pi} \int_x^{\infty} e^{-t^2} dt.$$
+% The EMG distribution is obtained when a normal density is convolved
+% with an exponential density. That is, for the regression above, the
+% error contains a normal error (with standard deviation $\sigma$) added
+% to an exponential error (with rate $\lambda$, that is, expected value
+% $1/\lambda$). {\tt R} code for the EMG density function is here: \url{http://sites.stat.psu.edu/~mharan/515/hwdir/emg.R}
+% \begin{enumerate}
+% \item Assume that $\beta_0=5, \lambda=0.4$, and $\sigma_i=1 $ for all
+%   $i$. Let the prior for $\beta_1$ be N$(0,10)$ (parameterization:
+%   N(mean, sd)). Write a Metropolis-Hastings algorithm to approximate
+%   the posterior distribution, $\pi(\beta_1\mid {\mathbf Y, X})$ for
+%   Dataset\#1 on Angel. Clearly and succinctly describe the algorithm
+%   you used, with enough detail so anyone reading it should be able to
+%   write code based on your description. You should also provide
+%   important details such as starting values (e.g. arbitrary values,
+%   values based on several preliminary MCMC runs, a random draw from
+%   some initial distribution you chose etc.) {\it Note: here, as in
+%     other parts, you will lose points if your answer is either unclear
+%     or incomplete.}
+% \item Report your estimate of the posterior expectation of
+%   $\beta_1$. This is a point estimate for $\beta_1$. Also report the
+%   MCMC standard error associated with this estimate.
+% \item Report a 95\% credible interval for $\beta_1$ based on your
+%   samples. Credible intervals are the Bayesian analogue of frequentist
+%   confidence intervals. The interpretation is that if $(L,B)$ is the
+%   credible interval, $P(\beta_1 \in (L,B)\mid {\mathbf Y, X})=0.95$. A
+%   simple 95\% credible interval may be obtained by reporting the 2.5th
+%   and 97.5th sample percentiles from your Markov chain. In R, if you
+%   have stored your Markov chain in the vector mySamples, you can use
+%   the command {\tt quantile(mySamples, c(0.025, 0.975))}.
+% \item Plot an estimate of the posterior pdf of $\beta_1$ from a
+%   smoothed density plot of the samples. In R, you can use the command
+%  {\tt plot(density(mySamples))}.
+% \item Describe how you determined that your approximations above were 
+%   accurate, along with any supporting information as discussed in
+%   class, e.g. plots of autocorrelations, MCMC standard errors
+%   etc. {\it All your plots must be clearly labelled and referenced in
+%     your text.}
+% \end{enumerate}
+%\end{enumerate}
+\item[(2)] Assume that data, $X_1,\dots,X_n$ are independent and
+  identical draws from a logistic distribution.
+\begin{enumerate}
+\item 1D optimization: Write a Newton-Raphson algorithm to obtain the maximum
+  likelihood estimate of the parameter $\mu$ of a logistic
+  distribution. Assume that $\gamma=1$ (fixed and known). Use the
+  following data set: \url{https://personal.psu.edu/muh10/540/hw2A.dat}
+\begin{enumerate}
+\item Provide your pseudocode including how you obtained a starting
+  value and what stopping criteria you used. Also include your {\tt R} code.
+\item Discuss your choice of step size $s$, and compare your 
+  algorithm's behavior for at least two different choices (you can 
+  show a plot of the trajectory of your iterations, for 
+  instance). Does your algorithm have the ascent property? % Make sure 
+  % that one of the algorithms you construct uses ``backtracking'' with 
+  % $s$ to help induce the ascent property and report your results. 
+\item Report your MLE, standard error estimates and a 95\% confidence
+  interval for $\mu$. For standard error estimates, you can use standard mathematical
+  statistics theory. That is, you can approximate variance by using either observed or expected Fisher
+  information evaluated at the MLE. Note that the Newton-Raphson
+  algorithm already makes use of the observed Fisher information at
+  each update.
+\end{enumerate}
+\item 2D optimization: Write a Newton-Raphson algorithm to obtain the maximum
+  likelihood estimates of the parameters $\mu, \gamma$ of a logistic
+  distribution. Note that the Newton-Raphson algorithm in higher
+  dimensions is just the multivariate analogue of the 1D univariate Newton-Raphson. Use the following data set (different from above data set):
+  \url{https://personal.psu.edu/muh10/540/hw2B.dat}
+\begin{enumerate}
+\item Provide your pseudocode including how you obtained a starting
+  value and what stopping criteria you used. Also include your {\tt R}
+  code.
+\item Discuss your choice of step size $s$, and compare your 
+  algorithm's behavior for at least two different choices (you can 
+  show a plot of the trajectory of your iterations, for 
+  instance). Does your algorithm have the ascent property? % Make sure 
+  % that one of the algorithms you construct uses ``backtracking'' with 
+  % $s$ to help induce the ascent property and report your results. 
+\item Report your MLE, standard error estimates and 95\% confidence
+  intervals for $\mu, \gamma$. Again, you should use observed or
+  expected Fisher information at the MLE to approximate standard errors.
+\end{enumerate}
+\end{enumerate}
+
+% Simulation study using above optimization algorithm: look at MSE, coverage
+\item[(4)]  Conduct a simulation study where you compare the Mean
+  Squared Error (MSE) for two estimators: the maximum likelihood estimator (MLE)
+  and the posterior mean for the parameter $\gamma$ in the logistic
+  distribution above. Do this for $\mu=3$ (assume $\mu$ is known so it
+  does not have to be estimated) and for $\gamma=1$ and
+  $\gamma=10$. Consider two different sample sizes in each case,
+  $n=10$ and $n=500$. \\
+Extra: You do not have to turn this in, but you can also consider a
+simulation study 
+comparing coverage of the 95\% confidence intervals with 95\% credible
+intervals based on the maximum likelihood and Bayesian approaches for
+each case above. 
+\end{enumerate}
+\end{document}

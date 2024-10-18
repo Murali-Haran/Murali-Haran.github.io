@@ -1,0 +1,236 @@
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2015.7.22)  28 FEB 2017 14:22
+entering extended mode
+ %&-line parsing enabled.
+**\input midterm380.2017.tex
+(./midterm380.2017.tex (/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size12.clo
+File: size12.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf/tex/latex/graphics/epsfig.sty
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 90.
+
+(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2007/01/08 v0.04d Graphics/color for pdfTeX
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+\epsfxsize=\dimen105
+\epsfysize=\dimen106
+)
+(/usr/share/texmf/tex/latex/amscls/amsthm.sty
+Package: amsthm 2004/08/06 v2.20
+\thm@style=\toks15
+\thm@bodyfont=\toks16
+\thm@headfont=\toks17
+\thm@notefont=\toks18
+\thm@headpunct=\toks19
+\thm@preskip=\skip43
+\thm@postskip=\skip44
+\thm@headsep=\skip45
+\dth@everypar=\toks20
+)
+(/usr/share/texmf/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip46
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/share/texmf/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks21
+\ex@=\dimen107
+))
+(/usr/share/texmf/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen108
+)
+(/usr/share/texmf/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count88
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count89
+\leftroot@=\count90
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count91
+\DOTSCASE@=\count92
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen109
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
+\dotsspace@=\muskip10
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
+\tag@help=\toks22
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
+\andhelp@=\toks23
+\eqnshift@=\dimen110
+\alignsep@=\dimen111
+\tagshift@=\dimen112
+\tagwidth@=\dimen113
+\totwidth@=\dimen114
+\lineht@=\dimen115
+\@envbody=\toks24
+\multlinegap=\skip47
+\multlinetaggap=\skip48
+\mathdisplay@stack=\toks25
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+(/usr/share/texmf/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2001/10/25 v2.2f
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 132.
+)
+(/usr/share/texmf/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/usr/share/texmf/tex/latex/config/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+(/usr/share/texmf/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2005/05/12 v1.1 Customized lists
+\labelindent=\skip49
+\enit@outerparindent=\dimen116
+)
+
+Package amsthm Warning: Unknown theoremstyle `Conjecture' on input line 35.
+
+
+Package amsthm Warning: Unknown theoremstyle `example' on input line 36.
+
+
+Package amsthm Warning: Unknown theoremstyle `lemma' on input line 38.
+
+
+Package amsthm Warning: Unknown theoremstyle `corol' on input line 40.
+
+
+Package amsthm Warning: Unknown theoremstyle `proposition' on input line 41.
+
+
+Package amsthm Warning: Unknown theoremstyle `condition' on input line 42.
+
+\c@theorem=\count100
+\c@example=\count101
+\c@remark=\count102
+\c@lemma=\count103
+\c@definition=\count104
+\c@corol=\count105
+\c@condition=\count106
+\c@proposition=\count107
+\c@Conjecture=\count108
+(./midterm380.2017.aux)
+\openout1 = `midterm380.2017.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+
+Underfull \hbox (badness 10000) in paragraph at lines 84--89
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 84--89
+
+ []
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 115.
+(/usr/share/texmf/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2002/01/19 v2.2g AMS font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 115.
+
+(/usr/share/texmf/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2002/01/19 v2.2g AMS font definitions
+) [1
+
+{/usr/share/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 141.
+
+ (/usr/share/texmf/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 141.
+ [2]
+[3] [4] [5] <midtermPlot.png, id=22, 469.00218pt x 223.58531pt>
+File: midtermPlot.png Graphic file (type png)
+
+<use midtermPlot.png> [6 <./midtermPlot.png>] [7] (./midterm380.2017.aux) ) 
+Here is how much of TeX's memory you used:
+ 1592 strings out of 256216
+ 18855 string characters out of 1917072
+ 70687 words of memory out of 1500000
+ 4876 multiletter control sequences out of 10000+200000
+ 9108 words of font info for 35 fonts, out of 1200000 for 2000
+ 645 hyphenation exceptions out of 8191
+ 32i,8n,22p,257b,335s stack positions out of 5000i,500n,6000p,200000b,15000s
+</us
+r/share/texmf/fonts/type1/bluesky/cm/cmmi12.pfb></usr/share/texmf/fonts/type1/b
+luesky/cm/cmr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy10.pfb></usr/s
+hare/texmf/fonts/type1/bluesky/cm/cmti12.pfb></usr/share/texmf/fonts/type1/blue
+sky/cm/cmtt12.pfb>
+Output written on midterm380.2017.pdf (7 pages, 49537 bytes).
+PDF statistics:
+ 48 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 131072)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+

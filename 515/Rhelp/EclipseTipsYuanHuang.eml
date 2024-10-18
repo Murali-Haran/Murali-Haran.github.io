@@ -1,0 +1,173 @@
+Return-Path: <huangyuan.stat@gmail.com>
+Delivered-To: muh10@stat.psu.edu
+Received: from localhost (unknown [127.0.0.1])
+	by mailtruck.science.psu.edu (Postfix) with ESMTP id 6290ADE4BD
+	for <mharan@stat.psu.edu>; Sun, 10 Apr 2011 05:05:13 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at science.psu.edu
+Received: from mailtruck.science.psu.edu ([127.0.0.1])
+	by localhost (mailtruck.science.psu.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id pBPzq6ZZa6mw for <mharan@stat.psu.edu>;
+	Sun, 10 Apr 2011 01:05:07 -0400 (EDT)
+Received: from chaos.stat.psu.edu (chaos.stat.psu.edu [128.118.181.21])
+	by mailtruck.science.psu.edu (Postfix) with ESMTP id 96D19DE4BC
+	for <mharan@stat.psu.edu>; Sun, 10 Apr 2011 01:05:07 -0400 (EDT)
+Received: from localhost (chaos [127.0.0.1])
+	by chaos.stat.psu.edu (Postfix) with ESMTP id ACF4E812A
+	for <mharan@stat.psu.edu>; Sun, 10 Apr 2011 00:11:04 -0400 (EDT)
+X-Virus-Scanned: amavisd-new at stat.psu.edu
+Received: from chaos.stat.psu.edu ([127.0.0.1])
+	by localhost (chaos.stat.psu.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ny2iIvFT3s8Z for <mharan@stat.psu.edu>;
+	Sun, 10 Apr 2011 00:11:04 -0400 (EDT)
+Received: from mail-qw0-f43.google.com (mail-qw0-f43.google.com [209.85.216.43])
+	by chaos.stat.psu.edu (Postfix) with ESMTP id 7A8D68129
+	for <mharan@stat.psu.edu>; Sun, 10 Apr 2011 00:11:04 -0400 (EDT)
+Received: by qwf6 with SMTP id 6so3393740qwf.2
+        for <mharan@stat.psu.edu>; Sat, 09 Apr 2011 22:05:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:mime-version:from:date:message-id:subject:to
+         :content-type;
+        bh=aztsdMxVIWja1IgHaSXgbaoPMsBoXPkcjarieu6DZF8=;
+        b=cHc3yzpw+sLHYRAQZirR4jgSHJAp5C9K07CEDEEAa7ITTQsDS+/m8cYm/3KDNIHnzV
+         VM13xhNTrQpePU3c5Z2Ya8m5MNXMmoj8HcNCJQV2jsxeenbTQ0QGcuEo8GQU4AP9YLAJ
+         jiO2XE+OgE7Of0SHcTrc/2N2+kyc+Md6nl8sg=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=gmail.com; s=gamma;
+        h=mime-version:from:date:message-id:subject:to:content-type;
+        b=HAwMr9udEVFSxR5BAHhx7ZZIjXDynWwIBA5ziFRNxSif53fhDckswKV5uXTCcxYrbQ
+         xUo8KFZSmWx8oZ6FmR+ZS4kCQVYB3W/LPhIHs2i2V0Xyra7NhPB6q/55W919UJtHVd2J
+         XAC58mo9vTjcO5z9ik/Yco+BmytTGCx/aUEVs=
+Received: by 10.229.111.98 with SMTP id r34mr2454684qcp.3.1302411906143; Sat,
+ 09 Apr 2011 22:05:06 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.229.80.13 with HTTP; Sat, 9 Apr 2011 22:04:46 -0700 (PDT)
+From: yuan huang <huangyuan.stat@gmail.com>
+Date: Sun, 10 Apr 2011 01:04:46 -0400
+Message-ID: <BANLkTin6u6B28O-6hP1NgYepQNaThjPwwQ@mail.gmail.com>
+Subject: Comment on Eclipse and tips on how to hightlight all the functions in R
+To: XIANG ZHAN <XYZ5074@psu.edu>, BAHAEDDINE TAOUFIK <BUT129@psu.edu>, HANYU YANG <yanghanyu@gmail.com>, 
+	JASON BERNSTEIN <jib5317@psu.edu>, JOSHUA RANDALL GOLDSTEIN <jrg326@psu.edu>, Lauren Kraus <lekraus19@gmail.com>, 
+	NINGTAO WANG <NXW5034@psu.edu>, Rashmi Bomiriya <rashmi.bomiriya@gmail.com>, 
+	SAE NA PARK <svp5246@psu.edu>, Sonali Saxena <sonalisaxena.s@gmail.com>, 
+	Won Chul Song <joshg2007@gmail.com>, Won Chul Song <swchul@gmail.com>, WON CHUL SONG <WXS5052@psu.edu>, 
+	Xiaoyu Liu <vera.xy.liu@gmail.com>, Ye Yu <yealfish@gmail.com>, 
+	YOUNGJOO CHO <YVC5154@psu.edu>, Zhuying Xu <xu.zhuying@gmail.com>, 
+	Murali Haran <mharan@stat.psu.edu>
+Content-Type: multipart/alternative; boundary=0023544711c00456fe04a08967cf
+
+--0023544711c00456fe04a08967cf
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi, I just finish configurate the Eclipse for R.  I think this eidtior is
+really wonderful:
+
+*Advantages:*  1. It has an object panel so I can easily identify all the
+objects I define in the code.
+                      2. It can color and indent the function.
+(*Note:*Elipse will not auto color the functions in R. It needs to
+import all the
+function and then to define the color as I will write below)
+                      3. If hovering over the function, there will be a box
+to show all the parameters.
+                      4. If you type "r" can list all the possible functions
+that begin with r by using Alt+/
+                      5. There is a panel showing all the libraries you are
+using.
+
+*Disadvantages:   1. What I find annoying is it sometimes suddenly
+disconnected with R..so I lose the objects I'm running and I need to redo
+it.*
+                           2. The errors return is something can not be
+readable because my R is Chinese version...
+                           3. Even I saved the workspace...I do not know
+where it's saved..(I guess this is not a problem..maybe I'm not in the right
+folder?)
+
+*How to configurate* *Eclipse to highlight all the functions in R?*
+*The file I provided will hight all the functions in R. If you do not want
+some functions to highlight, just delete them from the list.*
+**
+*Steps:* <http://www.splusbook.com/RIntro/R_Eclipse_StatET.pdf>
+*1. Go to the workspace you specified,,then go to the file
+\.metadata\.plugins\org.eclipse.core.runtime\.settings*
+
+2. Find and Use wordpat to open the file:  de.walware.statet.r.ui.prefs
+
+3. Add the things in the file attached and restart !
+
+4. Done!!
+
+-- 
+*Yuan Huang
+
+301 Thomas Building
+Department of Statistics
+Pennsylvania State University,UP*
+
+--0023544711c00456fe04a08967cf
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<div>Hi, I just finish configurate the Eclipse for R.=A0 I think this eidti=
+or is really wonderful:</div>
+<div>=A0</div>
+<div><strong>Advantages:</strong>=A0 1. It has an object panel so I can eas=
+ily identify all the objects I define in the code.</div>
+<div>=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 =A0 2. It ca=
+n=A0color and indent the function. (<strong>Note:</strong> Elipse will not =
+auto color the functions in R. It needs to import all the function and then=
+ to define the color as I will write below)</div>
+
+
+<div>=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 3. If =
+hovering over the function, there will be a box to show all the parameters.=
+</div>
+<div>=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 4. If =
+you type &quot;r&quot;=A0can list all the possible functions that begin wit=
+h r by using Alt+/</div>
+<div>=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 5. The=
+re is a panel showing all the libraries you are using.</div>
+<div>=A0</div>
+<div><strong>Disadvantages:=A0=A0 1. What I find annoying is it sometimes s=
+uddenly disconnected with R..so I lose the objects I&#39;m running and I ne=
+ed to redo it.</strong>=A0 </div>
+<div>=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A02. The errors return is something can not be readable because m=
+y R is Chinese version...</div>
+<div>=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0 3. Even I saved the workspace...I do not know where it&#39;s save=
+d..(I guess this is not a problem..maybe I&#39;m not in the right folder?)<=
+/div>
+<div>=A0</div>
+<div><strong>How to configurate</strong> <strong>Eclipse to highlight all t=
+he functions in R?</strong></div>
+<div><strong>The file I provided will hight all the functions in R. If you =
+do not want some functions to highlight, just delete them from the list.</s=
+trong></div>
+<div><strong></strong>=A0</div>
+<div><strong>Steps:</strong><a href=3D"http://www.splusbook.com/RIntro/R_Ec=
+lipse_StatET.pdf"></a></div><u><font color=3D"#810081">1. Go to the workspa=
+ce you specified,,then go to the file=A0=A0=A0 \.metadata\.plugins\org.ecli=
+pse.core.runtime\.settings</font></u>=20
+<div>=A0</div>
+<div>2. Find and Use wordpat to open the file:=A0 de.walware.statet.r.ui.pr=
+efs</div>
+<div>=A0</div>
+<div>3. Add the things in the file attached and restart !=A0 </div>
+<div>=A0</div>
+<div>4. Done!!</div>
+<div><br>-- <br><b style=3D"COLOR: rgb(255,153,102)"><span style=3D"FONT-FA=
+MILY: comic sans ms,sans-serif">Yuan Huang</span><br style=3D"FONT-FAMILY: =
+comic sans ms,sans-serif"><br style=3D"FONT-FAMILY: comic sans ms,sans-seri=
+f">
+
+<span style=3D"FONT-FAMILY: comic sans ms,sans-serif">301 Thomas Building</=
+span><br style=3D"FONT-FAMILY: comic sans ms,sans-serif"><span style=3D"FON=
+T-FAMILY: comic sans ms,sans-serif">Department of Statistics</span><br styl=
+e=3D"FONT-FAMILY: comic sans ms,sans-serif">
+
+<span style=3D"FONT-FAMILY: comic sans ms,sans-serif">Pennsylvania State Un=
+iversity,UP</span></b><br><br></div>
+
+--0023544711c00456fe04a08967cf--

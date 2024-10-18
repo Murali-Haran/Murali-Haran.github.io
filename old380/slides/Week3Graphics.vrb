@@ -1,0 +1,26 @@
+\frametitle{Exploratory Data Analysis}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{class}\hlstd{(}\hlnum{3.5}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+\begin{alltt}
+\hlkwd{class}\hlstd{(}\hlstr{"Hello there"}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+\begin{alltt}
+\hlkwd{class}\hlstd{(}\hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## [1] "logical"
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\begin{itemize}
+\item Another important type is factor
+\end{itemize}

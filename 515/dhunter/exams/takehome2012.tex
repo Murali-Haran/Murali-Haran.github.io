@@ -1,0 +1,216 @@
+\documentclass{article}
+
+\setlength{\topmargin}{-.5in}
+\setlength{\oddsidemargin}{.0in}
+\setlength{\evensidemargin}{.0in}
+\setlength{\textheight}{9in}
+\setlength{\textwidth}{6.5in}
+\setlength{\parindent}{0in}
+%\parskip=.125in
+
+\usepackage{amsmath,bm}%
+\usepackage{amsfonts}%
+\usepackage{enumerate}%
+
+\newcommand{\beaa}{\begin{eqnarray*}}
+\newcommand{\eeaa}{\end{eqnarray*}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\svskip}{\vspace{.2in}}
+\newcommand{\mvskip}{\vspace{.25in}}
+\newcommand{\lvskip}{\vspace{.5in}}
+\def\E{\mathop{\rm E\,}\nolimits}
+\def\Var{\mathop{\rm Var\,}\nolimits}
+\def\Cov{\mathop{\rm Cov\,}\nolimits}
+\def\Cor{\mathop{\rm Corr\,}\nolimits}
+\def\Tr{\mathop{\rm Tr\,}\nolimits}
+\def\diag{\mathop{\rm diag\,}\nolimits}
+\def\midd{\mathop{\,|\,}\nolimits}
+\def\cip{\mathop{\stackrel{P}{\rightarrow}}\nolimits}
+\def\cid{\mathop{\stackrel{d}{\rightarrow}}\nolimits}
+\def\ciqm{\mathop{\stackrel{\mbox{\scriptsize qm}}{\rightarrow}}\nolimits}
+\def\defn{{\stackrel{\mbox{\scriptsize def}}{=}}}
+\def\eid{{\stackrel{{\cal D}}{=}}}
+\def\rvseq{\mathop{X_1, X_2, \ldots}\nolimits}
+\def\rvseqn{\mathop{X_1, \ldots, X_n}\nolimits}
+\def\u#1{{\underline{#1}}}
+\def\o#1{{\overline{#1}}}
+\def\n#1{^{(#1)}}
+\newcommand{\qed}{\rule{2mm}{2mm}}
+
+
+\def\cas{\mathop{\stackrel{\mbox{\scriptsize as}}{\rightarrow}}\nolimits}
+
+\pagestyle{empty}
+
+%%-------------------------------------------------------------------
+
+\begin{document}
+        \hrule
+        \begin{center}
+        \Large\bf Stat 515: Stochastic Processes I \hfill Spring 2012\\
+        Take-Home Final Exam  \hfill April 21--May 2, 2012
+        \end{center}
+        \hrule
+
+%\lvskip {\bf Name:  \rule{4in}{.01in}}
+
+\mvskip 
+This exam is worth 10 points.  You have 11 days.  Electronic submission
+is required.  {\em Show all of your work for full credit; answers submitted without
+supporting work will receive little or no credit.}  
+The rules of the exam are as follows:
+
+\begin{enumerate}
+\item[A.]
+You may not communicate about this exam with anyone other than the instructor, not even the grader. You may not receive help of any kind on this exam from anyone else except the instructor. You may not give help of any kind on this exam to anyone else.
+\item [B.]
+You must submit your writeup and your code to ANGEL, in the appropriate dropboxes, before 5:00pm on Wednesday, May 2.  Do not include your code in your writeup; the code must be easy to read (with comments as appropriate) and it should be clear how I can run it.  You may use R, Matlab, or Python.  I strongly encourage the use of a sensible text editor in preparing your code.
+\end{enumerate}
+
+
+
+
+\lvskip 
+{\bf Problem 1. [2 points]\ } 
+Suppose that a player has five dollars and wishes to play craps until she either runs out of money or 
+doubles her money (i.e., until the first time she has either zero dollars or some amount greater than
+or equal to ten dollars), at which point she stops playing.   
+Betting in craps works as follows:  If the player has $x$ dollars and
+bets $y$ dollars (where $y\le x$), then 
+with probability $244/495$, she wins and her new total is $x+y$; with probability
+$251/495$, she loses and her new total is $x-y$.
+
+\svskip
+{\bf(a) \ }
+Suppose that the player always bets one dollar.  What is the probability that she will eventually
+double her money?
+
+\svskip
+{\bf(b) \ }
+Suppose that for each new game, the player bets $3$, $2$, or $1$ dollar with probabilities
+$1/6$, $2/6$, and $3/6$, respectively.  (If she only has two dollars left, she bets $2$ or $1$ dollar
+with probabilities $1/3$ and $2/3$, respectively.  If she only has one dollar left, she bets one 
+dollar.)  
+What is the expected number of games she will be able to play before stopping
+(at either zero dollars or ten or more dollars)?
+
+\svskip
+{\em Don't forget to explain all of your work in your writeup.}
+
+\mvskip
+{\bf Problem 2. [8 points]\ }
+Suppose we have parameters distributed as follows:
+\begin{eqnarray*}
+\theta_0, \theta_1 & \stackrel{\rm iid}{\sim} & N(0,1),\\
+\lambda  &\sim& \mbox{beta}(2,2), 
+\quad\mbox{independently of $\theta_0$ and $\theta_1$.}\\ 
+\end{eqnarray*}
+Furthermore, suppose that, conditional on the parameters,
+\begin{eqnarray*}
+Z_1, \ldots, Z_{10} & \stackrel{\rm iid}{\sim} & \mbox{Bernoulli}(\lambda). \\
+\end{eqnarray*}
+(In other words, $P(Z_i=1) = 1-P(Z_i=0) = \lambda$.)
+Finally, assume that $X_1, \ldots, X_{10}$ are conditionally independent---conditional 
+on the parameters and the $Z_i$---with mass function
+\[
+p(x_i \mid Z_i, \theta_0, \theta_1, \lambda) =
+{{20} \choose x_i }
+\left( \frac{e^{x_i \theta_0}}{(1 + e^{\theta_0)^{20}}} \right)^{1-Z_i}
+\left( \frac{e^{x_i \theta_1}}{(1 + e^{\theta_1})^{20}} \right)^{Z_i}
+\quad\mbox{for $i=1, \ldots, 10$.}
+\]
+Intuitively, this means that
+$X_i$ is conditionally distributed as 
+binomial$(20, p_i)$, where 
+\[
+p_i = \frac{\exp\{\theta_{Z_i}\}}{1+\exp\{\theta_{Z_i}\}}.
+\]
+
+\svskip
+{\bf (a) [4 points]\ }
+Here are the data:
+
+\svskip
+\begin{tabular}{c|cccccccccc}
+$i$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ \hline
+$X_i$ & 18 & 9 & 12 & 9 & 14 & 5 & 18 & 12 & 8 & 9 \\ \hline
+$Z_i$ & 1 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 
+\end{tabular}
+
+\svskip
+Using these data:
+
+\begin{enumerate}[(i)]
+\item Demonstrate that $\lambda$,
+$\theta_0$, and $\theta_1$ are independent of one another
+in the posterior distribution.
+\item Implement three separate importance samplers 
+to estimate the posterior means
+of $\theta_0$, $\theta_1$, and $\lambda$, respectively.  You may 
+implement your samplers using any $q$ distributions that you think
+are appropriate, but please explain what your choice is in each case.
+\item 
+Based on your samplers,
+give 95\% confidence intervals for each of the three true posterior
+means.  Make sure that you have sampled enough to ensure that
+your confidence intervals are no wider than 0.01.
+\end{enumerate}
+
+{\em Don't forget to explain all of your work in your writeup.  Also,
+submit code that I could run to test your importance samplers.}
+
+\svskip
+{\bf (b) [4 points]\ }
+Now, suppose that not all of the data have been observed.  We
+only know the following:
+
+\svskip
+\begin{tabular}{c|cccccccccc}
+$i$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ \hline
+$X_i$ & 18 & 9 & 12 & 9 & 14 & 5 & 18 & 12 & 8 & 9 \\ \hline
+$Z_i$ & 1 & 0 & 0 & 0 & 1 & ?? & ?? & ?? & ?? & ?? 
+\end{tabular}
+
+\svskip
+Using these data, in which $Z_6, \ldots, Z_{10}$ may now be considered
+to be parameters:
+
+\begin{enumerate}[(i)]
+\item 
+Derive the full conditional densities 
+(up to multiplicative constants) for $\lambda$, 
+$\theta_0$, and $\theta_1$.  Also derive the full conditional 
+mass function for $Z_i$, where $i$ can be any value from $6$ 
+to $10$.
+\item 
+Implement a variable-at-a-time Metropolis-Hastings algorithm to sample
+from the posterior distribution of 
+$(\theta_0, \theta_1, \lambda)$.  Describe the proposal distributions you
+use for this purpose and how you decided how long to run the chain.
+For the updates of $Z_6, \ldots, Z_{10}$, use Gibbs sampling together with
+the fact that for any Bernoulli variable $Y$ with mass function proportional
+to $\alpha^y\beta^{1-y}$,
+\[
+P(Y=1) = 1-P(Y=0) = \frac{\alpha}{\alpha+\beta}.
+\]
+\item 
+Give 95\% credible intervals for the two binomial 
+proportions $\exp\{\theta_0\} / (1+\exp\{\theta_0\})$ and
+$\exp\{\theta_1\} / (1+\exp\{\theta_1\})$.  Base these intervals
+on the 0.025 and 0.975 quantiles of the $\theta_0$ and $\theta_1$
+parameters, respectively.
+\item 
+Based on your MCMC run, give estimates of the 
+posterior means of $Z_6, \ldots, Z_{10}$ along with 
+corresponding confidence intervals.
+\end{enumerate}
+
+{\em Don't forget to explain all of your work in your writeup.  Also,
+submit code that I could run to test your Metropolis-Hastings algorithm.  
+I should be able to use your code to easily obtain an MCMC-based sample from 
+the approximate posterior distribution.}
+
+
+
+\end{document}

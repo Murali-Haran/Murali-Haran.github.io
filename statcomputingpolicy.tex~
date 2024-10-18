@@ -1,0 +1,63 @@
+\documentclass[12pt]{article}
+\usepackage[sort,longnamesfirst]{natbib}
+\newcommand{\pcite}[1]{\citeauthor{#1}'s \citeyearpar{#1}}
+
+\usepackage{amsbsy,amsmath,amsthm,amssymb,graphicx}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{subfigure}
+
+\usepackage{geometry}
+%\geometry{hmargin=2.5cm,vmargin={2.5cm,2.5cm},nohead,footskip=0.5in}
+\geometry{hmargin=2.5cm,vmargin={2.5cm,2.5cm},footskip=0.5in}
+\renewcommand{\baselinestretch}{1.25}
+\setlength{\baselineskip}{0.3in} \setlength{\parskip}{.05in}
+%\date{Draft: \today} 
+\date{April 28, 2008} 
+\pagestyle{empty}
+\begin{document}
+\begin{center}
+\Huge  {\bf Computing Policy}\\
+\Large  {\bf Department of Statistics, Eberly College of Science}\\
+\large April 28, 2008.
+\end{center}
+
+The following list of policies apply to all faculty, staff and
+students in the Department of Statistics at Penn State. Please note
+that these policies are an addendum to the ECOS computing policies,
+which automatically also apply to the Department of Statistics. These
+policies are primarily intended to clarify ECOS computing policies in
+the context of the Department of Statistics.
+% clarification?
+\begin{enumerate}
+\item {\bf Home desktop machines:} Anyone who takes a machine home assumes
+  full responsibility of the machine thereafter. An additional short
+  form will be added to the existing Penn State form. This form will
+  state that the individual acknowledges that by taking the machine
+  home, he/she is assuming full responsibility for it.
+\item {\bf Laptops:} System administrators will help individuals with their
+  laptops under the following conditions: (i) The laptop must be
+  purchased by the system administrator (on behalf of the individual),
+  (ii) The system administrator will have sole root/administrator
+  privileges on the laptop, (iii) Requests for help must involve
+  standard, work-related software. If any of the above conditions are
+  not met, the administrator is not responsible for maintenance or
+  help with the laptops.
+\item {\bf Portable devices} are not supported by the system administrators.
+  Purchasing and maintenance are the responsibility of the user.
+\item {\bf Purchases:} All devices that are part of the department
+  network must be purchased by the system administrators. If an
+  individual wishes to purchase a laptop and self-administer it, she
+  can purchase it on her own.  Also, if a device is purchased by
+  somebody other than a systems administrator, it will need approval
+  before it can be connected to our network. There is no guarantee
+  that such requests will be approved.
+\item No Macintosh machines will be supported by the system
+  administrators.  It is possible that in the future, support may be
+  available, but at this time the infrastructure is not in place.
+\end{enumerate} 
+
+\noindent {\bf Information sharing:} The computing staff are currently
+working on extensive documentation that will provide useful
+information such as names and I.P. addresses of printers.
+
+\end{document}

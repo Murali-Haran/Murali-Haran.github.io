@@ -1,0 +1,84 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Feb.~15}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item
+For Friday,
+read the parts of Section 5.3 that you haven't yet finished.
+\item 
+Homework due this Friday; regular office hours Thursday.
+\item
+The midterm will be \ldots ???
+\item 
+The final will be Monday, Apr. 30 at 8:00am.
+\end{itemize}
+\end{frame}
+
+\startframe{5.2 The exponential distribution}
+Very important fact:  If $X_1$ and $X_2$ are independent 
+exponential random variables with rates $\lambda_1$ and
+$\lambda_2$, then
+\[
+P(X_1 < X_2) = \frac{\lambda_1}{\lambda_1 + \lambda_2}
+\]
+{\em Where did we use the independence?}
+\end{frame}
+
+\startframe{5.2 The exponential distribution}
+\question{The minimum of a set of $n$ i.i.d.~exponential random variables has what type of distribution?}
+{Exponential}
+{Lognormal}
+{Normal}
+{Gamma}
+\end{frame}
+
+\startframe{5.2 The exponential distribution}
+Suppose you arrive at a post office having two clerks at 
+a moment when both are busy but nobody else is waiting in line.  
+The service times for clerk $i$ are exponential with rate $\lambda_i$.
+What is the expected amount of time you have to wait in line?
+\end{frame}
+
+\startframe{5.3 The Poisson Process}
+Counting processes:
+\begin{itemize}
+\item $N(t)=$number of ``events'' that occur in $[0, t]$.
+\item $N(t)$ is integer-valued and nondecreasing in $t$.
+\item Consider an example\ldots
+\end{itemize}
+\end{frame}
+
+\startframe{5.3 The Poisson Process}
+A Poisson process is a special type of counting process:
+\begin{itemize}
+\item Counts of events in disjoint time intervals are independent.
+\item For any $0\le s<t$, the number of events in $(s,t]$ is Poisson with parameter
+$\lambda(t-s)$.
+\item Technically, we should also say $N(0)=0$.
+\end{itemize}
+\end{frame}
+
+\startframe{5.3 The Poisson Process}
+A Poisson process is a special type of counting process
+(equivalent re-definition):
+\begin{itemize}
+\item Counts of events in disjoint time intervals are independent.
+\item $P[N(s+h)-N(s)=1] = \lambda h + o(h)$ as $h\to 0$.
+\item $P[N(s+h)-N(s)\ge2] = o(h)$ as $h\to 0$.
+\item Technically, we should also say $N(0)=0$.
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

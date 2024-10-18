@@ -1,0 +1,35 @@
+<body bgcolor=E6E6FA>
+<HEAD>
+<TITLE> Teaching </TITLE>
+</HEAD>
+<!-- <body background="stucco.gif"> -->
+<CENTER>
+<FONT SIZE=5>  Teaching Page
+</FONT> 
+<BR>
+<FONT SIZE=3> Murali Haran, Penn State Statistics
+<BR>
+</CENTER>
+<HR>
+<UL>
+<LI> <A Href = "http://www.stat.psu.edu/~mharan/380/380.html">  Data Science through Statistical Reasoning and Computation: spring 2017</A>
+<LI> <A Href = "http://www.stat.psu.edu/~mharan/463/463.html"> Time Series (STAT 463): spring 2014, fall 2014, fall 2016</A>
+<LI> <A Href = "http://www.stat.psu.edu/~mharan/540/540.html"> Statistical Computing (STAT 540), fall 2013, fall 2014, 2015, 2016</A> <br>
+<LI> <A Href = "http://www.stat.psu.edu/~mharan/463/463.html"> Time Series (STAT 463): spring 2014, fall 2014, fall 2016</A>
+<LI> <a href="http://www.stat.psu.edu/~mharan/414/414.html"> Introduction to Probability Theory (STAT 414): spring 2009, fall 2010, fall 2012, spring 2014 <br>
+<LI> <A Href = "http://www.stat.psu.edu/~mharan/440/440.html"> Computational Statistics (STAT 440), spring 2013 </A> (also spring 2011) <br>
+<LI> <A Href = "http://www.stat.psu.edu/~mharan/515/515.html"> Stochastic Processes and Monte Carlo Methods (STAT 515), spring 2015 </A>, (also spring 2005-2011). <br>
+
+<LI> Spatial Models (STAT 597A) (fall 2006, 2007, spring 2010). <br> 
+
+<!-- <LI> <A Href = "http://www.stat.psu.edu/~mharan/spatial/spatial.html"> Spatial Models (STAT 597A), spring 2010 </A> (also fall 2006, 2007). <BR>  -->
+
+<LI> Elementary Statistics (STAT 200 (Honors)), fall 2004-2008. <br>
+
+<!-- <LI> <a href="http://cms.psu.edu"> Advances in Ecology </a> (ECLGY 597B), fall 2006-2008 <br>  -->
+<LI> Advances in Ecology (ECLGY 597B), fall 2006-2008 <br> 
+
+<LI> <A Href = "http://www.stat.psu.edu/~mharan/MCMCtut/MCMC.html"> MCMC Tutorial for Center for Astrostatistics Summer School</A>, June 2005-2011. <BR>
+
+<LI> Elementary Statistics (STAT 200), fall 2004.
+</UL>

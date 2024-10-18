@@ -1,0 +1,88 @@
+---
+title: "Homework 5 due Friday Feb 24 at 10am"
+output: html_document
+---
+
+## Returning to roulette problem from last homework
+
+Q1. (Reminder) When we play roulette we start with a particular sum of
+money, e.g., we may have $100 in our wallet. Then what's in our wallet
+impacts how much and how long we can bet.  For example, with $100 in
+our wallet we cannot place a $200 bet. Also, depending on our
+winnings, we may be able to place 200 $1 bets or we may run out of
+money before then.
+
+For your first function, augment the `betRed` function to accept an
+additional parameter called `wallet` that contains the starting amount
+of money. Call this new function `betRed2`. Give `wallet` a default
+value so that it runs like the original `betRed` function if the
+default value of `wallet is used`.
+
+The return value from this function should be the net gain.  As
+before, this is the winnings less the losses. However, if at some
+point in your betting, you no longer have enough funds to place a bet
+then you can't continue your betting. Write your function in 3
+different ways.
+
+1(a). Use a while loop. Show the result of a test of your function.
+
+1(b). Use a for loop.  Show the result of a test.
+
+1(c). Do not use a loop of any kind. Instead you may find it useful to
+use these two commands (as discussed in class): cumsum and which.  Show the result of a test.
+
+1(d). For a specific example, compare the time taken by functions from 1(a) and 1(c) using the system.time command (as discussed in class). 
+
+1(e). Suppose you have $1000 to bet (that is what you have in your wallet). Select two betting strategies and compare them to each other (you may use any function you like from above). Reminder: In order to compare them you must repeat the betting strategy simulation many times (e.g. 10,000 times) and look at the distribution of results from the simulations. Report a plot and any other summary that would be useful for this comparison. State your preference and explain (in just 1-2 sentences) your reason for preferring one strategy over the other. 
+
+Q2. Read through the following function. State what its inputs are (the type, what it/they specify) and the outputs (the type, what it/they are). Please explain very clearly but briefly (just a few sentences) what the function does. 
+
+```{r}
+double.num = function(numBets) {
+   
+  if (!is.numeric(numBets)) stop("numBets must be numeric")
+  outcomes = c(-1, 1)
+  
+  for (i in 1:numBets) {
+    winLoss = sample(outcomes, size = 1)
+    if (winLoss > 0) return(i)
+  }
+  return(NA)
+}
+```
+
+
+Q3. Add a check to this function for `numBets`. Our function expects
+that `numBets` is a single number. If it contains more numbers, then
+the function should use only the first and it should issue a warning
+to that effect. Call this revised function `double.revised`. Test that
+it works as expected and show your tests here (below).
+
+```{r, collapse = TRUE, error=TRUE}
+
+```
+
+## St.Petersburg Paradox
+
+Q4. Write a function that implements the gambling game that gives rise to the famed St. Petersburg's paradox. To play the game once:
+You pay C dollars to play. Then a coin is flipped continuously until you see the first heads. You win a payout of 2^k dollars if the first heads occurs on the kth flip. For example: 
+If you get H on the first toss, you get $2. Your profit is: $2-C. 
+If you get TH (H on the second toss), you get $2^2=4. Your profit is $4-C.
+If you get THH (H on the third toss), you get $2^3=8. Your profit is $8-C.
+And so on.
+
+Call your function stPete. It should take as input the amount of money the player is willing to gamble. It should produce as output the amount of profit the player makes by playing the game.
+
+Write your function and test your function. Include both below.
+
+Q5. (a) Use Monte Carlo to approximate the probability that you will make a profit (that is, the probability that your profit is positive) if you are willing to gamble $25.  
+
+(b) Repeat the above for $1,000. 
+
+(c) Would you play this game? 
+
+(d) (You do not have to hand anything in for this part.) If you are curious about real world applications of the St. Petersburg paradox, take a look at this paper and talk by Professor Richards (who is a professor at Penn State Statistics). He discusses the connection between this and a financial collapse!
+
+Paper: The St. Petersburg Paradox and the Crash of High-Tech Stocks in 2000  http://sites.stat.psu.edu/~richards/papers/tas-hitech.pdf
+
+Talk: The St. Petersburg Paradox and the Quantification of Irrational Exuberance http://sites.stat.psu.edu/~richards/bgsu/bgtalk1.pdf

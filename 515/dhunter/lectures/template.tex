@@ -1,0 +1,253 @@
+\input{lecture}
+\begin{document}
+
+
+\def \thedate{Aug. 25}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\startframe{Announcements}
+%\begin{itemize}
+%\item Undergrad stat major reception 3:30pm Friday in 328 Thomas
+%\item How to get into this class:  Show up and\ldots
+%\item HW\#1 will be due Sept. 1 (nothing this Friday)
+%\item Small changes to syllabus
+%\end{itemize}
+%\end{frame}
+
+\begin{frame}[t]
+\frametitle{\thedate \hfill  Desired Outcomes from last class}
+\vspace{-1ex}
+Students will be able to:
+\pause
+\begin{itemize}
+\item identify the sample space of a probability experiment;
+\pause
+\item define a random variable and describe simple examples of RVs;
+%\pause
+%\item apply set notation to simplify expressions involving events;
+%\pause
+%\item apply Venn diagrams to the same.
+\end{itemize}
+\end{frame}
+
+
+\startframe{1.2\quad Properties of Probability }
+\begin{itemize}
+\item Event:  A subset of the sample space (technical restrictions unimportant for now)
+\item Often use early-alphabet capital letters (e.g., $A, B, C$) for events.
+\pause
+\item Difference between an {\em outcome} and an {\em event}?
+\pause
+\item After an experiment, event $A$ has occurred if \ldots
+\item Special random variable:  The indicator $I_A$ or $I(A)$ or $1_A$
+\end{itemize}
+\end{frame}
+
+\startframe{1.2\quad Properties of Probability }
+\begin{itemize}
+\item Algebra of sets and Venn diagrams
+	\begin{itemize}
+	\item Null event and full sample space: $\emptyset$ and $S$
+	\item Subset notation: $A\subset B$ or, alternatively, $B\supset A$ or $A$ implies $B$
+	\item Union: $A\cup B$
+	\item Intersection: $A\cap B$
+	\item Complement: $A'$ or, alternatively, $A^c$
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\startframe{1.2\quad Properties of Probability}
+
+\begin{columns}
+\begin{column}{4cm}
+
+\tikz{
+\def \lx{-1.4} \def \ux{2.4} \def \ly{-1.2} \def\uy{1.2}
+\draw (\lx,\ly) rectangle (\ux,\uy);
+% grid with dot at origin for helping place objects in rectangle:
+%\draw[step=.5, very thin] (\lx,\ly) grid (\ux,\uy); \filldraw (0,0) circle (.05);
+\draw (0,0) ellipse (1 and .8);
+\draw (1,0) ellipse (1 and .8);
+\draw (0,.9) node {\small$A$};
+\draw (1,.9) node {\small$B$};
+\draw (2.2,1) node{$S$};
+}
+\end{column}
+\begin{column}{6cm}
+Venn diagram depicting events $A$ and $B$.  In the picture, they appear to 
+have a nonempty intersection.
+\end{column}
+\end{columns}
+\end{frame}
+
+\startframe{1.2\quad Properties of Probability }
+Example from SOA/CAS Sample Exam P:
+
+\vspace{2ex}
+You are given $P(A\cup B)= 0.7$ and $P(A\cup B') = 0.9$.  Find $P(A)$.
+\end{frame}
+
+\startframe{1.2\quad Properties of Probability }
+\begin{itemize}
+\item {\em Mutually exclusive} events:  Have empty pairwise intersection
+\item {\em Exhaustive} events:  Have union equal to $S$
+\pause
+\item {\em Partition}:  A group of mutually exclusive and exhaustive events
+\end{itemize}
+\end{frame}
+
+\startframe{1.2\quad Properties of Probability }
+An example:  Roll two dice, so $S$ has 36 elements or outcomes.
+\begin{itemize}
+\item Let $A=\{ s\in S: \mbox{sum of dice results in $s$ is even}\}$
+\item \quad\ \ $B=\{\mbox{first die is even}\}$ \qquad {\em (using abbreviated notation)}
+\item \quad\ \ $C=\{\mbox{second die is $\ge5$}\}$
+\item \quad\ \  $D=\{\mbox{sum is prime}\}$
+\end{itemize}
+\pause
+What is $A\cap D$? 
+\pause
+\qquad$(B\cup C' \cup A)'$?
+\pause
+\qquad$(A'\cap B)\cup (A\cap B)$?
+\end{frame}
+
+\startframe{ Appendix A.1\quad Algebra of sets }
+\begin{itemize}
+\item Commutative property:  $A\cup B = B\cup A$
+\item Associative property:  $(A\cup B)\cup C = A\cup(B\cup C)$
+\item Distributive property:  $A\cup(B\cap C) = (A\cup B)\cap(A\cup C)$
+\item DeMorgan's Law: $(A\cup B)' = A' \cap B'$ or, more generally,
+\[\left(\bigcup_{i=1}^n A_i\right)' = \bigcap_{i=1}^n A_i'\]
+\end{itemize}
+\end{frame}
+
+\startframe{Appendix A.1\quad Algebra of sets }
+\begin{itemize}
+\item Commutative property:  $A\cap B = B\cap A$
+\item Associative property:  $(A\cap B)\cap C = A\cap(B\cap C)$
+\item Distributive property:  $A\cap(B\cup C) = (A\cap B)\cup(A\cap C)$
+\item DeMorgan's Law: $(A\cap B)' = A' \cup B'$ or, more generally,
+\[\left(\bigcap_{i=1}^n A_i\right)' = \bigcup_{i=1}^n A_i'\]
+\end{itemize}
+\end{frame}
+
+%%% This is where I stopped on Aug. 25
+
+\startframe{1.2\quad Properties of Probability }
+\underline{Probability}:  
+Real-valued set function, $P$, satisfying:
+\begin{itemize}
+\item $P(A)\ge0$ \qquad {\em (Nonnegativity)}
+\item If $A$ is the whole sample space $S$ then $P(A)=1$
+\item Whenever $A_1, A_2, \ldots$ are mutually exclusive,
+\[ P\left( \bigcup_{i=1}^\infty A_i \right) = \sum_{i=1}^\infty P(A_i) 
+\qquad\qquad \mbox{\em (Countable additivity)}
+\]
+\end{itemize}
+\end{frame}
+
+\startframe{1.2\quad Properties of Probability }
+Some theorems:
+	\begin{overprint}
+	\onslide<1>
+	\begin{itemize}
+	\item[(1)] For any $A$, $P(A)=1-P(A')$.
+	\end{itemize}
+	\onslide<2>
+	\begin{itemize}
+	\item[(2)] $P(\emptyset)=0$.
+	\end{itemize}
+	\onslide<3>
+	\begin{itemize}
+	\item[(3)] If $A$ implies $B$ (i.e., $A\subset B$), then $P(A)\le P(B)$.
+	\end{itemize}
+	\onslide<4>
+	\begin{itemize}
+	\item[(4)] For any $A$, $P(A)\le1$.
+	\end{itemize}
+	\onslide<5>
+	\begin{itemize}
+	\item[(5)] For any $A$ and $B$,
+	\[ P(A\cup B) = P(A) + P(B) - P(A\cap B) \]
+	\end{itemize}
+	\onslide<6>
+	\begin{itemize}
+	\item[(5$^*$)] For any $A$ and $B$ and $C$,
+	\beaa
+	P(A\cup B \cup C) &=& P(A) + P(B) + P(C)  \\
+	&&- P(A\cap B) - P(A\cap C) - P(B\cap C) \\
+	&& + P(A\cap B\cap C)
+	\eeaa
+	\end{itemize}
+	\onslide<7>
+	\begin{itemize}
+	\item[(5$^{**}$)] For any $A_1, \ldots, A_n$,
+	\beaa 
+	P\left(\bigcup_{i=1}^n A_i \right) &=& 
+	\sum_{i=1}^n P(A_i) - \mathop{\sum\sum}_{i<j} P(A_i\cap A_j) + \cdots \\
+	&&+(-1)^{n+1} P(A_1\cap \cdots \cap A_n)
+	\eeaa
+	\end{itemize}
+	\end{overprint}
+\end{frame}
+
+
+\startframe{1.2\quad Properties of Probability }
+Question from SOA/CAS Sample Exam P:
+
+\vspace{2ex}
+A survey of a group's viewing habits of gymnastics (G), baseball (B), and
+soccer (S) revealed that:  
+
+
+\qquad 28\% watched 
+G
+\qquad 29\% watched B \qquad 
+19\% watched S
+
+\qquad\qquad14\% watched G and B \qquad
+12\% watched B and S \qquad
+
+\qquad 10\% watched G and S
+\qquad 8\% watched all three sports
+
+What percentage of the group watched none of the three sports?
+\end{frame}
+
+\startframe{1.2\quad Properties of Probability }
+Very important special case: Outcomes in $S$ are equally likely.
+\pause
+\begin{itemize}
+\item In this case, for all $A$, $\displaystyle P(A) = \frac{|A|}{|S|}$
+\item Counting the elements in $A$ and $S$ becomes vitally important!
+\item Combinatorics:  ``Counting without counting''
+\end{itemize}
+\end{frame}
+
+\startframe{Desired Outcomes}
+Students will be able to:
+\begin{itemize}
+\item define a random variable and describe simple examples of RVs;
+\pause
+\item apply set notation to simplify expressions involving events;
+\pause
+\item apply Venn diagrams to the same;
+%%% This is where I stopped on Aug. 25
+\pause
+\item prove simple facts based on the three axioms of probability;
+\pause
+\item use set notation or Venn diagrams for certain probability problems.
+\end{itemize}
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

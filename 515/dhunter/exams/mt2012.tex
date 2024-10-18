@@ -1,0 +1,174 @@
+\documentclass{article}
+
+\setlength{\topmargin}{-.5in}
+\setlength{\oddsidemargin}{.0in}
+\setlength{\evensidemargin}{.0in}
+\setlength{\textheight}{9in}
+\setlength{\textwidth}{6.5in}
+\setlength{\parindent}{0in}
+%\parskip=.125in
+
+\usepackage{amsmath,bm}%
+\usepackage{amsfonts}%
+
+
+\newcommand{\beaa}{\begin{eqnarray*}}
+\newcommand{\eeaa}{\end{eqnarray*}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\svskip}{\vspace{.2in}}
+\newcommand{\mvskip}{\vspace{.25in}}
+\newcommand{\lvskip}{\vspace{.5in}}
+\def\E{\mathop{\rm E\,}\nolimits}
+\def\Var{\mathop{\rm Var\,}\nolimits}
+\def\Cov{\mathop{\rm Cov\,}\nolimits}
+\def\Cor{\mathop{\rm Corr\,}\nolimits}
+\def\Tr{\mathop{\rm Tr\,}\nolimits}
+\def\diag{\mathop{\rm diag\,}\nolimits}
+\def\midd{\mathop{\,|\,}\nolimits}
+\def\cip{\mathop{\stackrel{P}{\rightarrow}}\nolimits}
+\def\cid{\mathop{\stackrel{d}{\rightarrow}}\nolimits}
+\def\ciqm{\mathop{\stackrel{\mbox{\scriptsize qm}}{\rightarrow}}\nolimits}
+\def\defn{{\stackrel{\mbox{\scriptsize def}}{=}}}
+\def\eid{{\stackrel{{\cal D}}{=}}}
+\def\rvseq{\mathop{X_1, X_2, \ldots}\nolimits}
+\def\rvseqn{\mathop{X_1, \ldots, X_n}\nolimits}
+\def\u#1{{\underline{#1}}}
+\def\o#1{{\overline{#1}}}
+\def\n#1{^{(#1)}}
+\newcommand{\qed}{\rule{2mm}{2mm}}
+
+
+\def\cas{\mathop{\stackrel{\mbox{\scriptsize as}}{\rightarrow}}\nolimits}
+
+\pagestyle{empty}
+
+%%-------------------------------------------------------------------
+
+\begin{document}
+        \hrule
+        \begin{center}
+        \Large\bf Stat 515: Stochastic Processes I \hfill Spring 2012\\
+        Midterm  \hfill February 29, 2012
+        \end{center}
+        \hrule
+
+%\lvskip {\bf Name:  \rule{4in}{.01in}}
+
+\mvskip 
+This midterm is worth 20 points.  You have 60 minutes.  
+{\bf For full credit, you must explain all of your work!}
+Naturally, you may use any results that you know.
+
+\lvskip 
+{\bf Problem 1. [8 points]\ } 
+A Markov chain $\{X_t: t=0, 1, \ldots\}$ with state space $\{0, 1, 2\}$ has transition probability matrix
+\[
+P=
+\begin{bmatrix}
+%\frac13 & \frac13 & \frac13 \\ 
+%\frac13 & \frac23 & 0 \\
+%0 & 1 & 0
+1/3 & 1/3 & 1/3 \\ 
+1/3 & 2/3 & 0 \\
+0 & 1 & 0
+\end{bmatrix}.
+\]
+
+\svskip
+{\bf(a) [2 points]\ }
+Suppose $P(X_0=0) = P(X_0=2) = \frac12$.  Find $E(X_2)$.  Show all work.
+
+\svskip 
+{\bf(b) [2 points]\ }  
+Straightforward calculation shows that
+$P^3$ consists only of nonzero entries.
+%\[
+%P^3= \frac{1}{27} \times
+%\begin{bmatrix}
+%8 & 17 & 2 \\ 
+%8 & 16 & 3 \\
+%9 & 15 & 3
+%\end{bmatrix}.
+%\]
+Using this fact, explain how the Chapman-Kolmogorov equations (the equations that relate
+$P_{ij}^{n+m}$ to $P^n$ and $P^m$ for each $i$ and $j$) imply that
+ $P^n$ consists only of nonzero entries for $n\ge 3$.
+
+\svskip 
+{\bf(c) [2 points]\ }  
+Prove that in the long run, no matter which state the chain starts in, the number of steps 
+that the chain spends in states 0, 1, and 2, respectively, will approach the
+ratios $3:6:1$.
+
+\svskip 
+{\bf(d) [2 points]\ }  
+Is this Markov chain time-reversible? Explain your answer.
+
+\lvskip 
+\lvskip 
+{\bf Problem 2.  [4 points]\ } 
+A Markov chain has transition probability matrix
+\[
+P=
+\begin{bmatrix}
+0 & 0.5 & 0 & 0 & 0 & 0.5 \\
+0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 1 \\
+0.5 & 0 & 0 & 0 & 0.5 & 0 \\
+\end{bmatrix}.
+\]
+
+\svskip 
+{\bf(a) [2 points]\ }  
+Classify each state as transient, null recurrent, or positive recurrent.  Explain.
+
+\svskip 
+{\bf(b) [2 points]\ }  
+Is the chain ergodic?  Explain.
+
+\lvskip 
+\begin{center}
+{\em Problem 3 is on the back of this page.}
+\end{center}
+
+\newpage
+{\bf Problem 3.  [8 points]\ } 
+Buses arrive at a certain bus stop according to a Poisson process with rate
+2 per hour.  
+%The number of hours between successive bus arrivals at a certain stop is uniformly 
+%distributed on $(0,1)$.  
+Passengers arrive according to an independent Poisson process with rate
+10 per hour.  The instant a bus arrives, all passengers at the stop at that instant board the
+bus and the bus departs.  
+
+\svskip
+{\em Fact:  An exponential random variable with rate $\lambda$ has
+mean $1/\lambda$ and variance $1/\lambda^2$.}
+
+\mvskip
+{\bf(a) [2 points]\ }  
+Assume that there are currently no passengers at the bus stop.
+What is the probability that the next bus will pick up no passengers?  Explain.
+
+\svskip
+{\bf(b) [2 points]\ }  
+If you arrive at the stop at noon, what is the expected amount of time you will have to wait until
+the next arrival of any type (bus or passenger)?  Explain.
+
+\svskip
+{\bf(c) [2 points]\ }  
+At 2:00, there are 2 passengers waiting for the bus.
+Given this information, what is the expected arrival time of the next bus after 2:00?
+Explain.
+
+\svskip 
+{\bf(d) [2 points]\ }  
+Assume that there are currently no passengers at the bus stop.
+Let $X$ be the number of people at the stop when the next bus arrives.
+Find $E(X)$ and $\Var(X)$, showing all your work.
+
+
+\end{document}

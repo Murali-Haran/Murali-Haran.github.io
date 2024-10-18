@@ -1,0 +1,152 @@
+---
+title: "Homework 3"
+output: html_document
+---
+
+DUE: Thursday Feb 9 (online) at 10am
+
+These questions will provide practice on working with lists, including
+
+* subsetting lists 
+* applying functions to elements in a list 
+
+Important note: Always look in the Canvas folder to find the Rcode example code worked out in class (under the R Code module). 
+
+We will work with the data in `aList` and `rain`.
+
+Please use the variable names requested. 
+
+Recall that in general you can subset by position/index (using an integer vector), by name (using a character vector), and by a logical vector (indicating if an element should be included in the subset). Double square brackets allow you to go one level deeper into a list structure and access individual elements of the list. Additionally, named elements of the list can be accessed with a $-sign. Double square brackets and dollar signs work for data frames as well, since data frames are a
+special kind of list.
+
+Begin by running the following code chunk to load the objects.
+
+```{r}
+load(url("http://www.stat.berkeley.edu/users/nolan/data/anExampleList.rda"))
+load(url("http://www.stat.berkeley.edu/users/nolan/data/rainfallCO.rda"))
+```
+
+Q.1
+### Working with the List `aList`
+
+(a) Find how many elements are in the list `aList` and assign this value to the variable `numEl`.
+
+(b) Use $-notation to access `aVec` and determine its length.  Do this for both the `aVec` in `listToo` and the `aVec` in `aList`.
+
+(c) Use `sapply()` to determine the type (class) of object in each of the elements in `aList`
+
+(d) Use double-square brackets to find the class of each vector in `aDF`. Assign this value to `dfClasses`.
+
+(e) One of the elements in `aList` is a function. Call this function and pass it the variable `height` from the data frame that's also in `aList`. Assign the return value from this function call to `xRV`.
+
+### Working with the Lists `rain` and `day`
+
+Q.2 When we loaded the Colorado Front Range rda file (above), we loaded 2 lists, `rain` and `day`. The `rain` list contains the measurements of daily precipitation (hundredths of an inch) at each of 5 weather stations in the Front Range. The stations are in operation for different days and so stations measurements consist of vectors of different lengths. The `day` list provides the date on which the rainfall was recorded.
+
+(a) The lengths of the 5 vectors in `rain` should match the lengths of the 5 vectors in `day`. Write code to confirm this is the case. Your code should return a single logical value (TRUE if the condition is met). Assign this value to `rainCheck`. Note, the `all()` function and ==, and `sapply()` will be helpful here. (Hint: `sapply()` to find all the lengths for day and rain respectively and `all()` should be used on a vector of booleans obtained by comparing the results of the sapply command.)
+
+(b) Convert the rainfall measurements in `rain` into millimeters. Put this revised list in `rainMM`. To do this use `sapply()`, and use * function. (Hint: use it in the way we used the + function with sapply in class.) 
+
+```{r}
+'*'(2, 3)
+
+```
+
+Q.3 (a) We are interested in the distribution of rainfall for all of the days and locations (stations) when there was some precipitation. To prepare the data,
+
+* unlist `rainMM` and assign it to `allRecords`
+Regarding the unlist command: Given a list structure ‘x’, ‘unlist(x)’ simplifies it to produce a vector which contains all the atomic components which occur in ‘x’.
+* subset `allRecords` to extract only those days when there was some rainfall and assign this to `rainyDays`.  This vector should have 7955 values.
+
+(b) Make a histogram of `rainyDays`. Consider the scale, label the axes, etc.
+
+(c) Make a histogram of `rainyDays` and overlay a density plot on it. In order for the scales of the histogram to match the density plot, you will have to plot the histogram in terms of frequencies rather than counts. Here is an example of what you would do for a histogram and density plot for a random sample of 100 N(0,1) random variables.
+
+```{r}
+set.seed(1) # seed for random numbers generation
+randNorm=rnorm(100)
+hist(randNorm, probability=TRUE, main="Histogram of 100 N(0,1) random variates")
+lines(density(randNorm),col="blue")
+```
+
+Notice that the y-axes may sometimees be too low to capture the full density plot (the top of the density plot gets cut off). You can fix this by changing the ylim argument to the hist function, that is, by writing something like: 
+```{r}
+hist(randNorm, probability=TRUE, main="Histogram of 100 N(0,1) random variates",ylim=c(0,0.8))
+lines(density(randNorm),col="blue")
+```
+
+If the top of your density plot for rainyDays is cutoff, make the necessary adjustments following the example above. If no adjustments are necessary, skip this step! 
+
+### Functions: some basics
+
+Q.4 We will start writing functions and explore:
+
+1. How to return a value from the function call
+2. Functions with required, default, and no arguments
+
+### Return value from a function call
+
+We begin with examining 2 very simple functions, `getZero1` and `getZero2`. 
+
+```{r}
+getZero1 = function(x) {
+  return(0)
+} 
+
+getZero2 = function(x) {
+  0
+}
+```
+
+(a) What is the difference between these 2 functions? Call each of these functions with the following inputs, i.e, `x`, `y`, and `z`.  Compare the return values. Do they look different? If yes, why? If no, why not? 
+
+```{r, collapse =TRUE}
+x = 1:5
+y = letters
+z = list(a = 1:5, b = 1:10)
+getZero1(x)
+getZero1(y)
+getZero1(z)
+getZero2(x)
+getZero2(y)
+getZero2(z)
+```
+
+### A Function with no arguments
+
+(b) Write a new function `getZero3` which takes no arguments and returns the same value as `getZero1`. Test your function by typing `getZero3()`.
+
+###  A Function with multiple arguments
+
+(c) Now write a function called `getNumPower` that takes a numeric vector and returns a vector of the same length where each element is a square of a corresponding element of the input vector. Call the input argument `x` and make it a required argument.
+
+Test your function with the following calls
+
+```{r, eval=FALSE, collapse=TRUE}
+getNumPower(1:5)
+getNumPower(integer(0))
+getNumPower(-20)
+```
+
+Note that the input can be a vector of length $1$ or $0$. 
+
+(d) Modify your function to take a second argument, called `power`, and use this argument to raise the values in `x` to the provided power. Provide a default value to `power` so that it returns the same results as the previous version of the function, when the `power` argument is not supplied.
+
+Note that we can supply a vector for `power` so each element in `x` is raised to a different power. Convince yourself that this is the case by examining the return values from the folowing calls:
+
+```{r, eval = FALSE, collapse=TRUE}
+getNumPower(x = x)
+getNumPower(x = 1:6, power = rep(0:1, each = 3))
+getNumPower(x = 1:6, power = 1:3)
+```
+
+Notice that in the call `getNumPower(x = 1:6, power = 1:3)` the input for `x` is a vector of length 6 and the input for `power` is of length 3. What did our function return? Can you reason out why?
+
+Try the following call. Notice it issues a warning. Why? Does it still return a value? Can you figure out what R is doing here?
+
+```{r, eval=FALSE}
+getNumPower(x = x, power = 1:4)
+```
+
+These function calls show how the recycling rule works in R when operations are performed on 2 vectors that have different lengths. 
+

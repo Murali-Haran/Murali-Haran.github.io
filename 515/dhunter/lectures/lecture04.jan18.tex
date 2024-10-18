@@ -1,0 +1,144 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Jan.~18}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+Read Section 4.1  before Friday's class.
+\item
+Office hours tomorrow will be 12:45 to 2:45 due to a comprehensive exam I have
+to attend. 
+\item There is a new dropbox that you can use to turn in homework, if you wish.
+\end{itemize}
+\end{frame}
+
+\startframe{3.4 Computing Expectations by Conditioning}
+\question{If $X\sim \mbox{Geom}(p)$, then $E(X) = $?}
+{$\frac1p$}
+{$\frac1{p^2}$}
+{$\frac1{1-p}$}
+{$\frac1{(1-p)^2}$}
+\end{frame}
+
+\startframe{3.4 Computing Expectations by Conditioning}
+\begin{itemize}
+\item Perform repeated independent Bernoulli$(p)$ experiments.
+\item Let $N_k$ be the trial number where $k$ consecutive successes are first observed.
+\item What is $E(N_k)$?
+\end{itemize}
+\end{frame}
+
+\startframe{3.4 Computing Expectations by Conditioning}
+\begin{itemize}
+\item Suppose that adult males' heights have mean $\mu_M$ and variance
+$\sigma^2_M$.
+\item Similarly, females' heights have mean $\mu_F$ and variance $\sigma^2_F$.
+\item If some proportion $p$ of the population is female, what is the variance of
+the height of an adult selected at random from the population?
+\end{itemize}
+\end{frame}
+
+\startframe{3.4 Computing Expectations by Conditioning}
+\question{$\Var(X)$ equals which of the following?}
+{$E \left[ E(X^2 \mid Y) \right]$}
+{$E \left[ \Var(X \mid Y) \right]$}
+{$\Var \left[ E(X \mid Y) \right]$}
+{$E \left[ \Var(X \mid Y) \right] + \Var\left[ E(X\mid Y) \right]$}
+\end{frame}
+
+\startframe{3.5 Computing Probabilities by Conditioning}
+\begin{columns}
+\begin{column}{1.25in}
+\tikz{
+\def \lx{-1.4} \def \ux{2.4} \def \ly{-1.2} \def\uy{1.2}
+%\draw (\lx,\ly) rectangle (\ux,\uy);
+% grid with dot at origin for helping place objects in rectangle:
+%\draw[step=.5, very thin] (\lx,\ly) grid (\ux,\uy); \filldraw (0,0) circle (.05);
+%
+%\draw (-1.2, 1) node {(c)};
+\filldraw (-1,0) circle (.05);
+\filldraw (2,0) circle (.05);
+\draw (-1,.2) node {$A$};
+\draw (2,.2) node {$B$};
+\draw (-1,0) -- (-.75,0) -- (-.75, .75) -- (1.75,.75) -- (1.75,0) -- (2,0);
+\draw (-1,0) -- (-.75,0) -- (-.75, -.75) -- (1.75,-.75) -- (1.75,0) -- (2,0);
+\draw (.125,.75) -- (.125,0) -- (.875, 0) -- (.875, -.75);
+%
+\foreach \x / \y / \label  in {-.375 / .75 / 1, -.375 / -.75 / 2, 1.125 / .75 / 3, 1.125 / -.75 / 4, .375 / 0 / 5} 
+  {\filldraw (\x, \y) circle (.05); \draw (\x, \y) -- (\x + .25,\y + .25); 
+   \draw[white, thick] (\x + .05, \y) -- (\x + .25, \y); \draw (\x + .15, \y - .2) node {\small \label};
+  }
+}
+\end{column}
+\begin{column}{3.5in}
+\begin{itemize}
+\item
+Switch $i$ is closed (i.e., current will flow) with probability $p_i$,
+independently of others.
+\item What is the probability that current will flow from $A$ to $B$?
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\startframe{3.5 Computing Probabilities by Conditioning}
+\begin{itemize}
+\item
+At a party, $n$ men take off their hats, which are then mixed up.  
+\item 
+Each man randomly selects one of the hats.
+\item 
+What is the probability that nobody gets his own hat?
+\end{itemize}
+\end{frame}
+
+\startframe{3.5 Computing Probabilities by Conditioning}
+\begin{itemize}
+\item 
+Two players alternate flipping a coin that comes up heads with probability $p$.
+\item
+The first one to get heads is the winner.
+\item 
+What is the probability that the first player is the winner?
+\end{itemize}
+\end{frame}
+
+%\startframe{1.2\quad Properties of Probability}
+%
+%\begin{columns}
+%\begin{column}{4cm}
+%
+%\tikz{
+%\def \lx{-1.4} \def \ux{2.4} \def \ly{-1.2} \def\uy{1.2}
+%\draw (\lx,\ly) rectangle (\ux,\uy);
+%% grid with dot at origin for helping place objects in rectangle:
+%%\draw[step=.5, very thin] (\lx,\ly) grid (\ux,\uy); \filldraw (0,0) circle (.05);
+%\draw (0,0) ellipse (1 and .8);
+%\draw (1,0) ellipse (1 and .8);
+%\draw (0,.9) node {\small$A$};
+%\draw (1,.9) node {\small$B$};
+%\draw (2.2,1) node{$S$};
+%}
+%\end{column}
+%\begin{column}{6cm}
+%Venn diagram depicting events $A$ and $B$.  In the picture, they appear to 
+%have a nonempty intersection.
+%\end{column}
+%\end{columns}
+%\end{frame}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

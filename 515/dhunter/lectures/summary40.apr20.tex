@@ -1,0 +1,47 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Apr.~20}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+Last homework due on Monday (Apr.~23)
+\item 
+Take-home final exam will be available tomorrow at 5:00pm
+due at 5:00pm on Wednesday, May~2.
+\item
+Please fill out SRTEs!
+\item 
+Read Section 4.9 in textbook.
+\end{itemize}
+\notes{The take-home exam will be on ANGEL starting at 5pm on Saturday.}
+\end{frame}
+
+
+\startframe{Markov chain Monte Carlo}
+Bayesian VAATMH example (from Gilks et al (1996), pp. 75--76):
+\begin{itemize}
+\item $Y_1, \ldots, Y_n \stackrel{\rm iid}{\sim} N(\mu, \tau^{-1})$
+\item $\mu \sim N(0,1)$
+\item $\tau \sim \mbox{gamma}(2,1)$
+\end{itemize}
+Devise an MCMC scheme for sampling from the posterior distribution.
+\notes{This is the same slide we saw on Wednesday, when I asked everyone to
+derive the full conditionals.  Today, we spent the entire hour walking through this
+example in detail, including R code.  An even more detailed writeup is available
+on the course website next to Homework \#11.}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+
+
+

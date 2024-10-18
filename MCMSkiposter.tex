@@ -1,0 +1,415 @@
+%\documentclass[landscape]{article}
+%\documentclass{article}
+\documentclass{report}
+\usepackage{amsmath,doublespace,fullpage,color,graphics,amsfonts}
+\usepackage{indentfirst}
+\usepackage{pstricks}
+\input colordvi
+\setlength{\topmargin}{+0.5in}
+%\pagestyle{empty}
+% if want to eliminate equation numbers from the equation \nonumber
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqstar}{\begin{equation*}}
+\newcommand{\eeqstar}{\end{equation*}}
+\newcommand{\bthet}{ \mbox{\boldmath $\theta$}}
+\newcommand{\bet}{ \mbox{\boldmath $\eta$}}
+\newcommand{\bphi}{ \mbox{\boldmath $\phi$}}
+\newcommand{\bmu}{ \mbox{\boldmath $\mu$}}
+\newcommand{\bmuhat}{ \mbox{\boldmath $\hat{\mu}$}}
+\newcommand{\beas}{\begin{eqnarray*}}
+\newcommand{\eeas}{\end{eqnarray*}}
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\baselinestretch}{1.3}
+\newcommand{\Nstar}{N^{*}}
+\newcommand{\taustar}{\tau^{*}}
+\newcommand{\alphatilde}{\tilde{\alpha}}
+\newcommand{\lambdaT}{\lambda_{\theta}}
+%\newcommand{\xprime}{x^{'}}
+%\newcommand{\mprime}{m^{'}}
+\newcommand{\bOne}{ {\bf 1} }
+\newcommand{\xprime}{x'}
+\newcommand{\nprime}{n'}
+\newcommand{\mprime}{m'}
+\newcommand{\bTheta}{ \mbox{\boldmath $\Theta$}}
+%\setlength{\oddsidemargin}{0in}
+%\setlength{\evensidemargin}{0in}
+%\setlength{\textwidth}{9in}
+%\setlength{\topmargin}{0in}
+%\setlength{\headheight}{0in}
+%\setlength{\headsep}{0in}
+%\setlength{\footskip}{1in}
+%\setlength{\textheight}{6.5in}
+\newcommand{\head}[1]
+{
+  \begin{center}
+      {\huge {\color{blue} #1}}
+    \end{center}
+  }
+
+\newcommand{\figone}[1]
+{
+  \begin{center}
+    {{\resizebox*{0.95\textwidth}{0.7\textheight}
+        {\rotatebox{270}{\includegraphics{#1}}}} \par}
+  \end{center}
+  }
+
+\newcommand{\figonesmall}[1]
+{
+  \begin{center}
+    {{\resizebox*{0.475\textwidth}{0.35\textheight}
+        {\rotatebox{270}{\includegraphics{#1}}}} \par}
+  \end{center}
+  }
+
+\newcommand{\figtwo}[4]
+{
+  \begin{tabular}{cc}
+    {{\resizebox*{0.47\textwidth}{0.35\textheight}
+        {\rotatebox{270}{\includegraphics{#1}}}} \par}&
+    {{\resizebox*{0.47\textwidth}{0.35\textheight}
+        {\rotatebox{270}{\includegraphics{#2}}}} \par}\\
+    #3 & #4
+  \end{tabular}
+  }
+
+\newcommand{\figtwosmall}[4]
+{
+  \begin{tabular}{cc}
+    {{\resizebox*{0.4\textwidth}{0.2\textheight}
+        {\rotatebox{270}{\includegraphics{#1}}}} \par}&
+    {{\resizebox*{0.4\textwidth}{0.2\textheight}
+        {\rotatebox{270}{\includegraphics{#2}}}} \par}\\
+    #3 & #4
+  \end{tabular}
+  }
+
+\newcommand{\figthree}[6]
+{
+\begin{tabular}{ccc}
+    {{\resizebox*{0.32\textwidth}{0.23\textheight}
+        {\rotatebox{270}{\includegraphics{#1}}}} \par}&
+    {{\resizebox*{0.32\textwidth}{0.23\textheight}
+        {\rotatebox{270}{\includegraphics{#2}}}} \par}&
+    {{\resizebox*{0.32\textwidth}{0.23\textheight}
+        {\rotatebox{270}{\includegraphics{#3}}}} \par}\\
+    #4 & #5 & #6
+\end{tabular}
+}
+\newcommand{\figtwobytwo}[4]
+{
+\begin{tabular}{cc}
+    {{\resizebox*{0.47\textwidth}{0.35\textheight}
+        {\rotatebox{270}{\includegraphics{#1}}}} \par}&
+    {{\resizebox*{0.47\textwidth}{0.35\textheight}
+        {\rotatebox{270}{\includegraphics{#2}}}} \par}\\
+    {{\resizebox*{0.47\textwidth}{0.35\textheight}
+        {\rotatebox{270}{\includegraphics{#3}}}} \par}&
+    {{\resizebox*{0.47\textwidth}{0.35\textheight}
+        {\rotatebox{270}{\includegraphics{#4}}}} \par}\\
+\end{tabular}
+}
+\begin{document}
+\pagestyle{empty}
+\phantom{Blah blah blah\\}
+\phantom{Blah blah blah\\}
+\phantom{Blah blah blah\\}
+\phantom{Blah blah blah\\}
+\phantom{Blah blah blah\\}
+\Huge
+\begin{center}
+%  FAST AUTOMATED MONTE CARLO FOR\\ 
+%  MONTE CARLO STRATEGIES FOR\\ 
+{\color{blue}   EXACT MONTE CARLO FOR\\ 
+  TWO BAYESIAN MODELS\\}
+\end{center}
+\huge
+\phantom{Blah blah blah\\}
+\begin{center}
+Murali Haran \\
+Pennsylvania State University
+\end{center}
+\Large
+\begin{center}
+(Joint with Luke Tierney, University of Iowa)
+\end{center}
+\vspace{1in}
+\begin{center}
+IMS-ISBA Meeting on  Markov chain Monte Carlo\\
+Bormio, Jan.12, 2005.
+\end{center}
+
+\newpage
+\head{Motivation: `Classic' MCMC Issues} 
+\begin{enumerate}
+\item {\bf Convergence diagnosis}: how do we decide when to stop running the Markov chain?\\
+Theoretical approaches: convergence rates, upper bounds on distance to stationarity (Rosenthal, 1995; Mengerson-Tweedie, 1996 etc.)\\
+Generally too difficult and rarely provide satisfactory practical solutions.\\\\
+Ad hoc `diagnostics' methods --- easy to use, but not reliable, and are known to fail frequently (cf. Cowles and Carlin, 1996).\\
+\item {\bf Monte Carlo standard error}: How do we assess the accuracy of our estimates ?\\
+Batch means, spectral methods or regenerative simulation-based Monte Carlo standard error? All three pose difficulties.
+\end{enumerate}
+%\vspace{0.2in}
+\begin{itemize}
+\item Exact (or Perfect) solution: produce i.i.d. draws and avoid above problems.
+\item Problem: not considered a possibility for realistic/useful Bayesian models.
+\item Even if we can get it to work theoretically, not necessarily practical.
+\end{itemize}
+
+\newpage \head{Model 1: Bayesian Linear Hierarchical Model}
+(Bayesian Analogue of One-way ANOVA)\\
+% First, conditional on
+% $\bthet=\{\theta_1,\dots,\theta_K\}^T$, and precision $\lambda_e$, 
+Stage 1: the data values, $Y_{ij}$, are independent
+\begin{equation*}
+Y_{ij}|\theta_i,\lambda_e \sim N(\theta_i, \lambda_e^{-1}), \; i=1,\cdots K, j=1,\cdots m.
+\end{equation*}
+Stage 2: $\bthet$ and $\lambda_e$ are independent with 
+\begin{equation*}
+%  \bthet|\mu, \lambdaT  \sim N(\mu\bOne, \lambdaT^{-1}I)\:\:\mbox{ and } \lambda_e \sim G(a_2, b_2)
+%  \bthet|\mu, \lambdaT  \stackrel{i.i.d.}{\sim} N(\mu, \lambdaT^{-1})\:\:\mbox{ and } \lambda_e \sim G(a_2, b_2)
+  \theta_i|\mu, \lambdaT  \stackrel{i.i.d.}{\sim} N(\mu, \lambdaT^{-1})\:\:\mbox{ and } \lambda_e \sim G(a_2, b_2)
+\end{equation*}
+($a_2$, $b_2$ are known positive constants).\\
+Stage 3: priors on hyperparameters
+\begin{equation*}
+  \mu \sim N(\mu_0, \lambda_0^{-1})\:\:\mbox{ and } \lambdaT \sim G(a_1, b_1)
+\end{equation*}
+Random effects: $\bTheta=(\bthet,\mu)$.\\
+Variance components: $(\lambdaT,\lambda_e)$.\\\\
+%Fixed constants: $a_1,b_1,a_2,b_2,\mu_0,\lambda_0^{-1}$.\\\\
+Inference is based on posterior distribution, $P(\bthet,\mu,\lambda_e,\lambdaT)$.\\
+
+\newpage \head{Computing for a Bayesian linear hierarchical model} Goal:
+draw samples from posterior distribution,
+$P(\bthet,\mu,\lambda_e,\lambdaT)$.\\
+Gibbs samplers for this problem are geometrically ergodic (Jones and Hobert, 2004).\\
+%% \underline{Standard approach (MCMC sampling):}\\
+%% Construct Markov chain by alternately sampling from full conditional
+%% distributions of parameters, $\theta_1,\dots, \theta_K,\mu,
+%% \lambda_e,\lambdaT$.\\
+%% \underline{An alternative approach:}\\
+Alternative: analytically integrate w.r.t random effects ($\bthet, \mu$):
+$$P_1(\lambda_e,\lambdaT) = \int P(\bthet,\mu,\lambda_e,\lambdaT)
+d\bthet d\mu$$
+Let $R_e(\lambda_e)$, and $R_{\theta} (\lambdaT)$ be log-t distributions, $R(\lambda_e,\lambdaT)=R_e(\lambda_e)R_{\theta} (\lambdaT)$.\\
+%$$ P_1(\lambda_e,\lambdaT)/R(\lambda_e,\lambdaT) \leq K, \mbox{ for }\lambda_e,\lambdaT > 0, \mbox{ for some }K < \infty. $$
+\begin{pspicture}(0,0)(16,1.5) %\psgrid
+\psline[linewidth=3pt,linecolor=blue](0,0)(16,0)
+%\rput(8,0.5){$P(x)/R(x) \leq K, \mbox{ for all }x \mbox{ in the sample space, some } K< \infty.$}
+\rput(8,0.5){$P_1(\lambda_e,\lambdaT)/R(\lambda_e,\lambdaT) \leq B, \mbox{ for some }B < \infty, \forall \lambda_e,\lambdaT > 0$}
+\psline[linewidth=3pt,linecolor=blue](0,1)(16,1)
+\psline[linewidth=3pt,linecolor=blue](0,0)(0,1)
+\psline[linewidth=3pt,linecolor=blue](16,0)(16,1)
+\end{pspicture}
+%$\\Can use perfect tempering to draw from $P_1(\lambda_e,\lambdaT)$.
+\\
+Have satisfied rejection sampling condition above.\\\\
+Since $P(\bthet,\mu,\lambda_e,\lambdaT) = P_2(\bthet,\mu | (\lambda_e,\lambdaT)) P_1(\lambda_e,\lambdaT)$:
+\begin{enumerate}
+\item Draw $(\lambda_e^*,\lambdaT^*) \sim P_1$ (`exact' draw).
+\item Draw $(\bthet^*,\mu^*) \sim P_2(\cdot | (\lambda_e^*,\lambdaT^*))$ (multivariate normal)..
+\end{enumerate}
+Then, $(\bthet^*,\mu^*, \lambda_e^*,\lambdaT^*)$ is a draw from $P$.
+\begin{itemize}
+\item Easy to use, very efficient, and MCMC issues are completely avoided.
+\item Rejection sampling is extremely efficient (80\% acceptance).
+\item No real curse of dimensionality as number of random effects increases.
+\item Rao-Blackwellization is a possibility.
+\end{itemize}
+ \newpage
+ \LARGE \head{Model 2: Disease Mapping}
+% \LARGE \head{Disease Mapping Model (Besag, York and Mollie, 1991)}
+Besag, York and Mollie (1991) model for disease mapping.\\
+  Number of disease events associated with each region,
+ $$Y_{i} \sim \mbox{ Poisson}(E_{i}\exp(\mu_i)),\: i=1,....,N,$$
+$E_i$: predetermined estimate of expected disease events in region $i$.\\
+$\mu_i$: log-relative risk of disease (our parameter of interest).
+ \[\mu_i = \theta_i + \phi_i\]
+$\theta_i$'s vary in a completely unstructured way
+ $$\theta_i \stackrel{iid}{\sim} N(0,1/\tau_h)$$
+ $\phi_i$'s account for spatial relationships (CAR prior)
+$$\phi_i|\phi_{j \neq i} \sim N\left(\frac{\sum_{j \sim i}\phi_j}{n_i}, \frac{1}{\tau_c{n_i}}\right),$$
+$n_i$= number of neighbors of ith region.
+\\
+Priors on the precision parameters
+ $$\tau_h \sim G(\alpha_h,\beta_h),\:\:\tau_c \sim G(\alpha_c,\beta_c)$$
+ Distribution of interest here: $P(\bthet,\bphi,\tau_h,\tau_c)$, of $2N+2$ dimensions.
+\newpage \head{Sampling for Bayesian Disease Mapping}
+Much harder problem:
+\begin{itemize}
+\item No closed-form expressions available for marginal distributions
+  of parameters - cannot use approach used for previous problem.
+  \item `Routine' MCMC/Gibbs performs very poorly.
+  \item Updating multivariate blocks of parameters (simultaneously) has had some success. For instance:
+    \begin{itemize}
+    \item Block sampling with reparameterization and sparse matrix algorithms for speed (Knorr-Held and Rue, 2002).
+    \item Block sampling (Structured MCMC) by region, by oversampling precision parameters (Haran, Hodges and Carlin, 2002).
+    \end{itemize}
+  Both still retain the need for convergence assessment.
+\item Exact sampling is not considered an option.
+  \end{itemize}
+\newpage \head{Approximate Distributions: Finding Envelopes} 
+{\LARGE Difficult to obtain envelope for a complicated distribution, $P(\bthet,\bphi,\tau_h,\tau_c$).\\\\% (and $P(\bthet,\bphi,\tau_h,\tau_c)$).% ($N+1$ dimensions).\\\\
+Finding a good approximation:
+\begin{itemize}
+\item Obtain approximate posterior distribution, $S(\bthet,\bphi,\tau_h,\tau_c)$ by
+  \begin{itemize}  
+  \item transforming the data.
+  \item using a Gaussian approximation to the likelihood.
+  \item delta method approximation for the variance.
+  \end{itemize}  
+%\item Analytically integrate out model parameters $\bthet,\bphi$ to get $S_1(\tau_h,\tau_c)$.
+\item Analytically integrate: $S_1(\tau_h,\tau_c)=\int S(\bthet,\bphi,\tau_h,\tau_c)
+d\bthet d\bphi$.
+\item From $S(\bthet,\bphi,\tau_h,\tau_c)$, can obtain approximate conditional
+  distribution of model parameters, $S_2(\bthet,\bphi|\tau_h,\tau_c)$ (multivariate normal).
+\end{itemize}
+Then, we have
+$$P(\bthet,\bphi,\tau_h,\tau_c|Y) \approx S(\bthet,\bphi,\tau_h,\tau_c) = S_1(\tau_h,\tau_c) S_2(\bthet,\bphi|\tau_h,\tau_c).$$
+%However, $S(\bthet,\bphi,\tau_h,\tau_c)$ is {\it not} an envelope for $P(\bthet,\bphi,\tau_h,\tau_c|Y)$.
+However, $S(\bthet,\bphi,\tau_h,\tau_c)$ does {\it not} satisfy required condition.
+
+\newpage \head{A Heavy-Tailed Approximation}
+Replace $S(\bthet, \bphi,\tau_h, \tau_c)$ by a heavy-tailed distribution, $R(\bthet, \bphi,\tau_h,\tau_c)$ in the following way:
+\begin{itemize}
+\item Find bivariate log-t distribution, $R_1(\tau_h, \tau_c)$, similar to
+  $S_1(\tau_h, \tau_c)$.
+\item Set multivariate-t distribution, $R_2(\bthet,\bphi|\tau_h,\tau_c)$ to have
+  the same mean and variance as the multivariate normal,
+  $S_2(\bthet,\bphi|\tau_h,\tau_c)$.
+\end{itemize}
+\begin{pspicture}(0,0)(17,1.5) %\psgrid
+\psline[linewidth=3pt,linecolor=blue](0,0)(16.5,0)
+\rput(8.2,0.5){$P(\bthet,\bphi,\tau_h,\tau_c)/R(\bthet,\bphi,\tau_h,\tau_c) \leq K, K < \infty, \bthet,\bphi \in R^N, \tau_h,\tau_c > 0$}
+\psline[linewidth=3pt,linecolor=blue](0,1)(16.5,1)
+\psline[linewidth=3pt,linecolor=blue](0,0)(0,1)
+\psline[linewidth=3pt,linecolor=blue](16.5,0)(16.5,1)
+\end{pspicture}
+\begin{itemize}
+%\item Use numerical maximization or empirically estimate the bound, $K$.
+\item Have satisfied rejection sampling condition (above).
+\item Sequential sampling to generate proposal from $R(\bthet,\bphi,\tau_h,\tau_c)$:
+\begin{enumerate}
+\item Sample $(\tau_h,\tau_c) \sim R_1(\tau_h,\tau_c)$.
+\item Sample $(\bthet,\bphi) \sim R_2(\bthet,\bphi|\tau_h,\tau_c)$, using sampled value of $(\tau_h,\tau_c)$.
+\end{enumerate}
+\item We can run a rejection sampler with candidates from $R$.
+\end{itemize}
+%We can now run a perfect tempering algorithm.\\
+
+% \newpage \head{Fast Computation: Exploiting Sparse Matrices} {\LARGE
+% Matrices involved in sampling each proposal are of order $2N \times 2N$, where $N$ is the number of regions.\\\\
+%   Since algorithms have low acceptance rates, need to be efficient
+% \begin{itemize}
+% \item Avoid inverting matrices.
+% \item Take advantage of sparsity of matrices (Rue, 2001) by reordering
+%   nodes and using fast algorithms, e.g. band choleski algorithms.
+% \end{itemize}
+% \begin{center}
+% $Q$ matrix (adjacency structure)
+% \end{center}
+% \vspace{-0.3in}
+% \figtwo{orig.sparse.mn.ps}{min.sparse.mn.ps}{Minnesota: alphabetical ordering}{re-labeled regions}
+%  }
+% \\\\Speed-ups from sparse matrix algorithms: around 50 times as fast.\\
+% Even more crucial for higher dimensional problems.
+
+\newpage \head{Some Results}
+Minnesota cancer data sets: 87 regions (counties), 176 parameters. 
+%Scottish lip cancer data: 56 regions (counties), 176 parameters. \\
+%Can produce between 0.9 and 4 perfect samples per second.\\
+%We can also run a rejection sampling algorithm.
+{\LARGE
+ \begin{center}
+%  Minnesota data sets: 2 variance components, 176 parameters\\
+   Number of {\it exact} samples from $P$ generated per second
+ \end{center}
+\vspace{0.05in}
+\begin{center}
+%  \begin{tabular}{|c|c|c|c|c|}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    data set
+%    & \multicolumn{2}{c|} {samples/sec} & \multicolumn{2}{c|} {acceptance rates}\\
+%    \cline{2-5}
+    & samples/sec & acceptance rates\\
+%    & perfect & rejection& perfect & rejection\\
+    \hline
+    breast cancer      & 0.90 & 0.008\\
+    colo-rectal cancer & 4.5 & 0.043\\
+%    breast cancer      & 0.91 & 0.90 & 0.009 & 0.008\\
+%    colo-rectal cancer & 4.3 & 4.5 & 0.043 & 0.043\\
+    \hline
+  \end{tabular}
+\end{center}
+\vspace{0.5in}
+} 
+%\noindent Hard to chose between them: rejection sampling is about as efficient as perfect tempering - when this is the case, rejection sampling has important advantages: easier to program and understand.\\\\
+\begin{itemize}
+\item  We have converted an MCMC problem to an i.i.d. sampling problem: standard error computation is easy, and convergence diagnosis is not an issue.
+\item {\bf Important}: generating from proposal $R$, evaluating Met-Hastings ratio needs to be very efficient, so we use sparse matrix algorithms (following Rue (2001))
+\item Independent samples are obtained from the exact distribution reasonably quickly.
+\item Note: this is an `embarrasingly parallel' problem so can use {\tt snow} package (Tierney, 2004) in {\tt R} (Ihaka and Gentleman, 1996).
+%: for e.g.Germany cancer data with 1090 dimensional distribution.
+\end{itemize}
+\newpage \head{Practical Issues and Details}
+\begin{itemize}
+\item An upper bound $K < \infty$ exists, but we can only estimate it - problem gets worse with higher dimensions, more complex distribution.
+\item Follow Caffo et al. (2002) and use `empirical sup' rejection sampling: estimate $K$ from samples but do not discard samples produced with incorrect bounds.
+\item As dimensions of the problem gets really large, we will produce exact samples very rarely (for instance $<$ 1 sample every hour for 1090 dimensional problem):
+\begin{itemize}
+\item Very few exact samples produced for large number of samples generated - too many samples are `wasted'.
+\item Producing a sample from the proposal and evaluating Metropolis-Hastings (or accept-reject) ratio takes very long (even with sparse matrix algorithms).
+\end{itemize}
+\end{itemize}
+Exact schemes may no longer be practical.
+%We would like to avoid having to compute $K$.
+\newpage \head{Regenerative Schemes} 
+Regenerative: if there is a sequence of random times when
+the process probabilistically starts over independently and identically.\\\\
+Can use regenerations in an MCMC
+simulation as a means to:\\ 
+(a) compute a consistent estimate of Monte Carlo standard error. \\
+(b) avoid the `burn in' issue.\\\\
+Run the simulation for a fixed number of tours.\\
+Monte Carlo standard error can be computed by breaking the simulation up into independent tours based on the regeneration points.\\\\
+%Regenerative Simulation is usually difficult to implement for non-toy problems.\\\\
+The approximation $R$ is still useful since we can run
+the following MCMC algorithms utilizing $R$ as a
+proposal:
+\begin{itemize}
+\item Simulated tempering (Geyer and Thompson, 1995): can naturally identify regeneration points.
+\item Independence chain using $R$ as the proposal: use a result in
+  Mykland, Tierney and Yu (1995) to construct a regenerative scheme.
+\end{itemize}
+Both samplers are fast mixing (uniformly ergodic), and we have an
+ automated way of consistently assessing Monte Carlo standard
+error.\\\\
+%Again: this is an embarrassingly parallel algorithm.
+%For a slightly different model, we need to redo analytical work.\\
+
+\newpage \head{Conclusions and Related Work} %\head{Perfection vs. Rejection} 
+\begin{itemize}
+\item Have exact samplers for two important Bayesian models.
+  \begin{itemize}
+  \item Exploit model structure (few variance components) to derive heavy-tailed proposal.
+%  \item Can now use rejection sampling (or e-sup rejection):
+  \item Easy to understand and program rejection sampler correctly.
+  \item Usual MCMC issues are avoided.
+\end{itemize}
+\item Exact samplers are impractical as dimensions get large, but we can
+  still use approximations to run regenerative simulation schemes.
+\item It is possible to run the perfect tempering algorithm (M\o ller
+  and Nicholls, 2004): more complicated but potentially more
+  efficient. So far: not significantly more efficient in practice.
+\item It is possible to do exact sampling for variants of the spatial model described here.
+\end{itemize}
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

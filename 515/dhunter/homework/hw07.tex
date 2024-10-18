@@ -1,0 +1,137 @@
+\documentclass{article}
+\usepackage{url}
+\usepackage{amsmath,bm}%
+\usepackage{amsfonts}%
+\pagestyle{empty}
+\setlength{\textwidth}{7.5in}
+\setlength{\oddsidemargin}{-.5in}
+\setlength{\evensidemargin}{-.5in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textheight}{9.5in}
+
+\newcommand{\beaa}{\begin{eqnarray*}}
+\newcommand{\eeaa}{\end{eqnarray*}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\def\E{\mathop{\rm E\,}\nolimits}
+\def\Var{\mathop{\rm Var\,}\nolimits}
+\def\Cov{\mathop{\rm Cov\,}\nolimits}
+\def\Corr{\mathop{\rm Corr\,}\nolimits}
+\def\logit{\mathop{\rm logit\,}\nolimits}
+\newcommand{\eid}{{\stackrel{\cal{D}}{=}}}
+\newcommand{\cip}{{\stackrel{{P}}{\to}}}
+\def\bR{\mathbb{R}}     % real line
+
+\begin{document}
+
+\begin{center}
+{\bf STAT 515}
+
+{\bf Homework \#7, due Friday, Mar.~23 at 2:30pm}
+
+{\bf This homework may be submitted electronically to ANGEL, though this
+is not required.  I strongly encourage the use of \LaTeX\ in any case.}
+
+\end{center}
+
+{\it Please make every assignment easier to grade by neatly organizing your
+writeup and clearly labeling your final answers when appropriate. Try using
+\LaTeX!}
+
+
+%Based on 6.13
+\begin{enumerate}
+
+  \item Customers arrive at a post office at a Poisson rate of 8 per hour. There
+  is a single person serving customers, and service times are exponentially
+  distributed (and independent) with mean 5 minutes. Suppose that an arriving
+  customer will decide to wait in line if and only if there are two or fewer
+  people already in line.
+  
+    \begin{enumerate}
+
+    \item In the long run, what fraction of the time will there be at least 1
+    customer in the post office? Find the answer in two different ways:
+
+      \begin{enumerate}
+      
+      \item Write out the rate matrix (or generator) for the continuous-time
+      Markov chain and find the stationary distribution using the generator.
+      
+      \item Use the fact that this is a birth-death process to find the
+      stationary distribution that satisfies the detailed balance equations.
+      
+      \end{enumerate}
+      
+    \item In the long run, what is the expected number of customers in the post
+    office (in line or being served) at any given time?
+    
+    \item What is the probability that an arriving potential customer will
+    decide to leave because there are already 3 people in line?
+    
+    \item If a new cash register is installed that decreases the mean service
+    time to 4 minutes, how many more customers per hour, on average, can be
+    served by this post office?
+    
+    \item The manager of the post office wants to be able to serve at least 95\%
+    of the potential customers who arrive at the post office. What mean service
+    time will attain this goal?
+    
+    \end{enumerate}
+    
+  \item Suppose that a continuous-time Markov chain $X(t)$ has rate matrix
+  \[
+  R = \begin{bmatrix}
+  -\alpha & \alpha \\
+  \beta & -\beta
+  \end{bmatrix}.  
+  \]  
+  Given positive times $s$ and $t$, calculate $\Corr[X(s), X(t)]$. Does your
+  answer depend on the starting state of the chain (i.e., value of $X(0)$)?
+  
+  (NB: The formula for $\Corr(X,Y)$ is
+  $\Corr(X,Y) = \Cov(X,Y)/\sqrt{\Var(X)\Var(Y)}$.
+  Since the correlation is invariant to linear transformations, the two
+  possible values that $X(t)$ may take do not influence your answer.)
+  
+  \item At an amusement park, there are two video game machines. Suppose that
+  for video game $i$, each period when it is being used is exponentially
+  distributed with rate $\alpha_i$ and each period when it is not being used is
+  exponentially distributed with rate $\beta_i$, independent of the other
+  machines.
+  
+    \begin{enumerate}
+
+    \item Suppose that the vector $M(t)$ is given by
+    \[
+    M(t) = [ M_1(t), M_2(t) ] ^\top,
+    \]
+    
+    where $M_i(t)=I\{\mbox{machine $i$ is being used at time $t$}\}$ for $i=1,
+    2$. The Markov chain $M(t)$ has four states; give its rate matrix $R$.
+    
+    \item In the long run, what proportion of time are both machines being used?
+    
+    \item When the amusement park first opens, each machine is in its unused
+    state. We can express this fact by $M_1(0)=M_2(0)=0$. Simulate 10,000
+    independent realizations of this chain, until time $t=3$, using
+    $\alpha_1=2$, $\alpha_2=3$, $\beta_1=5$, and $\beta_2=6$. From your
+    simulations, give an empirical estimate of the proportion $\mu$ of time in
+    $(0, 3]$ that the machines are used. Report a 95\% confidence interval for
+    $\mu$. How does this compare with the long-run value calculated in part (b)?
+    
+    \vspace{1ex}
+    {\em To find an approximate 95\% confidence interval for a mean $\mu$ based
+    on a i.i.d.~sample of size $n$, take
+    \[
+    \hat\mu \pm 1.96 \frac{s}{\sqrt{n}},
+    \]
+    where $\hat\mu$ is the sample mean and $s$ is the sample standard deviation.
+    }
+    \end{enumerate}
+  
+
+\end{enumerate}
+
+\end{document}
+

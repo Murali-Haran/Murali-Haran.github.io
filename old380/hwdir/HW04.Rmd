@@ -1,0 +1,162 @@
+---
+title: "Homework 4"
+output: html_document
+---
+
+Note: When you are ready to knit your document, change `evaluate` from FALSE to TRUE in the code chunk below.
+
+```{r}
+evaluate = FALSE
+```
+
+This homework will be focused on writing functions.
+
+Q1. Write a function called `lowerTrim` that takes 2 arguments: `x` and `trimBelow`. This function takes the average of those values in `x` that are greater than the `trimBelow`. Make `x` a required argument and supply a default value for `trimBelow` of negative infinity.
+
+First create some variable to be used for testing later.
+
+```{r, collapse =TRUE}
+x = 1:5
+y = letters
+z = list(a = 1:5, b = 1:10)
+```
+
+Now test your function with the following 
+
+```{r, eval=FALSE, collapse=TRUE}
+lowerTrim(x)
+lowerTrim(-10:5, trimBelow = 0)
+lowerTrim(-10:5, -2)
+lowerTrim(x = -10:5, trimBelow = Inf)
+```
+
+The return values should be: 3, 3, 2, and NaN,  respectively
+
+Q2. Extend your function so that it takes a third parameter, which allows the caller to use a function other than `mean()` when calculating the `lowerTrim`. Call this argument `sumFunc` and give it a default value so that it operates like the original `lowerTrim` function. Call this revised function `lowerTrim2`
+
+Check your function with the following calls:
+
+```{r, eval=FALSE, collapse=TRUE}
+lowerTrim2(-10:20, trimBelow = -5, median)
+lowerTrim2(-10:20, trimBelow = 0, sumFunc = summary)
+```
+
+The return values should be 8 and the summary values of 1, 5.75 10.5, 10.5, 15.2, and 20.
+
+Q3. (a) Modify your function to take in any argument through the `...` argument and pass these arguments. Call this new function `lowerTrim3`.
+
+And test your code with
+
+```{r, eval=FALSE, collapse=TRUE}
+lowerTrim3(x, sumFunc = sd)
+lowerTrim3(-10:20, trimBelow = 0, sumFunc = quantile,
+           probs = 0.99)
+lowerTrim3(-10:20, trimBelow = 0, trim = 0.1)
+```
+
+The results should be 1.58, 19.8, and 10.5. 
+
+(b) Now load the Colorado rainfall data and apply your `lowerTrim3` function to each element in the list `rain` to find at each station the 95th percentile of rain fall for those days that the amount of rain exceeded 1/20 of an inch. Assign the return value from your function call to `rain.95`
+
+```{r, eval=FALSE}
+load(url("http://www.stat.berkeley.edu/users/nolan/data/rainfallCO.rda"))
+```
+
+Q4. Back to roulette. 
+
+Here you will write two functions that simulate various bets in roulette. Review the slides from class to see the possible bets and their pay offs. 
+
+This should give you practice in the following aspects of function writing: 
+
+* Identify the parameters to a function and write a signature for the function
+* Use if/else statements to control the flow of code evaluation
+* Compare the efficiency of vectorized computations to for loops
+
+Additionally, you will compare various betting strategies.
+
+In class (see the slides), we looked at a function to simulate betting red in roulette. We reproduce this function here for your convenience.
+
+```{r betRed}
+betRed = function(numBets, betAmt = 1) {
+  winLoss = sample(rep(c(-1, 1), c(20, 18)),
+                   size = numBets, replace = TRUE)
+  netGain = sum(winLoss * betAmt)
+  return(netGain)
+}
+```
+
+We compare the net gain of two types of betting strategies: 100 bets of $1 on red and 1 bet of $100 on red. To do this we repeated the betting process 10,000 times to see the kinds of net gains we might get with each strategy.
+
+```{r}
+gain100B.1D = 
+  replicate(10000, betRed(numBets = 100, betAmt = 1))
+
+gain1B.100D =
+  replicate(10000, betRed(numBets = 1, betAmt = 100))
+```
+
+(a) We examined the distribution of the 10,000 outcomes from these betting strategies with a plot. Do you remember the density plot produced in class to compare the strategies, i.e., the distribution of wins for each strategy? Write a function that takes as arguments the two list of gains (like gain100B.1D and gain1B.100D above) that will produce a plot overlaying the two distributions. Make sure the plot looks nice!
+
+You should be able to use the above plotting function to compare the net gains from the 2 strategies by running it as follows: 
+
+```{r, eval=FALSE}
+plotGains(gain1B.100D, gain100B.1D)
+```
+
+(b) A Wallet
+
+When we play roulette we start with a particular sum of money, e.g., we may have $100 in our wallet. Then what's in our wallet impacts how much and how long we can bet.  For example, with $100 in our wallet we cannot place a $200 bet. Also, depending on our winnings, we may be able to place 200 $1 bets or we may run out of money before then. 
+
+For your first function, augment the `betRed` function to accept an additional parameter called `wallet` that contains the starting amount of money. Call this new function `betRed2`. Give `wallet` a default value so that it runs like the original `betRed` function if the default value of `wallet is used`.
+
+The return value from this function should be the net gain.  As before, this is the winnings less the losses. However, if at some point in your betting, you no longer have enough funds to place a bet then you can't continue your betting.  
+
+NOTE: DO NOT USE A FOR LOOP IN THIS FUNCTION. Consider instead the `cumsum()` function and logical expressions.
+
+Here are some tests that you can run to see if your code is working correctly:
+
+```{r, error=TRUE}
+betRed2(betAmt = 100, numBets = 1, wallet = 50)
+# returns 0
+
+betRed2(betAmt = 100, numBets = 1, wallet = 100)
+# returns either -100 or 100
+
+test1 = replicate(10000, 
+          betRed2(betAmt = 1, numBets = 100,
+                  wallet = Inf))
+mean(test1)
+# should be near -5.26
+
+test2 = replicate(10000, 
+          betRed2(betAmt = 100, numBets = 100,
+                  wallet = 500))
+
+plotGains(test2)
+
+```
+
+Q5.
+### Comparing strategies
+
+Try several betting strategies and compare the net gains. Settle on 2 interesting comparisons, i.e., 2 pairs of strategies, and make a plot for each of them. Also compute the average of the winnings over 10,000 replications and the spread of the winnings. Describe in words what you find interesting about them. To help you think of strategies, here are some questions to consider:
+
+* If you are making small bets, how much does the amount of money in your wallet matter?
+
+* What happens when I want to place more bets than the size of my wallet? Can I sometimes do this and other times not?
+
+* How does an infinite wallet compare to one with a capped amount of money? 
+
+* If the number of bets that I want to place is really large in comparison to my wallet, do I invariable run out of money?
+
+
+```{r comparison1}
+
+```
+
+
+
+```{r comparison2}
+
+```
+

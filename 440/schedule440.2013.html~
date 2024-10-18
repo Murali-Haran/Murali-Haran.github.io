@@ -1,0 +1,33 @@
+<TITLE> Course schedule for Computational Statistics, Spring 2013</TITLE>
+<center>
+ Rough schedule for Stat 440 Spring 2013, subject to change <b> (check back often!) </b>. <br><br>
+ <table border="7" >
+<tr> <th scope = "col">Date</th> <th scope = "col">Topics</th>
+
+<tr><td> Week 1 (Jan.7) <td> Introduction: the connection between probability and inference, what is a statistical model? the role of computing. Read Chapter 2 of M. Rizzo book (mostly review STAT 414/415)
+
+<tr><td> Week 2 (Jan.14) <td> Review of maximum likelihood and Bayesian inference; more motivation for computing
+
+<tr><td> Week 3 (Jan.21) <td> Monte Carlo basics, Strong Law of Large Numbers (SLLN) and Central Limit Theorem (CLT). Monte Carlo standard errors. 
+
+<tr><td> Week 4 (Jan.28) <td> Review of sampling distributions via simple simulation studies.  Random number generation. Inverse transformation/inverse cdf method. Accept-reject sampling. Read 3.1--3.4 of M. Rizzo book
+<tr><td> Week 5  (Feb.4) <td> Proof for rejection sampler.  Read 5.1, 5.2, and 5.6 of M. Rizzo book
+<tr><td> Week 6  (Feb.11)<td> Importance sampling. Uses in estimating tail probabilities, multiple expectations
+<tr><td> Week 7  (Feb.18)<td> Simulation studies/Monte Carlo studies. 
+<tr><td> Week 8  (Feb.25)<td> Parametric and nonparametric bootstrap basics. 
+<font color="#FF0000"> Midterm exam on Friday, March 1st </font> 
+<tr><td>  <i> March 4-8 </i>  <td> <i> Spring break </i> 
+<tr><td> Week 9 (Mar.11)<td> More on the bootstrap. 
+<tr><td> Week 10 (Mar.18)<td>  More on the bootstrap. Monte Carlo hypothesis tests. Monte Carlo integration (non probabilistic) <!-- NEXT TIME: last two topics: move to right after importance sampling  -->
+<tr><td> Week 11 (Mar.25)<td> Monte Carlo hypothesis tests. Monte Carlo integration (non probabilistic)
+<tr><td> Week 12 (Apr.1) <td>  Optimization basics, Newton-Raphson, finding maximum likelihood estimates (MLEs) <!--The expectation-maximization (EM) algorithm  -->
+<tr><td> Week 13 (Apr.8) <td>  More on optimization. Review ML, observed Fisher information/variance estimation, Bayesian methods <!-- More on the EM algorithm,  minorization-maximization (MM) algorithms.-->
+<tr><td> Week 14 (Apr.15) <td> Select topics: matrix analysis, density estimation. Overview/simulation of Markov chains and Poisson processes.
+<font color="#FF0000"> Take home final </font> out Wednesday, April
+  17th, <b> due </b> Monday, April 22nd <br> 
+<tr><td> Week 15 (Apr.22) <td> More select topics and review
+<tr><td> Week 16 (Apr.29) <td> <font color="#FF0000"> Final exam: Wednesday, May 1st at 011 Life Sci, 8am-9:50am </font> 
+</table>
+</center>
+</body>
+</html>

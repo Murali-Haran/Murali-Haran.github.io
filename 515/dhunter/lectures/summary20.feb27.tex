@@ -1,0 +1,107 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Feb.~27}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+For Wednesday, work old homework problems and new homework problems.
+\item 
+Midterm exam:  7:00pm on Wednesday, Feb.~29 in 105 Willard.
+(NB:  Change of room!)
+\item 
+HW \#6 will be due on Friday (Mar.~2) at 2:30.
+\end{itemize}
+\end{frame}
+
+
+\startframe{Midterm practice}
+\question{
+Let $X$ be an exponential random variable.  Without any 
+computations, which of the following is correct?  
+}
+{$E[X^2 \mid X>1] = E[(X+1)^2]$}
+{$E[X^2 \mid X>1] = E[X^2]+1$}
+{$E[X^2 \mid X>1] = (1+E[X])^2$}
+{None of these}
+\notes{
+Answer:  A,
+because $X\mid X>1$ has the same distribution as $X+1$ (this is the memoryless property).
+}
+\end{frame}
+
+\startframe{Midterm practice}
+\question{A doctor has scheduled two appointments, one at 1:00 and one at 1:30.
+The amounts of time that appointments last are independent exponential
+random variables with mean 30 minutes.  If both patients are on time, the expected 
+amount of time that the 1:30 appointment spends at the doctor's office is\ldots}
+{Less than 30 minutes}
+{Between 30 and 60 minutes}
+{More than 60 minutes}
+{}
+\notes{Answer:  B.  In the case that the first patient is done by 1:30, 
+the expected time equals 30 minutes.  In the case that the first patient is not done
+by 1:30, the expected time equals 60 minutes (30 minutes for the first patient and
+30 minutes for the second).  Therefore, the final answer is a weighted average
+of 30 and 60.  
+More precisely, the weight on 30 minutes is the probability that the first patient will
+be finished by 1:30, which equals $1-e^{-1}$.}
+\end{frame}
+
+\startframe{Midterm practice}
+In a two-server queueing system, customers arrive according to a Poisson
+process with rate $\lambda$.  If at least one of the two servers is free when
+a customer arrives, the customer is immediately served; otherwise, the customer
+departs immediately and is lost.  Service times are exponential (independently)
+with rate $\mu$.
+\end{frame}
+
+\startframe{Midterm practice}
+In the two-server system (customer rate=$\lambda$, service rate=$\mu$),
+\begin{itemize}
+\item Starting from both servers busy, what is the expected time until the next
+customer is served?
+\item Starting empty, find the expected time until both servers are busy.
+\item What is the expected time between two successive lost customers?
+\end{itemize}
+\notes{Answers (we discussed the first two in class; try getting the third on your own---and check 
+my algebra!):
+\begin{itemize}
+\item $\frac{1}{2\mu} + \frac{1}{\lambda}$
+\item $(2\lambda + \mu)/\lambda^2$
+\item $\frac{1}{\lambda} + \frac{2\mu}{\lambda(\lambda+\mu)}
++ \frac{2\mu^2(2\lambda+\mu)}{\lambda^3(\lambda+\mu)}$
+\end{itemize}
+}
+\end{frame}
+
+\startframe{Midterm practice}
+Consider a single server queueing system where customers arrive according to a
+Poisson process with rate $\lambda$, service times are exponential with rate $\mu$,
+and customers are served in the order of their arrival.  If a customer arrives and finds
+$n-1$ others in the system, and $X$ is the number in the system when that
+customer departs, find the pmf of $X$.
+\notes{
+Consider the customer-arrival process and the customer-servicing process, which
+are two Poisson processes with rates $\lambda$ and $\mu$, respectively.  The
+sum of these processes is Poisson with rate $\lambda+\mu$, and each event in
+the summed process is an arrival with probability $\lambda/(\lambda+\mu)$
+and a service-finish with probability $\mu/(\lambda+\mu)$.  If you are the $n$th
+customer, then you will leave exactly at the $n$th service-finish.  Thus, the question is
+how many people arrived (call this a success) before the $n$th service-finish (call this
+a failure) in repeated Bernoulli trials.  This means that the total number of trials
+is negative binomial random variable, which leads to the pmf.
+}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

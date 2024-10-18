@@ -1,0 +1,188 @@
+---
+title: "Cleaning and Exploring Data"
+author: "Your name"
+output: html_document
+---
+
+### Introduction
+
+This assignment has the following goals: 
+(a) to familiarize you with some of the basic 
+functions in R and how to use them, 
+(b) to learn how to subset data frames to eliminate unusual records and values,
+<!-- (c) to review/introduce some of the key -->
+<!-- concepts in exploratory data analysis. -->
+
+You will work with data published by the San Francisco Chronicle about housing sales. We begin by reading the data from the Web into R.
+
+```{r}
+load(url("http://www.stat.berkeley.edu/users/nolan/data/Projects/SFHousing.rda"))
+```
+
+This command loads the *housing* data frame into your work space. 
+The following functions may be useful in answering 
+the questions:
+**class(), cor(), length(), dim(), ls(), names(), mean(), min(), max(), quantile(), summary().**
+
+
+1. What are the names of the variables in the data frame?
+What type of data are they, i.e., are they numeric, logical,
+character, factors? 
+
+```{r}
+
+```
+
+2. Can you confirm that there are measurements on 281,506 houses  
+available in *housing*?
+
+```{r}
+
+```
+
+A reminder about R commands: to take a look at the variables within the data frame *housing*, use the names command, i.e., names(housing). Then you can simply access any variable within housing using the dollar sign, for example housing$county. 
+
+The data do not indicate the units of measurement and some of the variable names are a bit terse. The variables and their units are:
+
+* county - County name
+* city - City name
+* zip - Zip code
+* street - Street address
+* price - Sale price in dollars
+* br - Number of bedrooms
+* lsqft - Size of lot in square feet
+* bsqft - Size of building in square feet
+* year - Year house was built
+* long - Longitude of house location
+* lat - Latitude of house location
+
+We are interested in the relationship between the price per square foot  and the size of the house.  Before we study this relaionship, we 
+want to examine these and other variables to check if we need to clean the data.
+
+
+### Property Size
+
+3. Examine the property (lot) size with summary statistics. What do you see?
+
+```{r}
+
+```
+
+
+
+4. An acre is 43560 sqft. It seems that houses with plots more 
+than 3 to 5 acres are different types of properties than those without. 
+Set *lsqft* to NA if the home has a lot of 3+ acres.
+
+```{r}
+
+```
+
+
+5. Some of the tiniest houses measure 100-200 square feet 
+(see http://www.housebeautiful.com/design-inspiration/house-tours/a5836/hikari-box-tiny-house-shelter-wise/) 
+Since these are tiny, modern "eco homes", we can exclude houses that don't have a lot square footage of a couple times that. Again, set *lsqft* to NA for those homes with less than a 400 square foot lot.
+
+```{r}
+
+```
+
+
+## House Size 
+
+6. As with lot size, there are some unusually large houses. How big are the 10 largest houses? (Use *order()* to help find this information)
+
+```{r}
+
+```
+
+7. Drop any house over 20000 square feet from the data frame.
+
+```{r}
+
+```
+
+
+## Relationship between lot size and house size
+
+8. How many houses have a larger building square footage than lot square footage? How can this happen?
+
+```{r}
+
+```
+
+9. Remove all houses from the data frame that have a building size that is more than 4 times the lot size.
+
+```{r}
+
+```
+
+## Price per square foot
+
+10. We said that we are interested in the price per square foot of the houses. This variable is not in our data frame. Create a new variable, *ppsf*, in *housing*.
+
+```{r}
+
+```
+
+## Extraneous Variables
+
+11. There are a few variables related to the quality of the data that are
+not mentioned in the list above. Figure out which these are and drop them from the data frame. Use subsetting by exclusion to do this.
+
+```{r}
+
+```
+
+
+## Date
+
+Since the housing prices changed a lot in the time period of observation,
+let's restrict our view to houses that were sold in the first two quarters of 2004.  To do this, we need to convert *date* into a  more appropriate data type. The following code creates a vector in a POSIX format and then
+pulls out the month and year from each date and saves them in numeric vectors.
+
+```{r}
+month = as.numeric(format(housing$date, format="%m"))
+year = as.numeric(format(housing$date, format="%Y"))
+```
+
+12. Use these vectors to create a subset of *housing* with sales from the first half of 2004.
+
+```{r}
+
+```
+
+You should have about 29,000 houses left in the data frame.
+
+## Similar Locations
+
+Another approach to exploring and analyzing data is to examine subsets that are similar. For example, we can `zoom in' to the east bay and examine the relationship between price per square foot and size of the house for houses sold in the following cities:
+
+```{r}
+someCities = c("Albany", "Berkeley", "El Cerrito", "Emeryville", 
+               "Piedmont", "Richmond", "Lafayette", "Walnut Creek",
+               "Kensington", "Alameda", "Orinda", "Moraga")
+```
+
+
+
+13. Use this character vector to take a subset of sales in those cities. You may find the operator *%in%* useful here.
+
+```{r}
+
+```
+
+The *city* variable is a factor and when all of the records for a particular city have been removed from the data, the level for that factor remains as a possible level. This means that summaries and other statistics will include these `empty' levels. To drop them, we can modify
+*city* as follows
+
+```{r}
+housing$city = droplevels(housing$city)
+```
+
+Note that we expect that your subset of house sales is still in the data frame called *housing*.  If not, you might want to reassign *housing* to your current data frame and remove (*rm()* ) all other intermediate and 
+duplicate data frames.
+
+<!-- Upload your completed Rmd file to Canvas.  -->
+Upload your completed R code file to Canvas. At the top of the file you should have a comment which states your name in the following format: *# Name: Joe Namath*. You should have a comment before each problem that states the problem number. The format for the problem numbers should look like: *#Problem 5*.
+ Please contact the TA if you have any questions; you should receive an email from the TA with instructions about submitting your homework. If you know how to create an Rmd file, you are welcome to submit the .Rmd file with your R code and comments instead of a .R file.
+

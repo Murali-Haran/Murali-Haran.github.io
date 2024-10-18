@@ -1,0 +1,91 @@
+\documentclass{article}
+\usepackage{url}
+\usepackage{amsmath,bm}%
+\usepackage{amsfonts}%
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-.5in}
+\setlength{\evensidemargin}{-.5in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textheight}{9.25in}
+
+\newcommand{\beaa}{\begin{eqnarray*}}
+\newcommand{\eeaa}{\end{eqnarray*}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\def\E{\mathop{\rm E\,}\nolimits}
+\def\Var{\mathop{\rm Var\,}\nolimits}
+\def\Cov{\mathop{\rm Cov\,}\nolimits}
+\def\Corr{\mathop{\rm Corr\,}\nolimits}
+\def\logit{\mathop{\rm logit\,}\nolimits}
+\newcommand{\eid}{{\stackrel{\cal{D}}{=}}}
+\newcommand{\cip}{{\stackrel{{P}}{\to}}}
+\def\bR{\mathbb{R}}     % real line
+
+\begin{document}
+
+\begin{center}
+{\bf STAT 515}
+
+{\bf Homework \#6, due Friday, Mar. 2 at 2:30pm}
+
+{\bf This homework may be submitted electronically to ANGEL, though this is not
+required. I strongly encourage the use of \LaTeX\ in any case.}
+
+\end{center}
+
+{\it Please make every assignment easier to grade by neatly organizing your
+writeup and clearly labeling your final answers when appropriate. Try using
+\LaTeX!}
+
+
+\begin{enumerate}
+
+% From Murali's HW#5
+\item Let $N(t)$ be a non-homogeneous Poisson process with rate function
+$\lambda(t)$.
+
+  \begin{enumerate}
+
+  \item Fix some $t>0$. Derive the conditional distribution of the arrival times
+  $S_1, \ldots, S_{N(t)}$, conditional on $N(t)=n$.
+
+  \item As you did in Exercise 2(a) of Homework \#5, use part (a) to suggest an
+  algorithm for simulating a non-homogeneous Poisson process on $(0, t]$.
+
+  \item Use your algorithm to simulate 10,000 realizations of a non-homogeneous
+  Poisson process on $(0, 2]$ where $\lambda(t) = 24t^2$.
+
+  \item Using the result of part (c), produce a histogram of the numbers of
+  events in the interval $(0, 1]$. Add to your histogram the true theoretical
+  values, and explain how you found them.
+
+  \item Using the result of part (c), produce a histogram of the times until the
+  first event. Add to your histogram the true theoretical density, and explain
+  how you found it. What is the name of the true theoretical distribution?
+
+  \end{enumerate}  
+
+% Ex 5.52
+\item Teams 1 and 2 are playing a game. The teams score points according to
+independent Poisson processes with rates $\lambda_1$ and $\lambda_2$,
+respectively. The game ends when one team has scored exactly $k$ points more
+than the other team. What is the probability that team 1 wins?
+
+% Ex 5.28
+\item Consider $n$ components with independent lifetimes, where component $i$
+has exponentially distributed lifetime with rate $\lambda_i$. Suppose that all
+components are initially in use and remain so until they fail.
+
+  \begin{enumerate}
+
+  \item Find the probability that component 1 is the second component to fail.
+
+  \item Find the expected time of the second failure.
+
+  \end{enumerate}
+
+\end{enumerate}
+
+\end{document}
+

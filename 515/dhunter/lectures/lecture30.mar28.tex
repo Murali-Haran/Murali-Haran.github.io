@@ -1,0 +1,99 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Mar.~28}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+HW \#8 is due on Friday, March 30 at 2:30pm.
+\item 
+All homework must be turned in electronically from now on.
+\item 
+See sample code for problems 1(a) and 1(b).
+\end{itemize}
+\end{frame}
+
+
+\startframe{Monte Carlo methods}
+How do you generate $X\sim F$ given $U\sim\mbox{Unif}(0,1)$?
+\begin{itemize}
+\item
+Some special cases are covered in Ross, section 11.3
+\item
+General ``inversion'' method based on  quantile function
+\[
+F^-(u)  \stackrel{\rm def}{=} \inf \{ x : u\le F(x)\}.
+\]
+Can prove:  $F^-(U)\sim F$, i.e., $P[F^-(U) \le x] = F(x)$ for all $x$.
+%In case $F(x)$ is strictly increasing and continuous, $F^-=F^{-1}$.
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Examples:
+\begin{itemize}
+\item Generate $X\sim\mbox{Exponential}(1)$.
+\item Generate $X\sim\mbox{Standard Cauchy}$.
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Problems with the inversion method:
+\begin{itemize}
+\item Only works in one dimension
+\item Explicit quantile functions are not always available
+\item Explicit $F(x)$ may not even be possible; for instance, 
+$f(x)$ may be known only up to a constant.
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Rejection sampling works much more generally than inversion method.
+\begin{itemize}
+\item Given:  An ``easier'' density $g$ and known $K$ such that $Kg(x)\ge f(x)$.
+\item Idea:  Sample repeatedly from $g$, but only keep each sampled value
+with probability $f(x)/Kg(x)$.
+\end{itemize}
+\end{frame}
+
+
+\startframe{Monte Carlo methods}
+Rejection sampling notes
+\begin{itemize}
+\item Only necessary to know $f$ and $g$ up to constants.
+\item Often better to take logarithms when computing with ratios.
+\item Section 11.2.2 has a couple examples (e.g., beta).
+\end{itemize}
+%:  If
+%$r(x)=\alpha f(x)$ and $s(x)=\beta g(x)$, find $K\ge \sup_x s(x)/r(x)$
+\end{frame}
+
+
+\startframe{Monte Carlo methods}
+Suppose that 
+\begin{itemize}
+\item
+$f(x)=\alpha r(x)$ and $g(x)=\beta s(x)$ are density functions
+\item
+$r(x)$ and $s(x)$ are known functions (but $\alpha$ and $\beta$ might be unknown).  
+\item
+$K=\sup_x r(x)/s(x)$ is finite
+and known.  
+\item 
+Let $X\sim g(x)$ and $U\sim \mbox{unif}(0,1)$ be independent. 
+\end{itemize}
+\[
+\mbox{Then} \quad X \mid U \le \frac{r(X)}{Ks(X)} \sim f.
+\]
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

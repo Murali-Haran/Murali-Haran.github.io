@@ -1,0 +1,780 @@
+\documentclass{beamer}
+\newcommand{\beaa}{\begin{eqnarray*}}
+\newcommand{\eeaa}{\end{eqnarray*}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\setbeamercolor{title}{fg=orange!50!black} % instead of above (dark background, white foreground)
+\setbeamertemplate{frametitle}[default][center] % by default have it center-justified
+%\setbeamercolor{frametitle}{fg=white,bg=orange!50!black}
+\setbeamercolor{frametitle}{fg=orange!50!black} % instead of above (dark background, white foreground)
+\setbeamercolor{structure}{fg=orange!50!black}
+\setbeamertemplate{navigation symbols}{} % suppress all navigation symbols
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+%
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+
+\title[Spatial Models and Computation] % (optional, use only with long paper titles)
+{Inferring likelihoods and climate system characteristics from climate models and multiple tracers}
+%\author[December 13,,2007] % (optional, use only with lots of authors)
+%{K. Sham Bhat\inst{1}, Murali Haran\inst{1}, Julio Molineros\inst{2} and Erick Dewolf\inst{3} \\   }
+% {Erick Dewolf \\ \inst{2} }
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\author{Murali Haran}
+
+\institute[Penn State] % (optional, but mostly needed)
+{
+%  \inst{1}%
+  Department of Statistics\\
+  Pennsylvania State University\\
+\vspace{0.2in}
+(joint work with Sham Bhat (Statistics), Roman Tonkonojenkov (Geosciences) and Klaus Keller (Geosciences))
+}
+%
+\date[SOS 03-2006] % (optional, should be abbreviation of conference name)
+%{National Institute of Environmental Health Sciences December 2009}
+{Frontiers of Interface between Statistics and Sciences\\ Conference
+  in honor of C.R.Rao\\Hyderabad,
+  December 2009}
+\input{slides.definitions}
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\begin{frame}
+\frametitle{The MOC and climate change }
+%\frametitle{The Meridional Overturning Circulation (MOC) and climate change}
+%\item 
+ \begin{itemize}
+\item What is the risk of human induced climate change?
+% \item Early and accurate predictions of the risk of MOC collapse would save billions of dollars (Keller and McInerney, 2007) 
+  \item Meridional Overturning Circulation (MOC): Movement of water from equator to higher
+    latitudes, deep water masses created by cooling of water in
+    Atlantic, resulting in sea ice formation, denser salt
+    water, which sinks and causes ocean circulation.
+% \item An MOC collapse may result in drastic changes in temperatures and precipitation patterns. 
+\begin{figure}
+\begin{center} 
+ % \figoneA{lingptoyex3.pdf}
+ \figtwoA{moc1.jpg}{moc2.jpg}
+\end{center}
+{\tiny (plots: Rahmstorf (Nature, 1997) and Behl and Hovan)}
+% \label{fig:toyemul}
+ \end{figure}
+%\item MOC difficult to measure directly, apparent oxygen utilization (AOU) used as a surrogate.  AOU computed from oxygen, salinity, and density.
+%\item   AOU has higher signal to noise ratios that other surrogates
+%\item Potential for using climate model to computing AOU,  when used with physical observations, can determine most reasonable levels of climate sensitivity, which results in better predictions of MOC collapse.
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The MOC }
+  \begin{itemize}
+  \item MOC weakening results in disruptions in the equilibrium state
+    in the climate, may lead to major temperature and precipitation
+    changes and shifts in terrestrial ecosystems. % (e.g. French climate   $\rightarrow$ Algerian climate.)
+  \item The potential collapse of the meridional overturning
+    circulation (MOC) is therefore an example of potentially
+    catastrophic climate change.
+\item How can we make projections about the MOC? Climate scientists
+  rely on sophisticated {\it deterministic} climate models to study such phenomena and
+  make projections.
+\item Climate models have many unknown parameters (inputs). 
+\item A key source of uncertainty in MOC projections is uncertainty
+  about the parameter background ocean vertical diffusivity, $\Kv$.
+%   \item Predictions of MOC strength can be made for particular climate
+%     parameter settings, e.g. vertical diffusivity, ${\color{blue} \mathbf{K_v}}$.
+%    \item $\Kv$ cannot be measured directly.
+    \end{itemize}
+  \end{frame}
+
+\begin{frame}
+%\frametitle{Information sources \framenum}
+\frametitle{Learning about $K_v$ }
+%\item 
+How can we estimate $\Kv$?
+ \begin{itemize}
+\item $\Kv$ is a model parameter which quantifies the intensity of
+  vertical mixing in the ocean, cannot be measured directly.
+\item Two sources of indirect information:
+\begin{itemize}
+\item Observations of two ocean tracers, both provide information
+  about $\Kv$: $\Delta^{14}$C  and Trichlorofluoromethane (CFC11)
+  collected in the 1990s (latitude, longitude, depth), zonally
+  averaged. 
+\item Climate model output at different values of $\Kv$ from the
+  University of Victoria(UVic) Earth System Climate Model (Weaver
+  et. al. 2001).
+ \end{itemize}
+%     \item Latitude between 80 S and 60 N, depths from 0 to 3000m.
+% \item $^{14}$C and CFC11 are stable tracers, enter ocean by air-sea 
+% gas exchange, transported by advection/diffusion
+\item Latitude between -80 S and 60 N, depths from 0 to 3000m.
+     \item Data size: 3706(observations); 5926(model) per tracers.
+ \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{CFC example  }
+%\includegraphics{tenmodel.pdf}
+\figoneAD{cfc.pdf}
+ \begin{itemize}
+ \item %Climate model is run at several parameter settings of vertical
+%   diffusivity ($K_v$).  Above: 3 settings; observations.
+Bottom right: observations
+\item Remaining plots: climate model output at 3 settings of $K_v$.
+     \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Challenges }
+	 \begin{enumerate}
+         \item No direct connection between observations and climate
+           parameter, need to rely on climate model runs to obtain a
+           probability model connecting observations and climate
+           parameter $\Kv$.
+         \item The climate model is very computationally
+           intensive. Hence, can only be run at a few different
+           settings. Need some form of interpolation (`emulation') to allow for inference.
+	\item Large spatial data sets: poses computational challenges
+          for inference due to expensive matrix calculations.
+	\item Combining information from multiple tracers, CFC-11,
+          $\Delta^{14}$C: need flexible, computationally tractable models for multivariate spatial data.
+	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Computer model emulation }
+\vspace{-0.4in}
+  \begin{figure}
+\begin{center} 
+ % \figoneA{lingptoyex3.pdf}
+% \figoneAA{compmodel3.pdf}
+ \figoneAA{compmodel.jpg}
+\end{center}
+ %\label{fig:toyemul}
+ \end{figure}
+    \begin{itemize}
+    \item \textbf{Emulation} involves replacing a complicated computer
+      model with a simpler (usually stochastic) approximation.
+    \item Sacks et. al. (1989) introduced a linear Gaussian process
+      model as an emulator for a complex nonlinear function. Related
+      work by: Currin, Mitchell, Morris, Ylvisaker (1991), Bayarri et
+      al (2007;2008) and many others.
+      \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Gaussian processes: basics   }
+\begin{itemize}
+\item Model random variable at location $\bs$ by
+ $$ Z(\bs) = X(\bs) \bbeta + w(\bs), \mbox{  for }\bs \in D \subset \Real^d $$
+\item $\{ w(\bs), \bs \in D \}$ is (infinite dimensional) Gaussian process.
+\item Let $\bw=(w(\bs_1),\dots,w(\bs_n))^T$, $\bZ=(Z(\bs_1),\dots,Z(\bs_n))^T$. Predictions at new locations: $\bZ^*=(Z(\bs_1^*),\dots,Z(\bs_m^*))^T$.
+  $$\bw \mid \bxi \sim N(0,\Sigma(\bxi)), ~~ \mbox{$\bxi$ are covariance parameters}$$
+%\item Advantage of Gaussian processes: Conditional distribution 
+\item $\bZ^* \mid \bZ$ is normal ($_1,_2$ correspond to mean, var of 
+  $\bZ,\bZ^*$): 
+\begin{equation*}\label{eq:condtlref}
+\begin{split}
+ E(\bZ^* \mid \bZ, \bbeta,\bxi)
+ =\bmu_2 + \Sigma_{21} \Sigma_{11}^{-1} (\bZ-\bmu_1)  \\
+ \mbox{Cov}(\bZ^* \mid \bZ, \bbeta,\bxi)=\Sigma_{22} - \Sigma_{21} \Sigma_{11}^{-1} \Sigma_{12}.
+  \end{split}
+\end{equation*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Gaussian processes (contd)   }
+\begin{itemize}
+\item Standard assumption: Assume process is stationary and covariance function that determines
+  $\Sigma(\bxi)$ belongs to \Matern family. Important special cases:
+  gaussian (infinitely differentiable), exponential (no derivatives).
+\item Predictions: obtain estimates $\hat{\bxi},\hat{\bbeta} $.
+\begin{itemize}
+\item ML inference: plug $\hat{\bxi},\hat{\bbeta} $ into conditional distribution $\bZ^* \mid \bZ$.
+\item Bayesian inference: find posterior
+  $\pi(\bxi,\bbeta\mid \bZ)$ and obtain {\it posterior
+    predictive distribution} $\pi(\bZ^* \mid \bZ)$, integrating with
+  respect to $\bbeta,\bxi$ over 
+  $\pi(\bxi,\bbeta\mid \bZ)$.
+\item Very convenient and very flexible models for both spatially dependent processes and complicated functions.
+\end{itemize}
+% \item Separability- no interaction between the different types of dependence
+% $$\mbox{Cov}(X(\bs,t),X(\bs+\bh,t+k))=C_s(\bh) C_t(k)$$
+% \item Advantages of separability include: easy to verify that covariance function is valid and efficient computation.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{GP model for dependence: toy 1-D example   }
+%The black dots represent data.
+\begin{figure}
+%\figonebig{lingptoyex1.pdf}
+\figonebig{toyex1color.pdf}
+%\figonebig{ar1.pdf}
+ % \figoneA{lingptoyex3.pdf}
+% \figtwoA{ar1.pdf}{lintoyg1.pdf}
+ \end{figure}
+ Black: 1-D AR-1 process simulation.  Green: independent error.\\ Red: GP with exponential, Blue: GP with gaussian covariance. 
+% \item Left: GP for incorporation of \textbf{spatial dependence} of AR(1).
+% \item  Right:  GP for \textbf{emulation} of f(x)=exp(-x/5)sin(x).
+ \end{frame}
+
+\begin{frame}
+\frametitle{GP model for emulation   }
+\begin{figure}
+%  \figtwoA{lingptoyex3.pdf}{lingptoyex4.pdf}
+  \figtwoA{lingpemul1.pdf}{lingpemul2.pdf}
+ \end{figure}
+ Functions: $ f(x) = \sin(x)$ and $f(x)=\exp(-x/5)\sin(x).$ \\
+ Both were fit with linear GP model, $f(x) = \alpha + \epsilon(x)$,
+ where $\{ \epsilon(x),\: x\in (0,20)\}$ is a GP, $\alpha$ is just a
+ constant mean.
+\end{frame}
+
+
+
+\begin{frame}
+%% \frametitle{Computer Model Calibration Approach}
+  \frametitle{Statistical inference for climate model  }
+ \begin{itemize}
+	\item Notation: $Z(\bs)$: physical observations, $Y(\bs,\btheta)$: model output at location $\bs$=(latitude, depth), and climate parameter $\btheta$.
+	\item Climate model: Complex and requires long time to run.
+        \item This is a computer model calibration problem.
+\item \textbf{Data Sources}: Observations for $^{14}$C/CFC11: $\bZ_1,  \bZ_2$.% (locations at $\mathbf{S})$.\\
+\item Climate model runs at several values of $\bluebtheta$  $(\Kv)$: $\bY_1, \bY_2$.
+\item \textbf{Goal}:  Inference for climate parameter $\bluebtheta$. 
+% 	\item \textit{Emulation} of climate model (Sacks et al, 1989): replace complex model with simple stochastic model.
+% 	\item Computer model calibration : Kennedy \& O'Hagan (2001), Sanso et al. (2008) in the context of climate models, and many others.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+% \frametitle{A joint model}
+ \frametitle{Bayesian model calibration   }
+ \begin{itemize}
+ 	\item Want to determine parameter settings that are `most likely' given $\bY$, $\bZ$ (vector obtained by stacking columns of matrix of $Y(\bs,\btheta)$, $Z(\bs)$ respectively). 
+        \item Kennedy and O'Hagan (2001) developed a fully Bayes
+          approach for `computer model calibration'.  Sanso et
+          al. (2007) used a variant for climate parameter inference.
+%	 \item Sanso et al. combine tracer data, model output, model error, observational error into a single model.
+        \item  Assumption: a "true" set of climate parameters $\btheta^*$ exists. 
+	$$Z(\mathbf{s_i})=Y(\mathbf{s_i},\btheta^*)+\epsilon_i.$$ Note: there is no true $\btheta^*$, so perhaps more appropriate to think of it as a fitted value (Bayarri, Berger et al. 2007). % writing borrowed from Bayarri et al. (Annals, 2007)
+      \item Model $\bY$ and $\bZ$ jointly.  Model $\bY$ as a Gaussian
+        process, with dependence in climate parameter ($\btheta$) space.
+      \item Separable covariance between $\bs, \btheta$ dimensions.
+%   \item $\delta$-model error term, accounts for the imperfections of $\bY$.  
+%\begin{equation}\label{eq:covfun1}
+%\mbox{Cov}(Y(\bs_i,t_i,\btheta_{i'}),Y(\bs_j,t_j,\btheta_{j'}))=\kappa ~\Sigma_{ij} ~ r(\btheta_{i'},\btheta_{j'})
+%\end{equation}
+%\item $\Sigma$ is a matrix computed from control runs. 
+      \end{itemize}
+    \end{frame}
+
+\begin{frame}
+\frametitle{GP for climate model emulation }
+
+\begin{itemize}
+\item Unlike the toy example, the output from the climate model is
+  much more complicated --- for each $\Kv$ we have two related spatial
+  fields (not a single point).  We fit a Gaussian process model to the
+  climate model output: covariance depends on both distance in
+  physical space ($\lVert \bs_1-\bs_2 \rVert$) as well as in climate
+  parameter space ($\lVert \btheta_1-\btheta_2 \rVert$).
+\item We can now use this GP model instead of the very complicated climate
+model --- this provides a connection between $\Kv$ and the climate
+model output, in this case the tracers CFC-11 and $\Delta^{14}$C. 
+\item Model for the observed CFC-11 and $\Delta^{14}$C: can use the GP model +
+  allow for additional sources of structural uncertainty and bias.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Calibration with multiple spatial fields  }
+    \begin{itemize}
+    \item How can we combine information from multiple tracers ($^{14}$C, CFC11) in a flexible manner to infer $\Kv$?
+    \item Two stage approach to obtain posterior of $\bluebtheta$:
+\begin{itemize} 
+\item Model relationship between $\bZ=(\bZ_1,\bZ_2)$ and $\bluebtheta$ via emulation of model output $\bY=(\bY_1,\bY_2)$.
+\item Use observations $\bZ$ to infer $\bluebtheta$
+      (parameter of interest).
+\end{itemize}
+\item Model ($\bY_1,\bY_2$) as a hierarchical model: $\bY_1| \bY_2$ and $\bY_2$ as Gaussian processes. (following Royle and Berliner (1999)).
+\begin{equation*}\label{eq:inflikcovfun}
+\begin{split} 
+  \bY_1 \mid \bY_2, \bbeta_1,  \bxi_1, \mathbf{\gamma} & \sim  N(
+  \mu_{\bbeta_1}(\bluebtheta)+\mathbf{B(\mathbf{\gamma})} \bY_2,\Sigma_{1.2}(\bxi_1)) \\
+   \bY_2 \mid  \bbeta_2,  \bxi_2 & \sim  N(
+  \mu_{\bbeta_2}(\bluebtheta),\Sigma_2(\bxi_2))\\
+\end{split}
+ \end{equation*}
+\item $\mathbf{B(\mathbf{\gamma})} $ is a matrix relating $\bY_1$ and
+  $\bY_2$, with parameters $\gamma$.
+\item Model allows for the tracer relationship to vary with depth.
+\item $\bbeta$s, $\bxi$s are regression, covariance parameters.
+          \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Calibration with multiple spatial fields  [cont'd] }
+    \begin{itemize}
+    \item Based on fitted GP, obtain predictive distribution at
+      locations of observations. This serves as the emulator.
+    \item We then model the observations by adding measurement error
+      and a model discrepancy term to the GP
+      emulator: $$\bZ={\boldeta}(\bY,\bluebtheta) + \bdelta(\bY)+\bepsilon $$ where
+     $\bdelta(\bY)=(\bdelta_1~\bdelta_2)^T$ is the model discrepancy, $\bepsilon=(\bepsilon_1~\bepsilon_2)^T$ is the observation error.
+%  \item Likelihoods for $\bY_1| \bY_2$ and $\bY_2$ have no common parameters to be estimated; maximized separately to obtain MLE.   
+% \item Use predictive distribution $\boldeta(\bY,\theta)$ (for $\bY=(\bY_1~\bY_2)$) to obtain probability model connecting  $\bZ=(\bZ_1~\bZ_2)$ to $\btheta$ 
+\item Inference on $\bluebtheta$ performed using Markov chain Monte
+  Carlo (MCMC) to estimate $\pi(\bluebtheta\mid \bZ,\bY)$, integrating
+  over remaining parameters.
+\item The form of the likelihood allows for fast computations (details in Bhat et al., 2009).
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Computational issues }
+    \begin{itemize}
+   \item Matrix computations are $\mathcal{O}(N^3)$, where $N$ is the
+     number of observations. If we are not careful about modeling, $N$
+     could be on the order of tens of thousands, very expensive in an MCMC algorithm
+% \item Need long MCMC runs since there may be multimodality issues, and
+%   the algorithm mixes slowly.
+% \item Used reduced rank approach based on kernel mixing (Higdon,
+%   1998): continuous process created by convolving a discrete white
+%   noise process with a kernel function.
+ \item Our approach: Utilize covariance structure induced by kernel mixing approach + Sherman-Woodbury-Morrison identity used to reduce matrix computations.
+%\item In MLE (optimization) step: take advantage of structure of
+%  hierarchical model to reduce computations.
+      \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Kernel mixing for spatial processes  }
+    \begin{itemize}
+    \item Model spatial dependence terms ($w(\bs)$) via kernel
+      mixing of white noise process (Higdon, 1998, 2001).
+    \item New process created by convolving a continuous white noise
+      process with a kernel, $k$, which is a circular normal.
+\begin{equation*}\label{eq:cntnwhite}
+  w (\bs)=\int_D k(\bu-\bs)z(\bu) d\bu.
+\end{equation*}
+\item Replace original GP by a finite sum approximation $\bz$ defined on a lattice $\bu_1,\dots,\bu_J$ (knot locations).
+\begin{equation*}
+  w (\bs)=\sum_{j=1}^J k(\bu_j-s) z(\bu_j) + \mu(\bs),
+\end{equation*}
+\item Flexible: easily allows for non-stationarity and
+  non-separability. e.g. if $k$ varies in space, have non-stationary process.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Kernel mixing for spatial processes (cont'd)  }
+%include plot for kernel mixing
+\figtwobytwoA{knosc4.pdf}{knosc8.pdf}{knosc12.pdf}{knosc16.pdf}
+    \begin{itemize}    
+%$$K(\tau_K,\lVert s_i - u_j\rVert) = \exp(-\tau_K \lVert s_i - u_j\rVert).$$
+%\item Nonstationary spatial process.
+\item Dimension reduction: Computation involves only the $J$ random variables $z_1,\dots,z_J$ at the locations $\bu_1,\dots,\bu_J$.
+\item Figures are for 4, 8, 12, and 16 knots. ($N=200$) %Have good heuristics for knot selection
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Matrix identities  }
+\begin{itemize}
+\item Kernel mixing can be used to induce special matrix forms that
+  permit very fast computations. % In fact, we ignore the latent
+%   variables and simply use the kernel mixing formulation to obtain
+%   matrices of special forms. 
+\item Sherman-Woodbury-Morrison identity: Suppose a matrix can be
+  written in the form $A+U C V$, where $A$ is of dimension $N \times
+  N$, $U$ is dimension $N \times J$, $V$ is dimension $J \times N$,
+  and $C$ is dimension $J \times J$.  Its inverse is rewritten as:   $$(A+U C V)^{-1}=A^{-1}-A^{-1} U (C^{-1}+V A^{-1} U)^{-1} V A^{-1}.
+  $$
+  This involves inversions of matrices of dimension $J\times J$
+  rather than $N\times N$. (our e.g. $J=190$ versus $N=$4,500.)
+%\item When using kernel mixing, can naturally write covariances in   this form. 
+ \end{itemize}
+ \end{frame}
+
+
+% \begin{frame}
+% \frametitle{$K_v$ inference: summary }
+% \begin{itemize}
+% \item We have used the climate model output, CFC-11 and $\Delta^{14}$C
+%   spatial fields at several values for $\Kv$, and fit a very flexible
+%   GP model for bivariate spatial fields.
+% \item Now, assume this GP model + model for error, discrepancy is the model
+%   for the observations of CFC-11 and $\Delta^{14}$C.
+% \item Since we have a probability model, we can perform inference for
+%   $\Kv$ based on the data. That is, we can use statistical techniques
+%   to learn about the values of $\Kv$ most compatible with all the
+%   information we have. This information will be in the form of a
+%   (posterior) probability distribution for $\Kv$.
+% \item Computational considerations are important in modeling
+%   (hierarchical structure + kernel mixing approach).
+% \end{itemize}
+% \end{frame}
+
+\begin{frame}
+  \frametitle{Summary of $K_v$ inference}
+ \begin{enumerate}
+ \item Our approach is to perform inference in two stages:
+\begin{itemize}
+\item Obtain a probability model connecting CFC-11, $\Delta^{14}$C tracer
+  observations to $\Kv$ by fitting a Gaussian process model to climate
+  model runs.
+\item Using this probability model, infer a posterior density for
+  $\Kv$ from the observations.
+\end{itemize}
+\item We model multivariate spatial data via a flexible hierarchical structure.
+\item We use kernel mixing to obtain patterned covariances, making
+  computations tractable for large data sets.
+\end{enumerate}
+ Our approach allows us to infer $\Kv$ based on all the climate model
+ output and observations,
+  modeling the tracers jointly. We can use $\Kv$ in computer models to
+  project the MOC.
+\end{frame}
+
+\begin{frame}
+\frametitle{Results for $K_v$ inference }
+\figoneAD{kvoutwkap.pdf} 
+ Probability density functions (pdfs): the prior pdf
+      (assumption {\it before} using data), and posterior pdfs ({\it after} using the tracers.)
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Future work  }
+ \begin{itemize}
+\item Many open problems, research avenues including:
+ \begin{itemize}
+\item Combining information from multiple climate models: Multiresolution/multiscale modeling ideas, Bayesian model averaging.
+\item Flexible covariance functions, non-stationarity.
+\item Combining information from several tracers (e.g. 5--10). % We have
+%   preliminary results based on a simple separable cross-covariance.
+        \end{itemize}
+    \item Other projects that can potentially borrow some of this methodology: 
+     \begin{itemize}
+       \item Atmospheric Science: Estimating mean temperature fields over the past millenia using proxies and climate models.
+       \item Infectious disease: inferring infectious disease dynamics from sparse observations and dynamic models.
+    \end{itemize}
+     \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Some references }
+{\small 
+    \begin{itemize}
+\item Kennedy, M.C. and O'Hagan, A.( 2001), Bayesian calibration of
+  computer models, 
+\textit{JRSS(B)}.
+\item Sanso, B. and Forest, C.E. and Zantedeschi, D (2008) , Inferring Climate System Properties Using a Computer Model, \textit{Bayesian Analysis (with discussion)}.
+\item  Higdon (1998) A process-convolution approach to modelling
+  temperatures in the North Atlantic Ocean, \textit{Environmental and
+  Ecological Statistics}.
+\item Royle, J.A. and Berliner, L.M. (1999) A hierarchical approach to
+  multivariate spatial modeling and prediction, {\it Journal of
+    Agricultural, Biological, and Environmental Statistics}.
+\item {\color{blue} Bhat, K.S., Haran, M., Tonkonojenkov, R., Keller, K. (2009)
+  ``Inferring likelihoods and climate system characteristics using
+  climate models and multiple tracers.''}
+%      \item Banerjee, Carlin, and Gelfand. (2004) Hierarchical Modeling and Analysis for Spatial Data.
+      \end{itemize}
+}
+\end{frame}
+
+\begin{frame}
+  \frametitle{}
+\begin{center}
+  {\Large SUNDRIES}
+\end{center}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Joint modeling approach: pros and cons}
+    \begin{itemize}
+    \item Bayesian machinery and MCMC makes it relatively easy to
+      write down a reasonable joint model.
+    \item Modelers (especially Bayesians) often argue that having a
+      joint model is critical. Pragmatic argument: propogation of
+      uncertainty through the model. %Also, philosophical/aesthetic considerations. 
+%  \item Identifiability issues and computational issues: 
+    \item However, joint model adds computational burdens. Also leads
+      to identifiability issues.  Hence, in order to build a joint
+      model: have to resort to unrealistic covariance assumptions and
+      heavy spatial and temporal aggregation of both observations and
+      model output.
+    \end{itemize}
+%     \begin{itemize}
+%       \begin{itemize}
+%       \item Identifiability
+%       \item  Same covariance up to a constant for $\bY$ and $\bepsilon$. 
+%       \item Computational issues, resulting in heavy aggregation.   
+%       \end{itemize}
+%     \item Current approach includes heavy temporal and spatial aggregation of both observations and model output.  
+%     \item Our extension uses minimal aggregation for our data.  The covariance function is as below. 
+%       \begin{equation*}\label{eq:covfun3}
+%         \begin{split}
+%           \mbox{Cov}(Y(\bs_i,t_i,\btheta_{i'}),Y(\bs_j,t_j,\btheta_{j'}))=\kappa ~\Sigma(\bxi)_{ij} ~r(\btheta_{i'},\btheta_{j'})\\
+%           \Sigma(\bxi)_{ij}=\exp \left(-\frac{||\bs_i-\bs_j||}{\phi_s}\right) \exp \left(-\frac{|t_i-t_j|}{\phi_t}\right)\\
+%           % r(\bPhi_{i'},\bPhi_{j'})=\prod^k _{m=1}{\exp(-\frac{|\bPhi_{i'm}-\bPhi_{j'm}|}{\phi_{th_m}})}\\
+%         \end{split}
+%       \end{equation*}
+\end{frame}
+
+\begin{frame}
+%  \frametitle{Inferring Likelihood Method- Stage 1}
+  \frametitle{Alternative: Two stage approach}
+    \begin{itemize}
+    \item Two stage approach to obtain posterior of $\btheta$:
+\begin{itemize}
+\item Model the $\bY$'s stochastically to `infer a likelihood', connecting $\btheta$ to $\bY$.
+\item Model $\bZ$ using fitted model from above, with additional
+   errors, biases, to infer $\btheta$ (along with errors, biases.)
+\end{itemize}
+    \item Model $\bY$ as a Gaussian process emulator, with mean a linear function of $\btheta$. 
+     $$\bY \mid \bbeta, \bxi \sim N(\mu_{\bbeta}(\btheta),\Sigma(\bxi)),$$
+  \item $\bxi$ is the set of covariance parameters, covariance function assumed to be separable among $\bs$, $t$, and $\btheta$.
+  \item Covariance parameters:
+       \begin{itemize}
+     	\item Maximum likelihood estimates by optimization.
+     	\item Bayesian approach: obtain posterior via MCMC.
+%	\item MCMC using kernel mixing (Higdon 1998), obtain mean/mode
+	%\item Frequency domain techniques
+     \end{itemize}
+    	%\item (Note: J Rougier's comment on cutting feedback in discussion of Sanso et al.)
+    
+          \end{itemize}
+\end{frame}
+
+%\begin{frame}
+%  \frametitle{Inferred Likelihood Method- Stage 1, continued}
+%    \begin{itemize}
+%    \item Can compute covariance and climate covariance parameter estimates by methods:
+%     \begin{itemize}
+%     	\item Maximum likelihood estimates by optimization
+%	\item MCMC using kernel mixing, obtain posterior mean or mode
+%	\item Frequency domain techniques
+%     \end{itemize}
+%    \item  For any set of observation locations $(\bs,t)$ at a given value of $\Phi$, we can then obtain the posterior predictive distribution $\pi(\bZ^* \mid \bY)$ which is simply a multivariate normal when {\it given } $\pi(\Theta, \bbeta\mid \bY)$ is estimated above.  
+%  \item  This multivariate normal is our approximate likelihood, $\hat{L}(Z^*(\bs,t) \mid \Phi, \bY)$, which can be written explicitly as a function of $\Phi$
+%%$\bZ^*(\bs,t)$
+%    
+%    
+%          \end{itemize}
+%\end{frame}
+
+
+
+
+
+
+\begin{frame}
+  \frametitle{Two stage approach (cont'd)}
+    \begin{itemize}
+    \item For location $\bs$ at a given value of $\btheta$, we
+      can then obtain the predictive distribution $\pi(\bZ(\btheta)^*
+      \mid \bY)$, multivariate normal for a {\it given } $\hat{\bxi},
+      \hat{\bbeta}$ (MLE or posterior mean/mode). Otherwise this is not in
+      closed form.
+     \item  This multivariate normal is our approximate probability
+       model $\hat{\boldeta}$, written explicitly with mean and variance as functions of $\btheta$ from conditional distribution.
+   $$\bZ=\hat{\boldeta}(\bZ^* \mid \btheta^*, \bY)+\bdelta+\bepsilon, $$
+    \item where $\bdelta$ is the model error term and  $\bepsilon$ is observation error.  
+    \item $\bepsilon \sim N(0,\psi I)$ and $\bdelta$ is modeled as a
+      Gaussian process, $\bepsilon$ and $\bdelta$ are assumed to be
+      independent. Strong prior information for $\bepsilon$ can help identify the errors.
+    \item We can now perform inference on $\btheta^*$.    
+%    \item For small data, difficult to identify, however, for large data, hope to learn some information about these terms 
+%    %by splitting model into two stages. 
+%    \item More reasonable assumptions for error and possibly more computationally efficient than other approach
+%   % \item Possibly more efficient computationally, use uniform prior on $\bPhi$
+      \end{itemize}
+       
+\end{frame}
+
+\begin{frame}
+%  \frametitle{Inferred Likelihood Method- (cont'd)}
+  \frametitle{Observations}
+    \begin{itemize}
+    \item Our approach is perhaps counter to standard Bayesian modeling philosophy: instead of a coherent joint model, we are fitting models stagewise.
+    \item Principle: If we had a likelihood, ${\mathcal
+        L}(\bZ ;\btheta)$, we could perform inference for $\btheta$ based on data $\bZ$.
+    \item Here: We are using climate model output ($\bY$) to `infer'
+      this likelihood and then perform standard likelihood-based
+      inference. Intuitively: separate problems (see ``Subjective
+      likelihood'' [Rappold, Lavine, Lozier, 2005.])
+    \item Our approach can be seen as a way of `cutting feedback' (Best et al. 2006; Rougier, 2008). Advantages:
+     %specifically, we model the emulator for $\bY$ separately from the $\bZ$, $\bepsilon$, and  $\bdelta$.
+      \begin{itemize}  
+      \item Protecting emulator from a poor model of climate system. % (c.f.\ Jim Berger).
+        % \item Modeling emulator separately to allow for better verification.
+      \item Modeling emulator separately to facilitate careful evaluation of emulator. (Rougier, 2008).
+      \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+%  \frametitle{Inferred Likelihood Method- (cont'd)}
+  \frametitle{More advantages}
+  % \item Obtain Stage 1 covariance parameter values $\bxi$ using optimization package DEoptim
+  % \item Zero non-spatial variance error ($\psi=0$) assumed for $\bY$
+  \begin{itemize}  
+  \item Computational advantages allow for relaxing unreasonable
+    assumptions, e.g. no need to assume same covariance for
+    both spatiotemporal dependence and observation error.
+  \item Potentially helps with identification of variance/covariance
+    components since not all parameters are being estimated/sampled at once;
+    parameters estimated from first stage are fixed.
+  \item Concern: are we ignoring crucial variability in parameter
+    estimates by not propogating it as in the Bayesian formulation?
+    Data sets/problems considered so far: not obvious that this is the
+    case. (Also, cannot compare results for the large multivariate spatial
+    data since cannot fit the joint model.)
+% flatness of likelihood
+%     surfaces lead to fairly similar prediction intervals for
+%     frequentist and Bayesian inference.
+%  \item Use Kronecker products to take advantage of separable covariance structure. 
+%  \item Considering other methods like kernel mixing and spectral domain ideas for larger data sets.
+    % \item For small data, difficult to identify, however, for large data, hope to learn some information about these terms 
+    %   %by splitting model into two stages. 
+    % \item More reasonable assumptions for error and possibly more computationally efficient than other approach
+    %   % \item Possibly more efficient computationally, use uniform prior on $\bPhi$
+  \end{itemize}
+%  Multimodality in the posterior distribution of $\btheta^*$, usual MCMC sampling techniques are insufficient and we use a slice sampler instead.
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Kernel mixing for climate model output}
+    \begin{itemize}
+\item Extend kernel and knot process $\bz$ to $t$ and $\btheta$ dimensions:
+$$  Y(\bs,t,\btheta)=\sum_{j=1}^J k(\bu_j-\bs;v_j-t,\ell_{1j}-\theta_1,\cdots \ell_{kj}-\theta_k) w(\bu_j,v_j,\bell_j) + \mu(\btheta) $$
+\item where the set of knots are $\bu_j$, $v_j$, $\bell_j$ for $j=1,\dots,J$. $w(\bu_j,v_j,\bell_j)$ is the
+process at the $j$th knot.  
+\item The random field for  $\bY (\bs_i,t_i,\btheta_i)$ is $\bY (\bs_i,t_i,\btheta_i) \mid  \bw,\psi,\kappa,\bbeta,\phi_s,\bphi_c$ 
+  \begin{equation*}\label{eq:riskmodel}
+ % \begin{split}
+  %\bY (\bs_i,t_i,\btheta_i) \mid  \bw,\psi,\kappa,\bbeta,\phi_s,\phi_t,\bphi_c \\
+  \sim N\left(\bX(\btheta_i) \bbeta + \sum_{j=1}^J K_{ij}(\phi_s,\bphi_c) w(\bu_j,v_j,\bell_j), \psi \right) 
+    %\end{split}
+\end{equation*}  
+\item Linear mean trend on $\btheta$ and kernel is separable covariance function over $\bs$, $t$, $\btheta$. 
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{MOC predictions versus $K_v$}
+\figoneAD{mocversusKv.pdf}
+    \begin{itemize}
+\item MOC predictions are clearly much lower as $K_v$ values get small.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+%  \frametitle{Joint model (contd)}
+ \frametitle{Bayesian model calibration (cont'd)}
+    \begin{itemize}
+    \item Let observation error,
+      $\bepsilon=(\epsilon_1,\cdots,\epsilon_n)^T$. Modeled as Normal
+      $(0,\psi \Sigma)$, where $\Sigma$ is estimated from other model runs (different runs from the ones used here; for e.g. `control' runs that exclude human intervention/forcings.)
+    %   \item $\bdelta$: model error term, accounts for the imperfections of $\bY$.  
+%\begin{equation*}\label{eq:covfun1}
+\item Cov $(Y(\bs_i,\btheta_{i'}),Y(\bs_j,\btheta_{j'}))=\kappa ~\Sigma_{ij} ~ r(\btheta_{i'},\btheta_{j'}).$
+%	\item Sanso uses control runs to determine $\Sigma$, don't have control runs so use separable exponential covariance function for spatiotemporal dependence
+    	\item $\bphi_c=(\phi_{c1}\cdots \phi_{ck})$ are the climate covariance parameters.
+	\begin{equation*} \label{eq:covfun2}
+r(\btheta_{i'},\btheta_{j'})=\prod^k _{m=1}{\exp \left(-\frac{|\btheta_{i'm}-\btheta_{j'm}|}{\phi_{cm}} \right)}
+\end{equation*}
+
+  \begin{figure}
+\begin{center} 
+ % \figoneA{lingptoyex3.pdf}
+ \figoneAA{clipar2.pdf}
+\end{center}
+ \end{figure}
+      \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+%  \frametitle{Joint model (contd)}
+ \frametitle{Bayesian model calibration: inference}
+    \begin{itemize}
+\item Hence the joint distribution of $\bZ$ and $\bY$ is a multivariate normal, and 
+$$ \begin{bmatrix} \bZ \\ \bY \end{bmatrix} \sim  N \left(
+\begin{bmatrix}  \mathbf{M}(\btheta^*) \\ \mathbf{M} \end{bmatrix} \bbeta,
+\begin{bmatrix} 
+(\psi+\kappa) \otimes \Sigma & r(\btheta^*)^T \otimes \Sigma \\ r(\btheta^*) \otimes \Sigma &  \mathbf{R} \otimes \Sigma
+\end{bmatrix}\right)
+$$
+\item Inference for $\btheta^*$, $\bxi_{s}$, etc is based on the posterior distribution $\pi(\btheta^*,\bxi_{s},\bphi_c,\bbeta |\bZ,\bY)$
+\begin{equation*}
+\begin{split}
+\pi(\btheta^*,\bxi_{s},\bphi_c,\bbeta |\bZ,\bY) \propto \mathcal{L}(\bZ,\bY\mid \btheta^*,\bxi_{s},
+ \bphi_c,\bbeta)\\
+ \times p(\btheta^*)p(\bxi_{s})p(\bphi_c)p(\bbeta)
+ \end{split}
+  \end{equation*}
+  \begin{itemize}
+\item $\mathcal{L}(\bZ,\bY \mid \btheta^*,\bxi_{s},\bphi_c,\bbeta)$: likelihood(multivariate normal)
+\item $\bxi_{s}=(\psi,\kappa,\phi_s)$: covariance parameters.  
+      \end{itemize}
+\item Priors: $\btheta^*$ based on scientific knowledge, other parameters are low precision priors (critical to do sensitivity analysis).
+%is typically uniform, the priors for $\psi$ and $\kappa$ are generally low precision with infinite variance, and priors for the range parameters ($\phi_s, \phi_t, \bphi_c$) are uniformly distributed.
+
+      \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Computation}
+    \begin{itemize}
+    %\item Compute target distribution, use simulation by MCMC methods, using Gibbs and M-H updates.
+    \item $\pi(\btheta^*,\bxi_{s},\bphi_c,\bbeta |\bZ,\bY)$ is intractable, so rely on sample-based inference: Markov Chain Monte Carlo (MCMC).
+%\item M-H algorithm constructs a Markov chain with target distribution $\pi$, states of this Markov chain are treated as samples from $\pi$ in the long run (steady state). 
+  \item Computational bottleneck: matrix computations (e.g. Choleski
+    factors) are of order $N^3$, where $N$ is the number of
+    observations.
+  \item Kronecker products greatly reduce the computational burden.
+    {\it Important}: This is brought about by assuming the same
+    covariance $\Sigma$ in modeling dependence among observations
+    ($\bZ$), computer model output ($\bY$) and in the block
+    cross-covariance.% This assumption is primarily due to computational considerations.
+%  \item Multimodality issues: used slice sampling (even more expensive).
+\end{itemize}
+\end{frame}
+
+\bibliographystyle{apalike} 
+\bibliography{proposal2}
+
+\end{document}

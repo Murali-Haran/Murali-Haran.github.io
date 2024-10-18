@@ -1,0 +1,524 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Abhishek Rao - Take Home Exam
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%  PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[twocolumn]{scrartcl} 
+\usepackage{graphicx}
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage[margin=0.1in]{geometry}
+%----------------------------------------------------------------------------------------
+%  TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	Stat 515 Take Home Exam \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Abhishek Rao} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+
+\section{Problem 1}
+
+\subsubsection*{Theory}
+We need to find 
+\[\pi(\beta_1|\textbf{Y},X) = \frac{f_j(Y,X,\beta_1)}{f_YX(Y,X)} \propto f_j(Y,X,\beta_1)\]
+Where $f_YX())$ is the joint distribution of Y,X and beta1 and $f_j()$ be the distribution of Y,X. Let $f_j()$ be proportional to \(h(\beta_1)\)
+\(\propto f_{Y|X,\beta_1}(Y|X,\beta_1)f_{prior}(\beta_1) = EMG(\beta_0 + \beta_1 X, \sigma_i, \lambda) N(0,10)\)
+Let us use log scale to make calculations for likelihood easier, Let $h_l(\beta_1)=log(h(\beta_1))$
+one can use the provided emg density function and get posterior distribution.
+\\
+\(h_l(\beta_1) = \sum_{i=1}^n dexpgauss(Y_i, \mu=5+\beta_1 X_i, \sigma=1, \lambda=0.4, log=TRUE)
++ dnorm(\beta_1,mean=0,sd=10,log=TRUE)\)
+
+<<P1_functions,echo=FALSE>>=
+# Title: Take Home Final exam Stat 515 sp 2015
+# Author: Abhishek Rao
+
+# Format: The code is structured as divisions of #
+# 1) constants and data
+# 2) Functions
+# 3) Main
+
+
+############# Constants and data ##################################
+options(digits=4)
+sample_size = 33123
+start_value_range = c(-10,0,10) # try for different values of starting value
+tau_range = c(1,2)  # Try for different variance of proposal function
+discard_length = sample_size/10 # while checking the acceptance rate, discard
+# the first this much samples.
+source("http://sites.stat.psu.edu/~mharan/515/hwdir/emg.R")
+source("http://www.stat.psu.edu/~mharan/batchmeans.R")
+X_and_Y = read.table("http://sites.stat.psu.edu/~mharan/515/hwdir/EMG1.dat")
+X_i = X_and_Y$V1
+Y_i = X_and_Y$V2
+n_data = length(Y_i)
+
+
+########### Functions ###################################
+## plot how Monte Carlo estimates change with increase in sample size (Modified by Abhishek
+# added ylimit)
+## input: samp (sample vector) and g (where E(g(x)) is quantity of interest)
+## output: plot of estimate over time (increasing sample size)
+## e.g.: estvssamp(outp,your_plot=plot))
+estvssamp2 = function(samp, plotname="mean estimates",ylim)
+{
+  if (length(samp)<100)
+    batchsize = 1
+  else
+    batchsize = length(samp)%/%100
+  
+  est = c()
+  for (i in seq(batchsize,length(samp),by=batchsize))
+  {
+    est = c(est, mean(samp[1:i]))
+  }
+  
+  #    plot(seq(batchsize,length(samp),by=batchsize),est,main=paste("M.C. estimates vs. sample size\n"),type="l",xlab="sample size",ylab="MC estimate")
+  plot(seq(batchsize,length(samp),by=batchsize),est,main=plotname,type="l",xlab="sample size",ylab="MC estimate",ylim=ylim)
+}
+
+# Slightly modified version of the orginal, now it's lines instead of plot
+estvssamplines = function(samp, plotname="mean estimates",ylim)
+{
+  if (length(samp)<100)
+    batchsize = 1
+  else
+    batchsize = length(samp)%/%100
+  
+  est = c()
+  for (i in seq(batchsize,length(samp),by=batchsize))
+  {
+    est = c(est, mean(samp[1:i]))
+  }
+  
+  #    plot(seq(batchsize,length(samp),by=batchsize),est,main=paste("M.C. estimates vs. sample size\n"),type="l",xlab="sample size",ylab="MC estimate")
+  lines(seq(batchsize,length(samp),by=batchsize),est,main=plotname,type="l",xlab="sample size",ylab="MC estimate",ylim=ylim)
+}
+
+# The MCMC function
+# Inputs: sample_size is the chain length
+#         distribution_h_l is the h(x) distribution to take samples from
+run_MCMC <- function(samples_size, distribution_h_l, start_value=1,  tau=1){
+  chain = rep(NA,samples_size)
+  chain[1] = start_value
+  # start the MCMC chain
+  for (i in 2:samples_size){
+    y = rnorm(1,mean=chain[i-1],sd=tau)
+    acceptance_probability = exp(distribution_h_l(y) - distribution_h_l(chain[i-1]))
+    if (runif(1) < acceptance_probability){
+      # accept case
+      chain[i] = y
+    } else {
+      # reject case
+      chain[i] = chain[i-1]
+    }
+  }
+  return(chain)
+}
+
+# uses the run_MCMC function 3 times for different start values and creates plots.
+experiment_MCMC <- function(tau=1){
+  chain_1 =run_MCMC(sample_size,posterior,start_value=start_value_range[1], tau=tau)
+  chain_2 =run_MCMC(sample_size,posterior,start_value=start_value_range[2], tau=tau)
+  chain_3 =run_MCMC(sample_size,posterior,start_value=start_value_range[3], tau=tau)
+  # Plot 3 estimates that start with different values
+  yrange <- c(6,8)
+  par(col="red")
+  estvssamp2(chain_1,plotname=paste("E(beta_1) for tau=",tau),ylim=yrange)
+  par(col=33)
+  estvssamplines(chain_2,ylim=yrange)
+  par(col=29)
+  estvssamplines(chain_3,ylim=yrange)
+  par(new=FALSE,col="red")
+  return(chain_2)
+}
+
+
+############# Distributions ##########################
+# The loglikelihood for the given problem
+single_likelihood = function(Yi,Xi,b)
+  dexpgauss(Yi, mu=5+b*Xi, sigma=1, lambda=0.4, log=TRUE)
+
+# The posterior function in log scale
+posterior <- function(b){
+  sum(single_likelihood(Y_i,X_i,rep(b,n_data))) + dnorm(b,mean=0,sd=10,log=TRUE)
+}
+@
+
+\subsection{Part a: Algorithm}
+The Algorithm is given by
+\begin{enumerate}
+\item Choose starting values, for our case arbitrarily chosen as \Sexpr{start_value_range} $= start value$. Repeat the below for each.
+\item Let the length of MCMC chain, chainlength be = \Sexpr{sample_size} 
+\item Create an empty vector called chain with length of chainlength. Set $Chain(1) = start value$ obtained in step 1.
+\item choose Proposal function, we have chosen Normal function with different variance = $\tau= \Sexpr{tau_range}$
+\item Prior distribution is Normal with mean 0 and variance 20.
+\item Set Likelihood function. This is given by $EMG(Y_i, \mu=5+\beta_1*Xi, \sigma=1, \lambda=0.4)$ where $Y_i$ and $X_i$ are given in the data.
+
+\item Let $h_l(\beta_1)$ be the log of posterior distribution calculated. For our case it is sum of loglikelihood for each point + log prior.
+\item Repeat for chainlength, let the current value of chain be $chain[i]$
+\begin{enumerate}
+\item Sample y from the proposal
+\item Calculate $p=exp(h_l(y)-h_l(chain[i]))$. Also take a sample $U\sim Unfirom(0,1)$ 
+\item if $U<p$ then $chain[i+1] = y $. Else $chain[i+1] = chain[i]$
+\end{enumerate}\end{enumerate}
+
+\subsection{Estimates}
+\label{sec:Estimates}
+<<Main1,echo=FALSE,fig.height=4,fig.cap="Plot of Estimate vs iteration number",cache=TRUE>>=
+# Problem 1 Part 1
+par(mfrow=c(1,2))
+chain_tau1 = experiment_MCMC(tau=tau_range[1])
+bm1 = bm(chain_tau1)
+est1 = bm1$est  # Get the estimate from batchmeans code.
+se1 = bm1$se  # Get the MCSE from batchmeans code
+
+chain_tau2 = experiment_MCMC(tau=tau_range[2])
+bm2 = bm(chain_tau2)
+est2 = bm2$est
+se2 = bm2$se
+@
+The provided batchmeans code is used to find the value of estimates and MCSE for all 3 problems. 
+The Output of the code gave Estimates of \Sexpr{est1} and \Sexpr{est2} and MCSE of \Sexpr{se1} and \Sexpr{se2} Respectievely for $\tau= \Sexpr{tau_range}$ and sample size of \Sexpr{sample_size}
+
+\subsection{Credible Interval} The 95pc credible interval is given by $(\Sexpr{quantile(chain_tau1,c(0.025, 0.975))})$ and 
+$(\Sexpr{quantile(chain_tau2,c(0.025, 0.975))})$ respectievely for $\tau= \Sexpr{tau_range}$
+
+\subsection{Density}
+<<Density,fig.height=5,echo=FALSE,fig.cap="Density and ACF plots for Problem1",cache=TRUE>>=
+par(mfrow = c(2,2))
+plot(density(chain_tau1),main=paste("Density for tau = ",tau_range[1]))
+plot(density(chain_tau2),main=paste("Density for tau = ",tau_range[2]))
+acf(chain_tau1)
+acf(chain_tau2)
+@
+The Density of posterior distribution of $\beta_0$ is given in Figure \ref{fig:Density}. This was plotted using the default density() function in R.
+
+\subsection{Accuracy}
+If you observe the Estimate vs number of iterations in Figure\ref{fig:Main1}, they all seem to converge to the same value in all 6 cases. One can also check the autocorrelation plots in Figure\ref{fig:Density}. They die down quickly. The acceptance rate is given by \Sexpr{1 - mean(duplicated(chain_tau1[-(1:discard_length)]))} and \Sexpr{1 - mean(duplicated(chain_tau2[-(1:discard_length)]))} respectievely for $\tau= \Sexpr{tau_range}$. The first acceptance rate is good value for 1D distribution. All these along with low MCSE given in \ref{sec:Estimates} gives strong indication that the Estimates are accurate.
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 2
+%----------------------------------------------------------------------------------------
+\section{Problem 2}
+
+<<Prob2_init,echo=FALSE,cache=TRUE>>=
+############# Constants and data ##################################
+# Variance multiplier for proposal function for each parameter
+#set.seed(235)
+sample_size2 = 1e5
+beta_0_f = 1
+beta_1_f = 2
+lambda_f = 1/3
+# Set of starting values, each column is a different draw, rows correspond to beta0,beta1, lambda
+p2_start_value_range = matrix(c(rnorm(3,mean=0,sd=10),rnorm(3,mean=0,sd=10),rgamma(3,shape=0.01,scale=100)),ncol=3,byrow=TRUE)
+yrangeb <- c(-3,5)  # range for beta_0, beta_1 plot
+yrangel <- c(0,2)  # range for lambda plot
+tau_range = c(0.3)
+
+data_2 = read.table("http://sites.stat.psu.edu/~mharan/515/hwdir/EMG2.dat")
+X_i = data_2$V1
+Y_i = data_2$V2
+n_data = length(X_i)
+source("http://sites.stat.psu.edu/~mharan/515/hwdir/emg.R")
+source("http://www.stat.psu.edu/~mharan/batchmeans.R")
+
+
+############# Distributions ##########################
+# The loglikelihood for the given problem
+single_likelihood2 = function(Yi,Xi,params){
+  beta0 = params[1]
+  beta1 = params[2]
+  lambda = params[3]
+  dexpgauss(Yi, mu=beta0+beta1*Xi, sigma=1, lambda=lambda, log=TRUE)
+}
+
+# prior function
+log_prior <-function(params){
+  beta0 = params[1]
+  beta1 = params[2]
+  lambda = params[3]
+  return(dnorm(beta0,mean=0,sd=10,log=TRUE)+dnorm(beta1,mean=0,sd=10,log=TRUE)+dgamma(lambda,shape=0.001,scale=100,log=TRUE))
+}
+
+# The posterior function in log scale
+posterior2 <- function(params){
+  if(params[3]<0)
+    return(-1e99)  # Give 0 probability for lambda < 0
+  sum(single_likelihood2(Y_i,X_i,rep(params,n_data))) + log_prior(params)
+}
+
+# Proposal function
+proposal_fx <-function(current_value,tau){
+  c( rnorm(1,mean=current_value[1],sd=tau*beta_0_f),
+     rnorm(1,mean=current_value[2],sd=tau*beta_1_f),
+     rnorm(1,mean=current_value[3],sd=tau*lambda_f))
+}
+
+
+############### Functions ###########################
+run_MCMC2 <- function(samples_size, distribution_h_l, start_value=c(1,1,1),  tau=1){
+  variance_matrix = diag(c(tau,tau,tau)) # for the proposal function
+  chain = matrix(NA,3, samples_size)  # create empty matrix
+  # the columns are the iteration number and row(1,2,3)=(beta0,beta1,lambda) 
+  chain[,1] = start_value
+  # start the MCMC chain
+  for (i in 2:samples_size){
+    # proposal function
+    y =  proposal_fx(current_value=chain[,i-1],tau=tau)
+    acceptance_probability = exp(distribution_h_l(y) - distribution_h_l(chain[,i-1]))
+    if (runif(1) < acceptance_probability){
+      # accept case
+      chain[,i] = y
+    } else {
+      # reject case
+      chain[,i] = chain[,i-1]
+    }
+  }
+  return(chain)
+}
+
+plot_3chains <-function(pchain_1,pchain_2,pchain_3,plotname,tau,yrange){  
+  estvssamp2(pchain_1,plotname=plotname,ylim=yrange)
+  par(col=33)
+  estvssamplines(pchain_2,ylim=yrange)
+  par(col=29)
+  estvssamplines(pchain_3,ylim=yrange)
+  par(new=FALSE,col="red")
+}
+
+experiment_MCMC2 <- function(tau=1){
+  chain_1 =run_MCMC2(sample_size2, distribution_h_l=posterior2, start_value=p2_start_value_range[,1], tau=tau)
+  chain_2 =run_MCMC2(sample_size2, distribution_h_l=posterior2, start_value=p2_start_value_range[,2], tau=tau)
+  chain_3 =run_MCMC2(sample_size2, distribution_h_l=posterior2, start_value=p2_start_value_range[,3], tau=tau)
+  # Plot 3 estimates that start with different values
+  par(col="red",mfrow=c(3,2))
+  plot_3chains(chain_1[1,],chain_2[1,],chain_3[1,],plotname=paste("E(beta_0) for tau=",tau),tau=tau,yrange=yrangeb)
+  acf(chain_2[1,])
+  plot_3chains(chain_1[2,],chain_2[2,],chain_3[2,],plotname=paste("E(beta_1) for tau=",tau),tau=tau,yrange=yrangeb)
+  acf(chain_2[2,])
+  plot_3chains(chain_1[3,],chain_2[3,],chain_3[3,],plotname=paste("E(lambda) for tau=",tau),tau=tau,yrange=yrangel)
+  acf(chain_2[3,])
+  return(chain_2)
+}
+@
+
+\subsection{Part a: Algorithm} 
+\subsection*{Theory}
+Similar to previous problem, we get the posterior function as sum of log likelihood and prior. Prior is given by\\ 
+\(Prior(\beta_0,\beta_1,\lambda) = dnorm(\beta_0,mean=0,sd=10,log=TRUE) + dnorm(\beta_1,mean=0,sd=10,log=TRUE) + dgamma(lambda,shape=0.001,scale=100,log=TRUE) \)
+Let LL denote LogLikelihood, then 
+\\
+\(LL(Y_i,X_i,\beta_0,\beta_1,\lambda) = \sum_{i=1}^n dexpgauss(Y_i, \mu=\beta_0+\beta_1*Xi, \sigma=1, \lambda=\lambda, log=TRUE)\)
+\[h_l(\beta_0,\beta_1,\lambda) = LL(Y_i,X_i,\beta_0,\beta_1,\lambda) + Prior(\beta_0,\beta_1,\lambda)\]
+
+\subsection*{Algorithm}
+We will use All at once MH algorithm. The Algorithm is given by
+\begin{enumerate}
+\item Choose 3 sets of starting values. Choose starting values as draws from prior. i.e. \(\beta_0 \sim N(0,10),\beta_1 \sim N(0,10), \lambda \sim Gamma(0.01,100)\). 
+\item Let the length of MCMC chain, chainlength be = \Sexpr{sample_size} 
+\item Create an empty vector called chain with dimension 3xchainlength. Set the first value from step 1
+\item Choose proposal function $y \sim q(y|x)$ where x is the curent value in the chain and y is the proposed new value . This is independently done, same way for all parameter but with different variance. We have chosen Normal function with a base variance = $\tau= \Sexpr{tau_range}$. Throught trial and error the variance for proposal function for $(\beta_0,\beta_1,\lambda)$ was scaled by factor of $(\Sexpr{beta_0_f},\Sexpr{beta_1_f},\Sexpr{lambda_f})$. This was done by trial and error by keeping in check the different autocorrelation, acceptance and convergence of estimate.
+\item Log prior functions are created. We add prior of each parameter to get the total prior. \\
+$Prior_{log} = dnorm(\beta_0,mean=0,sd=10,log=TRUE)+dnorm(\beta_1,mean=0,sd=10,log=TRUE)+ dgamma(\lambda,shape=0.01,scale=100)$.
+\item Set Likelihood function. This is given by $EMG(Y_i, mu=\beta_0+\beta_1\times Xi, \sigma=1, \lambda)$ where $Y_i$ and $X_i$ are given in the data.
+\\ \textbf{Note:} If $\lambda<0$ then then we need to rejct the sample, so we will return a very large negative value ($-10^{9999}$). So if we ever get a negative value it will be a reject update.
+
+\item Let $h_l(\beta_0,\beta_1,\lambda)$ be the log of posterior distribution calculated. For our case it is sum of loglikelihood for each point + log prior.
+\item Repeat for chainlength, let the current value of chain be $chain[i]$
+\begin{enumerate}
+\item Sample 3 independent \textit{y1,y2,y3}s from the proposal.
+\item Calculate $p=exp(h_l(y1,y2,y3)-h_l(chain[i]))$. Also take a sample $U\sim Unfirom(0,1)$ 
+\item if $U<p$ then $chain[i+1] = y$. Else $chain[i+1] = chain[i]$
+\end{enumerate}\end{enumerate}
+
+\subsection{Estimates}
+<<Main2,echo=FALSE,fig.height=9,fig.cap="Estimates vs iterations and their corresponding autocorrelation for Problem 2",cache=TRUE>>=
+chain_21 = experiment_MCMC2(tau=tau_range[1])
+@
+Estimates are given in Table \ref{tab:p2est}. Here CI stands for Credible interval. The number of samples is \Sexpr{sample_size2} and $\tau$ was found through trial and error to be \Sexpr{tau_range}. 
+
+\begin{table}
+\centering
+\begin{tabular}{l|c|c|c}
+  Parameter & $ \beta_0$ & $ \beta_1$ & $\lambda$ \\
+  \hline
+  Samples & \Sexpr{sample_size2} &  \Sexpr{sample_size2} &\Sexpr{sample_size2} \\
+  Estimate & \Sexpr{bm(chain_21[1,])$est} & \Sexpr{bm(chain_21[2,])$est} & \Sexpr{bm(chain_21[3,])$est} \\
+  MCSE & \Sexpr{bm(chain_21[1,])$se} & \Sexpr{bm(chain_21[2,])$se} & \Sexpr{bm(chain_21[3,])$se} \\
+   CI start& $(\Sexpr{signif(quantile(chain_21[1,],c(0.025)),4)})$ 
+   & $(\Sexpr{signif(quantile(chain_21[2,],c(0.025)),4)})$ &
+   $(\Sexpr{signif(quantile(chain_21[3,],c(0.025)),4)})$\\
+   CI end& $(\Sexpr{signif(quantile(chain_21[1,],c(0.975)),4)})$ 
+   & $(\Sexpr{signif(quantile(chain_21[2,],c(0.975)),4)})$ &
+   $(\Sexpr{signif(quantile(chain_21[3,],c(0.975)),4)})$\\
+\end{tabular}
+\caption{Estimates for Problem 2}
+\label{tab:p2est}
+\end{table}
+
+\subsection{correlation}
+The correlation between $\beta_0,\beta_1$ is given by \Sexpr{cor(chain_21[1,],chain_21[2,])}
+
+\subsection{Densities}
+<<Densities2,echo=FALSE,fig.height=5,fig.cap="Density plots for Problem 2",cache=TRUE>>=
+options(digits=4)
+par(mfrow=c(2,2))
+plot(density(chain_21[1,]),main=expression(paste("Density of ",beta,"0")))
+plot(density(chain_21[2,]),main=expression(paste("Density of ",beta,"1")))
+plot(density(chain_21[3,]),main=expression(paste("Density of ",lambda)))
+@
+The marginal densities of $\beta_0,\beta_1,\lambda$ are given in Figure \ref{fig:Densities2}
+
+\subsection{Reliability} Reliability seems to be good based on the observation that in Figure \ref{fig:Main2} the values seem to be converging. The autocorrelation seems to be steadily decreasing which is a good sign.. The MCSE errors in Table \ref{tab:p2est} are low. The acceptance rate is given by \Sexpr{1 - mean(duplicated(chain_21[-(1:discard_length)]))} for $\tau= \Sexpr{tau_range}$ seems acceptable. The number of accepted samples given by $acceptanceRate * sampleSize =$  \Sexpr{round(sample_size2*(1 - mean(duplicated(chain_21[-(1:discard_length)]))))}.
+
+
+%----------------------------------------------------------------------------------------
+%  PROBLEM 3
+%----------------------------------------------------------------------------------------
+\section{Problem 3}
+<<Prob3_init,echo=FALSE,cache=FALSE>>=
+############# Constants and data ##################################
+sample_size2 = 1e5
+yrange <- c(-3,5)
+tau_range = c(0.1)
+# Set of starting values, each column is a different draw, rows correspond to beta0,beta1, lambda
+#set.seed(222)
+p2_start_value_range = matrix(c(rnorm(3,mean=0,sd=10),rnorm(3,mean=0,sd=10),rgamma(3,shape=0.01,scale=100)),ncol=3,byrow=TRUE)
+# Variance multiplier for proposal function for each parameter
+beta_0_f = 4
+beta_1_f = 8
+lambda_f = 1/8
+data_3 = read.table("http://sites.stat.psu.edu/~mharan/515/hwdir/EMG3.dat")
+X_i = data_3$V1
+Y_i = data_3$V2
+n_data = length(X_i)
+
+
+############# Distributions ##########################
+# The loglikelihood for the given problem
+single_likelihood2 = function(Yi,Xi,params){
+  beta0 = params[1]
+  beta1 = params[2]
+  lambda = params[3]
+  dexpgauss(Yi, mu=beta0+beta1*Xi, sigma=1, lambda=lambda, log=TRUE)
+}
+
+# prior function
+log_prior <-function(params){
+  beta0 = params[1]
+  beta1 = params[2]
+  lambda = params[3]
+  return(dnorm(beta0,mean=0,sd=10,log=TRUE)+dnorm(beta1,mean=0,sd=10,log=TRUE)+dgamma(lambda,shape=0.001,scale=100,log=TRUE))
+}
+
+# The posterior function in log scale
+posterior2 <- function(params){
+  if(params[3]<0)
+    return(-1e99)  # Give 0 probability for lambda < 0
+  sum(single_likelihood2(Y_i,X_i,rep(params,n_data))) + log_prior(params)
+}
+
+# Proposal function
+proposal_fx <-function(current_value,tau){
+  c( rnorm(1,mean=current_value[1],sd=tau*beta_0_f),
+     rnorm(1,mean=current_value[2],sd=tau*beta_1_f),
+     rnorm(1,mean=current_value[3],sd=tau*lambda_f))
+}
+
+
+@
+Trying the same code on the dataset EMG3. We notice that the data, density(y) has a bimodal distribution. Thus we try to give more variance to $\beta_0$ as this seems to be bimodally distributed.
+
+<<Main_3,fig.cap="Plot of Estimate vs iteration number and the corresponding autocorrelation for Problem 3",echo=FALSE,cache=FALSE>>=
+
+chain_21 = experiment_MCMC2(tau=tau_range[1])
+@
+
+\subsection{Estimates}
+ Estimates are given in Table \ref{tab:p3est}. Here CI stands for Credible interval. The number of samples is \Sexpr{sample_size2} and $\tau$ was found through trial and error to be \Sexpr{tau_range}. Note the batchmeans code was used that was provided to find estimate value and MCSE.
+
+\begin{table}
+\centering
+\begin{tabular}{l|c|c|c}
+  Parameter & $ \beta_0$ & $ \beta_1$ & $\lambda$ \\
+  \hline
+  Samples & \Sexpr{sample_size2} &  \Sexpr{sample_size2} &\Sexpr{sample_size2} \\
+  Estimate & \Sexpr{bm(chain_21[1,])$est} & \Sexpr{bm(chain_21[2,])$est} & \Sexpr{bm(chain_21[3,])$est} \\
+  MCSE & \Sexpr{bm(chain_21[1,])$se} & \Sexpr{bm(chain_21[2,])$se} & \Sexpr{bm(chain_21[3,])$se} \\
+   CI start& $(\Sexpr{signif(quantile(chain_21[1,],c(0.025)),4)})$ 
+   & $(\Sexpr{signif(quantile(chain_21[2,],c(0.025)),4)})$ &
+   $(\Sexpr{signif(quantile(chain_21[3,],c(0.025)),4)})$\\
+   CI end& $(\Sexpr{signif(quantile(chain_21[1,],c(0.975)),4)})$ 
+   & $(\Sexpr{signif(quantile(chain_21[2,],c(0.975)),4)})$ &
+   $(\Sexpr{signif(quantile(chain_21[3,],c(0.975)),4)})$\\
+\end{tabular}
+\caption{Estimates for Problem 3}
+\label{tab:p3est}
+\end{table}
+
+\subsection{Densities}
+<<Densities3,echo=FALSE,fig.height=5,fig.cap="Density plots for Problem 3",cache=FALSE>>=
+options(digits=4)
+par(mfrow=c(2,2))
+plot(density(chain_21[1,]),main=expression(paste("Density of ",beta,"0")))
+plot(density(chain_21[2,]),main=expression(paste("Density of ",beta,"1")))
+plot(density(chain_21[3,]),main=expression(paste("Density of ",lambda)))
+@
+The marginal densities of $\beta_0,\beta_1,\lambda$ are given in Figure \ref{fig:Densities2}
+
+\subsection{Results and Changes}
+
+\subsection*{Realiability}
+Reliability seems to be good based on the observation that in Figure \ref{fig:Main_3} the values seem to be converging. The MCSE errors in Table \ref{tab:p3est} are low. The acceptance rate is given by \Sexpr{1 - mean(duplicated(chain_21[-(1:discard_length)]))} for $\tau= \Sexpr{tau_range}$ seems acceptable. The number of accepted samples given by $acceptanceRate * sampleSize =$  \Sexpr{round(sample_size2*(1 - mean(duplicated(chain_21[-(1:discard_length)]))))}
+
+\subsection*{Changes} The proposal function was changed and variance scaling for each proposal function was changed to $(\Sexpr{beta_0_f},\Sexpr{beta_1_f},\Sexpr{lambda_f})$.
+
+
+\end{document}
+
+% Scratch
+% \[ h(\beta_1) = \frac{\lambda}{2}exp(\frac{\lambda}{2}(2(\beta_0+X_i\beta_1) + \lambda \sigma^2 -2x))\times \frac{2}{\pi} \int_{\frac{(\beta_0+X_i\beta_1) + \lambda \sigma^2 -x}{\sqrt[]{2}\sigma}}^\infty  e^{-t^2}dt \times exp(-\beta_1^2/20)\]
+% 
+% Removing terms that are not dependent on $\beta_1$ and substituting the constants we get for likelihood 
+% \[h(\beta_1) = \prod_{i=1}^n exp(0.2(10+X_i\beta_1 + 0.4 - 2Y_i)) \times \prod_{i=1}^n \int_{\frac{(5+X_i\beta_1) + 0.4 -Y_i}{\sqrt[]{2}}}^\infty  e^{-t^2}dt \times exp(-\beta_1^2/20)\]removing the constant 0.4 and simplifying\[=exp(\sum_{i=1}^n[2+ 0.2 X_i\beta_1  - 0.4Y_i] -\beta_1^2/20)) \times \prod_{i=1}^n \int_{\frac{(5+X_i\beta_1) + 0.4 -Y_i }{\sqrt[]{2}}}^\infty  e^{-t^2}dt \]
+% 
+% \[=exp([2n+ \beta_1 0.2 \sum_{i=1}^n X_i  - 0.4\sum_{i=1}^n Y_i] -\beta_1^2/20)) \times \prod_{i=1}^n \int_{\frac{(5+X_i\beta_1) + 0.4 -Y_i }{\sqrt[]{2}}}^\infty  e^{-t^2}dt\] Working in log scale we get 
+% 
+% \[log(h(\beta_1)= h_l(\beta_1) = 2n+ \beta_1 0.2 \sum_{i=1}^n X_i  - 0.4\sum_{i=1}^n Y_i -\beta_1^2/20) + \sum_{i=1}^n  log(\int_{\frac{(5+X_i\beta_1) + 0.4 -Y_i }{\sqrt[]{2}}}^\infty  e^{-t^2}dt)\]
+% in the given dataset \(\sum_{i=1}^n X_i = 51.75261\) and \(\sum_{i=1}^n Y_i = 1105.973\) and \(n = 100\). Substituting we get
+% 
+% \[h_l(\beta_1) = 200 + \beta_1 \times 0.2 \times 51.75261 - 0.4 \times 1105.973 - \beta_1^2/20 + \sum_{i=1}^n  log(\int_{\frac{(5+X_i\beta_1) + 0.4 -Y_i }{\sqrt[]{2}}}^\infty  e^{-t^2}dt) \]\[= 10.3505 \beta_1-\beta_1^2/20-242.389  + \sum_{i=1}^n  pnorm(\frac{(5+X_i\beta_1) + 0.4 -Y_i }{\sqrt[]{2}},log.p=TRUE)\]
+% \textbf{Or} 

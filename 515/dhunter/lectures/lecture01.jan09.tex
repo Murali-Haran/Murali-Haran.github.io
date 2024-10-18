@@ -1,0 +1,167 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Jan.~9}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Reading for next class}
+\begin{itemize}
+\item Read and attempt to understand Sections 2.8 and 3.1 through 3.3 in the Ross book.
+\item Continue into Section~3.4 as far as you can (it's 15 pages long).
+\end{itemize}
+\end{frame}
+
+
+
+\startframe{Background}
+
+Which category best describes you as a student?
+
+\begin{minipage}{2.5in}
+\choice{red}{A} Statistics graduate student
+
+\choice{yellow}{C} Other graduate student
+\end{minipage}\begin{minipage}{2.5in}
+\choice{green}{B}
+Math or CSE graduate student
+
+\choice{blue}{D}  Undergraduate student
+\end{minipage}
+
+%\includegraphics[width=7in]{questions/WhatTypeOfStudent.pdf}
+\end{frame}
+
+\startframe{1.2 Sample Space and Events}
+\question{If you roll two 6-sided dice, how many outcomes are in the sample space?}
+{6}{12}{21}{36}
+\end{frame}
+
+\startframe{1.3 Probabilities Defined on Events}
+\question{For any events $E$ and $F$, and probability function $P$, 
+$P(E\cup F) = $ ?}
+{$P(E) + P(F)$}
+{$P(E) + P(F) - P(E\cap F)$}
+{$P(E) + P(F) - P(E) P(F)$}
+{$P(E) P(F)$}
+\end{frame}
+
+\startframe{1.4 Conditional Probabilities}
+\question{There are about 40 people in this room.  Which of the following is closest to
+$P(\mbox{at least one pair of people in this room have matching birthdays})$?}
+{0.9}{0.1}{0.09}{0.01}
+\end{frame}
+
+\startframe{1.5 Independent Events}
+\question{If events $E$ and $F$ are independent, then $P(E \mid F) = $?}
+{$P(E)$}
+{$P(E \cap F)$}
+{$P(E \cup F)$}
+{$P(E) / P(F)$}
+\end{frame}
+
+\startframe{1.6 Bayes' Formula}
+\question{A test for detecting a certain disease has probability 0.99 of being correct in all cases.  If 1\% of the
+population has the disease and a randomly selected individual tests positive, which is closest to the probability that
+he/she actually has the disease?}
+{0.99}{0.5}{0.09}{0.05}
+\end{frame}
+
+
+\startframe{2.1 Random Variables}
+\question{If you roll two 6-sided dice, and you let $X$ equal the total number of dots shown, what is 
+$P(X = 4)$?}
+{$\frac13$}{$\frac14$}{$\frac16$}{$\frac1{12}$}
+\end{frame}
+
+
+\startframe{2.2 Discrete Random Variables}
+\question{A Bernoulli random variable is a special case of which of the following?}
+{binomial random variable}{exponential random variable}{geometric random variable}{Poisson random variable}
+\end{frame}
+
+\startframe{2.2 Discrete Random Variables}
+\question{Which of the following is the probability mass function for a Poisson random variable?}
+{$p(i) = p(1-p)^i$}
+{$p(i) = {n \choose p} p^i(1-p)^{n-i}$}
+{$p(i) = \frac{\lambda^i}{i!}e^{-\lambda} $}
+{$p(i) = \frac1n$}
+\end{frame}
+
+\startframe{2.3 ``Continuous'' Random Variables}
+\question{If $X$ has a continuous distribution, what is true about its cumulative distribution function $F(x)$?}
+{It is strictly increasing.}
+{It is everywhere differentiable.}
+{It integrates to one.}
+{It is continuous.}
+\end{frame}
+
+\startframe{2.3 ``Continuous'' Random Variables}
+\question{Which of the following is the probability density function for an exponential random variable?}
+{$f(i) = \frac{1}{\beta-\alpha}$}
+{$f(i) = \lambda e^{-\lambda x}$}
+{$f(i) = \frac{1}{\sigma\sqrt{2\pi}}e^{-(x-\mu)^2/2\sigma^2} $}
+{$f(i) = \frac{\lambda e^{-\lambda x} (\lambda x)^{\alpha-1}}{\Gamma(\alpha)}$}
+\end{frame}
+
+\startframe{2.4 Expectation of a Random Variable}
+\question{If $X$ has a continuous distribution and a density function $f(x)$,  then $E(X)=$?} 
+{$\int_{-\infty}^{\infty} \!\! f(x)\,dx$}
+{$\int_{-\infty}^{\infty} \!\! xf(x)\,dx$}
+{$\int_{-\infty}^{\infty} \!\! x^2f(x)\,dx$}
+{$\int_{-\infty}^{\infty} \!\! (x-\mu)f(x)\,dx$}
+\end{frame}
+
+
+\startframe{2.4 Expectation of a Random Variable}
+\question{The variance is\ldots}
+{the expectation of the square.}
+{the square of the expectation.}
+{the expectation of the square plus the square of the expectation.}
+{the expectation of the square minus the square of the expectation.}
+\end{frame}
+
+\startframe{2.5 Jointly Distributed Random Variables}
+\question{Which is a simpler way to write $\Var(X) + \Var(Y) + 2\Cov(X,Y)$?}
+{$\Var(X+Y)$}
+{$\Corr(X,Y)$}
+{$E(X+Y)$}
+{$E(X+Y)^2$}
+\end{frame}
+
+
+%\startframe{1.2\quad Properties of Probability}
+%
+%\begin{columns}
+%\begin{column}{4cm}
+%
+%\tikz{
+%\def \lx{-1.4} \def \ux{2.4} \def \ly{-1.2} \def\uy{1.2}
+%\draw (\lx,\ly) rectangle (\ux,\uy);
+%% grid with dot at origin for helping place objects in rectangle:
+%%\draw[step=.5, very thin] (\lx,\ly) grid (\ux,\uy); \filldraw (0,0) circle (.05);
+%\draw (0,0) ellipse (1 and .8);
+%\draw (1,0) ellipse (1 and .8);
+%\draw (0,.9) node {\small$A$};
+%\draw (1,.9) node {\small$B$};
+%\draw (2.2,1) node{$S$};
+%}
+%\end{column}
+%\begin{column}{6cm}
+%Venn diagram depicting events $A$ and $B$.  In the picture, they appear to 
+%have a nonempty intersection.
+%\end{column}
+%\end{columns}
+%\end{frame}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

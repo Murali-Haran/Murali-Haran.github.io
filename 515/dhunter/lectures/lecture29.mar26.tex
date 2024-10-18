@@ -1,0 +1,117 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Mar.~26}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+HW \#8 is due on Friday, March 30 at 2:30pm.
+\item 
+All homework must be turned in electronically from now on.
+\item
+There is a lot of computing on this assignment; please let me know
+early if there will be coding challenges!
+\end{itemize}
+\end{frame}
+
+
+\startframe{Monte Carlo methods}
+$\hat\mu = \frac1n \sum_{i=1}^n g(X_i)$, where $X_i$ are i.i.d.~from $f$.
+\begin{itemize}
+\item Why this works:  (Strong or weak) law of large numbers
+\item More precise information is provided by the Central Limit Theorem.
+\item The above results are true for vectors $X_i$ of arbitrary 
+dimension.
+\item {\em Thinking about i.i.d.~Monte Carlo $\equiv$ thinking about basic statistics.}
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Toy example from Charlie Geyer via Murali Haran:
+\begin{itemize}
+\item
+Given $X_1, X_2 \stackrel{\rm iid}{\sim} N(0,1)$, what is $P(X_2<X_1^2)$?
+\item Try numerical integration.
+\item Try Monte Carlo approach.
+\item Relative advantages / disadvantages?
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+How do we get ``random'' numbers from an arbitrary distribution $F$?
+\begin{itemize}
+\item Everything starts with uniform pseudo-random numbers.
+\item ``Uniform random'' numbers are neither (!!)
+\item Refer to {\tt help(Random)} in R.
+\item Generating pseudo-random (and pseudo-i.i.d.) numbers is a huge topic
+that we will not explore in depth.
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Properties of uniform random number generators:
+\begin{itemize}
+\item Repetititve
+\item Not independent
+\item Not even continuous
+\end{itemize}
+These are not always disadvantages!
+\end{frame}
+
+\startframe{Monte Carlo methods}
+How do you generate $X\sim F$ given $U\sim\mbox{Unif}(0,1)$?
+\begin{itemize}
+\item
+Some special cases are covered in Ross, section 11.3
+\item
+General ``inversion'' method based on  quantile function
+\[
+F^-(u)  \stackrel{\rm def}{=} \inf \{ x : u\le F(x)\}.
+\]
+Can prove:  $F^-(U)\sim F$, i.e., $P[F^-(U) \le x] = F(x)$ for all $x$.
+%In case $F(x)$ is strictly increasing and continuous, $F^-=F^{-1}$.
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Problems with the inversion method:
+\begin{itemize}
+\item Only works in one dimension
+\item Explicit quantile functions are not always available
+\item Explicit $F(x)$ may not even be possible; for instance, 
+$f(x)$ may be known only up to a constant.
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Rejection sampling works much more generally than inversion method.
+\begin{itemize}
+\item Given:  An ``easier'' density $g$ and known $K$ such that $Kg(x)\ge f(x)$.
+\item Idea:  Sample repeatedly from $g$, but only keep each sampled value
+with probability $f(x)/Kg(x)$.
+\end{itemize}
+\end{frame}
+
+
+\startframe{Monte Carlo methods}
+Rejection sampling notes
+\begin{itemize}
+\item Only necessary to know $f$ and $g$ up to constants.
+\item Often better to take logarithms when computing with ratios.
+\item Section 11.2.2 has a couple examples (e.g., beta).
+\end{itemize}
+%:  If
+%$r(x)=\alpha f(x)$ and $s(x)=\beta g(x)$, find $K\ge \sup_x s(x)/r(x)$
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

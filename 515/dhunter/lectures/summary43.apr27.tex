@@ -1,0 +1,82 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Apr.~27}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+Make sure you do not communicate with anyone (except me) 
+about the take-home final.
+\item
+The in-class final will be held in 075 Willard (Not our normal classroom!)
+\end{itemize}
+\notes{We spent the whole day discussing the outline of the Monte Carlo 
+and MCMC sections of the course.  The outline appears on the third page
+of these notes.  On the second page is a broader outline of the
+entire course.}
+\end{frame}
+
+
+\startframe{STAT 515 brief recap}
+\begin{itemize}
+\item Chapters 1 and 2:  Review of probability concepts
+\item Chapter 3:  Conditional probability and conditioning (omit 3.6, 3.7)
+\item Chapter 4:  Disc.-time, disc.-space Markov chains (omit 4.10, 4.11)
+\item Chapter 5:  Exp. distribution, Pois. processes (omit some of 5.3, 5.4)
+\item Midterm exam:  Chapters 1--5
+\item Chapter 6:  Cont.-time, disc.-space Markov chains (omit 6.7)
+\item Monte Carlo methods
+\item Markov chain Monte Carlo
+\end{itemize}
+\notes{
+Roughly speaking,  you should expect 5 to 10 points (out of 30) on the final exam to cover
+the first part of the course (before the midterm).  You should expect the remaining 20 to 25
+points to cover the second (post-midterm) part of the course.
+}
+\end{frame}
+
+\startframe{STAT 515 brief recap}
+More detail on the last two\ldots
+\begin{itemize}
+\item Monte Carlo methods
+  \begin{itemize}
+  \item Understanding what ``pseudo-random'' numbers are
+  \item Inversion method
+  \item Rejection method
+  \item Simulating multivariate normals
+  \item Importance Sampling
+  \item Ratio importance sampling
+  \item Standard error estimation
+  \end{itemize}
+\item Markov chain Monte Carlo
+  \begin{itemize}
+  \item Metropolis-Hastings algorithms
+    \begin{itemize}
+    \item Special case:  Symmetric proposal (Metropolis alg.)
+    \item Special case:  Propose from full cond. (Gibbs samp.)
+    \end{itemize}
+  \item Disc.-time, cont.-space Markov chains
+    \begin{itemize}
+    \item Markov transition density $k ( y\mid x)$
+    \item Stationary density $\pi(x)$.
+    \item Harris ergodicity ($\pi$-irreducibility, aperiodicity, Harris recurrence)
+    \end{itemize}
+  \item Variable-at-a-time MH; full conditionals
+  \item MCMC standard errors using batch means
+  \item Effective sample size
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+
+
+

@@ -1,0 +1,94 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Feb.~24}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+For Monday, read Section 6.3.
+\item 
+Midterm exam:  7:00pm on Wednesday, Feb.~29 in 105 Willard.
+(NB:  Change of room!)
+\item 
+HW \#6 will be due next Friday (Mar.~2) at 2:30.
+\end{itemize}
+\notes{The topics in Chapter 6 are somewhat jumbled relative to the order in which I'll cover them.}
+\end{frame}
+
+
+\startframe{Midterm practice}
+\question{Let $X_1$ and $X_2$ be independent exponential random variables with
+rates $\lambda_1$ and $\lambda_2$, and let $X_{(1)}$, $X_{(2)}$ be the
+order statistics.  What is $\Cov (X_{(1)}, X_{(2)})$?}
+{$(\lambda_1+\lambda_2)^2$}
+{$\lambda_1\lambda_2$}
+{$1/(\lambda_1+\lambda_2)^2$}
+{$1/(\lambda_1\lambda_2)$}
+\notes{Answer:  C.  Nearly everyone got this (though it was on the homework!).
+We discussed the fact that finding $\Cov(X_{(1)}, X_{(2)})$ is not
+hard using a direct approach, since it is easy to evaluate 
+$E(X_{(1)} X_{(2)})$.}
+\end{frame}
+
+\startframe{6.2 Continuous-Time Markov chains}
+Consider a continuous-time, discrete-space MC, $\{X(t) : t\in[0,\infty)\}$:
+\begin{itemize}
+\item The chain stays in each state for a random (real-valued) time.
+\item When the chain switches, it picks from the possible states according to
+some discrete-time Markov chain.
+\item Markov property:  
+Conditional on the present, what happens next is independent of the past.
+\item Homogeneity:  The chain's behavior at time $t$ does not
+depend on $t$.
+\end{itemize}
+\notes{This is a repeat of a slide shown on Wednesday.  
+We will show that the Markov property plus homogeneity
+imply together that the times in each state have the memoryless
+property.}
+\end{frame}
+
+\startframe{6.2 Continuous-Time Markov chains}
+Let $T_i$ be the time when the MC leaves state $i$,
+given that $X(0)=i$.
+\begin{itemize}
+\item How is $T_i$ distributed?
+\item Claim:  $T_i$ has the memoryless property.
+(What does this imply?)
+\end{itemize}
+\notes{We proved the latter fact, which is not difficult.  Since
+the exponential distribution is the only continuous distribution 
+with the memoryless property, we conclude that
+$T_i$ is exponentially distributed for each $i$.}
+\end{frame}
+
+\startframe{6.2 Continuous-Time Markov chains}
+Examples:
+\begin{itemize}
+\item Any Poisson process
+\item On-off process
+\item Continuous-time random walk
+\end{itemize}
+\notes{For the Poisson process, the state space is $\{0, 1, 2, \ldots \}$
+and we may write $P_{ij} = I{j=i+1}$, where $P$ denotes the
+transition probability matrix for moving from the current to the next
+state of the Markov chain.
+For the on-off process, we have the simplistic
+\[
+P=\begin{bmatrix}
+0 & 1 \\ 1 & 0
+\end{bmatrix}.
+\]
+}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

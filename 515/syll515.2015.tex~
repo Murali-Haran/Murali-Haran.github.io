@@ -1,0 +1,73 @@
+\documentclass[11pt]{article}
+\usepackage[sort,longnamesfirst]{natbib}
+%\usepackage{psfig}
+\usepackage{amsmath}%
+\usepackage{hyperref}
+\begin{document}
+%{\bf TENTATIVE SCHEDULE}\\
+\pagestyle{empty}
+\vspace{-0.5in}
+\Large
+\begin{center}
+{\bf  Syllabus for Stat515 (Spring 2015)}\\
+{\bf  Stochastic Processes and Monte Carlo Methods}\\
+\end{center}
+\normalsize {\bf Instructor}: Murali Haran\\ Office: 421B Thomas
+Building \:Phone: 863-8126 \: email: {\tt mharan}\footnote{@stat.psu.edu}\\ Office
+Hours: Monday: 3:30-4:30, Tuesday: 2:30-3:30\\\\ 
+{\bf Teaching Assistant}: Yawen Guan \\ Office: 330B Thomas Building \:Phone: 863-2314
+\: email: {\tt yig5031}\footnote{@psu.edu}\\  Office
+Hours: Tuesdays, Thursdays: 10:00am-11:00am.\\\\ %Tue: 1-3pm.\\\\
+% email:\:\:\\ Office Hours: TBA\\\\ 
+{\bf Class Times}: MWF 2:30-3:20 in 009 Life Sciences\\\\
+{\bf Textbook}: {\it Introduction to Probability Models}, Sheldon
+Ross, {\bf 8th/9th/10th/11th} Edition, Academic Press. Plus notes for
+the simulation part of the course. \\Suggested reference for Monte Carlo: {\it Introducing Monte Carlo Methods with R}, Robert, Christian P. and Casella, George (2010), Springer.\\\\
+%{\bf Important}: The course schedule may change according to how the class progresses. Check the website for all announcements regularly.\\\\
+{\bf Targeted Coverage}:
+\begin{itemize}
+\item Review of conditional probability and expectations (Chapter 3)
+\item Markov chains (Chapter 4)
+\item Poisson processes (Chapter 5)
+\item Continuous time Markov chains (Chapter 6) 
+\item Brownian motion, martingale basics (Chapter 10/other) 
+\item Classical Monte Carlo: rejection, importance sampling
+\item Markov chain Monte Carlo: Gibbs, Metropolis-Hastings algorithms
+  % \item This course is also oriented towards providing students with
+  %   some basic useful computing skills, programming habits and the
+  %   ability to write up short reports on simulations.
+\end{itemize}
+{\bf Course Requirements:}
+\begin{itemize}
+%\item  Assigned Readings
+\item Weekly homework (30\%). You may discuss them but they must be written up independently.
+\item Midterm exam in early March (25\%).
+\item Final exam: in class (30\%) + take home (15\%) (total: 45\%)
+\end{itemize} 
+{\bf Course Website}: \url{http://www.stat.psu.edu/~mharan/515/515.html}\\\\
+{\bf Academic Integrity:} All Penn State and Eberly
+College of Science policies regarding
+academic integrity apply to this course.  Please see\\
+{\tt http://www.science.psu.edu/academic/Integrity/index.html}.
+\\\\
+\noindent {\bf Policy on Late Homework:}\\
+Unless you inform me ahead of time ({\it at least 1 day in advance}),
+you will lose 50\% of the grade for late homework turned in within 24
+hours of the due date. You will receive no credit for homework turned
+in after that.\\\\
+\noindent {\bf Important}: Check the website for all announcements regularly.\\\\
+\noindent {\bf Computing:}\\
+All {\it graduate students in statistics} are required to use the statistical
+computing language {\tt R} through most of the latter half of the
+course. If you are not a statistics graduate student, you are still
+encouraged to write programs in {\tt R} since it is widely used. You
+are free to use any other language you like but please note that I may
+not be able to help you with your computing if the language is
+unfamiliar to me.
+\\\\
+{\bf LaTeX:}\\
+All {\it graduate students in statistics} are required to use {\tt LaTeX} to
+write up their computing assignments in the latter half of the course.
+All other students are expected to hand in typed computing assignments
+even if they choose not to use {\tt LaTeX}.
+\end{document}

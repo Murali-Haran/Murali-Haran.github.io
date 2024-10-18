@@ -1,0 +1,129 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Feb.~13}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item
+Read Section 5.3 for Wednesday.
+\item 
+Homework due this Friday; regular office hours Thursday 
+\item
+Please get out your colored ABCD sheets.
+\end{itemize}
+\notes{Other things we discussed:  I sent out a doodle poll to try to find an acceptable midterm date and time.  Also, there will certainly be some type of  ``cheat sheet'' allowed on the midterm.}
+\end{frame}
+
+\startframe{4.8 Time Reversible Markov Chains}
+\begin{itemize}
+\item
+$\pi_iP_{ij} = \pi_j P_{ji}$ is called {\em detailed balance}.
+\item
+Interpretation:  Proportionally, there are just as many $i\rightarrow j$
+transitions as $j\rightarrow i$ transitions.
+\end{itemize}
+\notes{This is review from last Wednesday.}
+\end{frame}
+
+\startframe{4.8 Time Reversible Markov Chains}
+\begin{itemize}
+\item 
+Prove:  If $\pi$ exists satisfying detailed balance, then $\pi$ solves
+\[
+\pi_j = \sum_i \pi_i P_{ij} \qquad \mbox{for all $j$.}
+\]
+(These are the ergodic equations!)
+\item
+NB:  detailed balance does not imply ergodic; only ergodic chains that
+satisfy detailed balance are called time reversible.
+\end{itemize}
+\notes{We proved this in class; it's a simple matter of summing the detailed 
+balance equation over $i$.}
+\end{frame}
+
+
+\startframe{4.8 Time Reversible Markov Chains}
+\begin{itemize}
+\item
+$\pi_iP_{ij} = \pi_j P_{ji}$ is called {\em detailed balance}.
+\item
+Equivalently, we can derive the so-called 
+Kolmogorov circulation condition, of which
+\[
+P_{ij}P_{jk}P_{ki} = P_{ik}P_{kj}P_{ji}
+\]
+is a special case.
+\end{itemize}
+\notes{Actually, ``equivalently'' is only true in the case of
+an irreducible, ergodic MC.  We proved that detailed balance
+implies the KCC, but the converse is slightly more complicated and 
+requires a limiting distribution.}
+\end{frame}
+
+%\startframe{4.8 Time Reversible Markov Chains}
+%\end{frame}
+
+\startframe{5.2 The exponential distribution}
+\begin{itemize}
+\item Memorize the cdf (easy).
+\item Understand distinction between mean and rate.
+\item Understand that the parameter is a scale parameter.
+\end{itemize}
+\notes{We can always differentiate the cdf to find the density.
+Also, if $X\sim f(x)$ then $X/\lambda\sim \lambda f(\lambda x)$
+for a general density $f(x)$.}
+\end{frame}
+
+\startframe{5.2 The exponential distribution}
+\question{Suppose that $X$ is exponentially distributed with rate $\lambda$.  What is the
+conditional distribution of $X-2$ given $X>2$?}
+{Lognormal with $\mbox{rate}=\lambda$}
+{Lognormal with $\mbox{rate}\ne\lambda$}
+{Exponential with $\mbox{rate}=\lambda$}
+{Exponential with $\mbox{rate}\ne\lambda$}
+\notes{Correct answer:  C.  I had made a mistake on this one, using ``mean''
+instead of ``rate'' in the answers.  The correct answer reflects the memoryless
+property of an exponential distribution; this question was on HW \#1.}
+\end{frame}
+
+\startframe{5.2 The exponential distribution}
+\question{Which of the following is constant for an exponential distribution?}
+{The failure rate function}
+{The survival function}
+{The cdf}
+{The density function}
+\notes{Correct answer:  A.  Pure terminology here, and not all that important for
+STAT 515.   Much more important for STAT 525.}
+\end{frame}
+
+\startframe{5.2 The exponential distribution}
+\question{The sum of i.i.d.~exponential random variables has what type of distribution?}
+{Exponential}
+{Lognormal}
+{Normal}
+{Gamma}
+\notes{Correct answer:  D.  Just know this.}
+\end{frame}
+
+\startframe{5.2 The exponential distribution}
+Very important fact:  If $X_1$ and $X_2$ are independent 
+exponential random variables with rates $\lambda_1$ and
+$\lambda_2$, then
+\[
+P(X_1 < X_2) = \ldots
+\]
+\notes{$\ldots \lambda_1/(\lambda_1+\lambda_2)$.  Try to figure out where
+we used the independence assumption.  (We'll talk about this in class on Wednesday.)}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

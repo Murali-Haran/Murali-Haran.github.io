@@ -1,0 +1,187 @@
+---
+title: "SQL"
+output: html_document
+---
+
+  
+
+```{r setup, include=FALSE}
+library(RSQLite)
+load(url("http://www.stat.berkeley.edu/users/nolan/data/BankEx.rda"))
+
+m = dbDriver("SQLite")
+tfile = tempfile()
+con=dbConnect(m, dbname = tfile)
+dbWriteTable(con, "Accounts", Accounts)
+dbWriteTable(con, "Branches", Branches)
+dbWriteTable(con, "Customers", Customers)
+dbWriteTable(con, "Registration", Registration)
+```
+
+We have a very small relational database with 4 tables. We can examine the RDBMS with the following commands (note that we have already connected to the database and the connection is in `con`).
+
+Produce a list of the tables in the database
+```{r,collapse=TRUE}
+dbListTables(con)
+```
+
+For each table, show the attribute names
+```{r,collapse=TRUE}
+dbListFields(con, "Accounts")
+dbListFields(con, "Customers")
+dbListFields(con, "Registration")
+dbListFields(con, "Branches")
+```
+
+
+The following are examples of how to use SELECT statements to extract results from these tables in the bank relational data base.
+
+## Name and Address of all customers
+
+```{r,collapse=TRUE}
+dbGetQuery(con, "SELECT Name, Address FROM Customers;")
+```
+
+```
+      Name   Address
+1 Smith, J   101 Elm
+2 Smith, D   101 Elm
+3 Brown, D 17 Spruce
+```
+
+## All of the attributes in the Registration table for the accounts belonging to Customer 3.
+
+```{r,collapse=TRUE}
+dbGetQuery(con, "SELECT * FROM Registration WHERE CID = 3;")
+```
+
+```
+  row_names CID AcctNo
+1         4   3    203
+2         5   3    301
+3         6   3    302
+```
+
+## The account numbers for those accounts in the Downtown branch that have less than $100
+
+
+```{r,collapse=TRUE}
+dbGetQuery(con, "SELECT AcctNo FROM Accounts 
+           WHERE  Balance < 100 AND Branch = 'City';")
+```
+
+```
+   AcctNo
+1    201
+```
+
+## The total balance for all accounts belonging to a branch.
+
+```{r, collapse=TRUE}
+dbGetQuery(con, "SELECT Branch, SUM(Balance) FROM Accounts 
+           GROUP BY Branch;")
+```
+
+```
+  Branch SUM(Balance)
+1   City         1129
+2 Suburb          180
+```
+
+## The total overdrawn amount for all overdrawn accounts at each branch, for those branches which have at least one account $100 overdrawn. 
+
+```{r,collapse=TRUE}
+dbGetQuery(con, "SELECT Branch, SUM(Balance) FROM Accounts 
+           GROUP BY Branch  HAVING MIN(Balance) < -100;")
+```
+
+
+```
+[1] Branch       SUM(Balance)
+ <0 rows> (or 0-length row.names)
+```
+
+## Name(s) of the owner(s) for every account 
+
+```{r,collapse=TRUE}
+dbGetQuery(con, "SELECT Name, AcctNo FROM Customers,Registration
+ WHERE Customers.CustNo = Registration.CID;")
+```
+
+
+```          
+      Name AcctNo
+1 Smith, J    201
+2 Smith, D    201
+3 Smith, D    202
+4 Brown, D    203
+5 Brown, D    301
+6 Brown, D    302
+```
+
+Alternatively, the following also give these results
+
+```{r,collapse=TRUE}
+dbGetQuery(con, "SELECT Name, AcctNo FROM Customers 
+       INNER JOIN Registration 
+       ON Customers.CustNo = Registration.CID;")
+
+dbGetQuery(con, "SELECT Name, AcctNo FROM Customers 
+       LEFT JOIN Registration 
+       ON Customers.CustNo = Registration.CID;")
+
+
+dbGetQuery(con, "SELECT Name, AcctNo AS Account 
+           FROM Customers AS C 
+           INNER JOIN Registration AS R 
+           ON C.CustNo = R.CID;")
+```
+
+
+## The customer name, account number, and balance of the account for all accounts
+
+```{r,collapse=TRUE}
+dbGetQuery(con, "SELECT C.Name, A.AcctNo, A.Balance 
+           FROM Customers AS C, Registration AS R, 
+           Accounts AS A
+           WHERE C.CustNo = R.CID AND A.AcctNo = R.AcctNo;")
+```
+
+## The customer number and total balance of all accounts for a customer
+
+```{r,collapse=TRUE}
+dbGetQuery(con, "SELECT R.CID, SUM(A.Balance) 
+           FROM Registration AS R
+           INNER JOIN Accounts AS A
+           ON A.AcctNo = R.AcctNo
+           GROUP BY R.CID;")
+```
+
+```
+  CID SUM(A.Balance)
+1   1             12
+2   2           1012
+3   3            297
+```
+
+If you also want the customer name
+        
+```{r,collapse=TRUE}
+dbGetQuery(con, "SELECT C.Name, SUM(A.Balance) 
+           FROM Customers AS C
+           INNER JOIN Registration AS R
+           ON C.CustNo = R.CID
+           INNER JOIN Accounts AS A
+           ON A.AcctNo = R.AcctNo
+           GROUP BY C.CustNo;")
+```
+
+If you want only the total balance for each customer 
+with multiple accounts. 
+           
+```{r,collapse=TRUE}
+dbGetQuery(con, "SELECT CID, Name, SUM(Balance) As total
+           FROM Customers C, Registration R, Accounts A
+           WHERE C.CustNo = R.CID and A.Acctno = R.AcctNo
+           GROUP BY R.CID HAVING COUNT(*) > 1;")
+```

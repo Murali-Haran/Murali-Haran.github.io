@@ -1,0 +1,2 @@
+surftemp = read.table("http://www.stat.psu.edu/$\sim$mharan/datasets/atmosphNASA/surftemp1.dat",header=TRUE,sep=" ")
+ 

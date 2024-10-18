@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>CASt R: An application of Markov chain Monte Carlo</title>
+</head>
+<body style="background-color: rgb(255, 248, 229);">
+<div style="text-align: center;"><big><big><span
+ style="color: rgb(204, 0, 0);"><span style="font-weight: bold;">A Markov chain Monte Carlo example
+</span>
+ <br>
+</span></span></big></big></div> <br>   
+
+This module works through a single example of a Markov chain Monte
+Carlo algorithm for drawing samples from a multidimensional
+distribution.  We describe a model that is easy to specify but
+requires samples  from a relatively complicated distribution for
+which classical Monte Carlo sampling methods are impractical. We
+describe how to implement a Markov chain Monte Carlo algorithm for
+this example. <br><br>
+
+The purpose of this is twofold: first to illustrate how Markov chain
+Monte Carlo algorithms are easy to implement (at least in principle)
+in situations where classical Monte Carlo methods do not work; second
+to provide a glimpse of practical MCMC implementation issues. It is
+difficult to work through a truly complex example of a
+Metropolis-Hastings algorithm in a short tutorial. Our example is
+therefore necessarily simple but working through it should provide a
+beginning MCMC user some feel for how one would implement an MCMC
+procedure for a problem where classical Monte Carlo methods are
+unusable.  <br> <br> <big><big><span style="color: rgb(204, 0,
+0);"><span style="font-weight: bold;"><small><span style="font-weight:
+bold;"> Problem and model description
+</span></small></span></span></big></big><br> <br>
+
+We describe a Bayesian model for a simple change point problem. Let Yt
+be the number of occurrences of some event at time t. The process is
+observed for times 1 through n and we assume that there is a change at
+time k, i.e., after time k, the event counts are significantly
+different (higher or lower than before). The mathematical description
+of the model is provided in <a href="chptmodel.pdf"> change point
+model (pdf)
+</a>. While this is a simple model, it is adequate for illustrating
+the basic principles for constructing an MCMC algorithm.
+
+<br><br>
+We first read in the data:
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">chptdat = read.table("http://www.stat.psu.edu/~mharan/astrostat/chpt.dat",header=T)
+</span>
+<br><br>
+We can begin with a simple time series plot as exploratory
+analysis. 
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;"> Y <- chptdat$Deaths # store data in Y</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">ts.plot(Y,main="Time series plot of change point data")</span><br>
+
+<br> <big><big><span style="color: rgb(204, 0, 0);"><span
+ style="font-weight: bold;"><small><span style="font-weight: bold;"> 
+Setting up the MCMC algorithm
+<br>
+</span></small></span></span></big></big><br> 
+
+Our goal is to simulate multiple draws from the posterior distribution
+which is a multidimensional distribution known only upto a
+(normalizing) constant. From this multidimensional distribution, we
+can easily derive the conditional distribution of each of the
+individual parameters (one dimension at a time). This is described in
+<a href="fullcond.pdf"> full conditional distributions (pdf) </a>.
+
+<br> <br> <big><big><span style="color: rgb(204, 0, 0);"><span
+ style="font-weight: bold;"><small><span style="font-weight: bold;">
+Programming an MCMC algorithm in R
+</span></small></span></span></big></big><br> <br> 
+
+We will need an editor for our program: we can use Wordpad (available
+under the Start button menu under Accessories). Please save code from
+<a href="MCMCchpt.R"> MCMC template in R</a> into a file and open this
+file using the editor. Save this file as MCMCchpt.R . We will first
+look through the code to understand it before we add to it.  <br> <br>
+
+To load the program from the file MCMCchpt.R we use the "source" command.
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;"> source("filepathname/MCMCchpt.R") # with appropriate filepathname
+</span>
+We can now run the MCMC algorithm:
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;"> mchain <- mhsampler(NUMIT=500,dat=Y) # call the function with appropriate arguments
+</span> <br>
+The MCMC algorithm runs for 500 iterations by default. 
+
+<br>
+<br> <big><big><span style="color: rgb(204, 0, 0);"><span
+ style="font-weight: bold;"><small><span style="font-weight: bold;">
+MCMC output analysis
+</span></small></span></span></big></big><br> <br>
+
+Now that we have output from our sampler, we can treat this output as
+data from which we can estimate quantities of interest. For instance,
+to estimate the expectation of a marginal distribution for a
+particular parameter, we would simply average all draws for that
+parameter. There are a variety of different ways we could use the draws
+from the posterior for inference about the posterior distribution.
+For instance: <br> 
+to obtain an estimate of E(theta) we would type:<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">mean(mchain[1,])</span><br>
+to get estimates for means for all parameters:<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">apply(mchain,1,mean) # compute means by row (for all parameters at once)</span><br>
+to obtain an estimate of the entire posterior distribution: <br>
+&nbsp;&nbsp; <span style="font-weight: bold;">plot(density(mchain[1,]),main="smoothed density plot for theta posterior")</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">plot(density(mchain[2,]),main="smoothed density plot for lambda posterior")</span><br>
+to find the probability that lambda is greater than 3 <br>
+&nbsp;&nbsp; <span style="font-weight: bold;">sum(mchain[1,]>3)/length(mchain[1,])</span><br><br>
+
+We would like to assess whether our Markov chain is exploring the
+state space well. While this is in general difficult to do rigorously,
+estimates of the autocorrelation in the samples is an informal and
+useful check. To obtain sample autocorrelations we use the acf plot function:<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">acf(mchain[1,])</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">acf(mchain[2,])</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">acf(mchain[3,])</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">acf(mchain[4,])</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">acf(mchain[5,])</span><br><br>
+
+If the samples are heavily autocorrelated we should rethink our
+sampling scheme or, at the very least, run the chain for much
+longer. For this example, the sampler appears to be quite efficient.
+
+<br> <br>
+There are two important issues to consider now that we have draws from
+a Markov chain Monte Carlo algorithm: (1) how do we assess the
+accuracy of our estimates based on the sample (how do we compute Monte
+Carlo standard errors?) (2) how long do we run the chain before we
+feel confident that our results are reasonably accurate ? <a
+href="convdetails.html"> Notes regarding these issues </a>.  <br><br>
+
+There are many ways to compute Monte Carlo standard errors. We
+describe a simple but reasonable way of calculating it: <a
+href="batchmeans.R"> the Batch Means method in R </a> and <a
+href="batchmeans.pdf">  a brief description </a>. Related reading: <a
+href="geyer.pdf"> Practical Markov chain Monte Carlo </a> and the
+references therein. <br> <br>
+
+To compute MC s.error via batch means, download the batchmeans
+function from above and source the file into R. We can now calculate standard error estimates for each of the five parameter estimates:<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">bm(mchain[1,])</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">bm(mchain[2,])</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">bm(mchain[3,])</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">bm(mchain[4,])</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">bm(mchain[5,])</span><br><br>
+
+Are these standard errors acceptable ? To reduce the Monte Carlo
+standard errors, simply run the Markov chain sampler for
+longer. Recompute the Monte Carlo standard errors and see if they are
+reduced. 
+
+There are hundreds of different proposals for dealing with the latter
+issue (how long to run the chain) but they are all heuristics at
+best. We describe one method that is fairly simple, theoretically
+justified and seems to work reasonably well in practice. This method
+relies on requiring that the Monte Carlo standard error for each
+parameter be below a certain reasonable (user-defined) threshold; once
+this threshold is attained for all parameters, stop the
+simulation. Related reading: <a href="http://www.stat.psu.edu/~mharan/mcse.ps"> Monte Carlo output analysis paper
+</a> and the references therein.  <br> <br>
+
+For the purposes of this tutorial, simply run the MCMC algorithm
+again, this time for 100000 iterations (set NUMIT=100000). You can now
+obtain estimates of the posterior distribution of the parameters as
+before and compute the corresponding Monte Carlo standard error. See
+how the estimates and corresponding MC s.error have changed.
+<br> <br>
+
+In addition to deciding how long to run the sampler and how to compute
+Monte Carlo standard error, there are many possibilities for choosing
+how to update the individual parameters and more sophisticated methods
+used to make the Markov chain move around the posterior distribution
+efficiently. As a simple example, there are many different ways to
+update the b1 (??) parameter - it does not have to be a Metropolis
+random walk update. 
+<br><br>
+<big><big><span style="color: rgb(204, 0, 0);"><span
+ style="font-weight: bold;"><small><span style="font-weight: bold;">
+Some resources
+</span></small></span></span></big></big><br> <br>
+There is the <a
+href="http://www.maths.lth.se/help/R/.R/library/coda/html/00Index.html">
+"CODA" package in R </a> that already implements many well known output
+analysis techniques. Charlie Geyer's
+<a href="http://cran.r-project.org/doc/packages/mcmc.pdf"> MCMC package in R </a> is
+another free resource. There is also software from the <a href="">
+WINBugs package </a>.
+
+<br>
+
+</body>
+</html>

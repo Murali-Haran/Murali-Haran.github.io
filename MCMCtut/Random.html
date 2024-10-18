@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>CASt R: Random numbers</title>
+</head>
+<body>
+<div style="text-align: center;"><big><big><span
+ style="color: rgb(204, 0, 0);"><span style="font-weight: bold;">Random 
+ numbers in R</span>
+ <br>
+</span></span></big></big></div>
+<br> 
+It is often necessary to simulate random numbers in R.  There are
+many functions available to accomplish this and related tasks 
+such as evaluating the density, distribution function, and quantile function
+of a distribution.  In addition, the 'sample' function may be used to draw random
+samples, with or without replacement, from a list.
+<br>
+<br> 
+<big><big><span 
+style="color: rgb(204, 0, 0);"><span
+ style="font-weight: bold;"><small><span style="font-weight: bold;">Distributions
+ intrinsic to R</span></small></span></span></big></big><br> 
+ <br> 
+R handles many common distributions quite easily.  To see a list, type<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">help.search("distribution",package="stats")</span><br>
+<br>
+Let's consider the well-known normal distribution as an example:  <br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">?Normal</span><br>
+<br>
+
+
+The four functions 'rnorm', 'dnorm', 
+'pnorm', and 'qnorm' give random normals, the normal density (sometimes called the differential
+distribution function), the normal cumulative distribution function (CDF), and
+the inverse of the normal CDF (also called the quantile function), respectively.  Almost all  
+of the other distributions have similar sets of four functions.  The 'r' versions are rbeta, rbinom, rcauchy, 
+rchisq, rexp, rf, rgamma, rgeom, rhyper, rlogis, rlnorm, rmultinom, rnbinom, rnorm, rpois, rsignrank, 
+rt, runif, rweibull, and rwilcox.  <br>
+<br>
+As an example, suppose we wish 
+to simulate a vector of 10
+independent, standard (i.e., mean 0 and standard deviation 1) normal random variables.  We use<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">rnorm(10) # mean=0, sd=1 are defaults</span><br>
+<br>
+Suppose we wish to simulate a large number of normal random variables, then check a histogram against 
+the "true" density function to 
+see how it looks.<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">z=rnorm(200000)</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">hist(z,freq=FALSE)</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">x=seq(min(z),max(z),len=200)</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">lines(x,dnorm(x),col=2, lty=2, lwd=2) 
+# Use "true" mean, sd; make it dotted red</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">lines(x,dnorm(x,mean=mean(z),sd=sqrt(var(z)))) # Use estimates</span><br>
+<br>
+We can find out what proportion of the deviates lie outside 3 standard deviations from the mean,
+a common cutoff used by physical scientists.  We can also see the true theoretical proportion:<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">sum(abs(z)>3)/length(z)</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">2*pnorm(-3)</span><br>
+<br>
+The function 'dnorm' (with mean=0, sd=1) has a closed form:  dnorm(x) equals exp(-x<sup>2</sup>/2)/sqrt(2*pi).  By contrast, 
+the CDF, given by 'pnorm', has no closed form and must be numerically approximated.  By 
+definition, pnorm(x) equals the integral of dnorm(t) as t ranges from minus infinity to x.  To find a p-value 
+(i.e., the probability of observing a statistic more extreme than the one actually observed), we use
+pnorm; to construct a confidence interval (i.e., a range of reasonable values for the true parameter), 
+we use the inverse, qnorm. <br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">pnorm(1:3)-pnorm(-(1:3)) # Well-known 68, 95, 99.7 rule </span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">qnorm(c(.05,.95)) # Used for a 90% confidence interval </span><br>
+<br>
+As an example of a discrete distribution, consider the Poisson.<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">x=0:10</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">dpois(x,lambda=2.5) # same as exp(-2.5)*2.5^x/factorial(x) </span><br>
+<br>
+<br>
+
+<big><big><span 
+style="color: rgb(204, 0, 0);"><span
+ style="font-weight: bold;"><small><span style="font-weight: bold;">The power-law or Pareto distribution
+ </span></small></span></span></big></big><br> 
+<br>
+A commonly used distribution in astrophysics is the power-law distribution, 
+more commonly known in the statistics literature as the
+Pareto distribution.  There are no built-in R functions for dealing with this
+distribution, but because it is an extremely simple distribution it is easy 
+to build such functions.  
+
+The density function for the Pareto is f(x)=ab<sup>a</sup>/x<sup>(a+1)</sup> for x>b.  
+Here, a and b are fixed positive parameters where 
+b is the minimum value of the distribution to get a finite integrated density. 
+We create here the dpareto function for the logN=-1.5*logS
+distribution, where S is the apparent brightness of a class of astronomical objects.  This
+is the number distribution of standard candles randomly located in transparent space.
+<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">dpareto=function(x, a=0.5, b=1) a*b^a/x^(a+1) # Note:  Choices
+of default values may be changed! </span><br>
+<br>
+Next, we integrate the density function to obtain the distribution function, 
+which is
+F(x)=1-(b/x)<sup>a</sup> for x>=b (and naturally F(x)=0 for x &lt b):<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">ppareto=function(x, a=0.5, b=1) (x &gt b)*(1-(b/x)^a) # Note: (x &gt b) 
+is coerced to numeric, either 0 or 1</span><br>
+<br>
+Inverting the distribution function gives the quantile function:<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">qpareto=function(u, a=0.5, b=1) b/(1-u)^(1/a) # Note:  This simplistic
+function is wrong unless 0&lt u &lt 1.</span><br>
+<br>
+Finally, to simulate random Pareto random variables, we use the fact that whenever the quantile function
+is applied to a uniform random variable, the result is a random variable with the desired distribution:<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">rpareto=function(n, a=0.5, b=1) qpareto(runif(n),a,b)</span><br>
+<br>
+Note that these four functions (dpareto, ppareto, qpareto, and rpareto) 
+are very simplistic.  For instance, they do not attempt to
+do any error-checking.<br>
+<br>
+Creating functions in R, as illustrated above, is a common procedure.  Note that each of the arguments of
+a function may be given a default value, which is used whenever the user calls the function without specifying
+the value of this parameter.  Also note that each of the above functions consists of only a single line; however,
+longer functions may be created by enclosing them inside curly braces { }.<br>
+<br>
+<br>
+<big><big><span 
+style="color: rgb(204, 0, 0);"><span
+ style="font-weight: bold;"><small><span style="font-weight: bold;">A few simple plots
+ </span></small></span></span></big></big><br> 
+<br>
+The commands below plot the four functions just created.<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">par(mfrow=c(2,2))</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">x=seq(1,50,len=200)</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">plot(x,dpareto(x),type="l")</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">plot(x,ppareto(x),type="l",lty=2)</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">u=seq(.005,.995,len=200)</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">plot(u,qpareto(u),type="l",col=3)</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">z=rpareto(200)</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">dotchart(log10(z), main="200 random logged Pareto deviates",</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;cex.main=.5)</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">par(mfrow=c(1,1))</span><br>
+<br>
+The above commands illustrate some of the many plotting capabilities of R.  "par" sets many graphical
+parameters.  "mfrow" divides the plotting window into a matrix
+of plots, set here to two rows and two columns.  "type" is set here to
+"l" for a line plot; other common options are "b" for connected dots and "n" for nothing (to create
+axes only). "lty" sets the line type (1=solid, 2=dashed, etc.), "col" sets color (1=black, 2=red,
+3=green, etc.), "main" puts a string into the plot title, and "cex.main" sets the font magnification. 
+Type "?par" to see a list of the many plotting parameters and options.  <br>
+<br>
+<big><big><span 
+style="color: rgb(204, 0, 0);"><span
+ style="font-weight: bold;"><small><span style="font-weight: bold;">Sampling from a
+ list</span></small></span></span></big></big><br> 
+<br>
+The sample function gives a great deal of flexibility in sampling from
+a list.  <br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">?sample # Read the help file for sample</span><br>
+<br>
+To cite just a few examples of its use, we note here that sample can be used to simulate
+random permutations on n integers, bootstrap samples for samples of size n, or 
+binomial and multinomial random variables.<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">sample(20) # Random permutation of 20 elements</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">sample(20,replace=T) # Random bootstrap sample of size 20</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">sum(sample(0:1,20,replace=T,prob=c(.3,.7))) # Random
+binomial (20, .7) variable</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">sample(0:3,20,replace=T,prob=c(.1,.2,.3,.4)) # 20 Random draws from
+multinomial; may be tabulated to produce a single multinomial.</span><br>
+<br>
+
+
+ 
+</body>
+</html>

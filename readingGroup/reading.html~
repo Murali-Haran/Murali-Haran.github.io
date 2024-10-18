@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<TITLE> Spatial, Computing Etc. (SCE) Reading Group </TITLE>
+</HEAD>
+<body bgcolor=EEE8CD> <!-- C1CDCD -->
+<blockquote>
+<blockquote>
+
+<H3> Spatial, Computing Etc. Reading Group <H3> 
+<H4> Wednesdays 10:30-12pm. Thomas 327 </h4>
+<LI> June 19, 2013. Lead: Murali 
+<UL>
+<LI> (MAIN) Nott, D.J., Marshall, L., Ngoc, T.M. (2012) <a href="nottEnsembleKalmanFilterAsABC2012.pdf"> "The ensemble Kalman filter is an ABC algorithm" </a> <em> Statistics and Computing </em> 
+<LI> (SUPPORTING) Evenson, G. (2003) <a href="evensonEnsembleKalmanFilter2003.pdf"> "The Ensemble Kalman Filter: theoretical formulation and practical implementation </a> <em> Ocean Dynamics </em> 
+<LI> (SUPPORTING) Nychka and Anderson (2008 preliminary version/2010) <a href="nychkaDataAssim.pdf"> "Data Assimilation" </a> <em> Handbook on Spatial Statistics, Chapman and Hall</em> 
+</uL>
+
+<LI> June 26, 2013. Lead: Won
+<UL>
+<LI> (MAIN) Lindgren, F. Rue, H., Lindstrom, J. (2011) <a href="lindgrenGPspde2011.pdf"> "An explicit link between Gaussian fields and Gaussian Markov random fields: the stochastic partial differential equation approach" </a> <em> Journal of the Royal Statistical Society (B) </em> 
+<LI> (Supporting slides) by Daniel Simpson:  <a href="simpsonTalk2012.pdf"> Talk </a>
+<LI> (SUPPORTING) Simpson, D., Lindgren, F. and Rue, H. (2012), <a href="simpsonLindgrenRue2012.pdf"> In order to make spatial statistics computationally feasible, we need to forget about the covariance function. </a> Environmetrics, 23: 65–74. 
+</uL>
+
+<LI> July 3, 2013. Lead: Won (continuation of previous week's discussion)
+<UL>
+<LI> (MAIN) Lindgren, F. Rue, H., Lindstrom, J. (2011) <a href="lindgrenGPspde2011.pdf"> "An explicit link between Gaussian fields and Gaussian Markov random fields: the stochastic partial differential equation approach" </a> <em> Journal of the Royal Statistical Society (B) </em> 
+</uL>
+
+<LI> July 10, 2013. Lead: Josh
+<UL>
+<LI> (MAIN) V.Dukic, HF Lopes, NG Polson (2012) <a href="dukicGoogleFluSEIR2012.pdf">Tracking Epidemics With Google Flu Trends Data and a State-Space SEIR Model </a>, <em> Journal of the American Statistical Association</em> 
+</uL>
+
+<LI> July 17, 2013. 
+<UL>
+<LI> NO MEETING <!-- Prediction for time series/dowscaling/papers related to Saksham's research -->
+</uL>
+
+<LI> July 24, 2013. Lead: Yawen
+<UL>
+<LI> Tilmann Gneiting, Fadoua Balabdaoui, and Adrian Raftery (2007) <a href="Gneiting2007.pdf"> Probabilistic Forecasts, Calibration and Sharpness,</a> <em> Journal of the Royal Statistical Society (B) </em>
+</uL>
+
+<LI> July 31, 2013. Lead: Saksham
+<UL>
+<LI> Fuentes and Raftery (2005) <a href="FuentesRaftery2005.pdf"> Model Evaluation and Spatial Interpolation by Bayesian Combination of Observations with Outputs from Numerical Models, </a> <em> Biometrics</em>
+</uL>
+
+<LI> August 6, 2013. 
+<UL>
+<LI>  NO MEETING
+</uL>
+
+<LI> August 13, 2013. Lead: TBD
+<UL>
+<LI> Cressie, N.A.C. (2013) Fixed Rank Filtering for Spatio-Temporal Data (Journal of Computational and Graphical Statistics)
+</uL>

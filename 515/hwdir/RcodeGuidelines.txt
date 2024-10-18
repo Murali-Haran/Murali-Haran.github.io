@@ -1,0 +1,21 @@
+Dear class,
+
+For Homework #7, you are *not* required to hand in a typed assignment (though you are welcome to do so and hand a print out to me in class if you like).
+
+You are, however, required to submit your R code for this homework on Angel. The T.A. will create a folder for you to submit your homework by the beginning of class on Wednesday. Please make sure that the code you submit is easy to follow/grade. For instance you should pay attention to the following in order to receive full credit: 
+
+(1) Make sure the R code is named as follows: first name initial followed by last name followed by "HW1.R". For instance, if I were submitting the homework, it would be mharanHW1.R 
+
+If I were submitting multiple files (which should not be the case this week!), I would use the names mharanHW1a.R mharanHW1b.R etc.
+
+(2) The code should be easy to run: the TA should be able to run your code without any modifications. For instance, she should be able to say source("mharanHW1.R") and functions should load. She should then, just by looking at your comments in the code, know how to run it/test it.
+
+(3) Organization: use functions where possible (modularization). 
+
+(4) Appearance: your code should be easy to read. Use justification (indent the code). This is automatic if you use Rstudio or emacs will be helpful or some  other intelligent editor. 
+
+(5) The code should have comments that explain it clearly.
+
+(6) Sensible variable names: generally use descriptive names wherever possible.
+
+MH

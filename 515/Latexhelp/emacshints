@@ -1,0 +1,75 @@
+The tips below may make emacs look more complicated to use than it
+really is. As you use it more frequently, you will discover that these
+commands become automatic and much more convenient than 'pointing and
+clicking'.
+
+Emacs commands: You can often type in commands in the command line at the bottom of
+your emacs window; if there are errors or other problems, emacs will
+often communicate with you via the same command line. 
+
+Getting emacs to recognize your code: You must use '.tex' and '.R' as
+filename extensions to let emacs know you are typing latex and R
+respectively.
+
+Syntax highlighting: Sometimes emacs may not highlight your text even
+though it understands that you are typing latex or R code. To
+highlight latex (or code), select "Syntax highlighting" under the
+"Options menu.
+
+###
+Emacs key commands:
+
+A lot of the commands I list below can be easily found from the pull
+down menus as well. Once you get better with emacs, you will want to
+avoid using pulldown menus and simply use keyboard driven commands
+instead.
+
+Find (string): Ctrl-s then type in whatever you are looking
+for. Repeatedly pressing Ctrl-S will find further instances of this in
+the file, Ctrl-r will do the same but look backwards in the document.
+
+Cancel: Anytime you are in trouble or stuck and want to cancel whatever you
+have inadvertently asked emacs to do for you, you can exit/escape
+using Ctrl-g (Ctrl-g = pressing Ctrl key while typing the letter 'g').
+
+Undo: Ctrl-_ , i.e. Ctrl and shift/underscore key at the same time
+
+Cut a line: Ctrl-k
+
+Paste a line: Ctrl-y
+
+Save file: Ctrl-x-s
+Find/load a new file: Ctrl-x-f   then type the name/path of the file
+
+If you want to switch between two split windows in emacs: Ctrl-c-o
+('O' as in "Other", not the number '0') Kill all windows but the
+current one: Ctrl-x-1
+
+Query-replace: Esc-query-replace (Escape key followed by x) then type
+"query-replace" and it will prompt you for the string you want to
+replace then prompt you again for the string you want it to be
+replaced by. It will prompt you one word at a time --- if you type
+'y', it will replace it, if you type 'n', it will not replace it,
+moving on to the next word it finds.
+
+Find-replace: Esc-x (Escape key followed by x) then type
+"replace-string" and it will prompt you for the string you want to
+replace then prompt you again for the string you want it to be
+replaced by. It will automatically find-replace through the entire
+document, without prompting you each time.
+
+To wrap long lines into a paragraph: Esc-q (Escape key, followed by q,
+not at the same time).
+###
+
+Compiling latex through emacs:
+If you have auc-tex set up correctly, you can even use emacs to
+directly compile your latex: Ctrl-c-t-p to switch to pdflatex mode ---
+now, any time you say Ctrl-c-c, pdflatex will automatically compile
+your latex into a pdf file. Ctrl-c-t-p again will bring you back to
+regular latex mode.
+
+Alternatively, you can use regular latex mode and type: Ctrl-c-c to
+compile code into a '.dvi' file. This dvi file can be converted into a
+ps file.
+###

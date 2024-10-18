@@ -1,0 +1,119 @@
+<TITLE> Stochastic Modeling and Computational Statistics, Spring 2014  </TITLE>
+<center> <FONT SIZE=5> Stochastic Modeling and Computational Statistics, Spring 2014 </FONT> <br></center>
+
+This discussion series will be held <b> Fridays 10am-11am </b> in Thomas 327. <br> <br>
+Guidelines:
+<ol> 
+<LI> 40 minutes for each talk + 20 minutes for discussion.
+<LI> The talk should be accessible to all grad students who have completed 1 year of the program.
+<LI> Informal style. For instance, chalk and blackboard talks are welcome.
+<LI> Interruptions during the talk are welcome (they are a mainstay of SMAC seminars!) but they should only be for clarifications; longer questions are to be left to the discussion period.
+<LI> Unpublished work may not be shared or discussed outside the group without the permission of the speaker/author.
+</ol> 
+
+Unless otherwise noted, all speakers are from the Department of Statistics at Penn State University.
+
+ <table border="7" >
+<tr> <th scope = "col">Date</th> <th scope = "col">Speaker </th><th scope = "col">Topic </th>
+
+<tr><td> January 16
+<td> 
+Weijie Shen
+<td>
+Review on two seemingly distinct curricula of Design of Experiments
+
+<tr><td> January 23
+<td> 
+Yang Liu
+<td>
+Structured Ordinary Least Squares
+<!-- : a sufficient dimension reduction approach for regressions with partitioned predictors and heterogeneous units-->
+
+<tr><td> January 30
+<td> 
+Sam Tajbakhsh (Industrial Engineering/Statistics, PSU)
+<td>
+Fitting Gaussian Random Field Models Using Semidefinite Programming
+
+<tr><td> February 6
+<td> 
+Chiara Lo Prete (Department of Energy and Mineral Engineering, PSU)
+<td>
+Market manipulation through uneconomic virtual bidding: an application of strategic trader models to wholesale electricity markets
+
+<tr><td> February 13
+<td> 
+Ben Shaby
+<!-- Xiaotian Zhu-->
+<td>
+A three-groups model for high-throughput survival screens
+<!-- Icamix (the ideas and theory underpinning a new R package)-->
+
+<tr><td> February 20
+<td> 
+Timothy Brick (Human Development and Family Studies, PSU) 
+<td>
+Maintained Individual Data & Distributed Likelihood Evaluation
+
+<tr><td> February 27
+<td> 
+Nikos Papadatos (University of Athens)
+<td> 
+A tight bound for the expected range from dependent observations
+
+<tr><td> March 6
+<td> 
+no talk/Friday before spring break
+<td>
+
+<tr><td> March 13
+<td> 
+no talk (spring break)
+<td>
+
+<tr><td> March 20
+<td> 
+<i> No SMAC talk (prospective grads visit) </i>
+<td> 
+
+<tr><td> March 27
+<td> 
+Clio Andris (Geography, PSU)
+<td>
+Leveraging Social Flows with Geolocated Social Network Data
+
+<tr><td> April 3
+<td> 
+Nilam Ram (Human Development and Family Studies, PSU) 
+<td> 
+From Intraindividual Variability to Self-Regulation: Moving Toward Differential Equation Models of Psychological Processes
+
+<tr><td> April 10
+<td> 
+Jason Bernstein 
+<td>
+Analyzing Diffusion with Transient Binding Processes Using Particle Filters
+
+<tr><td> April 17
+<td> 
+<font color="#FF0000"> Special Seminar: Terry Speed </font>
+<td>
+Instrumental variables and negative controls 
+
+<tr><td> April 24
+<td> 
+Zhongyi Yuan (Smeal College of Business, PSU)
+<td>
+
+
+<!-- <tr><td> May 2-->
+<!-- <td> -->
+
+<!-- <td>-->
+
+
+</table>
+</center>
+
+</body>
+</html>

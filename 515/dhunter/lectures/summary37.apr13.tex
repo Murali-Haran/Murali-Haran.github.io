@@ -1,0 +1,105 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Apr.~13}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+Review Xiaotian's comments from HW \#9.
+\item 
+Only 1 more homework!  (Only best 10 out of 11 grades will count.)
+\item
+Tentative take-home final plan:  The exam will be available on Saturday, Apr.~21 and due
+at 5:00pm on Wednesday, May~2.
+\end{itemize}
+\end{frame}
+
+
+\startframe{Markov chain Monte Carlo}
+What do we mean by the transition ``matrix'' $P(x,y)$?
+\begin{itemize}
+\item For continuous-state case, use instead $P(x, A)$.
+\item For {\it Markov transition density} $k(y\mid x)$, 
+\[
+P(x,A) = \int_A k(u\mid x) \, du.
+\]
+\end{itemize}
+\notes{
+Technically, the sets $A\subset \Omega$ have to be measurable; however, this
+is not a detail we will focus on in 515.
+}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+For continuous-state case,
+\begin{itemize}
+\item A stationary {\em density} $\pi(x)$ satisfies
+\[
+\pi(y) = \int k(y \mid x) \pi(x)\, dx \quad\mbox{for all $y$}
+\]
+\item Notice analogy to $\pi_j = \sum_i P_{ij} \pi_i$
+\end{itemize}
+\notes{In Chapter 4, the state space was discrete and so we
+dealt with probability mass functions, transition probability matrices, and
+sums.  Now, the state space is continuous and so we have densities, transition
+densities, and integrals.}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+If our continuous-time Markov chain with stationary $\pi$ is:
+\begin{itemize}
+\item $\pi$-irreducible,
+\item Aperiodic,
+\item Harris recurrent,
+\end{itemize}
+Then $\| P^n(x, \cdot) - \pi(\cdot) \| \to 0$ for all $x$ and 
+$\frac1n\sum_i g(X_i)\stackrel{\rm as}{\to} E_\pi g(X)$.
+\notes{
+The first convergence is convergence in total variation distance; another
+way to write it is
+\[
+\sup_A | P^n(x, A) - \pi(A) | \to 0 
+\]
+for all $x$ as $n\to\infty$.  For the second convergence, we need the 
+integrability condition $E_\pi |g(X)| <\infty$.
+}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+For concise definitions of\ldots
+\begin{itemize}
+\item $\pi$-irreducible
+\item Aperiodic
+\item Harris recurrent
+\end{itemize}
+\ldots see p.~1711 of Tierney (1994, {\it Annals of Statistics})
+\notes{
+We actually looked at this page of the Tierney paper, which is a very highly cited paper.
+}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+What about burnin?
+\begin{itemize}
+\item What is it?  
+\item Is it necessary?
+\end{itemize}
+Check out Jones and Hobert (2001, {\it Stat. Sci.})
+\notes{
+We have not yet discussed this slide, but we did look at the Jones and Hobert paper,
+so I'm including this slide in order to give the reference.
+}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+
+
+

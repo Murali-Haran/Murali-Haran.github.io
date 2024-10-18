@@ -1,0 +1,154 @@
+\documentclass[12pt]{article}
+
+\setlength{\topmargin}{-.75in}
+\setlength{\oddsidemargin}{.0in}
+\setlength{\evensidemargin}{.0in}
+\setlength{\textheight}{9.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\parindent}{0in}
+
+\usepackage[sort,longnamesfirst]{natbib}
+\usepackage{amsmath}%
+\newcommand{\suc}{\mbox{ succeeds }}
+\newcommand{\fai}{\mbox{ fails }}
+\begin{document}
+%\pagestyle{empty}
+\begin{center}
+{\bf  Midterm STAT 515, Penn State Statistics}\\ 
+{March 6, 2015.}
+\end{center}
+\begin{flushleft}
+Name: %SOLUTIONS
+\end{flushleft}
+
+\noindent (1) Show all your work for full credit.\\
+(2) When possible, draw a box around your final answer to each question.\\
+(3) You may leave your answer unsimplified, e.g. $0.7^{4} \frac{18!}{4!8!}, 14 e^{-23}, \sum_{i=1}^n \frac{i}{3^i}$.
+\begin{enumerate}
+
+%% Markov chains: time reversibility, branching processes
+\item Consider a Markov chain on a finite state space
+  $\Omega=\{1,2,\dots,n\}$. Now assume that the chain has a symmetric
+  transition probability matrix $P$ and that $P_{ij}>0$ for all
+  $i,j\in \Omega$. Hint: read all parts of this problem before working
+  on it.
+\begin{enumerate}
+\item Show that this Markov chain has a unique stationary distribution
+  $\pi$ that is (discrete) uniform on $\Omega$. [3pts]
+\item Assume the Markov chain has been running for infinitely long. Is
+  it time reversible?  Justify your answers, verifying
+  all necessary properties. [3pts]
+\item Is $\pi$ also the limiting distribution of the chain? Why? [2pts]
+\end{enumerate}
+  % {\it Soln:} Easy to show that the chain is irreducible. Consider $i,j \in \Omega$ with $i< j$. Paths with positive probability: $i\rightarrow i+1 \rightarrow \dots j$, and $j\rightarrow j-1 \rightarrow \dots i$. \\
+  % Since $P_{ii}>0$ chain is aperiodic. This is a finite state,
+  % irreducible chain so all states are positive recurrent. Hence, chain
+  % is irreducible and ergodic so stationary distribution $\pi$ is
+  % unique and also the limiting distribution of chain. Remains to find
+  % $\pi$.  Easy to see that detailed balance condition holds for $\pi =
+  % (1/n,1/n,\dots, 1/n)$, that is $\pi_i P_{ij} = \pi_j P_{ji} \forall
+  % i,j \in \Omega$ when $\pi = (1/n,1/n,\dots, 1/n)$. Hence the
+  % discrete uniform distribution on $\Omega$ is the stationary and
+  % limiting distribution of the Markov chain.
+
+\newpage
+
+% Basic Markov chain theory problem: stationarity, ergodic thm., irreducibility, periodicity, etc.
+%\item An individual possesses 3 umbrellas, which she
+\item A professor possesses 2 umbrellas, which she employs in going
+  from her home to office and vice-versa (office to home). If she is
+  at home at the beginning of a day and it is raining, then she will
+  take an umbrella with her to the office, provided there is one to be
+  taken.  If it is not raining, then she never takes an umbrella. She
+  does the same thing when she leaves the office. Assume that the
+  probability of rain at the beginning of the day (also at the end of
+  the day), $p$, is independent of rain on other days.
+\begin{enumerate}
+\item Define a Markov chain model for the number of umbrellas she has
+  at her {\it current} location. E.g. if she has 0 umbrellas
+  now, at the next location she will definitely have 2 umbrellas (since both are at the next location). [3pts]
+%\item Is this chain irreducible? Explain your answer. [1pts]
+%\item What is the period of each state? Explain your answer. [2pts]
+%\item State if each state is recurrent or transient. Explain your answer. [2pts]
+\item In the long run, what fraction of the time will she get wet?
+  (You may assume that the chain is irreducible, positive recurrent
+  and apeiodic.) [2pts]
+\end{enumerate}
+% Solution: (a) Each state of the Markov chain corresponds to the number of umbrellas she has at her current location so 
+% \begin{equation*}
+%   P=
+%   \begin{bmatrix}
+%     0 & 0 & 1 \\
+%     0 & 1-p & p \\
+%     1-p & p & 0
+%   \end{bmatrix},
+% \end{equation*}
+% % (b) Yes, it is irreducible since there is a positive probability of getting from $i$ to $j$ for any $i,j\in \{0,1,2\}$ (need to show details). 
+% % (c) Since chain is irreducible, and periodicity is a class property, suffices to note that state 1 is aperiodic (since we can go from 1 to 1 in a single step). Hence all states are aperiodic (they have period 1).\\
+% % (d) This is an irreducible finite state Markov chain. Hence all states are recurrent by a theorem from class.\\
+% (b) Solve ergodic equations to get stationary probability of being in state 0: $\pi_o=\frac{1-p}{3-p}.$ Hence, fraction of time she will get wet = probability it rains $\times$ probability she doesn't have an umbrella with her = $p\pi_0=\frac{p(1-p)}{3 - p}$.
+
+\newpage
+
+%% Poisson process problem http://wwwhome.math.utwente.nl/~litvakn/ISP/
+% \item Suppose that print jobs arrive at a network printer with independent and
+% exponentially distributed inter-arrival times with parameter 10 per hour. It
+% takes the printer exactly 6 seconds to print each page. The sizes of the jobs
+% are i.i.d.\ and have a Poisson distribution with a mean of 2 pages.
+% \begin{enumerate}
+% \item What is the probability that a print job arrives while the previous job is
+%    not finished, when this previous job consists of 6 pages? (Assume that the
+%    printing of this previous job started immediately after its arrival). [2pts]
+% % \item What is the expected arrival time of the first job after 12.00 hours, when
+% %    the previous job arrived at 11.58 hours?
+% \item Let $M(t)$ be the number of print jobs consisting of more than 3 pages that
+%    arrive in a time interval $(0,t]$. What is $P (M (t) = m)$ for $m\in \{0,1,2,\dots \}$? [3pts]
+% \end{enumerate}
+\item A car mechanic is only able to work on one car at a time.
+  Suppose the amount of time he takes to work on each car is an
+  exponential random variable with mean 30 minutes, and that these
+  times are independent of each other.
+\begin{enumerate}
+\item Suppose there are always more cars to work on than the mechanic
+  has time, and that all customers bring in their cars at 9am. What is
+  the expected number of cars the mechanic will have completed work on
+  from 9am to 10am ? [2pts]
+\item Assume the same set up as in part (a), except now you know that
+  the mechanic completed work on exactly 3 cars between 9am and 10am.
+  What is the expected value of the time he finished work on the first
+  car ? [2pts]
+\item Now suppose he schedules two appointments, car A at 9am and car
+  B at 9:30am. Assume both cars arrive on time for their appointments.
+  Find the expected amount of time that car B spends at the mechanic's
+  shop. [3pts]
+\end{enumerate}
+% {\it Soln:} (a) Number of cars mechanic fixes is a Poisson process with $\lambda = 1/30$. Hence, if he works from 9am to 10am (for 60 minutes), the expected number of cars he will have fixed is the expected value of a Poisson r.v. with expectation $\lambda\times 60$ = 2.\\
+% (b) Let times of completion for the three cars be $X_1,X_2,X_3$. The question is asking what $E(X_1 \mid N(60) = 3)$ is. Now the completion times for these 3 cars is Uniform(0,60) where units are in minutes. Hence $X_1$ is the minimum order statistics of three U($0,60$) random variables. It is easy to derive the cdf of $X_1$ and hence its pdf is $f(x) = \frac{1}{20} (1 - \frac{x}{60})^2,\: x\in (0,60)$  and $E(X_1 \mid N(60) = 3)$ = 15.\\
+% (c) Condition on whether car A is done by 9:30am or not. Let
+% completion time for car A be $X_A$. If $X_A < 30$, expected time for
+% car B to be done is simply 30 minutes.  If $X_A >30$, by
+% memorylessness of exponential r.v.s, expected additional time for car
+% A is 30 minutes and time for completion for car B is therefore 30
+% minutes + 30 minutes (expected value for car B to be done after
+% mechanic starts working on it.) Hence, expected amount of time car B
+% spends at the mechanic's shop is:
+% $$ 30\times P(X_A <30) + (30 +30)\times P(X_A \geq 30) = 30(1-e^{-1}) + 60e^{-1} = 30 + 30e^{-1}. $$
+
+\newpage
+%% Iterated expectations/variance (compound Poisson process e.g.) (probl. 87 Ch.5, Ross)
+\item Recall that a stochastic process $\{X(t),t \geq 0 \}$ is said to be a compound Poisson process if it can be represented as $X(t)=\sum_{i=1}^{N(t)} Y_i,\: t\geq 0$ where $\{N(t),t\geq 0\}$ is a Poisson process with rate $\lambda$ and $\{Y_i,i \geq 1 \}$ is a family of independent and identically distributed random variables that is also independent of $\{N(t),t\geq 0\}$. Let $\mu_Y=E(Y_i)$  and $\sigma_Y^2 = $Var$(Y_i)$ for $i=1,2,\dots$ 
+\begin{enumerate}
+%\item Show that this process has independent increments.
+\item Find Var($X(t)$). [2pts]
+\item Find Cov$(X(t), X(t+s))$, where $t \geq 0,\: s >0$. Hint: it may be useful to use the fact that this process has independent increments. [3pts]
+\end{enumerate}
+% {\it Soln:} (a) Use conditional variance formula, $V(X(t)) = E(V(X(t) \mid N(t)=n)) +  V(E(X(t)) \mid N(t)=n) = \mu_Y^2 \lambda t + \lambda t \sigma_Y^2 $.
+
+% (b) To use the independent increments property, rewrite Cov$(X(t), X(t+s))$ = Cov$(X(t), X(t+s)-X(t) + X(t))$ = Cov($X(t), X(t)$) + Cov($X(t), X(t+s)-X(t)$)  = Var($X(t)$) + 0 = answer from part (a).
+
+\end{enumerate}
+
+
+
+\end{document}
+

@@ -1,0 +1,130 @@
+---
+title: "Homework 6 due Tuesday April 4 at 10am"
+author: "Your name and SID"
+output: html_document
+---
+
+### (1) State College temperature data (GHCN)
+We now return to the State College temperature data set from a previous homework. Read it in again from 
+http://www.stat.psu.edu/~mharan/380/data/tempGHCN/DailyTempSCE20022016.csv
+As you will recall, this data set has daily temperature data for State College, PA. Now that you know a lot more about string manipulation, I would like you to carry out the exercise I asked you to think about on that homework. Specifically, write code to 
+
+(a) Create a new data set using daily mean temperatures and translate it into monthly temperatures that is in the following format, with three columns: Month Year AverageTemp
+Months should be 1-12 for January-December.
+
+(b) Once you have this data set ready plot the monthly average temperature over the entire length of the data set. That is, on the x-axis plot the months (numbered 1, 2, 3.... 12, 13, 14,...), while on the y-axis plot the monthly averages.
+
+### (2) Twitter data
+
+We will use a small sample of the tweets that you will use later. Load them into your session with
+
+```{r}
+load(url("http://sites.stat.psu.edu/~mharan/380/data/testTweets.rda"))
+```
+
+Explore the data frame. How many variables does it have, what's the class of each, and how many tweets are included?
+
+```{r eval=FALSE}
+str(testTweets)
+```
+
+#### Retweets
+
+The text of the tweet is in the variable `Ttext` in the data frame. Some of these tweets are retweets. You can tell that they are retweets because the begin with an RT. Create a logical vector that is TRUE if the tweet is a retweet. Call the vector `RT`:
+
+```{r error=TRUE, eval=FALSE}
+RT = 
+```
+
+#### When the tweet was sent
+
+We are interested in the hour of the day that the tweet was sent. The day, hour, minute, second, and year are 
+provided in `Tdate`.
+
+Use regular expressions to extract the hour of the day that the tweet was sent. Make sure that you save the hour in a numeric vector called `hr`.
+
+```{r, error = TRUE,  eval=FALSE}
+hr = 
+```
+
+#### Hash Tags
+
+Can you find which tweets contain a hashtag? Hashtags begin with #, and do not include punctuation or blanks. Create a logical vector called `aHash` that is TRUE if a tweet contains 1 or more hashtags. Be sure that it doesn't consider a "#" on its own as a hash tag. Call this logical vector `anyHash`
+
+```{r, error=TRUE, eval=FALSE}
+anyHash = 
+```
+
+The `anyHash` logical should be 
+```{r, eval=FALSE}
+[1] FALSE  TRUE  TRUE  TRUE FALSE
+```
+
+
+Use `gregexpr` to find the starting and ending point of the hash tags in the tweets that have a hash tag. Check that you correctly identify the starting point and length of the match. For example, one tweet contains "...  #MAGA. ..." and you do not want to include the period as part of the tag.
+Also, be sure that your call finds all of the hashtags present in the tweet (some tweets have 2 or 3). Save this information in `hashLocs` 
+
+```{r, error=TRUE}
+hashLocs = gregexpr(pattern = "PUT YOUR PATTERN HERE",
+                    testTweets$Ttext)
+```
+
+This call to `gregexpr` returns a list. The 1st and 5th elements should be a vector consisting of -1.
+The third element is a numeric vector of length 2 with values 71 and 87 and an attribute called `match.length` of 15 and 8. 
+
+We can use `hashLocs` to extract the hash tags with `substr`. The following code does that for us.
+
+```{r, error=TRUE}
+hashtagList = 
+  mapply(function(x, sta) {
+    substr(rep(x, length(sta)), 
+           start = sta, 
+           stop = sta + attributes(sta)$match.length - 1)
+  },
+         x = testTweets$Ttext,
+         sta = hashLocs)
+names(hashtagList) = NULL
+hashtagList
+```
+
+The `hashtagList` is a list of 5-elements. The first and fifth are empty strings. The second is "#MAGA", and the 3rd and 4th each have 2 hashtags:  "#BigLeagueTruth" and "#Debates" for the 3rd, and "#TrumpTrain" and "#Debates2016" for the 4th.
+
+### (3) Reading in real Twitter data
+
+This problem gets you started with extracting features from a sample of tweets from @RealDonaldTrump. These tweets cover the period from 21 Jan through 11 Oct 2016.  In addition to the tweet itself, twitter also provides meta information about the tweet. This information includes the date of the tweet and the type of device on which the tweet was made.
+
+There is a conjecture that @RealDonaldTrump tweets from an Android are different from tweets from an iPhone. The goal is to investigate this conjecture. And some say that Donald Trump himself uses only one of these devices.
+
+To study this conjecture, we will later create the following variables from the tweets and their meta data:
+
+* device on which the tweet was sent -- `dev`, factor with levels, Android, iPhone, and Other.
+* number of characters in the tweet -- `numC`, numeric
+* number of words in the treat (ok to count a url as a word) -- `numW`, numeric
+* indicator for whether the tweet begins with a quotation mark -- `beginQ`, factor
+* indicator for whether the tweet begins with RT (meaning a retweet) -- `rt`, factor
+* indicator for whether the tweet contains a link -- `link`, factor
+* number of hashtags in the tweet -- `numHT`, numeric
+* number of twitter usernames in the tweet -- `numAt`, numeric
+* hour of the day the tweet was sent -- `hr`, numeric
+
+In addition, we take the 5 most popular hashtags and the 5 most popular usernames and create factors for each that indicate whether that hashtag or username appears in the tweet. I have provided these for you in a data frame at
+"http://sites.stat.psu.edu/~mharan/380/data/topHashAndAt.rda"
+
+#### The Data
+
+The data are in a json file and can be read into R with the `RJSONIO` package. After you install and load the package, read in the data with
+
+```{r load, eval=FALSE}
+library(RJSONIO)
+tweetLines = readLines(url("http://sites.stat.psu.edu/~mharan/380/data/realDonaldTrump.json"))
+tweetList = fromJSON(paste(tweetLines, collapse = " "))
+names(tweetList) = NULL
+```
+
+Explore the list structure. Examine the top of each element to find where the tweet text, time, and device
+appear. Extract the text of the tweets and place them in a character vector called `tweets`. 
+
+```{r tweets, error=TRUE, eval=FALSE}
+tweets = 
+```
+

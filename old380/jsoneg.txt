@@ -1,0 +1,13 @@
+Faculty Directory
+http://statserv.science.psu.edu/stat/fw_faculty-directory.json
+ 
+IMDB Game of Thrones
+http://www.omdbapi.com/?i=tt0944947
+http://www.omdbapi.com/?i=tt0944947&Season=1
+ 
+PSU Campus Map
+http://www.map.psu.edu/places.geojson
+
+Use JSON Viewer on chrome to view things in convenient format.
+
+

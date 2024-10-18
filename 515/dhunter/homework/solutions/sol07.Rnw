@@ -1,0 +1,385 @@
+\documentclass{article}
+\usepackage{url}
+\usepackage{amsmath,bm}%
+\usepackage{amsfonts}%
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-.5in}
+\setlength{\evensidemargin}{-.5in}
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{9in}
+
+\newcommand{\beaa}{\begin{eqnarray*}}
+\newcommand{\eeaa}{\end{eqnarray*}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\def\E{\mathop{\rm E\,}\nolimits}
+\def\Var{\mathop{\rm Var\,}\nolimits}
+\def\Cov{\mathop{\rm Cov\,}\nolimits}
+\def\Corr{\mathop{\rm Corr\,}\nolimits}
+\def\logit{\mathop{\rm logit\,}\nolimits}
+\newcommand{\eid}{{\stackrel{\cal{D}}{=}}}
+\newcommand{\cip}{{\stackrel{{P}}{\to}}}
+\def\bR{\mathbb{R}}     % real line
+
+\begin{document}
+
+\begin{center}
+{\bf STAT 515}
+
+{\bf Homework \#7 WITH SOLUTIONS}
+
+\end{center}
+
+\begin{enumerate}
+
+  \item Customers arrive at a post office at a Poisson rate of 8 per hour. There
+  is a single person serving customers, and service times are exponentially
+  distributed (and independent) with mean 5 minutes. Suppose that an arriving
+  customer will decide to wait in line if and only if there are two or fewer
+  people already in line.
+  
+    \begin{enumerate}
+
+    \item In the long run, what fraction of the time will there be at least 1
+    customer in the post office? Find the answer in two different ways:
+
+      \begin{enumerate}
+      
+      \item Write out the rate matrix (or generator) for the continuous-time
+      Markov chain and find the stationary distribution using the generator.
+      \begin{quotation}{\bf Solution:}
+      Although there was a bit of a misunderstanding about how many people
+      should be allowed in the post office because of my ambiguous wording, the intent
+      was to have 5 possible states, namely, 0 through 4 total people at the post office.  Here
+      is the rate matrix with states 0 through 4 in order:
+      \[
+      R = \begin{bmatrix}
+      -8 & 8 & 0 & 0 & 0 \\
+      12 & -20 & 8 & 0 & 0 \\
+      0 & 12 & -20 & 8 & 0 \\
+      0 & 0 & 12 & -20 & 8 \\
+      0 & 0 & 0 & 12 & -12
+      \end{bmatrix}.
+      \]
+      The stationary distribution $\pi$ satisfies $\pi^\top R=0$, which means that $\pi$
+      is an eigenvector of $R^\top$ whose eigenvalue equals zero:
+<<>>= 
+R <- matrix(c(-8, 12, 0, 0, 0, 8, -20, 12, 0, 0, 0, 8, -20, 
+             12, 0, 0, 0, 8, -20, 12, 0, 0, 0, 8, -12),
+         5, 5)
+e <- eigen(t(R))
+pi <- e$vec[, abs(e$val)< 1e-15]
+pi <- pi/sum(pi)
+@
+     We want $1-\pi_0$:
+<<>>=
+1 - pi[1]
+@
+     \ 
+      \end{quotation}
+      
+      \item Use the fact that this is a birth-death process to find the
+      stationary distribution that satisfies the detailed balance equations.
+      \begin{quotation}{\bf Solution:}
+      From detailed balance, we get the equations
+      $\pi_1 = 8\pi_0/12$, 
+      $\pi_2 = 8\pi_1/12$, 
+      $\pi_3 = 8\pi_2/12$, and 
+      $\pi_4 = 8\pi_3/12$.  Since the $\pi$ vector must sum to one, we obtain
+      \[
+      \pi_0 = \left( 1 + \frac23 + \frac4{9} + \frac8{27} + \frac{16}{81}\right)^{-1} = \frac{81}{211}.
+      \]
+      Therefore, the desired answer is $1-\pi_0 = 130/211 = 0.6161$.
+      \end{quotation}
+      
+      \end{enumerate}
+      
+    \item In the long run, what is the expected number of customers in the post
+    office (in line or being served) at any given time?
+    \begin{quotation}{\bf Solution:}
+    From part (a), we know that 
+    \[
+    \pi^\top = \left( \frac{81}{211}, \frac{54}{211}, \frac{36}{211}, \frac{24}{211},
+    \frac{16}{211} \right). 
+    \]
+    Therefore, the expectation equals
+    \[
+    \frac{54}{211} + 2\times \frac{36}{211} + 3\times \frac{24}{211} 
+    + 4\times \frac{16}{211} = \frac{262}{211} = 1.242.
+    \]
+    \end{quotation}
+    
+    \item What is the probability that an arriving potential customer will
+    decide to leave because there are already 3 people in line?
+    \begin{quotation}{\bf Solution:}
+    Since the indicator of ``next event is a customer arrival'' is independent of the
+    rest of the Markov chain, the answer to this question is simply
+    $\pi_4$, the limiting probability of 3 people in line.  This equals $16/211=0.0758$.
+    \end{quotation}
+    
+    \item If a new cash register is installed that decreases the mean service
+    time to 4 minutes, how many more customers per hour, on average, can be
+    served by this post office?
+    \begin{quotation}{\bf Solution:}
+    The wording of this question appears to be ambiguous.  In one interpretation, we recalculate
+    $\pi_4$ using the new value $\mu=15$:
+      From detailed balance, we get the equations
+      $\pi_1 = 8\pi_0/15$, 
+      $\pi_2 = 8\pi_1/15$, 
+      $\pi_3 = 8\pi_2/15$, and 
+      $\pi_4 = 8\pi_3/15$.  Since the $\pi$ vector must sum to one, we obtain
+      \[
+      \pi_0 = \left( 1 + \frac8{15} + \frac{64}{225} + \frac{512}{3375} + \frac{4096}{50625}\right)^{-1} 
+      = \frac{50625}{103801}.
+      \]
+      This gives $\pi_4=(50625/103801)(8/15)^4 = 4096/103801$.  Since 
+      customers arrive at the rate of 8 per hour, the average number of additional customers
+      served is $8[(16/211) - (4096/103801)]=0.291$ per hour. 
+          
+       According to a different interpretation, we might consider that customers are only being 
+       served when they are actually at the service window.  Under this interpretation, the number
+       served per hour is exactly 12 whenever there is at least one person in the post office
+       under the first scenario, so we get a mean of
+       $12(130/211)$.  Under the second scenario, we obtain 
+       $15(53176/103801)$, which also yields a difference of
+       $0.291$ customers per hour.  
+       
+       At first, I was surprised that these two methods of solution give exactly the same 
+       answer!  But after some more thought, this makes sense:  The long-run rate equals
+       limit of the total number of customers divided by the total number of hours
+       as the latter goes to infinity.  For this purpose, it does not matter whether the 
+       1 to 3 people still in line at the end of the very-long time are counted among
+       the total number of customers or not, since the limit will be the same whether or
+       not the numerator is increased by 1 to 3 customers.     So evidently, my wording
+       was not quite as ambiguous as I had thought!
+      \end{quotation}
+    
+    \item The manager of the post office wants to be able to serve at least 95\%
+    of the potential customers who arrive at the post office. What mean service
+    time will attain this goal?
+    \begin{quotation}{\bf Solution:}
+    Here, we want $\pi_4$ to equal 0.05.  If $x$ is the number of customers per hour, then
+    \[
+    \pi_4 = \left( \frac8x \right)^4 \left( 1 + \frac8x + \frac{64}{x^2} +
+    \frac{512}{x^3} + \frac{4096}{x^4} \right)^{-1}.
+    \]
+    With a bit of simplification, we find that the equation $\pi_4=1/20$ is the same as
+    \[
+    x^4+8x^3+64x^2+512x  = 19(4096).
+    \]
+    Since the left hand side is a strictly increasing function when $x$ is positive, there is
+    a unique positive solution, which may be found numerically.  This is easy to do using
+    simple trial-and-error, but an alternative uses
+    the {\tt uniroot} function in R (and we know from parts (c) and (d) that the answer lies
+    between 12 and 15):
+<<>>=
+print(r <- uniroot(function(x) x^4+8*x^3+64*x^2+512*x-19*4096, lower=12, upper=15)$root)
+@
+    We now divide this number into 60 to obtain a mean service time, in minutes, of 
+<<>>=
+60/r
+@
+    \end{quotation}
+    
+    \end{enumerate}
+    
+  \item Suppose that a continuous-time Markov chain $X(t)$ has rate matrix
+  \[
+  R = \begin{bmatrix}
+  -\alpha & \alpha \\
+  \beta & -\beta
+  \end{bmatrix}.  
+  \]  
+  Given positive times $s$ and $t$, calculate $\Corr[X(s), X(t)]$. Does your
+  answer depend on the starting state of the chain (i.e., value of $X(0)$)?
+  
+  (NB: The formula for $\Corr(X,Y)$ is
+  $\Corr(X,Y) = \Cov(X,Y)/\sqrt{\Var(X)\Var(Y)}$.
+  Since the correlation is invariant to linear transformations, the two
+  possible values that $X(t)$ may take do not influence your answer.)
+  \begin{quotation}{\bf Solution:}
+  If we let 0 and 1 be the two values that $X(t)$ can take, then the calculations will be 
+  simplest.  Also, let us assume that $s<t$, since we may do so without loss of generality.
+  
+  In the case $X(0)=0$, using the notation in Section 6.4 of the textbook (the example
+  about the two-state Markov chain), we obtain
+  \[
+  E X(s) = P_{01}(s), \quad \Var X(s) = P_{01}(s)P_{00}(s),  \quad
+  E X(t) = P_{01}(t), \quad \Var X(t) = P_{01}(t)P_{00}(t),
+  \]
+  and
+  \[
+  E [X(s)X(t)] = P[X(t)=1 \mid X(s)=1] P[X(s)=1] = P_{11}(t-s)P_{01}(s).
+  \]
+  Putting everything together, we obtain
+  \[
+  \Corr[X(s),X(t) | X(0)=0] = \frac{P_{01}(s) [ P_{11}(t-s) - P_{01}(t)]}
+  {\sqrt{P_{01}(s)P_{00}(s)P_{01}(t)P_{00}(t)}}.
+  \]  
+  Similarly, in the case $X(0)=1$, we obtain
+  \[
+  \Corr[X(s),X(t) | X(0)=1] = \frac{P_{11}(s) [ P_{11}(t-s) - P_{11}(t)]}
+  {\sqrt{P_{11}(s)P_{10}(s)P_{11}(t)P_{10}(t)}}.
+  \]  
+  To simplify things slightly, let us define $x=(\alpha+\beta)s$ and
+  $y=(\alpha+\beta)t$.   According to the example in Section~6.4, the
+  two correlations are
+  \begin{eqnarray*}
+  \Corr[X(s),X(t) | X(0)=0] 
+  &=& \frac{(\alpha-\alpha e^{-x})(\beta e^{x-y}+\alpha e^{-y})}
+  {\sqrt{ (\alpha-\alpha e^{-x}) (\beta+\alpha e^{-x}) 
+     (\alpha-\alpha e^{-y}) (\beta+\alpha e^{-y}) }} \\
+  &=& \frac{\beta e^{x-y} + (\alpha-\beta)e^{-y} - \alpha e^{-x-y}}
+  {\sqrt{ (1- e^{-x}) (\beta+\alpha e^{-x}) 
+     (1-e^{-y}) (\beta+\alpha e^{-y}) }}
+  \end{eqnarray*}
+  and
+  \begin{eqnarray*}
+  \Corr[X(s),X(t) | X(0)=1] 
+  &=& \frac{(\alpha+\beta e^{-x})(\beta e^{x-y}-\beta e^{-y})}
+  {\sqrt{ (\beta-\beta e^{-x}) (\alpha+\beta e^{-x}) 
+     (\beta-\beta e^{-y}) (\alpha+\beta e^{-y}) }} \\
+  &=& \frac{\alpha e^{x-y} + (\beta-\alpha)e^{-y} - \beta e^{-x-y}}
+  {\sqrt{ (1- e^{-x}) (\alpha+\beta e^{-x}) 
+     (1-e^{-y}) (\alpha+\beta e^{-y}) }}.
+  \end{eqnarray*}
+  We see that these two expressions are identical except that the
+  role of $\alpha$ and $\beta$ is switched.  This makes sense once we realize
+  that an on-off process with parameters $\alpha$ and $\beta$ is the same
+  as an off-on process with parameters $\beta$ and $\alpha$.  It also means
+  that the two correlations are the same when $\alpha=\beta$.
+  However, they are not generally the same.  One way to see this is to 
+  consider the limit of each correlation as $\alpha\to0$:
+  \[
+  \lim_{\alpha\to0}
+  \Corr[X(s),X(t) | X(0)=0] = 
+  \frac{e^{x-y}-e^{-y}}{\sqrt{(1-e^{-x})(1-e^{-y})}}
+  \]
+  and
+  \[
+  \lim_{\alpha\to0}
+  \Corr[X(s),X(t) | X(0)=1] = 
+  \sqrt{\frac{e^{x-y}-e^{-y}}{(1-e^{-x})(1-e^{-y})}}.
+  \]  
+  \end{quotation}
+  
+  \item At an amusement park, there are two video game machines. Suppose that
+  for video game $i$, each period when it is being used is exponentially
+  distributed with rate $\alpha_i$ and each period when it is not being used is
+  exponentially distributed with rate $\beta_i$, independent of the other
+  machine.
+  
+    \begin{enumerate}
+
+    \item Suppose that the vector $M(t)$ is given by
+    \[
+    M(t) = [ M_1(t), M_2(t) ] ^\top,
+    \]
+    where $M_i(t)=I\{\mbox{machine $i$ is being used at time $t$}\}$ for $i=1,
+    2$. The Markov chain $M(t)$ has four states; give its rate matrix $R$.
+    \begin{quotation}{\bf Solution:}
+    Let $0$ denote ``not being used'' and $1$ denote ``being used''.  Then
+    if we order the four states $(0,0), (0,1), (1,0), (1,1)$, we get
+    \[
+    R = 
+    \begin{bmatrix}
+    -(\beta_2+\beta_1) & \beta_2 & \beta_1 & 0 \\
+    \alpha_2 & -(\alpha_2+\beta_1) & 0 & \beta_1 \\
+    \alpha_1 & 0 & -(\alpha_1+\beta_2) & \beta_2 \\
+    0 & \alpha_1 & \alpha_2 & -(\alpha_1+\alpha_2)
+    \end{bmatrix}
+    \]
+    \end{quotation}
+    
+    \item In the long run, what proportion of time are both machines being used?
+    \begin{quotation}{\bf Solution:}
+    One way to find the long-run probability vector $\pi$ 
+    is to solve the system of equations
+    $\pi^\top R=0$.  
+    However, a simpler method is to consider the two on-off processes separately:
+    In the long run, machine $i$ spends a fraction $\beta_i/(\alpha_i+\beta_i)$ of
+    the time being used.  Since the two machines are independent, we conclude that
+    \[
+    \pi_4 = \frac{\beta_1\beta_2}{(\alpha_1+\beta_1)(\alpha_2+\beta_2)}.
+    \]
+    Incidentally, this process may be shown to be time-reversible (can you
+    see why?), which means that the detailed balance equations give yet
+    another alternative for finding the $\pi$ vector.
+    \end{quotation}
+    
+    \item When the amusement park first opens, each machine is in its unused
+    state. We can express this fact by $M_1(0)=M_2(0)=0$. Simulate 10,000
+    independent realizations of this chain, until time $t=3$, using
+    $\alpha_1=2$, $\alpha_2=3$, $\beta_1=5$, and $\beta_2=6$. From your
+    simulations, give an empirical estimate of the proportion $\mu$ of time in
+    $(0, 3]$ that the machines are used. Report a 95\% confidence interval for
+    $\mu$. How does this compare with the long-run value calculated in part (b)?
+
+    \vspace{1ex}
+    {\em To find an approximate 95\% confidence interval for a mean $\mu$ based
+    on a i.i.d.~sample of size $n$, take
+    \[
+    \hat\mu \pm 1.96 \frac{s}{\sqrt{n}},
+    \]
+    where $\hat\mu$ is the sample mean and $s$ is the sample standard deviation.
+    }
+  
+    \begin{quotation}{\bf Solution:}
+    First, we'll set up the $R$ matrix:
+<<>>=
+R <- matrix(c(-11, 3, 2, 0, 6, -8, 0, 2, 5, 0, -8, 3, 0, 5, 6, -5), 4, 4)
+@
+   Next is the sample code I wrote that simulates 10,000 copies of the Markov chain:
+<<>>=
+X <- list()  # Each item in X will consist of TWO vectors:  times and states
+             # Actually, technically, each item will be a list with two elements:
+             # A vector named times and a vector named states.
+maxTime <- 3 # This is the cutoff time.
+for (count in 1:10000) {
+  times <- 0
+  states <- 1 # Assume that we always start in state 1 at time 0
+  i <- 1 # which time/state are we currently in
+  finished <- FALSE # We'll set this to TRUE when it's time to stop.
+  while (!finished) {
+    currentState <- states[i]
+    currentTime <- times[i]
+    deltaTime <- rexp(1, rate = -R[currentState, currentState])
+    if (currentTime + deltaTime > maxTime) {
+      # Now we need to finish this chain
+      deltaTime <- maxTime - currentTime
+      finished <- TRUE
+    }
+    times <- c(times, currentTime + deltaTime)
+    possibleMoves <- (1:4)[-currentState]
+    states <- c(states, sample(possibleMoves, 1, prob=R[currentState,possibleMoves]))
+    i <- i+1
+  }
+  X[[count]] <- list(times=times, states=states)
+}
+@
+   Next, we need to figure out how much time was spent in the 4th state:
+<<>>=
+f <- function(a) { 
+  deltaTimes <- diff(a$times)
+  states <- a$states[-length(a$states)] # delete the final state, which is irrelevant
+  sum(deltaTimes[states==4])
+}
+timesInState4 <- sapply(X, f)
+@   
+    Here is a 95\% confidence interval for the true mean of the proportion of time 
+    in $(0,3]$ that is spent in the fourth state:
+<<>>=
+mean(timesInState4/3) + c(-1.96, 1.96)*sd(timesInState4/3)/100
+@
+   This is a fairly narrow confidence interval, and it is not too close to the long-term mean
+   $30/63=0.4762$.  This suggests that three time units is not long enough for the chain
+   to get close to its equilibrium state.  
+    \end{quotation}
+
+    \end{enumerate}
+
+\end{enumerate}
+
+\end{document}
+

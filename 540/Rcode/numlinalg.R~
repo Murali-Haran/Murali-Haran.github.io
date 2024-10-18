@@ -1,0 +1,281 @@
+##### August, 2015
+############################################################
+## Illustrate cost of multivariate normal generation
+## as a function of the matrix size
+############################################################
+library(MASS)
+
+N = 2000 # or 10, 50, 100, 1000
+randmean = rnorm(N)
+randmat = matrix(rnorm(N*N), N,N)
+covmat = randmat%*%t(randmat)
+
+system.time(foo = mvrnorm(n=1, mu=randmean, Sigma=covmat))
+
+############################################################
+##### Illustrate numerical instability of matrix inversion
+############################################################
+A = matrix(c(1.6,0,0,1.4/10), 2,2)
+Ainv = solve(A)
+Ainv%*%A
+
+B = matrix(c(1.6*10^308,0,0,1.4*10^(-308)), 2,2)
+Binv = solve(B)
+Binv%*%B
+
+#########################
+##### 
+#########################
+
+## Illustrate the importance of memory allocation
+## versus dynamic memory allocation (dynamic=allocate
+## new memory as needed rather than all in advance)
+
+N = 10000000 #1000000
+M = 50 # 500
+A = matrix(rnorm(N*M), N, M)
+
+## compute row sums by looping over the matrix rows
+## memory for the vector to hold row sums (rowsumvec)
+## is being allocated dynamically
+computeRowSum1 = function(mat)
+  {
+    rowsumvec = c() # initialize vector
+    for (i in 1:N)
+      rowsumvec = c(rowsumvec, sum(mat[i,])) # new row sum goes into vector
+    return(rowsumvec)
+  }
+system.time(myrowsum = computeRowSum1(A))
+
+## now memory is allocated ahead of time. Much faster!
+## is being allocated dynamically
+computeRowSum2 = function(mat)
+  {
+    rowsumvec = rep(NA, N) # create a vector of length N (number of rows)
+    for (i in 1:N)
+      rowsumvec[i] = sum(mat[i,])
+    return(rowsumvec)
+  }
+
+system.time(myrowsum2 = computeRowSum2(A))
+system.time(myrowsum3 = apply(A,1, sum))
+
+##################################
+### another example of using apply
+##################################
+N = 1000000
+myxs = rnorm(N)
+thresh = 0.3
+bar = function(xs)
+{
+  for (i in 1:N)
+    if (xs[i]>thresh)
+      xs[i] = thresh
+  return(xs)
+}
+
+quux = function(xs,thresh)
+{
+  threshfun = function(x)
+    {
+      if (x>thresh)
+        return(thresh)
+      else
+        return(x)
+    }
+  return(sapply(xs, threshfun))
+}
+
+system.time(xsnew = bar(myxs))
+system.time(xsnew2 = quux(myxs,0.3))
+
+#########################
+## example for profiling R code
+#########################
+
+## function that generates a multivariate normal
+## with covariance matrix = M*M^t where M is a matrix of N normal(0,1)
+library(MASS)
+generateMN = function(N)
+  {
+    randmean = rnorm(N)
+    randmat = matrix(rnorm(N*N), N,N)
+    covmat = randmat%*%t(randmat)
+    X = mvrnorm(n=1, mu=randmean, Sigma=covmat)
+    return(X)
+  }
+Rprof("profile1.out") # start profiling
+foo = generateMN(1000)
+Rprof(NULL) # stop profiling
+##system.time(foo = mvrnorm(n=1, mu=randmean, Sigma=covmat))
+summaryRprof(filename="Rprof.out")
+
+#########################
+## example for integrate
+#########################
+
+########################################
+# Toy example for numerical integration
+# Conditional pdf of mu
+########################################
+
+xConst = 0.7
+alphaConst = 2
+betaConst = 2
+  
+muCondtl = function(mu)
+{
+  val1 = exp(-0.5*(xConst-mu)^2)/sqrt(2*pi)
+  val2 = (mu^(alphaConst-1)*(1-mu)^(betaConst-1))/beta(alphaConst,betaConst)
+
+  return(val1*val2)
+}
+
+
+muPrior = function(mu)
+  {
+    val = (mu^(alphaConst-1)*(1-mu)^(betaConst-1))/beta(alphaConst,betaConst)
+    return(val)
+  }
+#muvals = seq(0,1,length=100)
+#plot(muvals, sapply(muvals, muCondtl))
+#lines(muvals, sapply(muvals, muPrior), col="red")
+
+########################################
+## calculate normalizing constant
+## for above function
+########################################
+
+########################################
+## Riemann integration
+########################################
+approxList = rep(NA,50)
+for (i in 1:50)
+  {
+    n = 10*i # number of intervals
+    nodesRie = seq(0,1,length=n)  ## divide up interval into n pieces
+    muCondtlEval= sapply(nodesRie, muCondtl)
+    approxInt = sum(muCondtlEval)/n
+    approxList[i] = approxInt
+  }
+plot(approxList, ylim=c(0.34,0.4))
+abline(h=0.3818935)
+
+## Using R's quadrature function
+integrate(muCondtl, 0, 1)
+#0.3818935 with absolute error < 4.2e-15
+## So approximation to normalizing constant is 1/0.3818935
+
+muCondtlNormalized = function(mu)
+  {
+    return(muCondtl(mu)/0.3818935)
+  }
+integrate(muCondtlNormalized,0.5,1)
+## 0.5184336 with absolute error < 5.8e-15
+
+###############################################
+## Approximating the sampling distribution of 
+## skew (asymmetry) and kurtosis ("peakiness")
+## skew = third central moment/standard dev^3
+## kurtosis = fourth central moment/sd^4
+## E(skew) = 0, E(kurtosis)=4
+###############################################
+M = 1000000 # Monte Carlo sample size
+N = 100 # size of N(0,1)
+
+sampleskew=rep(NA, M)
+samplekurt=rep(NA, M)
+for (i in 1:M)
+{
+  normvars = rnorm(N, 0,1)
+  samplemean=mean(normvars)
+  samplesd=sd(normvars)
+  sampleskew[i]=mean((normvars-samplemean)^3)/(samplesd^3)
+  samplekurt[i]=mean((normvars-samplemean)^4)/(samplesd^4)
+}
+
+hist(sampleskew, main=paste("Sample skew for ",N," N(0,1)"))
+abline(v=0.6,col="red")
+sum(sampleskew>0.6)/M
+
+hist(samplekurt, main=paste("Sample kurtosis for ",N," N(0,1)"))
+abline(v=0.5,col="red")
+sum(samplekurt>0.5)/M
+
+###############################################
+## Approximating an expectation
+###############################################
+
+
+######################################################################
+### function to plot estimate of expected value (versus sample size)
+### and estimate of MCse (versus sample size)
+######################################################################
+## Note: can replace below with cumsum function
+cummean = function(vec)
+{
+  cummean = rep(NA, length(vec))
+  cummean[1]=vec[1]
+  for (i in 2:M)
+    cummean[i] = (i-1)/i*cummean[i-1] + vec[i]/i
+  return(cummean)
+}
+
+cummcse = function(vec)
+{
+  MINLEN=50
+  veclen=length(vec)
+  if (veclen<=MINLEN)
+    stop("Vector not long enough, should be greater than",MINLEN,"\n")
+  cummcse = rep(NA, veclen-MINLEN)
+  cummcse[1]=sd(vec[1:MINLEN])/MINLEN
+  k=1
+  for (i in (MINLEN+1):veclen)
+    {
+      k = k+1
+      cummcse[k] = sd(vec[1:i])/i
+    }
+  return(cummcse)
+}
+
+plotcum=function(vec)
+  {
+    par(mfrow=c(2,1))
+    cumvec = cummean(vec)
+    mcsevec = cummcse(vec)
+    plot(seq(1,M), cumvec, main="Estimate of expectation versus sample size")
+    plot(mcsevec, main="Estimate of standard error versus sample size")
+    
+    par(mfrow=c(1,1))
+  }
+
+M = 1000 # Monte Carlo sample size
+######################################################
+##### from above, expectation of sample kurtosis
+##### for logNormal(0,1) with N=15 samples
+######################################################
+N=15
+samplekurt=rep(NA, M)
+for (i in 1:M)
+{
+  lognormvars = exp(rnorm(N, 0,1))
+  samplemean=mean(lognormvars)
+  samplesd=sd(lognormvars)
+##  sampleskew[i]=mean((lognormvars-samplemean)^3)/(samplesd^3)
+  samplekurt[i]=mean((lognormvars-samplemean)^4)/(samplesd^4)
+}
+plotcum(samplekurt)
+
+#### expectation of a t-5 r.v.
+tvars = rt(M, 5)
+plotcum(tvars)
+## tcum = cummean(tvars)
+## tmcse = cummcse(tvars)
+## par(mfrow=c(2,1))
+## plot(seq(1,M), tcum, main="Estimate of expectation versus sample size")
+## plot(tmcse, main="Estimate of standard error versus sample size")
+
+#### expectation of a Cauchy does not exist!!
+cauchyvars = rcauchy(M, 0,1)
+plotcum(cauchyvars)
+

@@ -1,0 +1,134 @@
+This is pdfTeX, Version 3.14159-14h-released-20010417 (Web2C 7.3.3.1) (format=pdflatex 2005.4.1)  14 JUN 2005 20:24
+**\nonstopmode\input{batchmeans.tex}
+(./batchmeans.tex (/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2001/04/21 v1.4e Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size11.clo
+File: size11.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf/tex/latex/natbib/natbib.sty
+Package: natbib 1999/05/28 7.0 (PWD)
+\bibhang=\skip43
+\bibsep=\skip44
+LaTeX Info: Redefining \cite on input line 508.
+\c@NAT@ctr=\count87
+)
+(/usr/share/texmf/tex/generic/misc/psfig.sty
+\@unused=\write3
+\ps@stream=\read1
+\p@intvaluex=\dimen103
+\p@intvaluey=\dimen104
+
+psfig/tex 1.10-dvips
+) (/usr/share/texmf/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip45
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/share/texmf/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks14
+\ex@=\dimen105
+))
+(/usr/share/texmf/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen106
+)
+(/usr/share/texmf/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count88
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count89
+\leftroot@=\count90
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count91
+\DOTSCASE@=\count92
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen107
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
+\dotsspace@=\muskip10
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
+\tag@help=\toks15
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
+\andhelp@=\toks16
+\eqnshift@=\dimen108
+\alignsep@=\dimen109
+\tagshift@=\dimen110
+\tagwidth@=\dimen111
+\totwidth@=\dimen112
+\lineht@=\dimen113
+\@envbody=\toks17
+\multlinegap=\skip46
+\multlinetaggap=\skip47
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+) (./batchmeans.aux)
+\openout1 = `batchmeans.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--35
+
+ []
+
+[1
+
+{/usr/share/texmf/dvips/config/pdftex.map}] (./batchmeans.aux) ) 
+Here is how much of TeX's memory you used:
+ 1301 strings out of 50453
+ 14034 string characters out of 690529
+ 66352 words of memory out of 1500001
+ 4349 multiletter control sequences out of 10000+25000
+ 7658 words of font info for 28 fonts, out of 400000 for 1000
+ 14 hyphenation exceptions out of 10000
+ 28i,4n,20p,273b,165s stack positions out of 3000i,500n,3000p,50000b,5000s
+</usr/share/tex
+mf/fonts/type1/bluesky/cm/cmr6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cms
+y8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/font
+s/type1/bluesky/cm/cmex10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi8.pf
+b></usr/share/texmf/fonts/type1/bluesky/cm/cmsy10.pfb></usr/share/texmf/fonts/t
+ype1/bluesky/cm/cmmi10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr10.pfb><
+/usr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb>
+Output written on batchmeans.pdf (1 page, 41293 bytes).

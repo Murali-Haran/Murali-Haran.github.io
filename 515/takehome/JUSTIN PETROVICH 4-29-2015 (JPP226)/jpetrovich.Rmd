@@ -1,0 +1,251 @@
+---
+title: "STAT 515 Take-Home Final"
+author: "Justin Petrovich"
+date: "Tuesday, April 28, 2015"
+output: pdf_document
+---
+
+Problem 1:\
+(a)
+\begin{center}
+\begin{itemize}
+\item Start with $\beta_1^{(0)}=0$. This initial value was chosen because it is the mean of the prior distribution of $\beta_1$.
+\item Generate a proposal $\beta_1^{\ast}\sim N(\beta_1^{(t)},25)$. This is a Random Walk Metropolis update. The tuning parameter, $\tau^2$, was chosen as 25 after many trial runs, based on producing a chain with a reasonable acceptance rate, less autocorrelation, better MCMC standard error of the estimate, and larger ESS.
+\item Set $\beta_1^{(t+1)}=\beta_1^{\ast}$ with probability $min\big\{1,\frac{h(\beta_1^\ast)}{h(\beta_1^{(t)})}\big\}$ where h, the unnormalized target density, is $h(\beta_1)\propto\pi(\beta_1|Y,X)\propto \Big[\prod_{i=1}^n \frac{\lambda}{2}exp(\frac{\lambda}{2}[2(\beta_0+\beta_1 X_i)+\lambda\sigma^2 -2Y_i])erfc(\frac{(\beta_0+\beta_1X_i)+\lambda\sigma^2-Y_i}{\sqrt{2\sigma^2}})\Big]\frac{1}{\sqrt{200\pi}}exp(\frac{-\beta_1^2}{200})$. In the algorithm, we actually accept with probability $min\big\{0,logh(\beta_1^{\ast})-logh(\beta_1^{(t)})\big\}$ by simply using the log of the target density for cumputational efficiency. Otherwise, set $\beta_1^{(t+1)}=\beta_1^{(t)}$.
+\item Loop back to step (or bullet) 2
+\end{itemize}
+\end{center}
+
+(b)
+\begin{center}
+\begin{tabular}{ |p{3cm}|p{3cm}|  }
+ \hline
+ \multicolumn{2}{|c|}{Estimates For $\beta_1$} \\
+ \hline
+ $\widehat{E(\beta_1|Y,X)}$ & MCMC s.e.\\
+ \hline
+ 0.02167643   & 0.02119474 \\
+ \hline
+\end{tabular}
+\end{center}
+(c)
+\begin{center}
+\begin{tabular}{ |p{3cm}|p{3cm}|  }
+ \hline
+ \multicolumn{2}{|c|}{95\% Credible Interval Estimate For $\beta_1$} \\
+ \hline
+ 2.5\%  & 97.5\% \\
+ \hline
+ -19.61332   & 19.59459  \\
+ \hline
+\end{tabular}
+\end{center}
+(d)\
+Below is a plot of the estimated posterior density of $\beta_1$. The red vertical lines represent the boundaries of the 95% credible interval, matching the values provided in the table above.
+```{r,echo=FALSE,fig.height=3,fig.width=3}
+regression1=read.table("http://sites.stat.psu.edu/~mharan/515/hwdir/EMG1.dat")
+colnames(regression1)=c("X","Y")
+X=regression1$X
+Y=regression1$Y
+
+#Source in functions for pdf of EMG, plotting EMG pdf, and random generation of EMG variables
+source("http://sites.stat.psu.edu/~mharan/515/hwdir/emg.R")
+
+## Posterior is proportional to the likelihood of Beta_1 and X times the prior of Beta_1
+## The log of the posterior is used for stability of computations
+log.posterior=function(X,Y,b1)
+{
+  b0=5
+  lambda=0.4
+  sigma=1
+  sum(dexpgauss(Y,mu = (b0+b1*X),sigma = sigma,lambda = lambda,log = TRUE))
+                    -(1/2)*log(200*pi)-b1^2/200
+}
+
+#MCMC algorithm using Metropolis updates
+MCMC=function(n.sims,tau.2,b1.init) 
+{
+  ## Create an empty vector in which to store the chain of Beta_1 values
+  ## Also create an empty vector for the accepted values, which will be useful for acceptance rate
+  #Choose an initial value for Beta_1, say Beta_1=0 since E(Beta_1)=0 based on its prior distr.
+  mchain=rep(NA,n.sims)
+  accepted=rep(0,n.sims)
+  mchain[1]=b1.init
+  
+  for(i in 1:(n.sims-1))
+  {
+    ## Using a Random Walk M-H algorithm, the chosen proposal distribution is q~N(Beta_1.current,tau^2)
+    ## So Beta_1.proposal~N(Beta_1.current,tau^2), where tau^2 is the tuning parameter
+    b1.curr=mchain[i]
+    b1.prop=rnorm(1,mean = b1.curr,sd = tau.2)
+    
+    ## Acceptance probability is alpha=min(1, h(b1.prop)/h(b1.curr))
+    ## So log(alpha)=min(0,log(h(b1.prop))-log(h(b1.curr)))
+    log.prob=min(0,(log.posterior(X,Y,b1.prop)-log.posterior(X,Y,b1.curr)))
+    
+    ## Draw a U~Uniform(0,1) r.v. and accept proposal Beta_1 if U<alpha, or log(U)<log(alpha)
+    ## Otherwise, set new Beta_1 value as the current Beta_1 value
+    if(log(runif(n = 1,min = 0,max = 1))<log.prob)
+    {
+      mchain[i+1]=b1.prop
+      accepted[i+1]=1
+    }
+    else
+    {
+      mchain[i+1]=b1.curr
+    }
+  }
+  accept.rate=sum(accepted)/n.sims
+  return(list(mchain=mchain,accept.rate=accept.rate))
+}
+
+## Source in functions for calculating consistent batch means, ESS, etc.
+source("http://www.stat.psu.edu/~mharan/batchmeans.R")
+
+set.seed(1)
+chain.ex5=MCMC(100000,25,0)
+mchain5=chain.ex5$mchain
+plot(density(mchain5),main="Estimated Posterior Density of Beta_1")
+abline(v=(quantile(mchain5, c(.025, .975))), lty=2, lwd=3,col="red")
+
+```
+
+(e) As you can see in the plots below, the diagnostics for this MCMC sampler show that it is mixing fairly well, certainly well enough to produce good results over a very large MCMC sample size, like 1,000,000. The first plot shows the convergence of the estimates over increasing sample size, comparing four different starting points for $\beta_1^{(0)}$. The plot shows that each of the four algorithms are converging to similar values, but some of them visually appear not to have converged to their stationary estimates yet after 100,000 simulations. The second plot encouragingly shows the rapid decrease of the MCMC standard error of the estimate over an increasing sample size. This is an indication of a good algorithm, and supports the fact that by simply increasing the sample size, our sampler will mix better. The final plot shows the autocorrelation which, though not perfect, was better than the autocorrelation in many of the preliminary trial algorithms. Beyond the plots, the MCMC standard error of the estimate of the posterior mean of $\beta_1$ was, as displayed in the table above, 0.02119474, a fairly small (good) value. Finally, one last encouraging diagnostic is the Effective Sample Size (ESS), which came out to be 224,912.7 for the final algorithm, which had an actual sample size of 1,000,000. This is well over the "goal" ESS of 5,000.
+```{r,echo=FALSE,fig.keep='none'}
+inits=seq(-.5,.5,by=.1) # sequence of different initial values for Beta_1
+mc.mat=matrix(NA,nrow = length(inits),ncol = 100000)
+for(i in 1:length(inits))
+{
+  mc.mat[i,]=MCMC(100000,tau.2 = 25,b1.init = inits[i])$mchain
+}
+
+bm.inits=apply(mc.mat,MARGIN = 1,bm)
+
+inits.mat=matrix(NA,nrow = length(bm.inits),ncol=2)
+for(i in 1:length(bm.inits))
+{
+  inits.mat[i,1]=bm.inits[[i]]$est
+  inits.mat[i,2]=bm.inits[[i]]$se
+}
+
+par(mfrow=c(1,1))
+estplot1=estvssamp(mc.mat[1,],retval = TRUE)
+estplot2=estvssamp(samp = mc.mat[4,],retval = TRUE)
+estplot3=estvssamp(samp = mc.mat[7,],retval = TRUE)
+estplot4=estvssamp(samp = mc.mat[11,],retval = TRUE)
+# For each different initial value, over many samples, the estimate of the mean converges
+# to something close to 0
+```
+
+```{r,echo=FALSE}
+par(mfrow=c(1,3))
+### ESS of 224,912.7 out of 1,000,000 sample size
+
+### Start chain at different initial values and evaluate the estimate
+plot(estplot1,type='l',ylim=c(-0.7,0.9),lwd=2,xlab="MCMC sample size",ylab="Estimate",main="Comparison of Estimate Across Different Initial Values")
+lines(estplot2,col="red",lwd=3)
+lines(estplot3,col="green",lwd=2)
+lines(estplot4,col="blue",lwd=2)
+abline(h=0,lty=2)
+
+### MCMCse over different n
+n=seq(from = 1000,to = 10000,by=500)
+mcmc.mat=matrix(NA,nrow = length(n),ncol = 2)
+for(i in 1:length(n))
+{
+  sample=MCMC(n[i],25,0)
+  estimate=bm(sample$mchain)$est
+  se=bm(sample$mchain)$se
+  mcmc.mat[i,1]=estimate
+  mcmc.mat[i,2]=se
+}
+plot(x=n,y=mcmc.mat[,2],ylab="MCMC s.e.",xlab="MCMC sample size")
+
+### acf plot for autocorrelation
+acf(mchain5)
+```
+
+Problem 2:\
+(a)\begin{itemize}
+\item Start with $\beta_0^{(0)}=0.5$,$\beta_1^{(0)}=0.5$, and $\lambda^{(0)}=1.5$. These initial values were chosen by performing several preliminary trial runs and aiming to drive down the MCMC standard errors for each estimate, while also driving up the ESS for each chain.
+\item Generate a proposal $\beta_0^{\ast}\sim N(\beta_0^{(t)},0.4)$. This is a Random Walk Metropolis update. The tuning parameter, $\tau_1^2$, was chosen as 0.4 after many trial runs, based on producing a chain with a reasonable acceptance rate, less autocorrelation, better MCMC standard error of the estimate, and larger ESS.
+\item Set $\beta_0^{(t+1)}=\beta_0^{\ast}$ with probability $min\big\{1,\frac{h(\beta_0^\ast,\beta_1^{(t)},\lambda^{(t)})}{h(\beta_0^{(t)},\beta_1^{(t)},\lambda^{(t)})}\big\}$ where h, the unnormalized target density, is $\Big[\prod_{i=1}^n \frac{\lambda}{2}exp(\frac{\lambda}{2}[2(\beta_0+\beta_1 X_i)+\lambda\sigma^2 -2Y_i])erfc(\frac{(\beta_0+\beta_1X_i)+\lambda\sigma^2-Y_i}{\sqrt{2\sigma^2}})\Big]\frac{1}{\sqrt{200\pi}}exp(\frac{-\beta_0^2}{200})\frac{1}{\sqrt{200\pi}}exp(\frac{-\beta_1^2}{200})\frac{\lambda^{-.99}}{\Gamma(0.01)100^{.01}}exp(\frac{-\lambda}{100})$. In the algorithm, we actually accept with probability $min\big\{0,logh(\beta_0^\ast,\beta_1^{(t)},\lambda^{(t)})-logh(\beta_0^{(t)},\beta_1^{(t)},\lambda^{(t)})\big\}$ by simply using the log of the target density for cumputational efficiency. Otherwise, set $\beta_0^{(t+1)}=\beta_0^{(t)}$.
+\item Generate a proposal $\beta_1^{\ast}\sim N(\beta_1^{(t)},0.45)$. This is again a Random Walk Metropolis update and the tuning parameter was again chosen based on results from trial runs, comparing acceptance rates, autocorrelation, MCMC standard errors, and ESS.
+\item Set $\beta_1^{(t+1)}=\beta_1^{\ast}$ with probability $min\big\{1,\frac{h(\beta_0^{(t+1)},\beta_1^{\ast},\lambda^{(t)})}{h(\beta_0^{(t+1)},\beta_1^{(t)},\lambda^{(t)})}\big\}$ where h, the unnormalized target density, is the same as used in updating $\beta_0$. Again, we may equivalently accept the proposal with probability $min\big\{0,logh(\beta_0^{(t+1)},\beta_1^{\ast},\lambda^{(t)})-logh(\beta_0^{(t+1)},\beta_1^{(t)},\lambda^{(t)})\big\}$, and otherwise set $\beta_1^{(t+1)}=\beta_1^{(t)}$.
+\item Generate a proposal $\lambda^{\ast}\sim LogNormal(log(\lambda^{(t)}),0.13)$. This proposal distribution was chosen to match the support of $\lambda$, which was the positive real numbers. The mean, $log(\lambda^{(t)})$, was chosen to keep values relatively small, and the tuning parameter was once again chosen based on trial and error from preliminary runs.
+\item Set $\lambda^{(t+1)}=\lambda^{\ast}$ with probability $min\big\{1,\frac{h(\beta_0^{(t+1)},\beta_1^{(t+1)},\lambda^{\ast})}{h(\beta_0^{(t+1)},\beta_1^{(t+1)},\lambda^{(t)})}\big\}$ where h is again the same as used in updating $\beta_0$and $\beta_1$. Again, we may equivalently accept the proposal with probability $min\big\{0,logh(\beta_0^{(t+1)},\beta_1^{(t+1)},\lambda^{\ast})-logh(\beta_0^{(t+1)},\beta_1^{(t+1)},\lambda^{(t)})\big\}$, and otherwise set $\lambda^{(t+1)}=\lambda^{(t)}$.
+\item Loop back to step (or bullet) 2
+\end{itemize}
+
+(b)\
+\begin{center}
+\begin{tabular}{ |p{1cm}|p{7cm}|p{3cm}|p{3cm}| }
+ \hline
+  & Posterior Mean Estimate (MCMC s.e.) & 2.5\% & 97.5\%\\
+ \hline
+  $\beta_0$  & 2.3425109 (0.0030890205)   & 0.2.062292 & 2.609078 \\
+ \hline
+  $\beta_1$  & 3.4593077 (0.0043769513)   & 3.045923 & 3.880780 \\
+  \hline
+  $\lambda$  & 0.7996971 (0.0007267683)   & 0.6909748 & 0.9230115 \\
+  \hline
+\end{tabular}
+\end{center}
+(c)\
+The estimated correlation between $\beta_0$ and $\beta_1$ is -0.7642777.
+(d)\
+```{r,echo=FALSE}
+chain.2=mhsampler(100000,tau2=c(.40,.45,.13),inits=c(.5,.5,1.5))
+chain2.est=bmmat(chain.2)# MCMC se looks good for each estimate and ESS is well over 5000 for each parameter
+```
+
+
+```{r,echo=FALSE}
+paf(mfrow=c(1,3))
+## Density plots of respective marginal distributions of Beta_0,Beta_1,and Lambda
+plot(density(chain.2[1,])) # Smooth density plot for Beta_0
+plot(density(chain.2[2,])) # Smooth density plot for Beta_1
+plot(density(chain.2[3,])) # Smooth density plot for Lambda
+```
+
+(e)\
+The algorithm was determined to be reliable based on the low standard errors for the estimates of each parameter, which decreased steadily as sample size increased. In addition, the mean estimates were beginning to converge (although a larger sample size than the 100,000 used may have been better). The ESS for each parameter was over 20,000 when using a sample size of 1,000,000, and were close to 5,000 when using only a sample size of 100,000. Finally, the plots below show the acf for each parameter, $\beta_0$,$\beta_1$,and $\lambda$, respectively. The autocorrelation was not too serious and was much better than that of other algorithms tried.
+```{r,echo=FALSE}
+par(mfrow=c(1,3))
+acf(chain.2[1,])
+acf(chain.2[2,])
+acf(chain.2[3,])
+
+```
+
+Problem 3:\
+(a)\
+\begin{center}
+\begin{tabular}{ |p{1cm}|p{7cm}|p{3cm}|p{3cm}| }
+ \hline
+  & Posterior Mean Estimate (MCMC s.e.) & 2.5\% & 97.5\%\\
+ \hline
+  $\beta_0$  & 2.3428834 (0.0019087262)   & 2.070748 & 2.606633 \\
+ \hline
+  $\beta_1$  & 3.4591722 (0.0027328496)   & 3.048660 & 3.873174  \\
+  \hline
+  $\lambda$  & 0.7996683 (0.0005051362)   & 0.6909879 & 0.9221979 \\
+  \hline
+\end{tabular}
+\end{center}
+(b)\
+```{r,echo=FALSE}
+chain.3=mhsampler(200000,Y,tau2=c(0.4,0.4,0.1),inits=c(0.5,0.5,1.5))
+chain3.est=bmmat(chain.3)
+```
+
+
+```{r,echo=FALSE}
+par(mfrow=c(1,3))
+plot(density(chain.3[1,])) # Smooth density plot for Beta_0
+plot(density(chain.3[2,])) # Smooth density plot for Beta_1
+plot(density(chain.3[3,])) # Smooth density plot for Lambda
+```
+
+(c)\
+Since the ESS for each parameter was still above 5,000 (except for $\beta_0$ which had an ESS of 4923.785, which was extremely close to 5,000) and the estimate MCMC standard errors were still quite low, it was deemed that the algorithm used in problem 2 was acceptable for problem 3 as well. 

@@ -1,0 +1,241 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Feb.~1}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+No new reading for Friday; make sure you've read through 
+Section 4.8 (both editions)
+\item 
+HW \#3 is due Wednesday, Feb.~8
+\item
+No class one week from Friday.
+
+\end{itemize}
+\end{frame}
+
+
+\startframe{4.6 Mean Time Spent in Transient States}
+Suppose you have \$2 and you bet on fair games of chance
+until you either go broke or have \$5.  
+\begin{itemize}
+\item What is the expected number of time steps that you have \$2?
+\item How long will this experiment last, on average?
+\item What is the probability that you will at some point have \$1?
+\end{itemize}
+\notes{We saw questions one and three we saw on Monday; I added the middle 
+question as an extra.}
+\end{frame}
+
+\startframe{4.6 Mean Time Spent in Transient States}
+\begin{itemize}
+\item
+For transient states $i$ and $j$, let $s_{ij}$ equal the
+expected number of time steps spent in $j$, given $X_0=i$.
+\item Let $S=(s_{ij})$ be the matrix of $s_{ij}$ values.
+\item Last time, we showed that
+$S = I + P_TS$.
+\item Therefore, $S=(I=P_T)^{-1}$.
+\end{itemize}
+\notes{This is review from Monday's class.}
+\end{frame}
+
+\startframe{4.6 Mean Time Spent in Transient States}
+In our example, 
+\[
+P_T = \begin{bmatrix}
+0 & \frac12 & 0 & 0 \\
+\frac12 & 0 & \frac12 & 0 \\
+0 & \frac12 & 0 & \frac12 \\
+0 & 0 & \frac12 & 0 \\
+\end{bmatrix}
+\quad \mbox{and so } \quad
+S = (I-P_T)^{-1} = 
+\frac15
+\begin{bmatrix}
+8 & 6 & 4 & 2 \\
+6 & 12 & 8 & 4 \\
+4 & 8 & 12 & 6 \\
+2 & 4 & 6 & 8 \\
+\end{bmatrix}.
+\]
+\notes{Here, the theory developed so far is applied to the specific problem at hand (i.e., gambler's
+ruin with $N=5$, $i=2$, and $p=1/2$).  Important note:  I did {\em not} reorder the states, as is done 
+in Section 4.6, so that all of the transient ones come first.  Instead, this $P_T$ matrix is the 
+$4\times4$ submatrix in the middle of the $6\times 6$ full $P$ matrix, since the 4 transient states are all except for the first state (zero) and the last state (five).
+}
+\end{frame}
+
+\startframe{4.6 Mean Time Spent in Transient States}
+\begin{columns}
+\begin{column}{2in}
+In our example, 
+\[
+S = 
+\frac15
+\begin{bmatrix}
+8 & 6 & 4 & 2 \\
+6 & 12 & 8 & 4 \\
+4 & 8 & 12 & 6 \\
+2 & 4 & 6 & 8 \\
+\end{bmatrix}
+\]
+\end{column}
+\begin{column}{2.5in}
+Starting with \$2\ldots
+\begin{itemize}
+\item
+Mean \# of steps with \$2:  \pause$\frac{12}{5}$
+\pause
+\item
+Mean \# of steps before end: \pause 6
+\end{itemize}
+\end{column}
+\end{columns}
+\notes{These answers may be read directly from the $S$ matrix.
+For the second one, it's necessary to sum the entire second row because
+\[
+E(\mbox{time spent in all transient states}) = \sum_{\mbox{$i$ transient}}
+\!\!\!\!\!E(\mbox{time spent in state $i$}).
+\]
+}
+\end{frame}
+
+\startframe{4.6 Mean Time Spent in Transient States}
+Let $f_{ij} \stackrel{\rm def}{=}P(\mbox{$X_t=j$ for some $t>0$} \mid X_0=t)$
+\begin{itemize}
+\item Demonstrate that $s_{ij} = I\{i=j\} + f_{ij} s_{jj}$.
+\pause
+\item Solve to find $f_{ij}$.
+\end{itemize}
+\notes{The key is to argue that 
+\[
+E( \mbox{\# steps in $j$} \mid X_0=i, \mbox{$X_t=j$ for some $t>0$}) =
+\begin{cases}
+s_{jj} + 1 & \mbox{if $i=j$} \cr
+s_{jj} & \mbox{if $i\ne j$} 
+\end{cases}
+\]
+and
+\[
+E( \mbox{\# steps in $j$} \mid X_0=i, \mbox{$X_t$ is never $j$ for any $t>0$}) =
+\begin{cases}
+1 & \mbox{if $i=j$} \cr
+0 & \mbox{if $i\ne j$.} 
+\end{cases}
+\]
+This leads to $s_{ij} = [ s_{jj} + I\{i=j\}]f_{ij} + I\{i=j\} (1-f_{ij})$ using
+conditioning, as desired.
+Solving gives $f_{ij} = [ s_{ij} - I\{i=j\} ]/s_{jj}$.
+}
+\end{frame}
+
+\startframe{4.6 Mean Time Spent in Transient States}
+\begin{columns}
+\begin{column}{2in}
+In our example, 
+\[
+S = 
+\frac15
+\begin{bmatrix}
+8 & 6 & 4 & 2 \\
+6 & 12 & 8 & 4 \\
+4 & 8 & 12 & 6 \\
+2 & 4 & 6 & 8 \\
+\end{bmatrix}
+\]
+\end{column}
+\begin{column}{2.5in}
+Starting with \$2\ldots
+\begin{itemize}
+\item
+Probability of ever having \$1:  \pause $\frac68$
+\pause
+\item
+Probability of ever returning to \$2: \pause $\frac{7}{12}$
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\startframe{4.7 Branching Processes}
+\begin{itemize}
+\item Particular type of Markov chain
+\item $X_t=$size of $t$th generation, $t=0, 1, 2, \ldots$.
+\item Assume each individual produces offspring 
+independently according to some distribution
+${\cal P} = \{P_0, P_1, P_2, \ldots\}$
+on the nonnegative integers.
+\end{itemize}
+\end{frame}
+
+\startframe{4.7 Branching Processes}
+For a branching process $X_0, X_1, X_2, \ldots$,
+\begin{itemize}
+\item
+Possible to demonstrate $E X_n = \mu^n$
+\item 
+Possible to demonstrate $\Var X_n = 
+\begin{cases}
+\sigma^2\mu^{n-1} \left( \frac{1-\mu^n}{1-\mu} \right) & \mbox{if $\mu\ne 1$}\cr
+n\sigma^2 & \mbox{if $\mu=1$}
+\end{cases}
+$
+\end{itemize}
+\ldots where $\mu$ and $\sigma^2$ are the mean and variance of 
+${\cal P}$.
+\notes{The argument used for this derivation is simple conditioning
+on $X_{n-1}$, then recursively on $X_{n-2}, X_{n-3}, \ldots$.}
+\end{frame}
+
+\startframe{4.7 Branching Processes}
+Generally, the most interesting cases involve $P_0>0$.  In this case\ldots
+\begin{itemize}
+\item what are the classes of states?
+\item which are recurrent / transient?
+\item what does this mean for the Markov chain in the long term?
+\end{itemize}
+\notes{We argued that when $P_0>0$, all states other than zero form a single 
+transient class.  Zero is its own (recurrent) class, since it is an absorbing
+state.  We conclude that either the process grows without bound, or it dies 
+out by eventually hitting zero.}
+\end{frame}
+
+\startframe{4.7 Branching Processes}
+A commonly asked question is:  What is
+\[
+P( \mbox{population will die out} \mid
+X_0=1 )?
+\]
+Call this probability $\pi_0$ (as in book).  Then
+\[
+\pi_0=\lim_{n\to\infty} P(X_n=0 \mid X_0=1).
+\]
+\end{frame}
+
+\startframe{4.7 Branching Processes}
+\begin{itemize}
+\item
+Well-known fact:  If $\mu<1$, then $\pi_0=1$.
+\item
+Can you derive the equation $\pi_0 = \sum_{j=0}^\infty \pi_0^j P_j$?
+\end{itemize}
+\notes{In an epidemiological context, $\mu$ is often called
+$R_0$.  In a simple branching-process model, this means that
+$R_0=1$ is the threshold between an epidemic possibly occurring
+($X_n$ gets large with positive probability) and no epidemic possible
+($X_n\to 0$ with probability one).
+}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

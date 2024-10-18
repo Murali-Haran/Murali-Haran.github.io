@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>CASt R: Some hypothesis testing procedures</title>
+</head>
+<body style="background-color: rgb(255, 248, 229);">
+<div style="text-align: center;"><big><big><span
+ style="color: rgb(204, 0, 0);"><span style="font-weight: bold;">Some hypothesis
+ testing procedures in R</span>
+ <br>
+</span></span></big></big></div> <br>   
+This module demonstrates some of the many statistical tests that
+R can perform.  It is impossible to give an exhaustive list of
+such testing functionality, but we hope not only to provide several
+examples but also to elucidate some of the logic of statistical hypothesis
+tests with these examples.<br> 
+<br>
+<br> <big><big><span style="color: rgb(204, 0, 0);"><span
+ style="font-weight: bold;"><small><span style="font-weight: bold;">T
+ tests, permutation-based and otherwise</span></small></span></span></big></big><br> 
+<br>
+In the 
+<a href="EDA.html">exploratory data analysis and regression</a>
+module, we used exploratory techniques to identify 92 stars from the
+<a href="http://astrostatistics.psu.edu/datasets/HIP_star.html">Hipparcos</a>
+data set that are associated with the Hyades.  We did this based on the values
+of right ascension (between 50 and 100), principal motion of right ascension (between 90 and 130),
+and principal motion of declination (between -60 and -10).  We then excluded two additional
+stars, one with an outlying value of declination and one with a large error of parallax measurement:<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">hip = read.table("http://astrostatistics.psu.edu/datasets/HIP_star.dat",
+</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">&nbsp;&nbsp; header=T,fill=T)</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">attach(hip)</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">x1=(RA>50 & RA<100)</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">x2=(pmRA>90 & pmRA<130)</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">x3=(pmDE>-60 & pmDE< -10) # Space in '< -' is necessary!</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">x4=x1&x2&x3</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">x5=x4 & (DE>0) & (e_Plx<5)</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">sum(x5)</span><br>
+<br>
+In this section of the tutorial, we will compare these Hyades stars with the remaining stars in 
+the Hipparcos dataset on the basis of the B.V (B minus V) variable.
+That is, we are comparing the groups in the boxplot below:<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">boxplot(B.V~x5,notch=T,ylab="B minus V")</span><br>
+<br>
+For ease of notation, we define vectors H and nH (for
+"Hyades" and "not Hyades") that 
+contain the data values for the two groups.<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">H=B.V[x5]</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">nH=B.V[!x5 & !is.na(B.V)]</span><br>
+<br>
+In the definition of nH above, we needed to exclude the NA values (there are no NAs among
+the 92 Hyades stars here).<br>
+<br>
+A two-sample t-test may be performed with a single line:<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">t.test(H,nH)</span><br>
+<br>
+Because it is instructive and quite easy, we may obtain the same results 
+without resorting to the 
+<a href="html/stats/html/t.test.html">t.test</a>
+function.  First, we calculate the variances of the sample means
+for each group:<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">v1=var(H)/92</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">v2=var(nH)/2586</span><br>
+<br>
+The t statistic is based on the standardized difference between the two
+sample means.  Because the two samples are assumed independent, the
+variance of this difference equals the sum of the individual variances
+(i.e., v1+v2).  Nearly always in a two-sample t-test, we wish to test
+the null hypothesis that the true difference in means equals zero.  Thus, 
+standardizing the difference in means involves subtracting zero and then
+dividing by the square root of the variance:<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">tstat=(mean(H)-mean(nH))/sqrt(v1+v2)</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">tstat</span><br>
+<br>
+To test the null hypothesis, this t statistic is compared to a t distribution.  In a Welch
+test, we assume that the variances of the two populations are not necessarily equal, and
+the degrees of freedom of the t distribution are computed using the so-called
+Satterthwaite approximation:<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">(v1 + v2)^2 / (v1^2/91 + v2^2/2585)</span><br>
+<br>
+The two-sided p-value may now be determined by using the 
+cumulative distribution function of the t distribution,
+which is given by the
+<a href="html/stats/html/TDist.html">pt</a> function.<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">2*pt(tstat,97)</span><br>
+<br>
+Incidentally, one of the assumptions of the t-test, namely that each of the
+two underlying populations is normally distributed, is almost certainly not true
+in this example.  However, because of the central limit
+theorem, the t-test is robust against violations of this assumption; even if the 
+populations are not roughly normally distributed, the sample means are. <br>
+<br>
+In this particular example, the Welch test is probably not necessary, since
+the sample variances are so close that an assumption of equal variances is warranted:<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">c(var(H),var(nH))</span><br>
+<br>
+Thus, we might conduct a slightly more restrictive t-test that assumes equal population
+variances.  Without going into the details here,
+we merely present the R output:<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">t.test(H,nH,var.equal=T)</span><br>
+<br>
+For this latter type of test,
+there is an alternative method for computing a p-value associated with a t statistic
+called a permutation test.  Understanding this method is conceptually very helpful
+in understanding the definition of p-value.  Suppose we phrase the null hypothesis
+as follows:  The distributions of the two populations are the same (here, "the two
+populations" refers to the populations from which the samples were drawn; in this case,
+we mean all Hyades-like stars, and all other stars).
+In that case, the particular split of our 2678 stars into one sample of 92 and one
+sample of 2586 is essentially arbitrary.  Thus, we may repeatedly and
+randomly reassign these 2678 
+stars into two groups of 92 and 2586, calculating the t statistic in each case:<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">tlist=NULL</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">all=c(H,nH)</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">for(i in 1:5000) {</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">&nbsp;&nbsp; s=sample(2586,92) # choose a sample</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">&nbsp;&nbsp; tlist=c(tlist, t.test(all[s],all[-s],</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp; var.eq=T)$stat) # add t-stat to list</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">}</span><br>
+<br>
+Note:  The above code is <i>not</i> built for speed!<br>
+<br>
+By definition, the p-value is the probability of obtaining a test statistic more extreme than the
+observed test statistic under the null hypothesis.  Let's take a look at the null distribution of
+the t statistic we just calculated, along with the observed value:<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">hist(tlist,xlim=c(-4.6,4))</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">abline(v=-4.59,lty=2,col=2)</span><br>
+<br>
+Thus, in 5000 random trials, we did not see a single instance of a test statistic at least as extreme 
+as the observed test statistic (I write this with some confidence even though the random outcome is
+different each time).  
+A true p-value for the permutation test would take into account all possible random 
+reassignments, but as there are 3.78x10<sup>172</sup> of these in this example, a random sample
+of reassignments will have to suffice.<br>
+<br>
+<br> <big><big><span style="color: rgb(204, 0, 0);"><span
+ style="font-weight: bold;"><small><span style="font-weight: bold;">Empirical distribution
+ functions</span></small></span></span></big></big><br> 
+<br>
+Suppose we are curious about whether a given sample comes from a particular
+distribution.  For instance, how normal is the random sample 'tlist' of t statistics
+obtained under the null hypothesis in the previous example?  How normal (say) are
+'H' and 'nH'?   <br>
+<br>
+A simple yet very powerful graphical device is called a Q-Q plot, in which some quantiles
+of the sample are plotted against the same quantiles of whatever distribution we have in mind.
+If a roughly straight line results, this suggests that the fit is good.  Roughly, a pth quantile of
+a distribution is a value such that a proportion p of the distribution lies below that value.<br>
+<br>
+A test against normality is so common that there is a separate function, 
+<a href="html/stats/html/qqnorm.html">qqnorm</a>, that implements it.   (Remember, normality
+is common in statistics not merely because many common populations are normally distributed -- 
+which is not true in astronomy -- but because the central limit theorem guarantees the 
+approximate normality of sample means.) <br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">par(mfrow=c(2,2))</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">qqnorm(tlist,main="Null t statistics")</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">abline(0,1,col=2)</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">qqnorm(H,main="B-V (Hyades)")</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">qqnorm(nH,main="B-V (non-Hyades)")</span><br>
+<br>
+Not surprisingly, the tlist variable appears extremely nearly normally distributed (more precisely,
+it is nearly <i>standard</i> normal, as evidenced by the proximity of the Q-Q plot to the line
+x=y, shown in red).  As for H and nH, the distribution of B minus V exhibits moderate non-normality in each
+case.  <br>
+<br>
+In the bottom right corner of the plotting window, let's reconstruct the Q-Q plot from scratch for
+tlist.  This is instructive because the same technique may be applied to any comparison distribution,
+not just normal.  If we consider the 5000 entries of tlist in increasing order, let's call the ith
+value the ((2i-1)/10000)th quantile for all i from 1 to 5000.  We merely graph this point against the
+corresponding quantile of standard normal:<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">plot(qnorm((2*(1:5000)-1)/10000),sort(tlist))</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">par(mfrow=c(1,1)) # reset plotting window</span><br>
+<br>
+Related to the Q-Q plot is a distribution function called the <i>empirical distribution function</i>, or
+EDF. (In fact, the EDF is almost the same as a Q-Q plot against a uniform distribution.)
+The EDF is, by definition, the cumulative distribution function for the
+discrete distribution represented by the sample itself -- that is, the distribution that puts mass
+1/n on each of the n sample points.  We may graph the EDF using the 
+<a href="html/stats/html/ecdf.html">ecdf</a>
+function:<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">plot(ecdf(H))</span><br>
+<br>
+While it is generally very difficult to interpret the EDF directly, it is possible
+to compare an EDF to a theoretical cumulative distribution function or two another EDF.
+Among the statistical tests that implement such a comparison is the Kolmogorov-Smirnov
+test, which is implemented by the R function
+<a href="html/stats/html/ks.test.html">ks.test</a>.<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">ks.test(tlist,"pnorm")</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">ks.test(H,nH)</span><br>
+<br>
+Whereas the first result above can be somewhat surprising (a small p-value means a
+statistically significant difference),
+the second result should not be; we already saw that H and nH have 
+statistically significantly different means.  However, if we center each, we obtain<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">ks.test(H-mean(H),nH-mean(nH))</span><br>
+<br>
+In other words, the Kolmogorov-Smirnov test finds no statistically significant evidence that
+the distribution of B.V for the Hyades stars is anything other than a shifted version of
+the distribution of B.V for the other stars.<br>
+<br>
+<br> <big><big><span style="color: rgb(204, 0, 0);"><span
+ style="font-weight: bold;"><small><span style="font-weight: bold;">Chi-squared
+ tests for categorical data </span></small></span></span></big></big><br> 
+<br>
+We begin with a plot very similar to one seen in the
+<a href="EDA.html">exploratory data analysis and regression</a>
+module:<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">bvcat=cut(B.V, breaks=c(-Inf,.5,.75,1,Inf))</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">boxplot(Vmag~bvcat, varwidth=T,</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">&nbsp;&nbsp; ylim=c(max(Vmag),min(Vmag)), </span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">&nbsp;&nbsp; xlab=expression("B minus V"),</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">&nbsp;&nbsp; ylab=expression("V magnitude"),</span><br>
+&nbsp;&nbsp; <span style="font-weight: bold;">&nbsp;&nbsp; cex.lab=1.4, cex.axis=.8)</span><br>
+<br>
+The cut values for bvcat are based roughly on the quartiles of the B.V variable.  We have created,
+albeit artificially, a second categorical variable (x5, the Hyades indicator, is the first).  Here is
+a summary of the dataset based only on these two variables:<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">table(bvcat,x5)</span><br>
+<br>
+Note that the Vmag variable is irrelevant in the table above.  <br>
+<br>
+To perform a chi-squared test of the null hypothesis that the true population 
+proportions falling in the four categories are the same for both the Hyades and 
+non-Hyades stars, use the 
+<a href="html/stats/html/chisq.test.html">chisq.test</a>
+function:<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">chisq.test(bvcat,x5)</span><br>
+<br>
+Since we already know these two groups differ with respect to the B.V variable,
+the result of this test is not too surprising.  But it does give a qualitatively different
+way to compare these two distributions than simply comparing their means.<br>
+<br>
+The p-value produced above is based on the fact that the chi-squared statistic is
+approximately distributed like a true chi-squared distribution (on 3 degrees of freedom,
+in this case) if the null hypothesis is true.  However, it is possible to obtain 
+exact p-values, if one wishes to calculate the chi-squared statistic for all possible
+tables of counts with the same row and column sums as the given table.  Since this is rarely
+practical computationally, the exact p-value may be approximated using a Monte Carlo method.  
+Such a method is implemented in the 
+<a href="html/stats/html/chisq.test.html">chisq.test</a>
+function:<br>
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">chisq.test(bvcat,x5,sim=T,B=50000)</span><br>
+<br>
+Thus, the first method produces the exact value of an approximate p-value, whereas the second
+method produces an approximation to the exact p-value!<br>
+<br>
+The test above is usually called a chi-squared test of homogeneity.  If we observe
+only one sample, but we wish to test whether the categories occur in some pre-specified 
+proportions, a similar test (and the same R function) may be applied.  In this case, the test
+is usually called a chi-squared test of goodness-of-fit.
+
+
+
+
+
+
+</body>
+</html>

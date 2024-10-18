@@ -1,0 +1,127 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Feb.~6}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item
+Please read Sections 5.1, 5.2.1, 5.2.2, and 5.2.3 (both editions) for Wednesday.
+\item 
+No class this Friday.
+\item 
+Office hours will be this {\bf Tuesday} (not Thursday) from 2:00-4:00.
+\end{itemize}
+\end{frame}
+
+\startframe{4.4 Limiting Probabilities}
+Theorem:  For an irreducible ergodic (time-homogeneous) 
+Markov chain with transition matrix $P$,
+\[
+\lim_{n\to\infty} P^n_{ij} 
+\]
+exists and it does not depend on $i$ (it does generally depend on $j$).
+\notes{This was a review of the result from Friday's class, the most important
+result in Section 4.4}
+\end{frame}
+
+\startframe{4.4 Limiting Probabilities}
+Corollary:  For an irreducible ergodic (time-homogeneous) 
+Markov chain with transition matrix $P$,
+the equations 
+\[
+\pi_j = \sum_{i=0}^{\mbox{\# states}} \pi_i P_{ij}, \qquad j = 0, 1, 2, \ldots
+\]
+have solution 
+\[
+\pi_j=\lim_{n\to\infty} P^n_{ij}.
+\]
+\notes{In Section 4.4, this ``corollary'' is part of the main theorem.  We sketched a 
+proof, which is exactly the same proof found in the textbook.}
+\end{frame}
+
+\startframe{4.4 Limiting Probabilities}
+Example:
+\begin{itemize}
+\item
+Let $\alpha$ be the probability of rain after a rainy day.
+\item
+Let $\beta$ be the probability of rain after a non-rainy day.
+\end{itemize}
+What are the limiting probabilities?
+\notes{We argued that this chain must be irreducible and ergodic.   Therefore 
+the equations of the corollary give the limiting probabilities.  These equations are
+\begin{eqnarray*}
+\pi_1 &=& \alpha \pi_1 + \beta \pi_2 \\
+\pi_2 &=& (1-\alpha)\pi_1 + (1-\beta) \pi_2 \\
+\pi_1 + \pi_2 &=& 1.
+\end{eqnarray*}
+}
+\end{frame}
+
+\startframe{4.4 Limiting Probabilities}
+One last bit of terminology:
+\begin{itemize}
+\item stationary probability
+\end{itemize}
+\notes{The stationary probabilities are by definition the long-run probabilities.  }
+\end{frame}
+
+\startframe{4.4 Limiting Probabilities}
+More facts we will not prove:
+\begin{itemize}
+\item If we assume $\sum_j \pi_j=1$, then the solution in the corollary is unique.
+\item The $\pi_j$ from the corollary are the stationary probabilities.
+\end{itemize}
+\notes{These facts are given in various places in Section 4.4.}
+\end{frame}
+
+\startframe{4.4 Limiting Probabilities}
+More facts we will not prove:
+\begin{itemize}
+\item Aperiodicity is not necessary in order for the equations in the corollary to have a 
+unique solution.  However, for irreducible chains, positive recurrence is necessary.
+\item Stationary probabilities exist even for periodic irreducible chains.
+\end{itemize}
+\notes{These facts are given in various places in Section 4.4.}
+\end{frame}
+
+\startframe{4.8 Time Reversible Markov Chains}
+``Consider a stationary ergodic Markov chain (that is, an ergodic Markov chain
+that has been in operation for a long time)\ldots''
+\begin{itemize}
+\item We now know what ``ergodic'' means:
+
+There is a limiting distribution $\pi$ that uniquely solves the
+equations $\pi^\top = \pi^\top P$.
+\end{itemize}
+\end{frame}
+
+\startframe{4.8 Time Reversible Markov Chains}
+\begin{itemize}
+\item
+Define $Q_{ij} = P(X_t = j \mid X_{t+1} = i)$.
+\item
+Use Bayes' theorem to prove 
+\[
+Q_{ij} = \frac{\pi_j P_{ji}}{\pi_i}.
+\]
+\item
+What if $P_{ij}=Q_{ij}$ for all $i,j$?
+\end{itemize}
+\notes{We'll prove the fact about $Q_{ij}$ in the next class.  
+When $P_{ij}$ and $Q_{ij}$ are the same, the Markov chain 
+has a special property called time-reversibility.}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

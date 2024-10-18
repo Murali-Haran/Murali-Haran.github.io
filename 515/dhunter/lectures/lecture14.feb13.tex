@@ -1,0 +1,124 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Feb.~13}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item
+Read Section 5.3 for Wednesday.
+\item 
+Homework due this Friday; regular office hours Thursday 
+\item
+Please get out your colored ABCD sheets.
+\end{itemize}
+\end{frame}
+
+\startframe{4.8 Time Reversible Markov Chains}
+\begin{itemize}
+\item
+$\pi_iP_{ij} = \pi_j P_{ji}$ is called {\em detailed balance}.
+\item
+Interpretation:  Proportionally, there are just as many $i\rightarrow j$
+transitions as $j\rightarrow i$ transitions.
+\end{itemize}
+\end{frame}
+
+\startframe{4.8 Time Reversible Markov Chains}
+\begin{itemize}
+\item 
+Prove:  If $\pi$ exists satisfying detailed balance, then $\pi$ solves
+\[
+\pi_j = \sum_i \pi_i P_{ij} \qquad \mbox{for all $j$.}
+\]
+(These are the ergodic equations!)
+\item
+NB:  detailed balance does not imply ergodic; only ergodic chains that
+satisfy detailed balance are called time reversible.
+\end{itemize}
+\end{frame}
+
+
+\startframe{4.8 Time Reversible Markov Chains}
+\begin{itemize}
+\item
+$\pi_iP_{ij} = \pi_j P_{ji}$ is called {\em detailed balance}.
+\item
+Equivalently, we can derive the so-called 
+Kolmogorov circulation condition, of which
+\[
+P_{ij}P_{jk}P_{ki} = P_{ik}P_{kj}P_{ji}
+\]
+is a special case.
+\end{itemize}
+\end{frame}
+
+%\startframe{4.8 Time Reversible Markov Chains}
+%\end{frame}
+
+\startframe{5.2 The exponential distribution}
+\begin{itemize}
+\item Memorize the cdf (easy).
+\item Understand distinction between mean and rate.
+\item Understand that the parameter is a scale parameter.
+\end{itemize}
+\end{frame}
+
+\startframe{5.2 The exponential distribution}
+\question{Suppose that $X$ is exponentially distributed with rate $\lambda$.  What is the
+conditional distribution of $X-2$ given $X>2$?}
+{Lognormal with $\mbox{mean}=\lambda$}
+{Lognormal with $\mbox{mean}\ne\lambda$}
+{Exponential with $\mbox{mean}=\lambda$}
+{Exponential with $\mbox{mean}\ne\lambda$}
+\end{frame}
+
+\startframe{5.2 The exponential distribution}
+\question{Which of the following is constant for an exponential distribution?}
+{The failure rate function}
+{The survival function}
+{The cdf}
+{The density function}
+\end{frame}
+
+\startframe{5.2 The exponential distribution}
+\question{The sum of i.i.d.~exponential random variables has what type of distribution?}
+{Exponential}
+{Lognormal}
+{Normal}
+{Gamma}
+\end{frame}
+
+\startframe{5.2 The exponential distribution}
+Very important fact:  If $X_1$ and $X_2$ are independent 
+exponential random variables with rates $\lambda_1$ and
+$\lambda_2$, then
+\[
+P(X_1 < X_2) = \ldots
+\]
+\end{frame}
+
+\startframe{5.2 The exponential distribution}
+\question{The minimum of a set of $n$ i.i.d.~exponential random variables has what type of distribution?}
+{Exponential}
+{Lognormal}
+{Normal}
+{Gamma}
+\end{frame}
+
+\startframe{5.2 The exponential distribution}
+Suppose you arrive at a post office having two clerks at 
+a moment when both are busy but nobody else is waiting in line.  
+The service times for clerk $i$ are exponential with rate $\lambda_i$.
+What is the expected amount of time you have to wait in line?
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

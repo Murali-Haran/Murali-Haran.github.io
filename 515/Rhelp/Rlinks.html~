@@ -1,0 +1,76 @@
+<hr> Some useful links for the R statistical software package<hr>
+<a href="http://www.cran.r-project.org/"> R/CRAN </a>  <br>
+<a href="http://www.cran.r-project.org/doc/manuals/R-intro.pdf" </a> An introduction to R<br>
+<a href="http://www.rpad.org/Rpad/R-refcard.pdf"> R quick 'reference card' </a>  <br>
+<a href="http://www.r-project.org/"> R Project </a>  <br>
+<a href="http://www.cran.r-project.org/doc/Rnews/"> R News </a>  <br>
+<a href="https://www.stat.math.ethz.ch/mailman/listinfo/"> R Mailing Lists </a> <br>
+ <a href="junjiaRhelp.pdf" > Junjia Zhu's guide </a> to using the command line to control R variables. <br>
+ <a href="RtipsStat515.pdf" > Baojun Qiu's compilation </a> of useful R tips for Stat 515 students. <br>
+ <a href="interface.pdf" > Roger Peng's guide </a> to calling C from R. <br>
+<br> <br>
+<hr> <b> Editing: </b> 
+
+It is <u> vital </u> that you use a good editor for typing your R
+programs --- the editor will indent the code, highlight/color keywords
+(e.g. function names), match parentheses, thereby helping you find
+your errors more easily and making your code much more
+readable. Debugging your programs will be a nightmare otherwise.
+
+Look online for suggestions (I provide a few below) but try this page as well : <a href="http://en.wikipedia.org/wiki/R_%28programming_language%29"> wiki page for R </a>  <b> Always add a .R at the end of your filename  </b>
+<br>
+
+<hr>
+<i> For Unix/Linux: </i> my personal favorite is <a href="http://www.gnu.org/software/emacs/"> emacs </a>, a very flexible editor. It has the added advantage of also `understanding' latex, C, C++, python, and lots of other programming languages. <br> <br>
+
+If you end up using emacs, you may want to try ESS (emacs speaks
+statistics), which is a great environment for you to run and debug
+your R programs.  For help on this go to <a
+href="http://stat.ethz.ch/ESS/"> ESS </a> OR
+<a href="http://ess.r-project.org/"> ESS (emacs speaks statistics)
+within the R project website </a><!--  though <a -->
+<!-- href="http://socserv.mcmaster.ca/jfox/Books/Companion/ESS/"> John -->
+<!-- Fox's guide </a> may be a good starting point.<br> <hr> -->
+<hr>
+
+<i> For Windows:</i> 
+(Please note that I am not a Windows user so my recommendations are only based on what students have told me!) <br> 
+<UL>
+
+<LI> <a href="http://http://www.eclipse.org/">  Eclipse </a>  in conjunction with <a href="http://www.splusbook.com/RIntro/R_Eclipse_StatET.pdf"> Stat-ET   (see tutorial) </a> The Stat-ET package doesn't seem to work with the latest version of eclipse, so try installing the previous version and see if that works.
+
+<LI> <a href=" http://www.sciviews.org/Tinn-R/"> Tinn-R </a>. Easy to install and it colors fonts nicely, but I am not sure that it does indenting/formatting well.
+
+<!-- <LI> Even  <a href="http://www.winedt.com/"> Winedt </a> is an option, though perhaps much less sophisticated than Notepad++ or the others. -->
+
+<LI> <a
+href="http://notepad-plus.sourceforge.net/uk/site.htm"> Notepad++</a>
+is apparently relatively easy to use and very convenient.  
+
+<LI> For emacs/ESS, on Windows, try:  <a href="http://socserv.mcmaster.ca/jfox/Books/Companion/ESS/"> John
+Fox's guide </a> may be a good starting point.
+
+<LI> <a href="http://stat.cmu.edu/R/CRAN/bin/windows/base/rw-FAQ.html"> R for
+Windows Frequently Asked Questions </a> 
+
+</UL>
+
+
+<br> <hr> 
+
+<i> For Mac OSX:</i> 
+
+I have been told that the default R editor on Mac is pretty nice.
+Another option: Simply download and use Aquamacs from <a
+href="http://aquamacs.org/" > here </a>. There is no effort involved
+in having emacs 'understand' your R and Latex code. Just call your
+function `myfunctionname.R' for R or `myfunctionname.tex' for latex
+and emacs will know that you are typing R code or latex code. Some
+people use the in-built editor in R, but I think this is inferior to
+using emacs/aquamacs or some other specialized editor.
+
+<br>
+<hr>
+
+<hr>
+

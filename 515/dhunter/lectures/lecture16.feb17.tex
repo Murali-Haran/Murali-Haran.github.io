@@ -1,0 +1,81 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Feb.~17}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item
+For Monday,
+read Section 5.4.1
+\item 
+HW\#5 will be due next Friday.  {\em It must be submitted electronically!}
+\item
+The midterm will be \ldots ???  (Wednesday evening?)
+\end{itemize}
+\end{frame}
+
+\startframe{5.3 The Poisson Process}
+A Poisson process is a special type of counting process:
+\begin{itemize}
+\item Counts of events in disjoint time intervals are independent.
+\item For any $0\le s<t$, the number of events in $(s,s+t]$ is Poisson with parameter
+$\lambda t$.
+\item Technically, we should also say $N(0)=0$.
+\end{itemize}
+\end{frame}
+
+\startframe{5.3 The Poisson Process}
+A Poisson process is a special type of counting process
+(equivalent re-definition):
+\begin{itemize}
+\item Counts of events in disjoint time intervals are independent.
+\item $P[N(s+h)-N(s)=1] = \lambda h + o(h)$ as $h\to 0$.
+\item $P[N(s+h)-N(s)\ge2] = o(h)$ as $h\to 0$.
+\item Technically, we should also say $N(0)=0$.
+\end{itemize}
+\end{frame}
+
+\startframe{5.3 The Poisson Process}
+Why are the two definitions equivalent?
+\begin{itemize}
+\item How can we check that the first definition (``Poisson'') 
+implies the second (``first principles'')?
+\item How about the other way around (i.e., first principles implies Poisson)?
+\end{itemize}
+\end{frame}
+
+\startframe{5.3 The Poisson Process}
+\begin{itemize}
+\item
+Let $S_0=0$ and $S_1, S_2, \ldots$ are the times of events in a Poisson process.
+\item
+Let $T_i=S_i-S_{i-1}$ for $i=1, 2, \ldots$ be the times between events.
+\item 
+How are the $T_i$ distributed?
+\end{itemize}
+\end{frame}
+
+\startframe{5.3 The Poisson Process}
+Poisson processes add:
+\begin{itemize}
+\item
+If $N_1(t)$ and $N_2(t)$ are Poisson processes with rates $\lambda_1$ and $\lambda_2$, 
+then $M(t) = N_1(t)+N_2(t)$ is a Poisson process with rate $\lambda_1+\lambda_2$.
+\item
+Similarly, suppose we label each event $M(t)$ as type-1 or type-2 with probabilities
+$\lambda_1/(\lambda_1+\lambda_2)$ and 
+$\lambda_2/(\lambda_1+\lambda_2)$, respectively.  Then the counting process for each
+type of event is separately a Poisson process.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

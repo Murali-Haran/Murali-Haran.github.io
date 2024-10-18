@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<!--<script src="//cdn.optimizely.com/js/3737530932.js"></script>-->
+	
+	 <meta charset="UTF-8">
+	 <link rel="icon" href="//www.ibm.com/favicon.ico">
+	 <link rel="canonical" href="http://www.ibm.com/analytics/us/en/">
+	<title>IBM  Analytics - Home - United States</title>
+    <meta name="description" content="IBM Analytics enables your organization to engage with data to answer the toughest business questions, uncover patterns and pursue breakthrough ideas."/>
+	
+    <meta name="keywords" content="ibm analytics, analytics"/>
+	 <meta name="dcterms.date" content="2016-03-17">
+	 <meta name="dcterms.rights" content="Copyright IBM Corp. 2016">
+	 <meta name="geo.country" content="US">
+	 <meta name="robots" content="index,follow">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+	
+
+  <script>
+  
+  digitalData = {
+   page:{
+    category:{
+     primaryCategory: "IBM_Analytics"
+    },
+    pageInfo:{
+     effectiveDate: "2016-03-17",
+     expiryDate: "2017-03-17",
+     language: "en-US",
+     publishDate: "2016-03-17",
+     publisher: "IBM Corporation",
+     version: "v18",
+     ibm: {
+      country: "US",
+      industry: "Analytics",
+      owner: "Brian J Robotnik/Detroit/IBM",
+      owningPortal: "Analytics",
+      siteID: "IBM_Analytics",
+      subject: "SWQ00",
+      type: "CT000"
+     },
+     liveperson:{
+      enabled: true,
+      routing: "analytics-usen"
+     },
+     analytics:{
+      defimg: "defaults/main_img_0.jpg"       
+     }
+    }
+   }
+  }
+
+ 
+   
+  </script>
+
+	<script src="//www.ibm.com/common/stats/ida_stats.js"></script>
+	<script type="text/javascript" src="//1.www.s81c.com/common/v18/js/www.js"></script>
+	<script src="//1.www.s81c.com/common/v18/js/tables.js"></script>
+	<link href="//1.www.s81c.com/common/v18/css/www.css" rel="stylesheet" title="www" type="text/css" />
+	
+
+	<!-- IBM Analytics custom --> 
+	<script src="//www.ibm.com/software/info/direct/func_call.jsp">//</script>
+	<script src="//www.ibm.com/analytics/us/en/technology/common/default.js" type="text/javascript">//</script>
+	<link href="css/custom-home-v18.css?1=1" rel="stylesheet" type="text/css" /> 
+	
+    
+   
+   <!--LSCustomStart-->
+    <script>var avlCusLeads = [32,33];</script>
+    <script src="/analytics/us/en/scripts/customcontent.js"></script>
+  <!--LSCustomEnd-->
+ </head>
+  <body id="ibm-com" class="ibm-type">
+    <div id="ibm-top" class="ibm-landing-page">
+
+      <!-- MASTHEAD_BEGIN -->
+      <div id="ibm-masthead" role="banner" aria-label="IBM">
+        <div id="ibm-mast-options">
+          <ul role="toolbar" aria-labelledby="ibm-masthead">
+            <li id="ibm-geo" role="presentation"><a href="http://www.ibm.com/planetwide/select/selector.html" role="button" aria-label="United States selected - Choose a country">United States</a></li>
+            <li id="ibm-language" role="presentation"><span class="ibm-active" role="button" aria-disabled="true">English</span> <a href="http://www.ibm.com/us/en/" lang="en-US" role="button">English</a></li>
+          </ul>
+        </div>
+        <div id="ibm-universal-nav">    
+          
+          <nav role="navigation" aria-label="IBM">
+            <div id="ibm-home"><a href="http://www.ibm.com/us/en/">IBM®</a></div>
+            <ul id="ibm-menu-links" role="toolbar" aria-label="Site map">
+              <li><a href="http://www.ibm.com/sitemap/us/en/">Site map</a></li>
+            </ul>
+          </nav>
+          
+          <div id="ibm-search-module" role="search" aria-labelledby="ibm-masthead">
+            <form id="ibm-search-form" action="http://www.ibm.com/Search/" method="get">
+              <p>
+                <label for="q">IBM</label>
+                <input type="text" maxlength="100" value="" placeholder="Search" name="q" id="q" aria-label="Search"/>
+                <input type="hidden" value="18" name="v"/>
+                <input type="hidden" value="utf" name="en"/>
+                <input type="hidden" value="en" name="lang"/>
+                <input type="hidden" value="us" name="cc"/>
+                <input type="submit" id="ibm-search" class="ibm-btn-search" value="Submit"/>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- MASTHEAD_END -->
+      
+		<div id="ibm-content-wrapper">
+	
+			<!-- PRIMARY_NAV_START -->
+			<header role="banner">
+				<div class="ibm-sitenav-menu-container">
+				  <div class="ibm-sitenav-menu-name"><a href="http://www.ibm.com/analytics/us/en/">IBM Analytics</a></div>
+					<div class="ibm-sitenav-menu-list">
+						<ul role="menubar">
+							<li role="presentation"  class="ibm-haschildlist">
+                            <button role="menuitem" onclick="location.href='http://www.ibm.com/analytics/us/en/industry/';">Industry</button>
+								<ul role="menu" aria-label="Industry">
+									<li role="presentation"><a role="menuitem" href="http://www.ibm.com/analytics/us/en/industry/banking-solutions/">Banking</a></li>
+									<li role="presentation"><a role="menuitem" href="http://www.ibm.com/analytics/us/en/industry/consumer-products/">Consumer products</a></li>
+                                    <li role="presentation"><a role="menuitem" href="http://www.ibm.com/analytics/us/en/industry/government">Government</a></li>
+									<li role="presentation"><a role="menuitem" href="http://www.ibm.com/analytics/us/en/industry/insurance-solutions/">Insurance</a></li>
+                                    <li role="presentation"><a role="menuitem" href="http://www.ibm.com/analytics/us/en/industry/audience-analysis-media-and-entertainment/">Media and entertainment</a></li>
+                                    <li role="presentation"><a role="menuitem" href="http://www.ibm.com/analytics/us/en/industry/retail-analytics/">Retail</a></li>
+                                    <li role="presentation"><a role="menuitem" href="http://www.ibm.com/analytics/us/en/industry/telecom-customer-experience-management/">Telecommunications</a></li>
+									<li role="presentation"><a role="menuitem" href="http://www.ibm.com/analytics/us/en/industry/wealth-management">Wealth management</a></li>
+								</ul>
+							</li>
+							<li role="presentation" class="ibm-haschildlist">
+                                <button role="menuitem" onclick="location.href='http://www.ibm.com/analytics/us/en/technology/';">Technology</button>
+								<ul role="menu" aria-label="Technology">
+                                <li role="presentation"><a role="menuitem" href="http://www.ibm.com/analytics/us/en/watson-data-platform/platform.html">Data platform</a></li>
+									<li role="presentation"><a role="menuitem" href="http://www.ibm.com/analytics/us/en/technology/advanced-analytics/">Advanced analytics</a></li>
+									<li role="presentation"><a role="menuitem" href="http://www.ibm.com/analytics/us/en/technology/cloud-data-services/">Cloud data services</a></li>
+									<li role="presentation"><a role="menuitem" href="http://www.ibm.com/analytics/us/en/technology/data-architecture/">Database management</a></li>
+									<li role="presentation"><a role="menuitem" href="http://www.ibm.com/analytics/us/en/technology/enterprise-content-mangement/">Enterprise content management</a></li>
+									<li role="presentation"><a role="menuitem" href="http://www.ibm.com/analytics/us/en/technology/agile/">Integration and governance</a></li>
+									<li role="presentation"><a role="menuitem" href="http://www.ibm.com/analytics/us/en/technology/open-source/">Open source</a></li>
+								</ul>
+							</li>
+							<li role="presentation" class="ibm-haschildlist">
+                                <button role="menuitem" onclick="location.href='http://www.ibm.com/analytics/us/en/business/';">Business</button>
+								<ul role="menu" aria-label="Business">
+                                    <li role="presentation"><a role="menuitem" href="http://www.ibm.com/analytics/us/en/business/customer-analytics/">Customer analytics</a></li>
+                                    <li role="presentation"><a role="menuitem" href="http://www.ibm.com/analytics/us/en/business/fraud-protection/">Fraud protection</a></li>
+                                    <li role="presentation"><a role="menuitem" href="http://www.ibm.com/analytics/us/en/business/performance-management">Performance management</a></li>
+									<li role="presentation"><a role="menuitem" href="http://www.ibm.com/analytics/us/en/business/risk-management/">Risk management</a></li>
+									<li role="presentation"><a role="menuitem" href="http://www.ibm.com/analytics/us/en/safer-planet">Safer planet</a></li>
+                                    <li role="presentation"><a role="menuitem" href="http://www.ibm.com/analytics/us/en/business/sales-analytics/">Sales and product analytics</a></li>
+								</ul>
+							</li>
+							<li role="presentation"><a role="menuitem"  href="http://www.ibm.com/software/analytics/learn-center/">Learn Center</a></li>
+						</ul>
+					</div>
+				</div>
+			</header>     
+			<!-- PRIMARY_NAV_END -->
+
+			
+
+      
+			<div id="ibm-content-wrapper">
+
+			<!-- LEADSPACE_BEGIN -->	
+<style>
+#ibm-custom-leadspace-33{min-height: 200px; background: #39ADCC;background:-moz-linear-gradient(270deg, #39ADCC 0%, #296494 100%);background:-webkit-linear-gradient(270deg, #39ADCC 0%, #296494 100%);background:linear-gradient(-180deg, #39ADCC 0%,#296494 100%);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#39ADCC', endColorstr='#296494',GradientType=1);display:none;}
+#ibm-custom-leadspace-33 > div:first-child{padding: 0px 0px; min-height: 0px;}
+#ibm-custom-leadspace-32{min-height: 200px; background: #39ADCC;background:-moz-linear-gradient(270deg, #39ADCC 0%, #296494 100%);background:-webkit-linear-gradient(270deg, #39ADCC 0%, #296494 100%);background:linear-gradient(-180deg, #39ADCC 0%,#296494 100%);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#39ADCC', endColorstr='#296494',GradientType=1);}
+#ibm-custom-leadspace-32 > div:first-child{padding: 25px 0px; min-height: 200px;}
+[id^=ibm-custom-leadspace-] > div > div{overflow:hidden}
+#ibm-custom-leadspace-32 > div > div > div > div.ibm-col-6-3 > img{display:initial;margin-top: 0px;margin-bottom: -4px;max-height: 360px; width:auto;;  margin-right: 50px;}
+#ibm-custom-leadspace-33 > div > div > div > div.ibm-col-6-3 > img{display:initial;margin-top: 23px;margin-bottom: -4px;max-height: 447px; width:auto;;  margin-right: 59px;}
+</style>
+<header role="banner" aria-labelledby"ibm-page-title-h1">
+  <div id="ibm-custom-leadspace-32" data-rlt="">
+   <div class="ibm-hidden-bg-small ibm-hidden-bg-medium">
+    <div>
+     <div class="ibm-columns ibm-padding-bottom-0">
+     <div class="ibm-col-6-3 ibm-hidden-small ibm-hidden-medium ibm-left"><img class="ibm-resize" src="images/leadspace-YL1.png"></div>
+      <div class="ibm-padding-top-0 ibm-left-small ibm-col-medium-1-1 ibm-col-6-3 ibm-padding-bottom-1">
+       <h1 class="ibm-h1 ibm-padding-bottom-0 ibm-medium ibm-textcolor-white-core ibm-padding-top-2">IBM Analytics</h1>
+       <h2 class="ibm-h4 ibm-h4 ibm-textcolor-white-core ibm-padding-top-1">IBM Analytics offers a complete portfolio of big data and analytics solutions to fuel your cognitive business. Our solutions enable your organization to engage with data to answer the toughest business questions, uncover patterns and pursue breakthrough ideas.</h2>
+       <p class="ibm-btn-row ibm-alternate-background ibm-padding-top-2"><a href="#analytics-products-and-solutions" class="ibm-btn-pri ibm-btn-yellow-10 "><span class="ibm-btn-nowrap ibm-anchor-down-link  ibm-h4">Explore our solutions</span></a></p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+
+  <div id="ibm-custom-leadspace-33" data-rlt="data_scientist">
+   <div class="ibm-hidden-bg-small ibm-hidden-bg-medium">
+    <div>
+     <div class="ibm-columns ibm-padding-bottom-0">
+      <div class="ibm-padding-top-0 ibm-left-small ibm-col-medium-1-1 ibm-col-6-3 ibm-padding-bottom-2">
+       <h3 class="ibm-h1 ibm-padding-bottom-0 ibm-medium ibm-textcolor-white-core ibm-padding-top-3">IBM Data and Analytics for Data Science</h3>
+       <h4 class="ibm-h4 ibm-h4 ibm-textcolor-white-core ibm-padding-top-2">IBM Analytics is an open platform that provides products and solutions for analyzing all data. With machine learning, predictive analytics and a cloud-based data science development environment built for data scientists, our solutions will enable you to answer the toughest business questions, uncover patterns and pursue breakthrough ideas.</h4>
+       <p class="ibm-btn-row ibm-alternate-background ibm-padding-top-2"><a href="https://www.ibm.com/marketplace/cloud/data-science-experience/us/en-us" class="ibm-btn-pri ibm-btn-yellow-10 "><span class="ibm-btn-nowrap ibm-forward-link  ibm-h4">Free data science trial</span></a><a href="#analytics-featured-solutions" class=""><span class="ibm-btn-nowrap ibm-anchor-down-link ibm-textcolor-white-core ibm-h4">Explore our products</span></a></p>
+      </div>
+     <div class="ibm-col-6-3 ibm-hidden-small ibm-hidden-medium ibm-right"><img class="ibm-resize" src="images/leadspace_analytics.png"></div>
+     </div>
+    </div>
+   </div>
+  </div>
+
+ <div id="ibm-leadspace-head"></div>
+</header>
+<!-- LEADSPACE_END -->		
+
+				<!--NEWS_FLASH_START-->
+<!--
+					<div id="newsflash-container-alt" class="ibm-alternate-background">
+						<div class="ibm-columns ibm-padding-bottom-0 ibm-padding-top-0" data-widget="setsameheight" data-items=".ibm-imgss">
+							<div class="ibm-imgss ibm-col-6-2 ibm-center ibm-padding-top-0 ibm-padding-bottom-0" style="background-image:url('images/analytics-homepage/WoW-logo.png?1=1');background-repeat:no-repeat;background-position:top center">&nbsp;</div>
+							<div class="ibm-imgss ibm-col-6-4">
+								<p class="ibm-h4 ibm-padding-top-1"><span class="ibm-bold">IBM Insight at World of Watson | October 24 - 27 | Las Vegas</span></p> 
+								<p>From IBM Information on Demand to IBM Insight to the all new World of Watson - <b>World of Watson 2016</b> is the place to be for everything related to data, analytics and data science.</p>
+								<p class="ibm-padding-top-1 ibm-padding-bottom-1">
+									<a style="margin-right:25px" href="//www.ibm.com/analytics/insight/" class="ibm-btn-white-core ibm-btn-pri">&nbsp;Register now and save</a>
+									</p>
+							</div>
+						</div>
+					</div>
+-->
+					<!--NEWS_FLASH_END-->
+
+									
+			
+		<!--MAIN_CONTENT_BEGIN-->
+        <div role="main">
+          <div id="ibm-pcon">
+            <div id="ibm-content">
+              <div id="ibm-content-body">
+			    <!-- CONTENT_BEGIN -->  
+                <div id="ibm-content-main">
+	
+					<!--MAIN_CONTENT_BEGIN-->
+
+
+					<!--CARDS_CATEGORIES_BEGIN-->
+					<div class="ibm-columns" data-items=".ibm-card__content" data-widget="setsameheight">
+                    <div class="ibm-col-6-2 ibm-col-medium-4-2">
+                    	<div class="ibm-card">
+    					<div class="ibm-card__image">
+      						<img src="images/HybridDBWarehouseFeature.jpg" alt="Hybrid Database and Warehouses" class="ibm-resize"></div>
+    						<div class="ibm-card__content">
+      							<h2 class="ibm-h2 ibm-textcolor-blue-40 ibm-light ibm-large">Hybrid Database and Warehouses</h2>
+      							<h4>Explore the foundation of a modern data warehousing architecture with Hybrid Data Warehouse and Logical Data Warehouse.</h4>
+       							
+  						</div>
+                        <div class="ibm-card__image ibm-alternate-background ibm-background-cool-gray-80">
+                        
+                        <p class="ibm-center ibm-padding-top-1 ibm-padding-bottom-1">
+										<a class="ibm-btn-sec ibm-btn-white-core ibm-h3 ibm-light" href="https://www.ibm.com/analytics/us/en/technology/data-architecture/"><span style="padding-left: 20px; padding-right: 20px;">Learn more</span></a></p>
+                        </div>
+						</div>
+                    </div>
+                    <div class="ibm-col-6-2 ibm-col-medium-4-2">
+                    <div class="ibm-card">
+    					<div class="ibm-card__image">
+      						<img src="images/HadoopFeature.jpg" alt="Hadoop and Spark" class="ibm-resize"></div>
+    						<div class="ibm-card__content">
+      							<h2 class="ibm-h2 ibm-textcolor-blue-40 ibm-light ibm-large">Hadoop and Spark</h2>
+      							<p>An open and unified analytics platform with Hadoop and Spark reduces risk and protects your investment.</p>
+       							
+  						</div>
+                        <div class="ibm-card__image ibm-alternate-background ibm-background-cool-gray-80">
+                        
+                        <p class="ibm-center ibm-padding-top-1 ibm-padding-bottom-1">
+										<a class="ibm-btn-sec ibm-btn-white-core ibm-h3 ibm-light" href="https://www.ibm.com/analytics/us/en/technology/open-source/"><span style="padding-left: 20px; padding-right: 20px;">Learn more</span></a></p>
+                        </div>
+						</div>
+                    </div> 
+                    <div class="ibm-col-6-2 ibm-col-medium-4-2">
+                    <div class="ibm-card">
+    					<div class="ibm-card__image">
+      						<img src="images/DataAndIGFeature.jpg" alt="Data and Information Governance" class="ibm-resize"></div>
+    						<div class="ibm-card__content">
+      							<h2 class="ibm-h2 ibm-textcolor-blue-40 ibm-light ibm-large">Data & Information Governance </h2>
+      							<p>Discover, enrich, integrate and manage data over its lifetime.</p>
+       							
+  						</div>
+                        <div class="ibm-card__image ibm-alternate-background ibm-background-cool-gray-80">
+                        
+                        <p class="ibm-center ibm-padding-top-1 ibm-padding-bottom-1">
+										<a class="ibm-btn-sec ibm-btn-white-core ibm-h3 ibm-light" href="https://www.ibm.com/analytics/us/en/technology/agile/"><span style="padding-left: 20px; padding-right: 20px;">Learn more</span></a></p>
+                        </div>
+						</div>
+                    </div> 
+                    <div class="ibm-col-6-2 ibm-col-medium-4-2">
+                    <div class="ibm-card">
+    					<div class="ibm-card__image">
+      						<img src="images/ECMFeature.jpg" alt="ECM" class="ibm-resize"></div>
+    						<div class="ibm-card__content">
+      							<h2 class="ibm-h2 ibm-textcolor-blue-40 ibm-light ibm-large">Enterprise Content Management (ECM)</h2>
+      							<p>Access, analyze and act on business content.</p>
+       							
+  						</div>
+                        <div class="ibm-card__image ibm-alternate-background ibm-background-cool-gray-80">
+                        
+                        <p class="ibm-center ibm-padding-top-1 ibm-padding-bottom-1">
+										<a class="ibm-btn-sec ibm-btn-white-core ibm-h3 ibm-light" href="https://www.ibm.com/analytics/us/en/technology/enterprise-content-management/"><span style="padding-left: 20px; padding-right: 20px;">Learn more</span></a></p>
+                        </div>
+						</div>
+                    </div> 
+                    <div class="ibm-col-6-2 ibm-col-medium-4-2">
+                    <div class="ibm-card">
+    					<div class="ibm-card__image">
+      						<img src="images/DataScienceFeature.jpg" alt="Card example" class="ibm-resize"></div>
+    						<div class="ibm-card__content">
+      							<h2 class="ibm-h2 ibm-textcolor-blue-40 ibm-light ibm-large">Data Science</h2>
+      							<p>Discover hidden insights from massive amounts of structured and unstructured data.</p>
+  						</div>
+                        <div class="ibm-card__image ibm-alternate-background ibm-background-cool-gray-80">
+                        
+                        <p class="ibm-center ibm-padding-top-1 ibm-padding-bottom-1">
+										<a class="ibm-btn-sec ibm-btn-white-core ibm-h3 ibm-light" href="https://www.ibm.com/analytics/us/en/technology/data-science/"><span style="padding-left: 20px; padding-right: 20px;">Learn more</span></a></p>
+                        </div>
+						</div>
+                    </div> 
+                    <div class="ibm-col-6-2 ibm-col-medium-4-2">
+                    <div class="ibm-card">
+    					<div class="ibm-card__image">
+      						<img src="images/BusinessAnalyticsFeature.jpg" alt="Business Analytics"  class="ibm-resize"></div>
+    						<div class="ibm-card__content">
+      							<h2 class="ibm-h2 ibm-textcolor-blue-40 ibm-light ibm-large">Business Analytics</h2>
+      							<p>Uncover opportunities in all types of data from a variety of sources, within and beyond your organization.</p>
+  						</div>
+                        <div class="ibm-card__image ibm-alternate-background ibm-background-cool-gray-80">
+                        
+                        <p class="ibm-center ibm-padding-top-1 ibm-padding-bottom-1">
+										<a class="ibm-btn-sec ibm-btn-white-core ibm-h3 ibm-light" href="https://www.ibm.com/analytics/us/en/technology/advanced-analytics/"><span style="padding-left: 20px; padding-right: 20px;">Learn more</span></a></p>
+                        </div>
+						</div>
+                    </div> 
+                    </div>
+					<!--CARDS_CATEGORIES_END-->	
+
+ <!-- OVERVIEW_BEGIN --> 
+					<section id="cds-overview" data-solution="what-is-cds">
+						<div id="overview-container" class="ibm-padding-top-2  ibm-padding-bottom-3">
+							<div class="ibm-columns">
+							
+								<div class="ibm-col-4-1 ibm-col-medium-1-1">
+									<h2 class="ibm-h2 ibm-light  ibm-textcolor-blue-40">Why IBM Analytics?</h2>
+								</div>
+								
+								<div class="ibm-col-4-3  ibm-padding-bottom-1 ibm-col-medium-1-1">
+									<p class="ibm-h4 ibm-light">IBM Analytics delivers on the promise of cognitive business. Our portfolio provides the first and only end-to-end ecosystem of data, analytics and cognitive capabilities and expertise. Available on the cloud, on premises or in hybrid deployments, our portfolio helps organizations uncover insights that improve business processes and ideas that drive game-changing outcomes.</p>
+									<p class="ibm-padding-top-1 ibm-padding-bottom-1"><a href="#ibm-analytics-client-references" onclick="scrlTempPos('ibm-analytics-client-references');return false"><span class="ibm-icon-nolink ibm-anchor-down-link">Learn how customers are using <br class="ibm-hidden-large ibm-hidden-medium ibm-hidden-xlarge">IBM Analytics </span></a></p>
+								</div>		
+								
+								
+							</div>
+						</div>
+					</section>
+
+					<!-- OVERVIEW_END --> 
+				
+				    <!-- FEATURED_SOLUTIONS_BEGIN --> 
+					<section id="analytics-featured-solutions" data-solution="analytics-featured-solutions">
+						<div id="analytics-featured-container" class="ibm-padding-bottom-2 ibm-padding-top-2 ibm-alternate-background">
+							<div class="ibm-columns">
+
+								
+								<div class="ibm-col-6-2 ibm-col-medium-6-3">
+									<div class="">
+										<img src="images/analytics-homepage/WA-monitor-400x400-v2.png" alt="Watson Analytics UI" class="ibm-resize">
+									</div>
+								</div>							
+								<div class="ibm-col-6-4 ibm-col-medium-6-3 ibm-padding-top-2">
+									<div class="ibm-padding-left-1">
+										<p class="ibm-textcolor-yellow-10">Featured IBM Analytics product</p>
+										<h3 class="ibm-h3 ">IBM Watson Analytics</h3>
+										<p class="ibm-h4">Delivers cloud-based guided analytics, data visualization and predictive analytics that make understanding data easier. Watson Analytics offers a smart data discovery service available on the cloud, it guides data exploration, automates predictive analytics and enables effortless dashboard and infographic creation.</p>
+										<p class="ibm-padding-top-2 ibm-padding-bottom-2">
+										<a class="ibm-btn-pri ibm-btn-yellow-10 ibm-h4" href="http://www.ibm.com/analytics/watson-analytics/us-en/" target="blank">Learn more</a>
+										<br class="ibm-hidden-large ibm-hidden-xlarge"><br class="ibm-hidden-large ibm-hidden-xlarge"><br class="ibm-hidden-large ibm-hidden-xlarge">
+										<a data-widget="videoplayer" data-videodisplay="overlay" data-videoid="mxwOentPsBw" data-videotype="youtube" class="ibm-inlinelink ibm-video-player-con" href="https://www.youtube.com/watch?v=mxwOentPsBw" style="margin-right:35px;"><span class="ibm-icon-nolink ibm-play-link">Watch video</span></a>
+										</p>
+									</div>
+								</div>								
+							</div>
+						</div>
+						
+						<div id="analytics-featured-continued-container" class="ibm-padding-bottom-3 ibm-background-neutral-white-30 ibm-padding-top-3">
+							<div class="ibm-columns" data-widget="setsameheight" data-items=".ibm-col-4-2">
+							
+							
+								<div class="ibm-col-1-1 ibm-padding-bottom-1">
+									<h2 class="ibm-h2 ibm-light  ibm-textcolor-blue-40">Featured IBM Analytics products</h2>
+								</div>
+								
+                                <div class="ibm-col-6-2 ibm-col-medium-1-1" data-videoid="-loWgRZLmb8" data-videotype="youtube" data-widget="videoplayer" data-titledisplaytype="overlay">
+                                <a href="https://www.youtube.com/watch?v=-loWgRZLmb8">Watch the video</a>
+                                </div>
+                                <div class="ibm-col-6-4 ibm-col-medium-1-1">
+										<h3 class="ibm-h3">IBM Watson Data Platform</h3>
+										<p class="ibm-h4">Makes it simple for all data and business professionals to collaborate, visualize and share critical insights across your organization to uncover business-changing ideas faster.  This unique, integrated, self-service platform makes it easy to access all types of data and apply AI-powered decision-making, for better data-driven outcomes.</p>
+                                        <p class="ibm-padding-top-2 ibm-padding-bottom-2">
+										<a class="ibm-btn-pri ibm-btn-yellow-10 ibm-h4" href="https://www.ibm.com/analytics/us/en/watson-data-platform/platform.html
+" target="blank">Learn more</a></p>
+                                </div>     
+                                
+                                <div class="ibm-col-1-1">
+        <div class="ibm-rule ibm-blue-40"><hr/></div>
+    </div>                     
+                                
+							
+								<div class="ibm-col-4-2 ibm-col-medium-1-1">
+									<!--featured product-begin-->
+									<div class="ibm-card__content ibm-padding-bottom-2">
+										<div class="ibm-mo__image ibm-hidden-small">
+											<img src="images/analytics-homepage/featured-spss.jpg" class="featured-product-circle">
+										</div>
+										<div class="ibm-mo__body">
+											<img src="images/analytics-homepage/featured-spss.jpg" class="featured-product-circle ibm-padding-top-1 ibm-center ibm-padding-bottom-1 ibm-hidden-medium ibm-hidden-large ibm-hidden-xlarge">
+											<h4 class="ibm-bold">SPSS<span class="ibm-textcolor-gray-50 ibm-small ibm-light"> | Predictive  analytics</span></h4>
+											<p class="ibm-padding-bottom-1"> IBM SPSS predictive analytics software offers advanced techniques in an easy-to-use package to help you find new opportunities, improve efficiency and minimize risk.</p>
+											<p>
+												<a class="ibm-forward-link ibm-inlinelink" href="technology/spss/" style="margin-right:35px;"> &nbsp; Learn more</a>
+												<br/><br/>
+												<a data-widget="videoplayer" data-videodisplay="overlay" data-videoid="HZr3CmOgL_M" data-videotype="youtube" class=" ibm-inlinelink" href="https://www.youtube.com/watch?v=HZr3CmOgL_M"><span class="ibm-icon-nolink ibm-play-link">Watch overview</span></a>
+											</p>
+										  </div>
+									</div>								
+									<!--featured-product-end-->		
+								</div>
+								
+								
+								<div class="ibm-col-4-2 ibm-col-medium-1-1">
+									<!--featured product-begin-->
+									<div class="ibm-card__content ibm-padding-bottom-2">
+										<div class="ibm-mo__image ibm-hidden-small">
+											<img src="images/analytics-homepage/featured-db2.jpg" class="featured-product-circle">
+										</div>
+										<div class="ibm-mo__body">
+											<img src="images/analytics-homepage/featured-db2.jpg" class="featured-product-circle ibm-padding-top-1 ibm-center ibm-padding-bottom-1 ibm-hidden-medium ibm-hidden-large ibm-hidden-xlarge">
+											<h4 class="ibm-bold">IBM DB2<span class="ibm-textcolor-gray-50 ibm-small ibm-light"> | Database</span></h4>
+											<p class="ibm-padding-bottom-1">IBM DB2 is the database of choice for enterprise-wide solutions. Optimized to deliver industry-leading performance while lowering costs, IBM DB2 offers extreme performance, flexibility, scalability and reliability for any size organization.</p>
+											<p>
+												<a class="ibm-forward-link ibm-inlinelink" href="technology/db2/" style="margin-right:35px;"> &nbsp; Learn more</a>
+												<br/><br/>
+												<a data-widget="videoplayer" data-videodisplay="overlay" data-videoid="5T6f74gYu1Y" data-videotype="youtube" class=" ibm-inlinelink" href="https://www.youtube.com/watch?v=5T6f74gYu1Y"><span class="ibm-icon-nolink ibm-play-link">Watch overview</span></a>
+											</p>
+										  </div>
+									</div>								
+									<!--featured-product-end-->	
+								</div>								
+								
+								
+								<div class="ibm-col-4-2 ibm-col-medium-1-1">
+									<!--featured product-begin-->
+									<div class="ibm-card__content ibm-padding-bottom-2">
+										<div class="ibm-mo__image ibm-hidden-small">
+											<img src="images/analytics-homepage/featured-cognos.jpg" class="featured-product-circle">
+										</div>
+										<div class="ibm-mo__body">
+											<img src="images/analytics-homepage/featured-cognos.jpg" class="featured-product-circle ibm-padding-top-1 ibm-center ibm-padding-bottom-1 ibm-hidden-medium ibm-hidden-large ibm-hidden-xlarge">
+											<h4 class="ibm-bold">Cognos Analytics on Cloud <span class="ibm-textcolor-gray-50 ibm-small ibm-light"> | Business Intelligence</span></h4>
+											<p class="ibm-padding-bottom-1"> Get the self-service you expect, data governance you require, and reporting you trust with a secure business intelligence software-as-a-service (SaaS) solution.</p>
+											<p>
+												<a class="ibm-forward-link ibm-inlinelink" href="technology/products/cognos-analytics/" style="margin-right:35px;"> &nbsp; Learn more</a>
+												<br/><br/>
+												<a data-widget="videoplayer" data-videodisplay="overlay" data-videoid="uJ_Nmrm9U6E" data-videotype="youtube" class=" ibm-inlinelink" href="https://www.youtube.com/watch?v=uJ_Nmrm9U6E"><span class="ibm-icon-nolink ibm-play-link">Watch overview</span></a>
+											</p>
+										  </div>
+									</div>								
+									<!--featured-product-end-->	
+								</div>
+
+
+
+								<div class="ibm-col-4-2 ibm-col-medium-1-1">
+									<!--featured product-begin-->
+									<div class="ibm-card__content ibm-padding-bottom-2">
+										<div class="ibm-mo__image ibm-hidden-small">
+											<img src="images/analytics-homepage/featured-hadoop.png" class="featured-product-circle">
+										</div>
+										<div class="ibm-mo__body">
+											<img src="images/analytics-homepage/featured-hadoop.png" class="featured-product-circle ibm-padding-top-1 ibm-center ibm-padding-bottom-1 ibm-hidden-medium ibm-hidden-large ibm-hidden-xlarge">
+											<h4 class="ibm-bold">IBM BigInsights <span class="ibm-textcolor-gray-50 ibm-small ibm-light"> | Hadoop</span></h4>
+											<p class="ibm-padding-bottom-1">IBM® BigInsights™ is an industry standard Hadoop offering that combines the best of open source software with enterprise-grade capabilities.  </p>
+											<p>
+												<a class="ibm-forward-link ibm-inlinelink" href="http://www.ibm.com/analytics/us/en/technology/biginsights/" style="margin-right:35px;"> &nbsp; Learn more</a>
+												<br/><br/>
+												<a data-widget="videoplayer" data-videodisplay="overlay" data-videoid="Y-qnQo1bo_w" data-videotype="youtube" class=" ibm-inlinelink" href="https://www.youtube.com/watch?v=Y-qnQo1bo_w"><span class="ibm-icon-nolink ibm-play-link">Watch overview</span></a>
+											</p>
+										  </div>
+									</div>								
+									<!--featured-product-end-->			
+								</div>	
+
+
+								<div class="ibm-col-4-2 ibm-col-medium-1-1">
+									<!--featured product-begin-->
+									<div class="ibm-card__content ibm-padding-bottom-2">
+										<div class="ibm-mo__image ibm-hidden-small">
+											<img src="images/analytics-homepage/FPM-Planning-Analytics1.png" class="featured-product-circle">
+										</div>
+										<div class="ibm-mo__body">
+											<img src="images/analytics-homepage/FPM-Planning-Analytics1.png" class="featured-product-circle ibm-padding-top-1 ibm-center ibm-padding-bottom-1 ibm-hidden-medium ibm-hidden-large ibm-hidden-xlarge">
+											<h4 class="ibm-bold">IBM Planning Analytics <span class="ibm-textcolor-gray-50 ibm-small ibm-light"> | Financial Performance Management</span></h4>
+											<p class="ibm-padding-bottom-1">A fast, easy, flexible and complete cloud planning solution that embeds powerful analytics into your everyday decision-making processes.   </p>
+											<p>
+												<a class="ibm-forward-link ibm-inlinelink" href="http://www.ibm.com/analytics/us/en/business/financial-performance-management/
+" target="_blank" style="margin-right:35px;"> &nbsp; Learn more</a>
+												<br/><br/>
+												<a data-widget="videoplayer" data-videodisplay="overlay" data-videoid="txbpK15Gk9U" data-videotype="youtube" class=" ibm-inlinelink" href="https://www.youtube.com/watch?v=txbpK15Gk9U"><span class="ibm-icon-nolink ibm-play-link">Watch overview</span></a>
+											</p>
+										  </div>
+									</div>								
+									<!--featured-product-end-->			
+								</div>	
+
+
+
+								<div class="ibm-col-4-2 ibm-col-medium-1-1">
+									<!--featured product-begin-->
+									<div class="ibm-card__content ibm-padding-bottom-2">
+										<div class="ibm-mo__image ibm-hidden-small">
+											<img src="images/analytics-homepage/Machine-Learning-Computers-Incentive-Compensation.png" class="featured-product-circle">
+										</div>
+										<div class="ibm-mo__body">
+											<img src="images/analytics-homepage/Machine-Learning-Computers-Incentive-Compensation.png" class="featured-product-circle ibm-padding-top-1 ibm-center ibm-padding-bottom-1 ibm-hidden-medium ibm-hidden-large ibm-hidden-xlarge">
+											<h4 class="ibm-bold">IBM Machine Learning<span class="ibm-textcolor-gray-50 ibm-small ibm-light"> | IBM Analytics</span></h4>
+											<p class="ibm-padding-bottom-1">Infuse continuous intelligence into your enterprise using machine learning. Dramatically improve the productivity of your data science team.</p>
+											<p>
+												<a class="ibm-forward-link ibm-inlinelink" href="https://www.ibm.com/us-en/marketplace/machine-learning-for-zos" target="blank" style="margin-right:35px;"> &nbsp; Learn more</a>
+												<br/><br/>
+												<a data-widget="videoplayer" data-videodisplay="overlay" data-videoid="T2HtyNX7aHc" data-videotype="youtube" class=" ibm-inlinelink" href="https://www.youtube.com/watch?v=T2HtyNX7aHc"><span class="ibm-icon-nolink ibm-play-link">Watch overview</span></a>
+											</p>
+										  </div>
+									</div>								
+									<!--featured-product-end-->			
+								</div>								
+								
+								
+								
+								
+							</div>
+						</div>
+						
+						
+						
+					</section>
+					<!-- FEATURED_SOLUTIONS_END_END --> 
+					
+
+					
+					<!-- BROWSE_ALL_PRODUCTS_BEGIN --> 
+					<section id="analytics-products-and-solutions" data-solution="analytics-products-and-solutions">
+
+						<div id="products-container" class="ibm-padding-top-2 no-margin ibm-padding-bottom-2  ibm-background-cool-gray-70 ibm-alternate-background ">	
+
+							<div class="ibm-columns">		
+								<div class="ibm-col-1-1">
+									<h2 class="ibm-h2 ibm-light ibm-textcolor-yellow-10">Browse all IBM Analytics products and solutions </h2>
+								</div>
+							</div>
+							<div class="ibm-columns">
+								<div class="ibm-col-1-1">
+								<div class="ibm-card__content">
+									<div data-widget="showhide" data-type="panel" class="ibm-show-hide">
+	
+	
+										
+										<!-- PRODUCT_LINE_START -->
+										<h2 class=" ibm-h4 ibm-textcolor-white-core">Analytics and data management</h2>
+										<div class="ibm-container-body ibm-padding-top-2  ibm-padding-bottom-2">
+											<div class="ibm-columns ">
+												<div class="ibm-col-4-3">
+													<p class="bm-textcolor-green-20 ibm-h4 ibm-padding-bottom-2">Solutions to integrate new data, analyze data, leverage open source technologies and take advantage of cloud service models. &nbsp; </p>
+													<p><a class="ibm-btn-pri ibm-btn-white-core" href="technology/">Learn more</a></p>
+													<p class="ibm-small ibm-padding-top-2">Products for:</p>
+												</div>
+											</div>										
+										
+
+											<div class="ibm-columns">
+											
+												<!--column 1 -->
+												 <div class="ibm-col-4-1 ibm-col-medium-6-2">
+												 
+													  <!-- -->
+													  <a href="technology/advanced-analytics/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Advanced analytics</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->
+													  <!-- -->
+													  <a href="technology/cloud-data-services/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Cloud analytics</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->
+													  <!-- -->
+													  <a href="technology/data-architecture/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Data Architecture</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->												  
+												 </div>	
+
+												<!--column 1 -->
+												 <div class="ibm-col-4-1 ibm-col-medium-6-2">
+												 
+													  <!-- -->
+													  <a href="technology/enterprise-content-management/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Enterprise content management</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->
+													  <!-- -->
+													  <a href="technology/agile/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Integration and governance</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->
+													  <!-- -->
+													  <a href="/technology/open-source/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Open source</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->												  
+												 </div>	
+											</div>
+										</div>
+										<!-- PRODUCT_LINE_END -->
+	
+										<!-- PRODUCT_LINE_START -->
+										<h2 class=" ibm-h4 ibm-textcolor-white-core">Enterprise content management</h2>
+										<div class="ibm-container-body ibm-padding-top-2  ibm-padding-bottom-2">
+											<div class="ibm-columns ">
+												<div class="ibm-col-4-3">
+													<p class="bm-textcolor-green-20 ibm-h4 ibm-padding-bottom-2">Solutions help transform the way you work by putting business content in motion, so you can capture, protect, activate, analyze and engage with content for greater insight and action. &nbsp; </p>
+													<p><a class="ibm-btn-pri ibm-btn-white-core" href="technology/enterprise-content-management/">Learn more</a></p>
+													<p class="ibm-small ibm-padding-top-2">Products for:</p>
+												</div>
+											</div>										
+										
+
+											<div class="ibm-columns">
+											
+												<!--column 1 -->
+												 <div class="ibm-col-4-1 ibm-col-medium-6-2">
+												 
+													  <!-- -->
+													  <a href="technology/en/technology/enterprise-content-management-platform/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Enterprise content management platform</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->
+													  <!-- -->
+													  <a href="technology/document-capture-and-imaging/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Document capture and imaging</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->
+													  <!-- -->
+													  <a href="technology/enterprise-content-management/box/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">ECM and Box</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->												  
+												 </div>	
+
+												<!--column 1 -->
+												 <div class="ibm-col-4-1 ibm-col-medium-6-2">
+												 
+													  <!-- -->
+													  <a href="technology/advanced-case-management/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Case management</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->
+													  <!-- -->
+													  <a href="technology/information-lifecycle-governance/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Information lifecycle governance</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->
+													 											  
+												 </div>	
+											</div>
+										</div>
+										<!-- PRODUCT_LINE_END -->
+
+										<!-- PRODUCT_LINE_START -->
+										<h2 class=" ibm-h4 ibm-textcolor-white-core">Cloud data services</h2>
+										<div class="ibm-container-body ibm-padding-top-2  ibm-padding-bottom-2">
+										
+											<div class="ibm-columns ">
+												<div class="ibm-col-4-3">
+													<p class="bm-textcolor-green-20 ibm-h4 ibm-padding-bottom-2">Cloud Data Services provides a hybrid, open source-based approach that application developers, data scientists and IT architects seek to address their data-intensive needs and deliver both immediate and longer-term benefits. </p>
+													<p><a class="ibm-btn-pri ibm-btn-white-core" href="technology/cloud-data-services/">Learn more</a></p>
+													<p class="ibm-small ibm-padding-top-2">Products:</p>
+												</div>
+											</div>												
+
+											<div class="ibm-columns">
+											
+												<!--column 1 -->
+												 <div class="ibm-col-4-1 ibm-col-medium-6-2">
+												 
+													  <!-- -->
+													  <a href="technology/cloud-data-services/cloudant/" data-widget="tooltip" data-contentid="tt-cloudant">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__image"><img class="" src="http://www.ibm.com/analytics/us/en/technology/cloud-data-services/images/products/cloudant/icon.svg" alt="IBM Cloudant Logo" style="width:3.67em;"></div>
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">IBM Cloudant</h3></div>
+														</div>										  
+													   </a>
+													   <div id="tt-cloudant" class="ibm-tooltip-content">
+															<p class="ibm-textcolor-blue-30">IBM Cloudant</p>
+															<p class="ibm-light">Give your application uninterrupted data access, offline and online, anywhere in the world, with a fully managed NoSQL database service. Let IBM manage the database layer so you can build more, grow more and sleep more.</p>
+														</div>
+														<!-- -->
+													  
+														<!-- -->
+														<a href="technology/cloud-data-services/compose/" data-widget="tooltip" data-contentid="tt-compose">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__image"><img class="" src="http://www.ibm.com/analytics/us/en/technology/cloud-data-services/images/products/compose/icon.svg" alt="IBM Compose Logo" style="width:3.67em;"></div>
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">IBM Compose Enterprise</h3></div>										  
+													   </div>
+													   </a>
+													   <div id="tt-compose" class="ibm-tooltip-content">
+															<p class="ibm-textcolor-blue-30">IBM Compose Enterprise</p>
+															<p class="ibm-light">Run web and mobile apps on fully managed, hand-picked open source databases with an integrated database-as-a-platform service. Gain flexibility and scale without losing cycles to database management.</p>
+														</div>	
+														<!-- -->
+														
+													   <!-- -->
+														<a href="technology/cloud-data-services/graph/" data-widget="tooltip" data-contentid="tt-graph">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__image"><img class="" src="http://www.ibm.com/analytics/us/en/technology/cloud-data-services/images/products/graph/icon.svg" alt="IBM Graph Logo" style="width:3.67em;"></div>
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">IBM Graph</h3></div>									  
+													   </div>
+													   </a>	
+													   <div id="tt-graph" class="ibm-tooltip-content">
+															<p class="ibm-textcolor-blue-30">IBM  Graph</p>
+															<p class="ibm-light">Store, query and visualize your data with this cutting-edge graph database, scalable for enterprise application developers who require a database-as-a-service.</p>
+														</div>									   
+													   <!-- -->
+												 </div>										
+											
+
+												<!--column 2 -->
+												 <div class="ibm-col-4-1 ibm-col-medium-6-2">
+												 
+													  <!-- -->
+													  <a href="technology/cloud-data-services/dashdb/" data-widget="tooltip" data-contentid="tt-dashdb">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__image"><img class="" src="http://www.ibm.com/analytics/us/en/technology/cloud-data-services/images/products/dashdb/icon.svg" alt="IBM dashDB Logo" style="width:3.67em;"></div>
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">IBM dashDB</h3></div>
+														</div>										  
+													   </a>
+																<div id="tt-dashdb" class="ibm-tooltip-content">
+																	<p class="ibm-textcolor-blue-30">IBM dashDB</p>
+																	<p class="ibm-light">Analyze your data where it resides—in the cloud—with a fully managed columnar data warehouse service. Leverage in-database predictive analytics and massively parallel processing (MPP) to do more with your data.</p>
+																</div>
+														<!-- -->
+													  
+														<!-- -->
+														<a href="https://www.ibm.com/marketplace/cloud/data-connect/us/en-us" data-widget="tooltip" data-contentid="tt-dataworks">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__image"><img class="" src="http://www.ibm.com/analytics/us/en/technology/cloud-data-services/images/products/dataworks/icon.svg" alt="IBM Bluemix Data Connect Logo" style="width:3.67em;"></div>
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">IBM Bluemix Data Connect</h3></div>										  
+													   </div>
+													   </a>
+																<div id="tt-dataworks" class="ibm-tooltip-content">
+																	<p class="ibm-textcolor-blue-30">IBM Bluemix Data Connect <BR> <i> (formerly IBM Dataworks) </i></p>
+																	<p class="ibm-light">Ensure you always have access to rich, high-quality data with a fully managed data preparation and movement service. ACT (access, combine and transform) upon your data so you can start analyzing it today.</p>
+																</div>
+														<!-- -->
+														
+													   <!-- -->
+														<a href="technology/cloud-data-services/biginsights-on-cloud/" data-widget="tooltip" data-contentid="tt-biginsights">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__image"><img class="" src="http://www.ibm.com/analytics/us/en/technology/cloud-data-services/images/products/biginsights/icon.svg" alt="IBM BigInsights Logo" style="width:3.67em;"></div>
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">IBM BigInsights for Apache Hadoop</h3></div>									  
+													   </div>
+													   </a>	
+																<div id="tt-biginsights" class="ibm-tooltip-content">
+																	<p class="ibm-textcolor-blue-30">IBM BigInsights on Cloud</p>
+																	<p class="ibm-light">Accelerate to enterprise-grade advanced analytics built on proven open source Hadoop technology.</p>
+																</div>								   
+													   <!-- -->
+												 </div>		
+
+
+												<!--column 3 -->
+												 <div class="ibm-col-4-1 ibm-col-medium-6-2">
+													  <!-- -->
+													  <a href="technology/cloud-data-services/spark-as-a-service/" data-widget="tooltip" data-contentid="tt-spark">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__image"><img class="" src="http://www.ibm.com/analytics/us/en/technology/cloud-data-services/images/products/spark-analytics/icon.svg" alt="IBM Spark Analytics Logo" style="width:3.67em;"></div>
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">IBM Analytics for Apache Spark</h3></div>
+														</div>										  
+													   </a>
+																<div id="tt-spark" class="ibm-tooltip-content">
+																	<p class="ibm-textcolor-blue-30">IBM Analytics for Apache Spark</p>
+																	<p class="ibm-light">Increase your analytics agility with the power of open source Apache Spark. Process large data volumes at great speed in a hosted, managed, secure environment.</p>
+																</div>
+														<!-- -->
+													  
+														<!-- -->
+														<a href="technology/cloud-data-services/predictive-analytics/" data-widget="tooltip" data-contentid="tt-predictive">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__image"><img class="" src="http://www.ibm.com/analytics/us/en/technology/cloud-data-services/images/products/predictive-analytics/icon.svg" alt="IBM Predictive Analytics Logo" style="width:3.67em;"></div>
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">IBM Predictive Analytics</h3></div>										  
+													   </div>
+													   </a>
+																<div id="tt-predictive" class="ibm-tooltip-content">
+																	<p class="ibm-textcolor-blue-30">IBM Predictive Analytics</p>
+																	<p class="ibm-light">Optimize the future with better decisions today, deployed directly into business processes.</p>
+																</div>
+														<!-- -->
+														
+													   <!-- -->
+														<a href="technology/cloud-data-services/db2-on-cloud/" data-widget="tooltip" data-contentid="tt-db2">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__image"><img class="" src="http://www.ibm.com/analytics/us/en/technology/cloud-data-services/images/products/db2/icon.svg" alt="IBM db2 Logo" style="width:3.67em;"></div>
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">IBM DB2 on Cloud</h3></div>									  
+													   </div>
+													   </a>	
+																<div id="tt-db2" class="ibm-tooltip-content">
+																	<p class="ibm-textcolor-blue-30">IBM DB2 on Cloud</p>
+																	<p class="ibm-light">Get enterprise security and performance with the scale and agility of the cloud. Use the same trusted DB2 multi-workload relational database for heavy data lifting in a new self-service deployment with subscription licensing.</p>
+																</div>									   
+													   <!-- -->										
+												</div>
+											</div>
+										</div>
+										<!-- PRODUCT_LINE_END -->
+
+
+										
+										
+										<!-- PRODUCT_LINE_START -->
+										<h2 class=" ibm-h4 ibm-textcolor-white-core">Industry</h2>
+										<div class="ibm-container-body ibm-padding-top-2  ibm-padding-bottom-2">
+										
+											
+											<div class="ibm-columns ">
+												<div class="ibm-col-4-3">
+													<p class="bm-textcolor-green-20 ibm-h4 ibm-padding-bottom-2">Industry-specific analytic solutions help organizations in virtually every industry transform insight into action. </p>
+													<p><a class="ibm-btn-pri ibm-btn-white-core" href="industry/">Learn more</a></p>
+													<p class="ibm-small ibm-padding-top-2">Solutions for:</p>
+												</div>
+											</div>												
+
+											<div class="ibm-columns">
+											
+												<!--column 1 -->
+												 <div class="ibm-col-4-1 ibm-col-medium-6-2">
+												 
+													  <!-- -->
+													  <a href="industry/automotive/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Automotive</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->
+													  <!-- -->
+													  <a href="industry/banking">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Banking</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->
+													  <!-- -->
+													  <a href="industry/consumer-products/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Consumer products</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->
+													  <!-- -->
+													  <a href="industry/education">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Education</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->		
+													  <!-- -->
+													  <a href="industry/electronics">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Electronics</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->														
+													  <!-- -->
+													  <a href="industry/energy-and-utilities/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Energy and utilities</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->													  
+												 </div>										
+											
+												<!--column 2 -->
+												 <div class="ibm-col-4-1 ibm-col-medium-6-2">
+												
+													  <!-- -->
+													  <a href="industry/financial-markets/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Financial markets</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->
+													  <!-- -->
+													  <a href="industry/government/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Government</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->														
+													  <!-- -->
+													  <a href="industry/healthcare/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Healthcare</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->	
+													  <!-- -->
+													  <a href="industry/insurance/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Insurance</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->	
+													  <!-- -->
+													  <a href="industry/media-and-entertainment/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Media and entertainment</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->	
+													  <!-- -->
+													  <a href="industry/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Metals and mining</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->															
+												 </div>	
+
+
+												<!--column 3 -->
+												 <div class="ibm-col-4-1 ibm-col-medium-6-2">
+												 
+
+													  <!-- -->
+													  <a href="industry/oil-and-gas/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Oil and gas</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->
+													  <!-- -->
+													  <a href="industry/retail/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Retail</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->
+													  <!-- -->
+													  <a href="industry/telecommunications/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Telecommunications</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->														
+													  <!-- -->
+													  <a href="industry/travel-and-transformation/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Travel and transportation</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->														
+												 </div>													 
+											
+											</div>
+										</div>
+										<!-- PRODUCT_LINE_END -->
+
+										
+										
+
+										<!-- PRODUCT_LINE_START -->
+										<h2 class=" ibm-h4 ibm-textcolor-white-core">Line of business</h2>
+										<div class="ibm-container-body ibm-padding-top-2  ibm-padding-bottom-2">
+									
+											<div class="ibm-columns ">
+												<div class="ibm-col-4-3">
+													<p class="bm-textcolor-green-20 ibm-h4 ibm-padding-bottom-2">Analytics solutions that help businesses and professionals make insight a part of every system, process and customer touchpoint. </p>
+													<p><a class="ibm-btn-pri ibm-btn-white-core" href="business/">Learn more</a></p>
+													<p class="ibm-small ibm-padding-top-2">Solutions for:</p>
+												</div>
+											</div>											
+
+											<div class="ibm-columns">
+											
+												<!--column 1 -->
+												 <div class="ibm-col-4-1 ibm-col-medium-6-2">
+												 
+													  <!-- -->
+													  <a href="business/customer-analytics/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Customer analytics</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->
+													  <!-- -->
+													  <a href="http://www.ibm.com/internet-of-things/software-product-development.html">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Engineering</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->
+													  <!-- -->
+													  <a href="business/financial-performance-management/index.html">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Finance</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->												  
+												 </div>	
+
+												<!--column 1 -->
+												 <div class="ibm-col-4-1 ibm-col-medium-6-2">
+												 
+													  <!-- -->
+													  <a href="/business/insight-cloud-services/">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Insight Cloud Services</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->
+													  <!-- -->
+													  <a href="/business/risk-management.html">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Risk management</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->
+													  <!-- -->
+													  <a href="/business/sales-performance-management/index.html">
+														<div class="ibm-vertical-center ibm-mo ibm-mo--middle ibm-padding-bottom-1">
+														  <div class="ibm-mo__body"><h3 class="ibm-h4  ibm-padding-bottom-0  ibm-textcolor-blue-30">Sales</h3></div>
+														</div>										  
+													   </a>
+														<!-- -->												  
+												 </div>	
+												 
+										</div>
+										<!-- PRODUCT_LINE_END -->
+
+
+										
+
+									</div>
+								</div>
+							</div>
+						</div>	
+						</div>
+					</section>
+					<!-- BROWSE_ALL_PRODUCTS_END --> 					
+					
+					<!--PARTNERSHIPS_BEGIN -->
+					
+					<section id="partnerships">
+						<div id="partnerships-container" class="ibm-padding-top-2 ibm-padding-bottom-2">	
+
+							<div class="ibm-columns ibm-padding-bottom-2">	
+								<div class="ibm-col-1-1  ibm-padding-bottom-1"><h3 class="ibm-h2 ibm-light  ibm-textcolor-blue-40">IBM Analytics partnerships</h3></div>
+							</div>
+
+						
+							<div class="ibm-columns ibm-padding-bottom-2" data-widget="setsameheight" data-always="true" data-items=".ibm-card">
+
+
+										<div class="ibm-col-6-2 ibm-col-medium-4-2">
+											<div class="ibm-card">
+												<div class="ibm-card__image  ibm-center ibm-padding-top-1"><img src="images/analytics-homepage/partnership-ibmandtwitter.png" alt="IBM and Twitter logo lockup" width="70%"/></div>
+												<div class="ibm-card__content">
+													<h3 class="ibm-light ibm-h4 ibm-textcolor-blue-40">IBM and Twitter</h3>
+													<p>IBM is moving Twitter data beyond social listening to drive actionable insights that yield business results.</p>
+												</div>
+												<div class="ibm-card__bottom"><p><a class="ibm-forward-link ibm-inlinelink" href="//www.ibm.com/analytics/us/en/partnerships/ibmandtwitter/innovators.html"> &nbsp; Learn more</a></p></div>
+											</div>
+										</div>		
+							
+										<div class="ibm-col-6-2 ibm-col-medium-4-2">
+											<div class="ibm-card">
+												<div class="ibm-card__image  ibm-center ibm-padding-top-1"><img src="images/analytics-homepage/partnership-ibmandbox.png" alt="IBM and Box logo lockup" width="70%"/></div>
+												<div class="ibm-card__content">
+													<h3 class="ibm-light ibm-h4 ibm-textcolor-blue-40">IBM and Box</h3>
+													<p>IBM and Box will combine best-in-class content collaboration and analytics to transform work in the cloud.</p>
+												</div>
+												<div class="ibm-card__bottom"><p><a class="ibm-forward-link ibm-inlinelink" href="partnerships/ibmandbox/"> &nbsp; Learn more</a></p></div>
+											</div>
+										</div>		
+
+										<div class="ibm-col-6-2 ibm-col-medium-4-2">
+											<div class="ibm-card">
+												<div class="ibm-card__image  ibm-center ibm-padding-top-1"><img src="images/analytics-homepage/partnership-ibmanddocusign.png" alt="IBM and DocuSign logo lockup" width="90%"/></div>
+												<div class="ibm-card__content">
+													<h3 class="ibm-light ibm-h4 ibm-textcolor-blue-40">IBM and DocuSign</h3>
+													<p>IBM and DocuSign have partnered to help enterprises drive transformation with digital transaction management built around the way people work.</p>
+												</div>
+												<div class="ibm-card__bottom"><p><a class="ibm-forward-link ibm-inlinelink" href="partnerships/ibmanddocusign/"> &nbsp; Learn more</a></p></div>
+											</div>
+										</div>												
+										
+
+
+						</div>
+					</section>
+					<!-- PARTNERSHIPS_END -->
+
+
+
+					<!--CLIENT_REFERENCES_BEGIN-->
+					<section id="ibm-analytics-client-references" data-solution="ibm-analytics-client-references">
+						<div id="client-container" class="colored-band-cta ibm-background-cool-gray-80 ibm-background-alternate">
+                        <div class="ctas" data-widget="setsameheight" data-items=".ibm-col-4-1">
+                          <div class="ibm-col-4-1 no-margin ibm-padding-top-r1 ibm-padding-bottom-r1 testfirst client-references-background-color">
+                            <h2 class="ibm-h2 ibm-light  ibm-textcolor-white-core ibm-padding-top-2">Client success stories</h2>
+                            <p>&nbsp;</p>
+                         </div>
+                          <div class="ibm-col-4-1 no-margin ibm-padding-top-r1 ibm-padding-bottom-r1 ibm-background-blue-40 ibm-alternate-background ">
+							<p  class="ibm-h4"><strong>Honda R&D</strong></p>
+                            <p>There are surging data mining demands in a lot of areas within Honda, however, these were not enough for LOB executives to decide to use analytics in their real-world operations, for cost reduction, operation effectiveness and new value creation.</p>
+							<p class="ibm-padding-top-1 ibm-padding-bottom-2"><a data-widget="videoplayer" data-videodisplay="overlay" data-videoid="zs7qqEfD720" data-videotype="youtube" class="ibm-inlinelink ibm-video-player-con" href="https://www.youtube.com/watch?v=zs7qqEfD720" style="margin-right:35px;"><span class="ibm-icon-nolink ibm-play-link">Watch video</span></a></p>
+						  </div>
+                          <div class="ibm-col-4-1 no-margin ibm-padding-top-r1 ibm-padding-bottom-r1 ibm-background-blue-50 ibm-alternate-background ">
+							<p  class="ibm-h4"><strong>Turkcell</strong></p>
+                            <p>Turkcell worked with IBM Business Partner Aksis to delve deep into millions of customer contract documents to better understand their communications preferences and drive smarter marketing strategies while ensuring regulatory compliance.</p>
+							<p class="ibm-padding-top-1 ibm-padding-bottom-2"><a data-widget="videoplayer" data-videodisplay="overlay" data-videoid="-tMhhLdxlYA" data-videotype="youtube" class="ibm-inlinelink ibm-video-player-con" href="https://www.youtube.com/watch?v=-tMhhLdxlYA" style="margin-right:35px;"><span class="ibm-icon-nolink ibm-play-link">Watch video</span></a></p>
+						  </div>
+                          <div class="ibm-col-4-1 no-margin ibm-padding-top-r1 ibm-padding-bottom-r1 ibm-background-blue-60 ibm-alternate-background ">
+							<p class="ibm-h4"><strong>Northwestern University</strong></p>
+                            <p>Replacing spreadsheets with IBM Analytics solutions saved Northwestern University's budget analysts a ton of time and work.  </p>
+							<p class="ibm-padding-top-1 ibm-padding-bottom-2"><a data-widget="videoplayer" data-videodisplay="overlay" data-videoid="5f8DpdHSmH8" data-videotype="youtube" class="ibm-inlinelink ibm-video-player-con" href="https://www.youtube.com/watch?v=5f8DpdHSmH8" style="margin-right:35px;"><span class="ibm-icon-nolink ibm-play-link">Watch video</span></a></p>
+						  </div>	
+                          <div class="ibm-col-4-1 no-margin ibm-padding-top-r1 ibm-padding-bottom-r1 ibm-background-blue-70 ibm-alternate-background ">
+							<p class="ibm-h4"><strong>SEGES</strong></p>
+                            <p>Working with Mjølner Informatics, an innovative software and design consultancy, SEGES uses IBM® Watson™ Analytics to explore relevant data and gain deeper, actionable insight into farming trends.</p>
+							<p class="ibm-padding-top-1 ibm-padding-bottom-2"><a class="ibm-forward-link ibm-inlinelink" href="http://ecc.ibm.com/case-study/us-en/ECCF-ASC12394USEN" target="blank"> &nbsp; Read case study</a></p>
+						  </div>						  						  
+                        </div>
+                      </div>
+					</section>
+					<!--CLIENT_REFERENCES_END-->
+
+					
+					
+					
+					<!--SERVICES_BEGIN-->
+					<section id="email-get-connected"> 
+						<div id="email-get-conected-container" class="ibm-background-purple-70">
+							<div class="ibm-columns ibm-alternate-background ibm-padding-top-2 ibm-padding-bottom-1">
+								<div class="ibm-col-4-3 ibm-col-medium-1-1 "><p class="ibm-h3  ibm-light">Learn how to define, implement, realize and grow your IBM Analytics Solutions</p></div>
+								<div class="ibm-col-4-1 ibm-col-medium-1-1 ibm-center"><p><a href="//www.ibm.com/analytics/us/en/services/" target="blank" class="ibm-btn-pri ibm-btn-white-core" style="color:#323232 !important;">Learn more</a></p></div>
+							</div>
+						</div>
+					</section>					
+					<!--SERVICES_END-->
+					
+					
+									  
+				  <!-- ANALYTICS_FOOTER_BEGIN -->
+
+					<section id="footer" class="ibm-padding-bottom-r2 ibm-background-white-core">
+						<div class="ibm-columns ibm-textcolor-grey-80">
+							
+							<div class="ibm-col-5-1 ibm-padding-top-2">
+								<h4 class="ibm-bold ibm-textcolor-gray-80">Featured products</h4>
+								
+								<p><a class="ibm-textcolor-gray-80" href="technology/spss/">SPSS </a></p>
+								
+								<p><a class="ibm-textcolor-gray-80" href="technology/db2/">DB2</a></p>
+								
+								<p><a class="ibm-textcolor-gray-80" href="technology/hadoop/">IBM BigInsights for Hadoop</a></p>
+								
+								<p><a class="ibm-textcolor-gray-80" href="technology/cloud-data-services/cloudant/">Cloudant</a></p>
+								
+							   <p><a class="ibm-textcolor-gray-80" href="http://www.ibm.com/software/data/dashdb/">dashDB</a></p>
+							   
+							   <p><a class="ibm-textcolor-gray-80" href="http://www.ibm.com/analytics/watson-analytics/us-en/">Watson Analytics</a></p>
+											
+							</div>
+							
+							<div class="ibm-col-5-1 ibm-padding-top-2">
+								<h4 class="ibm-bold ibm-textcolor-gray-80">Featured industry solutions</h4>
+								
+								<p><a class="ibm-textcolor-gray-80" href="industry/banking/">Banking</a></p>
+								
+								<p><a class="ibm-textcolor-gray-80" href="industry/energy-and-utilities/">Energy and Utilities</a></p>								
+											
+								<p><a class="ibm-textcolor-gray-80" href="industry/government/">Government</a></p>
+								
+								<p><a class="ibm-textcolor-gray-80" href="industry/healthcare/">Healthcare</a></p>
+								
+								<p><a class="ibm-textcolor-gray-80" href="industry/retail/">Retail</a></p>
+
+							</div>
+							
+							<div class="ibm-col-5-1 ibm-padding-top-2">
+								<h4 class="ibm-bold ibm-textcolor-gray-80">Solutions for...</h4>
+								
+								<p><a class="ibm-textcolor-gray-80" href="technology/">Technology</a></p>
+								
+								<p><a class="ibm-textcolor-gray-80" href="industry/">Industry</a></p>
+								
+								<p><a class="ibm-textcolor-gray-80" href="business/">Business</a></p>
+								
+							</div>
+							
+							<div class="ibm-col-6-1 ibm-padding-top-2">
+							   <h4 class="ibm-bold">Connect with IBM Analytics</h4>
+							   <p class="ibm-ind-link"><a class="ibm-facebook-link ibm-textcolor-black-core" target="_blank" href="https://www.facebook.com/IBManalytics"></a></p>
+							   <p class="ibm-ind-link"><a class="ibm-twitter-link ibm-textcolor-black-core" target="_blank" href="https://twitter.com/ibmanalytics"></a></p>
+							   <p class="ibm-ind-link"><a class="ibm-linkedin-link ibm-textcolor-black-core" target="_blank" href="https://www.linkedin.com/company/ibm-big-data-&-analytics"></a></p>
+							   <p class="ibm-ind-link"><a class="ibm-youtube-link ibm-textcolor-black-core" target="_blank" href="https://www.youtube.com/user/ibmbigdata"></a></p>
+						   </div>
+					   </div>
+					</section>
+					 <!-- ANALYTICS_FOOTER_END-->
+
+								
+								
+							
+				  
+				  
+				  
+                  <!-- CONTENT_END -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+		<!--MAIN_CONTENT_END-->      
+      </div>
+
+      <!-- FOOTER_BEGIN -->
+      <div id="ibm-footer-module"><!-- Dynamic footer links inserted here inside a <section> --></div>
+      
+      
+      <footer role="contentinfo" aria-label="IBM">
+        <div id="ibm-footer">
+          <ul>
+            <li><a href="http://www.ibm.com/contact/us/en/">Contact</a></li>
+            <li><a href="http://www.ibm.com/privacy/us/en/">Privacy</a></li>
+            <li><a href="http://www.ibm.com/legal/us/en/">Terms of use</a></li>
+            <li><a href="http://www.ibm.com/accessibility/us/en/">Accessibility</a></li>
+          </ul>
+        </div>
+      </footer>
+      <!-- FOOTER_END -->
+
+    </div>
+	
+
+<div id="ibm-contact-module">
+    <h2 class="ibm-bold">Contact us</h2>
+    <h3 class="ibm-bold">Have questions?</h3>
+    <ul class="ibm-live-assistance-list">
+        <li><a href="https://ibm.com/marketing/iwm/dre/signup?source=MAIL-analytics&S_PKG=ov42187&disableCookie=Yes&lang=en_us" target="blank">Email IBM</a> </li>
+        <!--<li><a class="ibm-requestquote-link" href="####">Request a quote</a></li>-->
+        <li>
+            <p class="ibm-icon-nolink ibm-phone-link">Or call us at: 1-877-426-3774
+                <br><span class="ibm-priority-code">Priority code: Analytics Platform</span>
+            </p>
+        </li>
+    </ul>
+</div>
+
+
+
+	
+  </body>
+</html>

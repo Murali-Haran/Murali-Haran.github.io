@@ -1,0 +1,5 @@
+Take home exam total: 30 pts
+
+(1) 10 pts: 5 for code/correctness, 5 for writeup/diagnostics
+(2) 15 pts: 10 for code/correctness, 5 for writeup/diagnostics
+(3) 5 pts: 3 for code/correctness, 2 for writeup/diagnostics

@@ -1,0 +1,7 @@
+@techreport{hara:tier:2009,
+ author =  {Murali Haran and Luke Tierney}, 
+ title = {On automating {M}arkov chain {M}onte {C}arlo for a class of spatial models},
+ address = {Department of Statistics},
+ institution = {Pennsylvania State University},
+ year = 2009
+}

@@ -1,0 +1,124 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Apr.~23}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+Take-home final is on ANGEL.  It is due at 5pm on May 2.
+\item 
+Please fill out SRTEs!
+\end{itemize}
+\notes{
+Someone pointed out an error in the binomial pmf on the take-home final.  This is fixed now!
+}
+\end{frame}
+
+
+\startframe{Markov chain Monte Carlo}
+Special cases of VAATMH:  Gibbs and Metropolis updates
+\begin{itemize}
+\item  Recall full MH acceptance probability
+\item Metropolis:  $q(y_i\mid x_i, x_{-i}) = q(x_i\mid y_i, x_{-i})$
+\item Gibbs:  $q(y_i \mid x_i, x_{-i}) = \pi(y_i \mid x_{-i})$
+\end{itemize}
+\[
+\alpha(x_i, y_i \mid x_{-i}) = \min
+\left\{ 1,
+\frac{\pi(y_i \mid x_{-i}) q(x_i\mid y_i, x_{-i})}{ \pi(x_i \mid x_{-i}) q(y_i\mid x_i, x_{-i})}
+\right\}
+\]
+\notes{
+This was a bit of review of the fact that when using a VAATMH, the $\pi$ in the acceptance ratio
+should be the full conditional, not the joint density.
+}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+Why VAATMH works:
+\begin{itemize}
+\item Suppose $\vec x = (x_1, x_2)^\top$.
+\item Take Markov transition densities 
+$k_{1\mid 2} (y_1 \mid x_1, x_2)$ and
+$k_{2\mid 1} (y_2 \mid x_1, x_2)$.
+\item Then the transition density for both updates is
+\[
+k[ (y_1, y_2) \mid (x_1, x_2) ] =
+k_{1\mid 2} (y_1 \mid x_1, x_2) k_{2\mid 1}(y_2 \mid y_1, x_2).
+\]
+\end{itemize}
+\notes{
+The equations that must be satisfied by $k_{1\mid 2}$ and $k_{2\mid 1}$ are
+\begin{eqnarray*}
+\pi ( y_1 \mid x_2) &=& \int k_{1 \mid 2}( y_1 \mid x_1, x_2) \pi(x_1 \mid x_2) \, dx_1, \\
+\pi ( y_2 \mid x_1) &=& \int k_{2 \mid 1}( y_2 \mid x_1, x_2) \pi(x_2 \mid x_1) \, dx_2
+\end{eqnarray*}
+for all $y_1$ and $y_2$.
+}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+Why VAATMH works:
+\begin{itemize}
+\item
+$k[ (y_1, y_2) \mid (x_1, x_2) ] =
+k_{1\mid 2} (y_1 \mid x_1, x_2) k_{2\mid 1}(y_2 \mid y_1, x_2)$.
+\item Show $\pi(\vec y) = \int k(\vec y \mid \vec x) \pi(\vec x) \, d\vec x$.
+\end{itemize}
+\notes{We proved this in class, using the two equations in the notes on the previous slide, as follows:
+\begin{eqnarray*}
+&&\int k(\vec y \mid \vec x) \pi(\vec x) \, d\vec x \\
+ &=&
+\int \!\! k_{2\mid 1}(y_2 \mid y_1, x_2)  \pi(x_2) 
+\left[ \int \!\! k_{1\mid 2} (y_1 \mid x_1, x_2) \pi( x_1 \mid x_2 )
+\, dx_1 \right] dx_2 \\
+ &=&
+\int \!\!  k_{2\mid 1}(y_2 \mid y_1, x_2) \pi(y_1 \mid x_2) \pi(x_2)
+\, dx_2 \\
+ &=&
+\pi(y_1) \int \!\!  k_{2\mid 1}(y_2 \mid x_2, y_1 ) \pi(x_2 \mid y_1) 
+\, dx_2 \\
+&=& \pi(y_2 \mid y_1) \pi(y_1) = \pi(\vec y).
+\end{eqnarray*}
+}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+MCMC standard errors for estimate of $E_\pi g(X)$
+\begin{itemize}
+\item Batch means idea (where $n=ab$):
+\[
+\mbox{Let}\quad
+Y_1 = \frac{X_1+ \cdots + X_b}{b}, 
+Y_2 = \frac{X_{b+1}+ \cdots + X_{2b}}{b}, \ldots
+\]
+\item Then $\hat\sigma^2 = \frac{1}{a-1} \sum_{i=1}^a b(Y_i - \hat\mu)^2$.
+And $\widehat{\mbox{MCMCse}} = \hat\sigma/\sqrt{n}$.
+\item Jones et al (2006):  Take, for example, $b=\sqrt{n}$.
+\end{itemize}
+\notes{
+The idea here is to choose $Y_i$ to satisfy two goals:
+First, the dependence between the $Y_i$ is weak; and second, the 
+dependence within each of the $Y_i$ will capture most of the
+dependence among the $X_i$.  If this is true, then
+by a CLT-like result for Markov chains,
+the variance of $\frac{1}{\sqrt b} \sum_{i=1}^b X_i$
+is a reasonable estimator of the variance of $\frac1{\sqrt n}\sum_{i=1}^b X_i$.
+This in turn means that $b/n$ times the sample variance of the $Y_i$ is
+a reasonable estimator of $\Var \overline X_n$.
+}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+
+
+

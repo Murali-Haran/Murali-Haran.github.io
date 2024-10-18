@@ -1,0 +1,93 @@
+\documentclass{article}
+\pagestyle{empty}
+\setlength{\textwidth}{6in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{9in}
+\def\given{\,|\,}
+\def\Var{\mathop{\rm Var\,}\nolimits}
+\def\Cov{\mathop{\rm Cov\,}\nolimits}
+\newcommand{\beaa}{\begin{eqnarray*}}
+\newcommand{\eeaa}{\end{eqnarray*}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+
+\begin{document}
+
+\begin{center}
+{\bf STAT/MATH 414, section 001}
+
+{\bf Homework \#8, due Friday, Mar. 27}
+\end{center}
+
+{\em Show all work.  Exercise numbers refer to Hogg and Tanis, 7th edition, unless otherwise stated.}
+
+\begin{enumerate}
+
+\item Exercise 4.1-6.  In addition to parts (a) and (b), also find the correlation of $X$ and $Y$.
+
+{\bf Hint:\ }
+Logically, the correlation should be negative because if $X$ happens to be really large, this
+means $Y$ is more likely to be small and vice versa.  This will give you one way to check
+your work (if you get a positive correlation, you did something wrong).  Also, you might find
+the ``Note'' in Exercise 4.2-6 helpful.
+
+\item Exercise 4.1-8.
+
+\item Exercise 4.1-11.   Instead of merely answering the yes/no question in the exercise, explain how you
+can tell at a single glance that $X$ and $Y$ must be independent.  
+
+
+\item Suppose that $(X,Y)$ is uniformly distributed on a circle with center at the origin and
+radius 1.  What is $P(2X+Y>1)$?
+
+{\bf Hint:\ } Sketch the region over which you must integrate.  Also, an antiderivative of 
+$\sqrt{1-y^2}$ is $\frac12y\sqrt{1-y^2} + \frac12\arcsin(y)$.  
+
+\item
+A device runs until either of two components fails, at which point the device stops
+running. The joint density function of the lifetimes of the two components, both
+measured in hours, is
+\beaa
+f(x,y) = c(x+y) \quad\mbox{for $0<x<3$ and $0<y<3$.}
+\eeaa
+Calculate the probability that the device fails during its first hour of operation.
+
+
+\item Prove that for any two random variables $X$ and $Y$ for which $\Var(X)$ and $\Var(Y)$
+are finite,
+\beaa
+\Var(X+Y) = \Var(X) + \Var(Y) + 2\Cov(X,Y).
+\eeaa
+{\bf Hint:\ } Don't worry about the ``finite'' part --- it just means that you don't need to be nervous
+about the case $\Var(X)=\infty$ or $\Var(Y)=\infty$, when the above addition can be troublesome.
+You are free to use the facts $\Var(X)=E(X^2)-[E(X)]^2$ and 
+$\Cov(X,Y)=E(XY) - E(X)E(Y)$ without proving them.
+
+\item Exercise 4.2-1.  Also find $\Var (X+Y)$.
+
+\item 
+Two insurers provide bids on an insurance policy to a large company. The bids must be
+between 2000 and 2200. The company decides to accept the lower bid if the two bids
+differ by 20 or more. Otherwise, the company will consider the two bids further.
+Assume that the two bids are independent and are both uniformly distributed on the
+interval from 2000 to 2200.
+Determine the probability that the company considers the two bids further.
+
+\item 
+An insurance company sells two types of auto insurance policies: Basic and Deluxe. The
+time until the next Basic Policy claim is an exponential random variable with mean two
+days. The time until the next Deluxe Policy claim is an independent exponential random
+variable with mean three days.
+What is the probability that the next claim will be a Deluxe Policy claim?
+
+{\bf Note:\ }  This scenario, in which waiting times are exponential and independent and you
+wish to calculate the wait until the next event, is {\em very} common --- not just in this
+insurance setting!
+
+\end{enumerate}
+
+
+\end{document}
+

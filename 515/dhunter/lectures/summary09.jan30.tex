@@ -1,0 +1,113 @@
+\input{summary	}
+
+\begin{document}
+
+
+\def \thedate{Jan.~30}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+Read Sections 4.6 through 4.8 (both editions)
+\item 
+HW \#3 should go up later today; it will be due Wednesday, Feb.~8
+\item
+Solutions for HW \#2 use Sweave (source file is provided)
+\item
+I will not be in class on:  
+
+Friday, Feb.~10;  Wednesday, Mar.~14; Monday, Mar.~12 (probably)
+\end{itemize}
+\notes{I highly recommend checking out Sweave!  
+To try it, see if you can convert the
+.Rnw file for solution set \#2 to a pdf.}
+\end{frame}
+
+
+\startframe{4.3 Classification of States}
+State $i$ is recurrent if and only if, conditional on $X_0=i$, 
+\begin{itemize}
+\item $P(\mbox{ever revisiting $i$}) = 1$
+\item $E(\#\{T>0:  X_T = i\}) = \infty$.
+\item $\sum_{n=1}^\infty P_{ii}^n = \infty$.
+\end{itemize}
+\notes{This is a slide from a previous lecture.  We'll use the third fact in the 
+following proof.}
+\end{frame}
+
+\startframe{4.3 Classification of States}
+Theorem:  
+Recurrence (or transience) is a class property.
+
+How do we prove this?
+\notes{
+This is Corollary 4.2, and we followed the proof given in the textbook quite closely.  
+It is instructive to walk through the steps, since none of them is too difficult.
+}
+\end{frame}
+
+
+\startframe{4.3 Classification of States}
+Theorem:  
+All states of a finite, irreducible Markov chain are recurrent.
+
+How do we prove this?
+\notes{
+First, irreducibility means only a single communicating class, which means
+we must merely show that a single state is recurrent (since recurrence is a
+class property).  If not, then every state is transient, which means that with probability
+one, every state has a finite ``last time visited''.  But this is impossible, since this means 
+that the entire chain has a ``last time visited'' equal to the maximum of the last times for
+every state.
+}
+\end{frame}
+
+
+\startframe{4.3 Classification of States}
+\question{In a Markov chain, is impossible to move:}
+{from a transient state to a transient state}
+{from a recurrent state to a transient state}
+{from a transient state to a recurrent state}
+{from a recurrent state to a recurrent state}
+\notes{Correct answer:  B.  This is good practice thinking about some
+of the properties of Markov chain states.  As part of our discussion of this
+question, we noted that once you enter a recurrent class, you never leave
+it.  (This was proved in homework \#2.)
+Also, it may be possible to move from one transient class to another, but
+then it is never possible to move back.}
+\end{frame}
+
+\startframe{Mean Time Spent in Transient States}
+Suppose you have \$2 and you bet on fair games of chance
+until you either go broke or have \$5.  
+\begin{itemize}
+\item What is the expected number of time steps that you have \$2?
+\item What is the probability that you will at some point have \$1?
+\end{itemize}
+\notes{These are interesting questions that are answered in Section 4.6.
+Because we have time, and because it gives us some more practice with important
+concepts like recurrence, transience, and conditioning, we will explore them.}
+\end{frame}
+
+\startframe{Mean Time Spent in Transient States}
+Let $s_{ij} \stackrel{\rm def}{=}E(\#\{ T: X_T=i \mid X_0=j \})$
+\begin{itemize}
+\item For which $i$ and $j$ is $s_{ij}$ meaningful?
+\item Let us show $S = I + P_TS$ for correctly defined $S$ and $P_T$.
+\end{itemize}
+\notes{We argued that the answer to the first question is ``only the transient
+states''.  The second equation is proven by a conditioning argument, and
+it leads to a simple-to-solve matrix equation that will lead us to the matrix $S$,
+which immediately answers questions like "What is the expected number of
+time steps that you have \$2?''}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

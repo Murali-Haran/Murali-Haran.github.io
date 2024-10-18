@@ -1,0 +1,76 @@
+##################################################
+## functions for 
+## Exponentially modified Gaussian
+## Exponential + Normal pdf
+## note that lambda is the rate of the exponential
+##################################################
+
+## ## the complementary error function
+## erfc <- function(x) 2 * pnorm(x * sqrt(2), lower = FALSE)
+## logerfc <- function(x) log(erfc(x))
+
+## ## density function for exponentially modified Gaussian
+## ## EMG has 3 parameters: mu, sigma, lambda
+## ## E.g. dexpgauss(3, mu=2,sigma=1, lambda=1)
+## dexpgauss <- function(x, mu, sigma, lambda, logscale=FALSE)
+##   {
+##     logval <- log(lambda)-log(2) + (lambda/2)*(2*mu+lambda*sigma*sigma -2*x)+ logerfc((mu+lambda*sigma*sigma - x)/(sigma*sqrt(2))) #log(erfc((mu+lambda*sigma*sigma - x)/(sigma*sqrt(2))))
+##     if (logscale)
+##       return(logval)
+##     else
+##       return(exp(logval))
+##   }
+
+########################################
+#### from CRAN libarry package EMG
+#### this should be more stable than
+#### the dexpgauss function above
+########################################
+dexpgauss<- function (x, mu = 0, sigma = 1, lambda = 1, log = FALSE)
+{
+    l <- max(length(x), length(mu), length(sigma), length(lambda))
+    x <- rep(x, times = ceiling(l/length(x)), length.out = l)
+    mu <- rep(mu, times = ceiling(l/length(mu)), length.out = l)
+    sigma <- rep(sigma, times = ceiling(l/length(sigma)), length.out = l)
+    lambda <- rep(lambda, times = ceiling(l/length(lambda)),
+        length.out = l)
+    if (min(sigma) <= 0) {
+        stop("Sigma must be greater than zero")
+    }
+    if (min(lambda) <= 0) {
+        stop("Lambda must be greater than zero")
+    }
+    erfc <- pnorm((mu + lambda * sigma * sigma - x)/sigma, lower.tail = FALSE,
+        log.p = log)
+    if (log) {
+        result <- lambda/2 * (2 * mu + lambda * sigma * sigma -
+            2 * x) + Re(erfc) + log(lambda)
+    }
+    else {
+        result <- exp(lambda/2 * (2 * mu + lambda * sigma * sigma -
+            2 * x)) * Re(erfc) * lambda
+    }
+    result[is.nan(result)] <- 0
+    result
+}
+
+## function to plot pdf
+## E.g. plotdexpgauss(-4,6,0,1,1)
+## E.g. plotdexpgauss(-4,6,-2,1,1)
+plotdexpgauss <- function(lowerlim, upperlim, mu, sigma, lambda, log=FALSE)
+{
+  xvals=seq(lowerlim, upperlim, length=100)
+  tempfun = function(x) return(dexpgauss(x, mu,sigma, lambda, log))
+  yvals=sapply(xvals, tempfun)
+  if (log)
+    plot(xvals, yvals, type="l", main=paste("log(pdf) of Exp Modified Gaussian (mu=",mu,", sigma=",sigma,", lambda=",lambda), xlab="x", ylab="")
+  else
+    plot(xvals, yvals, type="l", main=paste("Exp Modified Gaussian mu=",mu,"sigma=",sigma,",lambda=",lambda), xlab="x", ylab="")
+}
+  
+## random variate generation
+rexpgauss <- function(n, mu, sigma, lambda)
+  {
+    samp <- rnorm(n, mu, sigma)+rexp(n,lambda) 
+    return(samp)
+  }

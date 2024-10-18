@@ -1,0 +1,88 @@
+\documentclass{beamer}
+\usepackage{beamerthemeshadow}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+\newcommand{\beaa}{\begin{eqnarray*}}
+\newcommand{\eeaa}{\end{eqnarray*}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\def\E{\mathop{\rm E\,}\nolimits}
+\def\Var{\mathop{\rm Var\,}\nolimits}
+\def\Cov{\mathop{\rm Cov\,}\nolimits}
+\def\Corr{\mathop{\rm Corr\,}\nolimits}
+\def\logit{\mathop{\rm logit\,}\nolimits}
+\newcommand{\eid}{{\stackrel{\cal{D}}{=}}}
+\newcommand{\cip}{{\stackrel{{P}}{\to}}}
+\def\bR{\mathbb{R}}	% real line
+\def\given{\,|\,}
+
+%%%%%%%%%%
+% From http://www.disc-conference.org/disc1998/mirror/llncs.sty
+\def\vec#1{\mathchoice{\mbox{\boldmath$\displaystyle\bf#1$}}
+{\mbox{\boldmath$\textstyle\bf#1$}}
+{\mbox{\boldmath$\scriptstyle\bf#1$}}
+{\mbox{\boldmath$\scriptscriptstyle\bf#1$}}}
+%%%%%%%%%%
+
+\def\choice#1#2{
+\tikz {
+\def \lx{-.2} \def \ux{.2} \def \ly{-.2} \def\uy{.2} 
+\filldraw[color=#1] (\lx*.9,\ly*.9) rectangle (\ux*.9,\uy*.9);
+\draw(\lx,\ly) rectangle (\ux,\uy); \node at (0,0)[color=white] {\bf {#2}}; \node at (0,0) [color=black] {{#2}};
+} }
+
+\def\question#1#2#3#4#5{{#1}
+
+\begin{minipage}{2.45in}
+\begin{enumerate}
+\item [{\choice{red}{A}}]\rule{-.25em}{0em}{#2}
+\item [{\choice{yellow}{C}}]\rule{-.25em}{0em}{#4}
+\end{enumerate}
+%\choice{red}{A} {#2}
+%
+%\choice{yellow}{C} {#4}
+\end{minipage}\begin{minipage}{2.45in}
+\begin{enumerate}
+\item [{\choice{green}{B}}]\rule{-.25em}{0em}{#3}
+\item [{\choice{blue}{D}}]\rule{-.25em}{0em}{#5}
+\end{enumerate}
+%\choice{green}{B} {#3}
+%
+%\choice{blue}{D}  {#5}
+\end{minipage}
+}
+
+%
+%  Simple macro to declare and use image all at once.
+%
+\def\figurehere#1#2{\pgfdeclareimage[width={#2}]{{#1}}{figures/#1} \pgfuseimage{{#1}}}
+
+\def\startframe#1{\begin{frame}[t,fragile] \frametitle{\thedate \hfill {#1}} \vspace{-1ex}}
+
+
+%
+%  Declare images
+%
+%\pgfdeclareimage[width=3in]{geyser}{figures/geyser}
+
+\mode<presentation>
+{
+%  \setbeamertemplate{background canvas}
+  \usetheme{boxes}
+  \usecolortheme{blackscreen}
+
+%  \usetheme{default}
+%  \setbeamercovered{transparent}
+}
+%\beamertemplatetransparentcovereddynamic
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\setbeamersize{text margin left=0.1in}
+\setbeamersize{text margin right=0.1in}
+
+

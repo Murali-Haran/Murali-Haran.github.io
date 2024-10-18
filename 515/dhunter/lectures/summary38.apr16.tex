@@ -1,0 +1,152 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Apr.~16}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+Last homework due Next Monday (Apr.~23)
+\item 
+Take-home final exam will be available on Saturday, Apr.~21 and due
+at 5:00pm on Wednesday, May~2.
+\end{itemize}
+\notes{
+NB:  There are two days of ``overlap'' after the take-home is available and
+before the last homework is due.  Please plan your time accordingly.
+}
+\end{frame}
+
+
+\startframe{Markov chain Monte Carlo}
+For concise definitions of the conditions for Harris ergodicity\ldots
+\begin{itemize}
+\item $\pi$-irreducible
+\item Aperiodic
+\item Harris recurrent
+\end{itemize}
+\ldots see p.~1711 of Tierney (1994, {\it Annals of Statistics})
+\notes{
+Tierney's paper gives a terrific concise summary of what the above
+conditions mean in the discrete-time, continuous-state-space case.
+}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+Strong Law result:
+If a Harris-ergodic Markov chain $X_0, X_1, \ldots$ has
+stationary distribution $\pi$, and if $\mu=E_\pi g(X)<\infty$, then
+\[
+\frac1n \sum_{i=1}^n g(X_i) \stackrel{\rm as}{\to} \mu
+\quad\mbox{as $n\to\infty$.}
+\]
+Caution!  These random variables are not i.i.d.!  (Do we have a CLT?)
+\notes{
+Yes, we do have a CLT under certain additional assumptions, but this gets very
+technical and we won't discuss it in this class.  (A definitive reference for Markov
+chain CLTs is the book by Meyn and Tweedie, which is available online.)
+It is important to remember that even when 
+\[
+\sqrt{n} \left(  \frac1n \sum_{i=1}^n g(X_i)  - \mu \right) 
+\stackrel{d}{\to} N(0, \sigma^2),
+\]
+the value is $\sigma^2$ is NOT merely $\Var_\pi g(X_i)$, even in the case where
+$X_1\sim \pi$ so the chain is stationary.  This is due to the dependence among
+$X_1, X_2, \ldots$.
+}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+What about burnin?
+\begin{itemize}
+\item What is it?  
+\item Is it necessary?
+\end{itemize}
+Check out Jones and Hobert (2001, {\it Stat. Sci.})
+\notes{
+We discussed the intuition behind burnin and looked at both the Jones and Hobert paper
+and also Charlie Geyer's webpage about burnin (to find it, simply google ``geyer burnin").
+}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+\begin{itemize}
+\item ``All at once'' MH:  Go from $\vec X^{(i)} \to \vec X^{(i+1)}$.
+\item 
+``Variable-at-a-time'' MH:
+\[
+\begin{bmatrix}
+X_1^{(i)} \\ X_2^{(i)} \\ \vdots \\ X_k^{(i)}
+\end{bmatrix}
+\to
+\begin{bmatrix}
+X_1^{(i+1)} \\ X_2^{(i)} \\ \vdots \\ X_k^{(i)}
+\end{bmatrix}
+\to
+\begin{bmatrix}
+X_1^{(i+1)} \\ X_2^{(i+1)} \\ \vdots \\ X_k^{(i)}
+\end{bmatrix}
+\to \cdots \to
+\begin{bmatrix}
+X_1^{(i+1)} \\ X_2^{(i+1)} \\ \vdots \\ X_k^{(i+1)}
+\end{bmatrix}
+\]
+\end{itemize}
+\notes{See the notes on the following slide.}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+Some notes about VAATMH:
+\begin{itemize}
+\item Each $X_k$ might be multivariate.
+\item Avoids (or lessens) curse of dimensionality.
+\item Need to define ``Full conditional distributions''
+\end{itemize}
+\notes{
+My choice of notation here is unfortunate; on the previous slide, $x_k$ is the LAST 
+element of the $\vec x$ vector, but here, $x_k$ is merely some generic element.
+Sorry for the confusion.  
+}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+Full conditional distributions
+\begin{itemize}
+\item Let $\pi(\vec x)$ be the target density.
+\item Denote by $\pi(x_k \mid x_{-k})$ the conditional density
+of $x_k$ given all of $\vec x$ not including $x_k$.
+\item When doing VAATMH, the update to $X_k$ should be 
+an ``all-at-once'' MH algorithm with target density $\pi(x_k \mid x_{-k})$.
+\end{itemize}
+\notes{
+This is much easier to understand if we consider an example of full conditionals,
+which is done on the next slide.
+}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+Bayesian VAATMH example (from Gilks et al (1996), pp. 75--76):
+\begin{itemize}
+\item $Y_1, \ldots, Y_n \stackrel{\rm iid}{\sim} N(\mu, \tau^{-1})$
+\item $\mu \sim N(0,1)$
+\item $\tau \sim \mbox{gamma}(2,1)$
+\end{itemize}
+Devise an MCMC scheme for sampling from the posterior distribution.
+\notes{We did not have time to explore this example yet; we'll do this 
+at the start of class on Wednesday.
+}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+
+
+

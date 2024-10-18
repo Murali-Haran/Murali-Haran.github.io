@@ -1,0 +1,101 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Jan.~20}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+Read Sections 4.2 and 4.3 (both editions) before Monday's class.
+\item
+I encourage you to:
+\begin{itemize}
+\item Read ahead!
+\item Browse Section 3.6 (both editions)
+\end{itemize}
+\item I have made an addition to the syllabus.
+\end{itemize}
+\end{frame}
+
+
+\startframe{3.4 Computing Expectations by Conditioning}
+\begin{itemize}
+\item Perform repeated independent Bernoulli$(p)$ experiments.
+\item Let $N_k$ be the trial number where $k$ consecutive successes are first observed.
+\item Recall: $E(N_k) = E \left[ E(N_k \mid N_{k-1}) \right]$
+\end{itemize}
+\notes{I discussed the formula 
+\[
+E(N_k \mid N_{k-1}) = E \left[ E (N_k \mid W,N_{k-1}) \mid N_{k-1} \right].
+\]
+In this example, $W$ is the indicator that the $(N_{k-1}+1)$th Bernoulli trial is a
+success.}
+\end{frame}
+
+\startframe{3.5 Computing Probabilities by Conditioning}
+\begin{itemize}
+\item 
+Two players alternate flipping a coin that comes up heads with probability $p$.
+\item
+The first one to get heads is the winner.
+\item 
+What is the probability that the first player is the winner?
+\end{itemize}
+\notes{We conditioned on the first flip to find $f(p) = p + (1-p)(1-f(p))$, where $f(p)$
+is the probability we're trying to find.}
+\end{frame}
+
+\startframe{4.1 Introduction to Markov Chains}
+
+In chapter 4, ``time'' $t$ is discrete:  $t=0, 1, 2, \ldots$
+
+\vspace{2ex}
+ ``Markov'' means:  
+Distribution of $X_t$ depends {\em only} on $X_{t-1}$.
+
+{\em (Not on $t$ nor on $X_{t-2}, X_{t-3}, \ldots$.)}
+
+\end{frame}
+
+
+\startframe{4.1 Introduction to Markov Chains}
+Consider the simple weather example with states ``rain'' and ``no rain'':
+\[
+P=
+\begin{bmatrix}
+\alpha & 1-\alpha \\
+\beta & 1-\beta
+\end{bmatrix}
+=
+\begin{bmatrix}
+0.7 & 0.3 \\
+0.4 & 0.6
+\end{bmatrix}
+\]
+\notes{In this example, I showed how $\pi_0=(\pi_{00}, \pi_{01})^\top$ gets transformed into
+$\pi_1=(\pi_{10}, \pi_{11})^\top$ in this Markov chain, where
+$\pi_0$ and $\pi_1$ are the mass functions of $X_0$ and $X_1$.  However, I made a mistake:
+I wrote
+\[
+\pi_0 = P\pi_1, 
+\]
+which should have been
+\[
+\pi_0^\top = \pi_1^\top P. 
+\]
+}
+\end{frame}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

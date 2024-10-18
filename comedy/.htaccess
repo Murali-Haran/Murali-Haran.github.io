@@ -1,0 +1,6 @@
+AuthType Basic
+AuthName "For comedy"
+AuthUserFile /home/mharan/public_html/comedy/.htpasswd
+require valid-user
+order deny,allow
+allow from all 

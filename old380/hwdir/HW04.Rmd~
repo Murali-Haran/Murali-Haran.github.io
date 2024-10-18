@@ -1,0 +1,178 @@
+---
+title: "Writing Functions I"
+output: html_document
+---
+
+In this lab, we will start writing functions and explore:
+
+1. How to return a value from the function call
+2. Functions with required, default, and no arguments
+3. How to use the `...` argument in a function
+
+When you are ready to knit your document, change `evaluate` from FALSE to TRUE in the code chunk below.
+
+```{r}
+evaluate = TRUE
+```
+
+### Return value from a function call
+
+We begin with examining 2 very simple functions, `getZero1` and `getZero2`. 
+
+```{r}
+getZero1 = function(x) {
+  return(0)
+} 
+
+getZero2 = function(x) {
+  0
+}
+```
+
+What is the difference between these 2 functions? Call each of these functions with the following inputs, i.e, `x`, `y`, and `z`.  Compare the return values.
+
+```{r, collapse =TRUE}
+x = 1:5
+y = letters
+z = list(a = 1:5, b = 1:10)
+getZero1(x)
+getZero1(y)
+getZero1(z)
+getZero2(x)
+getZero2(y)
+getZero2(z)
+```
+
+In `getZero2` there is no explicit return statement so the function returns the result of the last performed evaluation. Therefore the output of these two function are identical. 
+
+### A Function with no arguments
+
+Q1. Write a new function `getZero3` takes no arguments and returns the same value as `getZero1`.
+
+```{r, eval=evaluate}
+getZero3 = function() {
+  return(0)
+}
+```
+
+Test your function
+```{r, eval=evaluate}
+getZero3()
+```
+
+
+###  A Function with multiple arguments
+
+Q2. Now, write a function, called `getNumPower`, that takes a numeric vector and returns a vector of the same length where each element is a square of a corresponding element of the input vector. Call the input argument `x` and make it a required argument.
+
+
+```{r, eval=evaluate}
+getNumPower = function(x) {
+  return(x^2)
+}
+```
+
+Test your function with the following calls
+
+```{r, eval=evaluate, collapse=TRUE}
+getNumPower(1:5)
+getNumPower(integer(0))
+getNumPower(-20)
+```
+
+Note that the input can be a vector of length $1$ or $0$. 
+
+Q3. Modify your function to take a second argument, called `power`, and use this argument to raise the values in `x` to the provided power. Provide a default value to `power` so that it returns the same results as the previous version of the function, when the `power` argument is not supplied.
+
+
+```{r, eval=evaluate}
+getNumPower = function(x, power = 2) {
+  return(x^power)
+} 
+```
+
+Note that we can supply a vector for `power` so each element in `x` is raised to a different power. Convince yourself that this is the case by examining the return values from the folowing calls:
+
+```{r, eval = evaluate, collapse=TRUE}
+getNumPower(x = x)
+getNumPower(x = 1:6, power = rep(0:1, each = 3))
+getNumPower(x = 1:6, power = 1:3)
+```
+
+Notice that in the call `getNumPower(x = 1:6, power = 1:3)` the input for `x` is a vector of length 6 and the input for `power` is of length 3. What did our function return? Can you reason out why?
+
+Try the following call. Notice it issues a warning. Why? Does it still return a value? Can you figure out what R is doing here?
+
+```{r, eval=evaluate}
+getNumPower(x = x, power = 1:4)
+```
+
+These function calls show how the recycling rule works in R when operations are performed on 2 vectors that have different lengths. 
+
+### The ... argument
+
+Q4. Write a function called `lowerTrim` that takes 2 arguments: `x` and `trimBelow`. This function takes the average of those values in `x` that are greater than the `trimBelow`. Make `x` a required argument and supply a default value for `trimBelow` of negative infinity.
+
+```{r, eval=evaluate}
+lowerTrim = function(x, trimBelow = -Inf) {
+  mean(x[x > trimBelow])
+}
+```
+
+Test your function with the following 
+
+```{r, eval=evaluate, collapse=TRUE}
+lowerTrim(x)
+lowerTrim(-10:5, trimBelow = 0)
+lowerTrim(-10:5, -2)
+lowerTrim(x = -10:5, trimBelow = Inf)
+```
+
+The return values should be: 3, 3, 2, and NaN,  respectively
+
+Q5. Extend your function so that it takes a third parameter, which allows the caller to use a function other than `mean()` when calculating the `lowerTrim`. Call this argument `sumFunc` and give it a default value so that it operates like the original `lowerTrim` function. Call this revised function `lowerTrim2`
+
+```{r, eval=evaluate}
+lowerTrim2 = function(x, trimBelow = -Inf, 
+                      sumFunc = mean) {
+  sumFunc(x[x > trimBelow])
+                      }
+```
+
+Check your function with the following calls:
+
+```{r, eval=evaluate, collapse=TRUE}
+lowerTrim2(-10:20, trimBelow = -5, median)
+lowerTrim2(-10:20, trimBelow = 0, sumFunc = summary)
+```
+
+The return values should be 8 and the summary values of 1, 5.75 10.5, 10.5, 15.2, and 20.
+
+Q6. Lastly, modify your function to take in any argument through the `...` argument and pass these arguments. Call this new function `lowerTrim3`.
+
+```{r, eval=evaluate}
+lowerTrim3 = function(x, trimBelow = -Inf, 
+                      sumFunc = mean, ...) {
+  sumFunc(x[x > trimBelow], ...)
+} 
+```
+
+And test your code with
+
+```{r, eval=evaluate, collapse=TRUE}
+lowerTrim3(x, sumFunc = sd)
+lowerTrim3(-10:20, trimBelow = 0, sumFunc = quantile,
+           probs = 0.99)
+lowerTrim3(-10:20, trimBelow = 0, trim = 0.1)
+```
+
+The results should be 1.58, 19.8, and 10.5. 
+
+For a final task, load the Colorado rainfall data and apply your `lowerTrim3` function to each element in the list `rain` to find at each station the 95th percentile of rain fall for those days that the amount of rain exceeded 1/20 of an inch. Assign the return value from your function call to `rain.95`
+
+```{r, eval=evaluate}
+load(url("http://www.stat.berkeley.edu/users/nolan/data/rainfallCO.rda"))
+rain.95 = sapply(rain, lowerTrim3, trimBelow = 5,
+                 sumFunc = quantile, probs = 0.95)
+```
+

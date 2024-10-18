@@ -1,0 +1,178 @@
+########################
+### Toy example
+### N(mu1,sigma_1^2)
+### N(mu2,sigma_2^2)
+### w/ mixP, (1-mixP)
+### mixing probabilities
+########################
+MU1=2
+SIGMA1=1
+MU2=20
+SIGMA2=2
+MIXP=0.7
+
+########################
+## plot pdf
+########################
+xs = seq(-4,30,length=200)
+dmixnorm=function(x, mu1=MU1, sigma1=SIGMA1, mu2=MU2, sigma2=SIGMA2, mixprob=MIXP)
+  {
+    return(dnorm(x,mu1,sigma1)*mixprob + dnorm(x,mu2,sigma2)*(1-mixprob))
+  }
+
+ys =sapply(xs, dmixnorm)
+plot(xs, ys, col="red", main="pdf of mixture normal", type="l")
+
+########################
+## simulate directly
+########################
+N=100
+labels=rbinom(N, 1, MIXP)
+sim=rep(NA, N)
+for (i in 1:N)
+  {
+    if (labels[i]) # if label is 1
+      sim[i]=rnorm(1,MU2, SIGMA2)
+    else # if label is 0
+      sim[i]=rnorm(1,MU1, SIGMA1)
+  }
+plot(density(sim))
+
+########################
+## simulate using
+## Metropolis-Hastings
+########################
+set.seed(1)
+M=1000000  #10000
+mchain = rep(NA,M)
+mchain[1]=2 # X initialized
+tauMH=0.5 # sdev of M-H proposal
+
+accMH=0
+for (i in 2:M)
+  {
+    currX=mchain[i-1]
+    propX=rnorm(1,currX,tauMH)# Normal random walk proposal
+    U=runif(1)
+    if (log(U)< (log(dmixnorm(propX)) - log(dmixnorm(currX))))
+      {
+        mchain[i]=propX
+        accMH=accMH+1
+      }
+    else
+      mchain[i]=currX
+  }
+cat("acc rate=",accMH/M,"\n")
+hist(mchain)
+
+########################
+## simulated tempering
+########################
+set.seed(1)
+M=100000  #10000
+## Matrix with col 1=label (which mixture component) with
+## label=0=> target distribution
+## label=1=> simulated tempering distribution (auxiliary)
+## col 2 = draw from sim temp mixture
+mchain = matrix(NA,M,2) 
+mchain[1,1]=1 # assume we start with pi1
+mchain[1,2]=2 # initial value
+tauMH=0.5 # sdev of M-H proposal within each component
+SIMTEMPMIX=0.5
+
+logpi0=function(x)
+  {
+    return(log(dmixnorm(x)))
+  }
+
+## Normal(mean=10, sd=8)
+logpi1=function(x, SDmu=10, STsd=8)
+  {
+    return(dnorm(x, mean=SDmu, sd=STsd, log=TRUE)) # log-scale
+  }
+
+xs = seq(-4,30,length=200)
+ys =sapply(xs, dmixnorm)
+plot(xs, ys, col="red", main="red: target, blue: auxiliary distr", type="l")
+ys2=sapply(xs, logpi1)
+lines(xs, exp(ys2), col="blue")
+
+##############################
+## begin algorithm
+##############################
+accMH=0
+for (i in 2:M)
+  {
+    currXlabel=mchain[i-1,1]
+    currXvalue=mchain[i-1,2]
+    if (runif(1)<0.5)
+      {
+########################################
+        ## do a within-component update
+########################################
+        mchain[i,1]=currXlabel # stay in same component
+
+        if (currXlabel==0) # in target, pi0
+          {
+            propX=rnorm(1,currXvalue,tauMH)# Normal random walk proposal
+            U=runif(1)
+            if (log(U)< (logpi0(propX) - logpi0(currXvalue)))
+              {
+                mchain[i,2]=propX # update, but stay in same component
+                accMH=accMH+1
+              }
+            else
+              mchain[i,2]=currXvalue # stay in same state
+          }
+        else # in pi1 (auxiliary variable)
+          {
+            propX=rnorm(1,currXvalue,tauMH)# Normal random walk proposal
+            U=runif(1)
+            if (log(U)< (logpi1(propX) - logpi1(currXvalue)))
+              {
+                mchain[i,2]=propX # update, but stay in same component
+                accMH=accMH+1
+              }
+            else
+              mchain[i,2]=currXvalue # stay in same state
+          }
+        if (mchain[i,1]==0)
+          points(mchain[i,2],0,pch=4,col="red")
+#          points(mchain[i,2],0,type="p",col="blue")
+        else
+          points(mchain[i,2],0,pch=4,col="blue")
+      }
+    else
+      {
+########################################
+        ## do a jump component update
+########################################
+        {
+          mchain[i,2]=currXvalue
+          ## propose a jump with prob=1/2
+          if (runif(1)<0.5)
+            {
+              propXlabel=1-currXlabel# change
+              if (propXlabel==1) # proposing to move to pi1 from pi0
+                logaccprob=logpi1(currXvalue)-logpi0(currXvalue)
+              else # proposing to move to pi0 from pi1
+                logaccprob=logpi0(currXvalue)-logpi1(currXvalue)
+              if (log(runif(1))<logaccprob)
+                mchain[i,1]=propXlabel ## accept proposal, move
+              else
+                mchain[i,1]=currXlabel ## reject proposal
+            }
+          else
+            {
+              propXlabel=currXlabel # stay
+              ## this is accepted with probability 1 in this case
+              mchain[i,1]=currXlabel
+            }
+        }
+      }
+##    Sys.sleep(0.01)
+  }
+
+#cat("acc rate=",accMH/M,"\n")
+#hist(mchain[mchain[,1]==0,2]) # histogram of samples that have label=0
+#plot(density(mchain[mchain[,1]==0,2])) # histogram of samples that have label=0

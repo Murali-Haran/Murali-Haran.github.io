@@ -1,0 +1,97 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Apr.~11}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+All homework must be turned in electronically from now on.
+\item 
+Only 2 more homeworks!  (Only best 10 out of 11 grades will count.)
+\item
+Tentative take-home final plan:  The exam will be available on Monday, Apr.~23 and due
+at 5:00pm on Wednesday, May~2.
+\end{itemize}
+\notes{If anyone sees any problem with the tentative take-home final plan, please let me know.
+}
+\end{frame}
+
+
+\startframe{Markov chain Monte Carlo}
+\begin{itemize}
+\item Goal:  Estimate $\mu=E_\pi g(X)$ but
+cannot %use Monte Carlo directly since we cannot 
+sample $X_i\sim \pi$ directly.
+\item 
+Importance sampling may be difficult, particularly as dimension increases.
+\item 
+MCMC solution:  Take $\hat\mu = \frac1n\sum g(X_i)$, where
+$X_1, X_2, \ldots$ is a simulated Markov chain with stationary distribution $\pi$.
+\end{itemize}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+MCMC example (coming soon to a homework near you!):
+\begin{itemize}
+\item Suppose we observe $Y_1, \ldots, Y_n$
+\item $Y_i \mid \theta \sim N(\theta, 1)$, conditionally independent.
+\item $\theta \sim \mbox{log-$t$}(\mu, \sigma, r)$.
+\item Wanted: A sample from the posterior $\pi(\theta\mid \vec Y)$.
+\end{itemize}
+\notes{In this case, we don't want $E_\pi g(X)$, but rather a whole sample from $\pi$.
+NB:  It won't be an i.i.d.~sample since the Markov chain will have dependence.
+The log-$t$ density function is proportional to
+\[
+\frac1\theta \left[ 1 + \frac1r \left( \frac {\log \theta - \mu}{\sigma} \right)^2 \right]
+^{-(r+1)/2}. 
+\]
+}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+Metropolis-Hastings algorithm (recall HW\#4, problem 5):
+\begin{itemize}
+\item Start with $X_0=x_0$.  
+\item For $i=0, 1, \ldots$, 
+generate $Y \sim q(y\mid x_0)$.
+\item Define $\alpha(x,y) = \min\{1, \pi(y)q(x\mid y) / [\pi(x)q(y\mid x)]$.
+\item Let $X_{i+1}=Y$ with probability $\alpha(X_i,Y)$.
+\end{itemize}
+\notes{
+This slide corrects several errors in a similar slide from Monday.  Today,
+we had time also to discuss ``reality checks'' on the formula for $\alpha$:
+First, think about the case in which $q(x\mid y)=q(y\mid x)$.  Second, think
+about the case in which $\pi(x)=\pi(y)$.
+}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+Metropolis algorithm (``random walk'' M-H):
+\begin{itemize}
+\item Take $q$ so that $q(x\mid y)=q(y\mid x)$.
+\item In this case, $\alpha(x,y) = \min\{1, \pi(y)/\pi(x)\}$.
+\item Example:  Take $Y \mid X_i=x \sim N(x, \tau^2)$.
+\item Consider the tradeoff involved in choosing $\tau^2$.
+\end{itemize}
+\notes{
+If $\tau^2$ is too large, we may propose a lot of steps that are far from the current
+state, which might have much smaller probability as measured by $\pi$, which means 
+that very few such proposals will be accepted.  On the other hand, if $\tau^2$ is too
+small, we will only propose steps very close to the current state.  In either case,
+mixing can be slow.
+}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+
+
+

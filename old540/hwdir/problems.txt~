@@ -1,0 +1,5 @@
+(from Peter Hoff) Do a sim study: (1) how does coverage of a z-interval change with sample size for sim. from Model A, Model B, (2) come up with a situation where you break coverage, (3) how about coverage of a t-interval? (4) What if you account for uncertainty in variance used in t-interval
+
+Simulate epidemics: some version of time series SIR model? Answer questions based on simulation. (Basic Monte Carlo)
+
+

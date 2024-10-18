@@ -1,0 +1,34 @@
+<TITLE> Computationally Intensive Statistical Inference, Fall 2016  </TITLE>
+<center>
+ <em> Rough </em> schedule for Stat 540, subject to change <b> (check
+back often!) </b> <br>
+Sections refer to the lecture notes. <br><br>
+ <table border="7" >
+<tr> <th scope = "col">Date</th> <th scope = "col">Topics</th>
+
+<tr><td> Week 1 (Jan 8)
+<td> Introduction, Computing Basics
+<tr><td> Week 2 (Jan 15)  <td> Numerical Linear Algebra
+<tr><td> Week 3 (Jan 22)  <td> Numerical Linear Algebra
+<tr><td> Week 4 (Jan 29)   <td> Monte Carlo, Basic random variate generation, Rejection sampling
+<tr><td> Week 5  (Feb 5)  <td> <!-- Ratio-of-uniforms, --> Importance sampling, auxiliary variable methods
+<tr><td> Week 6  (Feb 12) <td>  Importance sampling; Markov chain Monte Carlo intro
+<tr><td> Week 7  (Feb 19) <td> Markov chain Monte Carlo 
+<tr><td> Week 8  (Feb 26)  <td> Markov chain Monte Carlo; Statistical inference overview
+<tr><td>  <td> <font color="#FF0000"> Project proposals due </font>
+<!-- MON OCT 12: SUB (CMU TRIP) -->
+<tr><td> Spring Break <td> 
+  <tr><td> Week 9 (Mar 12) <td> Likelihood-based: ML, Penalized ML, Generalized Estimating Equations (GEE) and Bayesian inference; 1D optimization
+<tr><td> Week 10 (Mar 19) <td> Newton-Raphson/Fisher-scoring, Conjugate gradient <!-- (Nelder-Mead, MOM/Generalized MOM, Minimum distance, estimating equations, generalized estimating equations)-->
+<tr><td> Week 11 (Mar 26) <td> EM and MM algorithms
+<tr><td> Week 12 (Apr 2) <td> Constrained optimization
+<tr><td> Week 13 (Apr 9) <td>  Bootstrap; Select topics: computing with expensive likelihoods (e.g. ABC, composite likelihood)
+<tr><td>  <i> November 21-25 </i>  <td> <i> Thanksgiving </i> 
+<tr><td> Week 14 (Apr 16) <td> Final project presentations
+<tr><td> Week 15 (Apr 23) <td> Final project presentations
+<tr><td>  May 1 (Tuesday) <td>  <font color="#FF0000"> Final project writeups due </font>
+<tr><td>  May 3 (Thursday) <td>  <font color="#FF0000"> Evaluation of other students' project writeups </font>
+</table>
+</center>
+</body>
+</html>

@@ -1,0 +1,46 @@
+---
+title: Homework 7 due Thursday April 20 at 10am
+output: html_document
+author: Your Name
+---
+
+
+### 1. Temperature Data from State College and Ann Arbor 
+#### Building upon previous homework assignments 
+Consider this data set on temperatures:
+http://sites.stat.psu.edu/~mharan/380/data/tempGHCN/SCEAnnArborTwoStations.csv
+
+This is similar to but not exactly the same as, the data sets you have worked on before. Look through the data set carefully to make sure you understand it well before writing code for it.
+
+For this homework, you will need to calculate the following information: for State College and Ann Arbor, the mean monthly average temperatures and variability of the average monthly temperatures for each of 12 months (this is similar to your previous homework). That is, you should report the following:
+
+1(a) Table 1: with two columns corresponding to location (State College and Ann Arbor) and 12 rows, with each row corresponding to the month of the year. 
+
+1(b) Table 2: just like Table 1, except this time with standard deviations of monthly average temperatures (instead of mean monthly averages).
+
+1(c) 1 or 2 figures that summarize the above information. The figures should be easy to read; please follow the rules we discussed before regarding figures/plots. 
+
+1(d) Please summarize in just a few sentences (write your points in a numbered list) the main things you observe from the above summary. For instance, how do State College and Ann Arbor temperatures compare? 
+
+
+(If you are curious, you can also do some comparisons between the beginning of the data up to 1960 versus 1960 until present day data just to see if things have changed over time. But this is not required for this homework!)
+
+### 2. Email spam filtering
+#### Preliminary exercise
+
+As we discussed in class, we can use a naive Bayes classifier as a method to do spam filtering with emails. One approach to this is to extract from each email the main words from the text of the emails. Once we have translated each email into a "bag of words", we can use train our classifier on spam and non-spam ("ham") emails. This training allows us to then classify any new email as either spam or ham. 
+
+Working through all the steps at once would be a major challenge. Hence, in this homework you will just do a small subset of the list of tasks necessary to create a spam filter. Please take a look at at least 3 examples each of spam and ham email messages in the folders "spam" and "easy_ham" in the directory: http://sites.stat.psu.edu/~mharan/380/data/spam/
+The folders include over a thousand emails each, each one stored in a separate file with long names like 00001.7848dde101aa985090474a91ec93fcf0 and 00002.d94f1b97e48ed3b553b3508d116e6a09 
+
+If you like, you can simply download the zip file onto your computer, unzip the file (this will create directories/folders on your computer) and work with the files from your computer. 
+
+2(a) Write an R function that, given a filename for an email message, removes the header from the email messages. The header is the part that appears at the beginning of all the emails. For instance, you could consider deleting everything up to Content-Transfer-Encoding:
+You could also delete the words that immediately follow Content-Transfer-Encoding:
+
+The above idea is just an example. For instance, in the ham folders, the line Content-Transfer-Encoding does not appear so perhaps you will need to use some other patterns to remove the headers. 
+
+After your code operates on the file, it should return a string that contains the entire email but without the header. You will need to submit your code as well as the result of the application of your code to the email 00001.7848dde101aa985090474a91ec93fcf0   in the spam folder. Note that you should test the code on many emails to make sure it works well. 
+
+2(b) Write an R function that, given the name of the file, will look through the email and figure out whether it has html code in it or not. Look through the emails to figure out what html code looks likej it has Hence the function should just return either TRUE (html found) or FALSE (html  not found).
+

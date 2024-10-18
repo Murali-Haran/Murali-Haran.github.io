@@ -1,0 +1,115 @@
+\documentclass[10pt]{article}
+\usepackage[sort,longnamesfirst]{natbib}
+%\usepackage{psfig}
+\usepackage{amsmath}%
+\usepackage{hyperref}
+\begin{document}
+%{\bf TENTATIVE SCHEDULE}\\
+\pagestyle{empty}
+\Large
+\begin{center}
+{\bf  Syllabus STAT 380 (Fall 2016)}\\
+{\bf Data Science Through Statistical Reasoning and Computation}\\
+\end{center}
+\normalsize {\bf Instructor}: Murali Haran, Professor, Department of Statistics, Penn State University,
+University Park, PA. \\ Office: 421D Thomas
+Building. \:Phone: 863-8126. \\ Office
+Hours: Tuesdays and Wednesdays 1:30-2:30pm\\\\
+{\bf Teaching Assistant}: John Ensley, PhD Student, Statistics \\
+Office Hours Location: 330A Thomas Bldg \:email: {\tt john.ensley@psu.edu}\\
+Office Hours: Tuesdays and Wednesdays 3-4pm  \\\\ %or 2:30-3:30?
+{\bf Communication}: You can reach me and the TA through email via Canvas.\\\\ %Wed , Thu:  \\\\ 
+%\\%  Office: \:\: Thomas Building \: Phone: \:\: \:
+% email:\:\:\\ Office Hours: TBA\\\\ 
+{\bf Class Times}: Tue/Thu 10:35am-11:50am in 362 Willard\\\\
+{\bf Textbook}: {\it Data Technologies and Computational Reasoning} by D. Nolan and D. Temple Lang (pdf files will be posted weekly online)\\
+Supplement: {\it Data Science in R: A Case Studies Approach to Computational Reasoning} by Nolan and Temple Lang.\\\\
+{\bf Course Schedule}: \url{http://sites.stat.psu.edu/~mharan/380/schedule.2017.html} This will change so keep checking back for updates!\\\\
+{\bf Canvas and Course Website}: The course will be run largely through Canvas but I also have a website for public access \url{http://www.stat.psu.edu/~mharan/380/380.html}\\\\
+%{\bf Important}: The course schedule may change according to how the class progresses. Check the website for all announcements regularly.\\\\
+%{\bf Course Requirements} 
+{\bf Final Course Grades will be based on:} \\
+ Weekly homework + projects: 50\%.\\ % TOO MUCH: REDUCE TO 20% NEXT TIME
+% Two midterm exams: 20\% $\times$ 2.
+Midterm exam: 20\%\\
+{\it Tentative midterm date: Thursday, March 2nd (just before spring break).}\\
+Final exam: 30\%. (The final will be comprehensive.)\\\\
+\noindent {\bf Homework grading:} Each homework counts for 40 points:
+5 each for five selected problems (selected after submission) and 15
+for an organized and easy-to-follow completed assignment, including
+{\it non-graded} problems. If there are no more than five problems in
+the assignment, all of them will be graded and points assigned
+appropriately. You will not receive full credit unless you show your
+work when solving each problem.  You may discuss
+them with others but they  must be written up independently.\\\\
+ % \noindent {\bf Computing:} To supplement your understanding of
+ % concepts, I will assign problems for you to do using the statistical
+ % software {\tt R} which can be downloaded at no cost for any platform
+ % from \url{http://www.r-project.org/}.\\
+\newpage
+{\bf Final Grades:} Your final grade will be no lower than\\
+\indent A    : 93-100\%,     A- : 90-92\% \\
+\indent B+ : 87-89\%,       B  : 83-86\%,    B- : 80-82\%, \\
+\indent C+ : 77-79\%,       C  : 70-76\% \\
+\indent D   : 60-69\% ,      F   :   0-59\% \\
+
+{\bf Course Rules:}
+\begin{enumerate}
+\item No make-up exams will be given for ANY reason. If you miss an exam, you should provide a valid 
+reason to the instructor; once the instructor AND the TA both approve your excuse, your missed 
+exam score will be replaced by your score on the next
+mid-term exam. 
+\item Early exams might be allowed, with prior arrangement, for
+  students with direct conflicts due to other required university
+  activities (chess team, field trip, Blue Band trip, etc.) The
+  director of that program must provide a letter requesting that you
+  be excused.
+\item Homework will typically be due on Thursdays {\it in class}. You
+  can submit it in my mailbox in Thomas 326 by 3:30pm on the same day
+  it is due with a 20\% reduction in your score. No late homework will
+  be accepted after that time under any circumstance. {\it You have 1
+    week to appeal a grade. No grade changes will be made 1 week after
+    a graded homework or exam is returned.}  Your two lowest homework
+  scores will be dropped when computing your final grade, which should
+  allow for missing homework due to unavoidable circumstances.
+\item Students are responsible for all announcements and supplements
+  given within any lecture and email.
+\item Academic Integrity and Mutual Respect: All Penn State University, College of Science, and 
+Department of Statistics policies regarding ethics, honorable behavior, and mutual respect apply in 
+this course. %These can be found at the websites: 
+\begin{itemize}
+\item Penn State's Policies \url{http://www.psu.edu/ufs/policies/}
+\item College of Science's Academic Integrity Policy \url{http://science.psu.edu/current-students/Integrity/Policy.html}
+\item College of Science's Code of Mutual Respect and Cooperation
+  \url{http://science.psu.edu/climate/code-of-mutual-respect-and-cooperation}
+% The College of Science's Code of Mutual Respect and Cooperation embodies the values that we hope 
+% our faculty, staff, and students possess and will endorse to make the College of Science a place 
+% where every individual feels respected, valued, as well as
+% challenged and rewarded. \\
+\end{itemize}
+\item If you have a disability-related need for
+reasonable academic adjustments in this course, contact the Student Disability Resources (SDR) at 814-863-1807 or visit their website \url{http://equity.psu.edu/student-disability-resources}
+% If you have a disability-related need for modifications in the course,
+%contact the Office of Disability Services, and let the instructor know. See \url{http://www.equity.psu.edu/ods/}
+% \item If you need to leave class early, please sit in the rear and
+%   leave as quietly as possible. 
+% \item Please turn off all electronic devices (cell-phones, pagers,
+%   etc.) BEFORE you enter the classroom. 
+\end{enumerate}
+
+%  {\bf Academic Integrity:} All Penn State and Eberly College of
+%  Science policies regarding
+%  academic integrity apply to this course.  Please see\\
+%  \url{http://www.science.psu.edu/academic/Integrity/index.html}.
+% \noindent {\bf The Eberly College of Science Code of Mutual Respect
+%    and Cooperation}
+
+% \noindent
+%  \url{http://www.science.psu.edu/climate/code-of-mutual-respect-and-cooperation-1} embodies
+%    the values that we hope our faculty, staff, and students possess
+%    and will endorse to make The Eberly College of Science a place
+%    where every individual feels respected and valued, as well as
+%    challenged and rewarded.
+
+%\newpage
+\end{document}

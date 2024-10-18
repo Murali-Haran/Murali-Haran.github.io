@@ -1,0 +1,122 @@
+
+\documentclass{article}
+\usepackage{amsmath, amsfonts,hyperref}
+\usepackage{url}
+\pagestyle{empty}
+\setlength{\textwidth}{6in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{9in}
+
+\begin{document}
+%\pagestyle{empty}
+\begin{center}
+\Large
+{\bf Homework 9, Stat 515, Spring 2015}\\
+\normalsize
+Due Wednesday, April 22, 2015 \underline{{\bf beginning of class}}\\
+\end{center}
+% Important things to keep in mind when writing {\tt R} code: 
+% \begin{enumerate}
+% \item[(a)] Organization: using functions where possible (modularization). 
+% \item[(b)]  Appearance: justification (indent) (for the last, using Rstudio or emacs will be helpful). 
+% \item[(c)]  Well commented code.
+% \item[(d)]  Sensible variable names: generally use descriptive names
+%   wherever possible.
+% \item[(e)]
+  {\bf Make sure you submit R code to the Angel drop folder, using
+  the same naming conventions as in the last homework, e.g. your name
+  should appear in the name of the R program. Please pay attention
+to good programming style in order to receive full credit.}
+%\end{enumerate}
+
+\begin{enumerate}
+\item {\bf Importance Sampling}\\
+Return to the univariate Poisson kernel density function (Yang,
+  2004; or see ``wrapped Cauchy'' in Levy (1939) and Wintner (1947)),
+  which is defined as follows:
+\begin{equation}
+  f(\theta;\mu,\rho) = \frac{1}{2\pi} \frac{1-\rho^2}{1-2\rho \cos(\theta-\mu) + \rho^2},\:\: \mu-\pi \leq \theta \leq \mu + \pi
+\end{equation}
+\begin{enumerate}
+\item Approximate the expectation $E(\theta^2)$ for $\mu=3, \rho=0.7$ using importance sampling. State the importance function you used and report associated Monte Carlo standard errors.
+\item Approximate the expectation $E(\theta)$ as a function of $\rho \in
+  (-1,1)$, that is, find $E_{\rho}(\theta)$, with $\mu=3$ using
+  importance sampling. (a) Evaluate the expectation on a grid of
+  $\rho$ values ranging from -0.95 to +0.95 in increments of 0.02. You
+  can use the {\tt R} function {\tt seq} to generate the grid of
+  values.  For example, {\tt rhovals=seq(-.95,0.95,by=0.02)}. Estimate
+  these expectations by {\it using only one set of samples from the
+    importance function}. (a) State the importance function you used
+  and how it satisfies requisite conditions for validity of the
+  algorithm, (b) Plot the estimated expectation as a function of
+  $\rho$, and (c) report Monte Carlo standard errors along with the
+  estimate of the expectation at the 1st, 24th, 48th, 72nd and 96th
+  value of $\rho$.  It may be best to report this information in the
+  form of a table.
+\end{enumerate}
+
+\item {\bf Importance Sampling for Bayesian inference}\\ 
+Suppose $Y_1,\dots,Y_n|\alpha \sim \mbox{Poisson}(\exp(\alpha))$
+  (they are conditionally independent given $\alpha$), and the prior
+  distribution for $\alpha$ is $\alpha \sim N(0,100)$.  The data
+  $Y_1,\dots, Y_n$ are available at
+  \url{http://www.stat.psu.edu/~mharan/515/hwdir/hw09.dat}. You can
+  read the data by using the command: \verb+ ys = scan("http://www.stat.psu.edu/~mharan/515/hwdir/hw09.dat") + (directly from the website) OR \verb+ ys = scan("hw09.dat") + \\ We
+  are interested in the posterior distribution of $\alpha$ given the
+  data, i.e., the conditional distribution of $\alpha|Y$.
+\begin{enumerate}
+\item Estimate the posterior expectation of $\alpha$ using importance
+  sampling. 
+%(b) Estimate the posterior variance of $\alpha$ using importance
+%sampling. \\
+\item Estimate the posterior probability that $\alpha$ is greater than
+  2  using importance sampling.
+\item Use importance sampling to approximate the posterior expectation
+  of $\alpha$ if the prior distribution for $\alpha$ is changed to 
+\end{enumerate}
+You need to report: (i) importance function you used (you may use more
+than one and report your results for all of them if you like), (ii)
+plot the estimate versus the Monte Carlo sample size to see how your
+estimate converges as a function of the Monte Carlo sample size.  Do
+this for at least $n=100$ to 5,000, in increments of 100, and (iii)
+plot the Monte Carlo standard error as a function of $n$ in similar
+fashion.
+%% Univariate M-H algorithm
+\item {\bf Univariate Metropolis-Hastings}\\
+Return to the Bayesian inference problem above, but now change the
+prior so $\alpha \sim t_3(0,100)$, a t-density with
+  $\nu=3$ degrees of freedom and $\sigma^2=100$ (so
+  variance=$\nu \sigma^2/(\nu-2)$).
+\begin{enumerate}
+\item Simulate draws from $\alpha\mid Y$ by using a random walk
+  Metropolis-Hastings algorithm with a normal proposal. Try at least
+  two different values for the variance of the random walk proposal
+  and compare your results for the different algorithms. In
+  particular:
+\begin{enumerate}
+\item Observe how the estimate of the expected value of $\alpha\mid Y$ and $\alpha^2\mid Y$ 
+  change over time by plotting the estimate versus number of
+  iterations (similar to what you did for importance
+  sampling). You can plot both the estimates in the same figure by using the ``lines'' command in {\tt R}.\\
+  You may choose to use the function {\tt estvssamp} in
+  \url{http://www.stat.psu.edu/~mharan/batchmeans.R}.
+\item Check the autocorrelation in your samples (not your
+  estimates). For this you can use the {\tt acf} function in {\tt
+    R}. How is the autocorrelation affected by different values of the
+  variance of the random walk proposal?
+\item Report the acceptance rates of the algorithm for different values of $\sigma^2$.
+\end{enumerate}
+\item Draw a smoothed estimated density plot based on the draws. 
+\item Using these draws estimate the posterior expectation of
+  $\alpha$ and $\alpha^2$. Report MCMC standard errors for your estimates.
+  Draw enough samples so you feel comfortable that your estimates
+  appear to be stabilizing, and that your Monte Carlo standard errors
+  are reasonable. For MCMC, you can use the {\tt consistent
+    batchmeans} procedure to estimate standard errors. The
+  corresponding R code is available here:
+  \url{http://www.stat.psu.edu/~mharan/batchmeans.R}.
+\end{enumerate}
+\end{enumerate}
+
+\end{document}

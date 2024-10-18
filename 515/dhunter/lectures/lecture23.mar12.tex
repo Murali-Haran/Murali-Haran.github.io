@@ -1,0 +1,169 @@
+\documentclass[handout]{beamer}
+\usepackage{beamerthemeshadow}
+\usepackage{amssymb}
+\usepackage{pgfpages}
+
+\def\E{\mathop{\rm E\,}\nolimits}
+\def\Var{\mathop{\rm Var\,}\nolimits}
+\def\Cov{\mathop{\rm Cov\,}\nolimits}
+\def\Corr{\mathop{\rm Corr\,}\nolimits}
+\newcommand{\eid}{{\stackrel{\cal{D}}{=}}}
+\newcommand{\cip}{{\stackrel{{P}}{\to}}}
+\def\bR{\mathbb{R}}	% real line
+\def\startframe#1{\begin{frame}[t,fragile] \frametitle{\thedate \hfill {#1}} }
+
+\mode<presentation>
+{
+%  \setbeamertemplate{background canvas}
+  \usetheme{boxes}
+  \usecolortheme{notblackscreen}
+
+%  \usetheme{default}
+%  \setbeamercovered{transparent}
+}
+%\beamertemplatetransparentcovereddynamic
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\setbeamersize{text margin left=0.1in}
+\setbeamersize{text margin right=0.1in}
+
+
+
+
+\begin{document}
+
+
+\def \thedate{Mar.~12}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tiny
+\startframe{6.3 Birth and Death Processes}
+Intro stuff (roughly first 15 minutes):
+\begin{itemize}
+\item A Birth and Death Process is a continuous-time Markov chain on the
+nonnegative integers in which it is only possible to move from $i$ to $i+1$ or $i-1$
+(of course, when $i=0$ it is only possible to move to $i+1$).
+\item These processes generalize Poisson processes, which we've already studied:
+By setting the rate from $i\to i+1$ to be a constant ($\lambda$), and the rate
+from $i\to i+1$ to be zero, we get a Poisson process.
+\item In general, we let $\lambda_i$ be the rate from $i\to i+1$ and
+$\mu_i$ the rate from $i\to i-1$.  Therefore, conditional on starting at $i$,
+the waiting time before a transition is exponential with rate $\lambda_i+\mu_i$
+and the probability of a ``birth'' is $\lambda_i/(\lambda_i+\mu_i)$.
+({\em Remind about Poisson process / exponential distribution theory that guarantees this.})
+\item In terms of some old notation:  $v_i$, or more commonly $-r_{ii}$ (the negative
+diagonal entry of the rate or generator matrix $R$), equals $\lambda_i+\mu_i$.  Also, 
+the transition probability matrix $P$ (not to be confused with $P(t)$---poor choice of
+notation by the text!) can be written
+\[
+P = \begin{bmatrix}
+0 & 1 & 0 & 0 & \cdots \cr
+\frac{\mu_2}{\lambda_2+\mu_2} & 0 & \frac{\lambda_2}{\lambda_2+\mu_2} & 0 & \cdots \cr
+0 & \frac{\mu_3}{\lambda_3+\mu_3} & 0 & \frac{\lambda_3}{\lambda_3+\mu_3} & \cdots \cr
+\vdots & & & & \ddots
+\end{bmatrix}
+\]
+{\em Question:  What would the rate matrix R look like here?  How about $P(t)$?
+The last one is actually a trick question:  It's not easy.}
+\item A ``pure birth process'' is one in which $i\to i-1$ is impossible, i.e., one in which $\mu_i=0$ 
+for all $i$.  Example:  Poisson process
+\item Another pure birth process is the {\em Yule process}, in which $\lambda_n=n\lambda$.
+{\em Explain intuition of Yule process.}
+\item Next step up in complication from Poisson process:  Let $\lambda_i=\lambda$ and
+$\mu_i=\mu$ for all $i$.  We've discussed this type of model in class, back in Chapter 5:
+It's the model of customers arriving with Poisson rate $\lambda$ and being served by a
+single server with rate $\mu$.  Here, the Markov chain $X(t)$ is the number of people in the
+system (in line or being served) at time $t$.  In the book this is the ``M/M/1'' queueing 
+system.  {\em NB:  It's example 6.5 in the 9th edition, but some students have the 10th
+edition and occasionally the numbering is different.  At least I'm certain that the sections
+in Chapter 6 are numbered the same in both editions.}
+\item Question:  In previous example, what if there are $s$ servers?  What will $\lambda_n$
+and $\mu_n$ be?  {\em The students may have read this in Example 6.6, but few will remember.}
+\end{itemize}
+\end{frame}
+
+\startframe{6.3 Birth and Death Processes}
+Important example:  Example 6.4 in the book, the Linear growth model with immigration
+\begin{itemize}
+\item I was thinking about spending some time deriving the differential equation (6.1) 
+from which we can find the expected population as a function of time
+here.  It's useful to see given the pervasiveness of this model.  
+\item
+Feel free to expand on applications of this model.  
+\item
+Also point out what happens in special cases like $\lambda=\mu$ and $\theta=0$.
+\end{itemize}
+
+\vspace{2ex}
+With whatever time is left after you discuss the previous example:
+\begin{itemize}
+\item How do you find the expected time until the population reaches $n$?
+\item Idea:  Find the expected time to reach $i+1$ starting in $i$.  Call this $T_i$,
+and show how to use conditioning as we've done in the past to find $E(T_i)$
+(at least, in terms of $E(T_{i-1})$, which is enough because we know
+that $E(T_0)=1/\lambda_0$.  Why is this?)
+\item When using conditioning above, make sure to introduce the indicator
+\[
+Y_i = I\{\mbox{The first transition from $i$ is to $i+1$} \},
+\]
+then derive 
+\[
+E(T_i \mid Y_i) = \frac{1}{\lambda_i + \mu_i} + (1-Y_i)[ E(T_{i-1}) + E(T_i)].
+\]
+{\em Question:  What is $\E Y_i$?}
+This expression will be useful later on as well.
+\item We can then answer the original question:  $\sum_{i=X_0}^{n-1} E(T_i)$.
+\end{itemize}
+\end{frame}
+
+\startframe{6.3 Birth and Death Processes}
+What about the variance of the time until the population reaches $n$?
+(Not clear whether time will remain for this.)
+\begin{itemize}
+\item Why can we claim that the answer equals 
+\[
+\Var \sum_{i=X_0}^{n-1} T_i =
+\sum_{i=X_0}^{n-1} \Var(T_i)?
+\]
+({\em Use the fact that the $T_i$ independent above because of the Markovian 
+property.})
+\item It remains to find $\Var (T_i)$.  Use conditioning:
+\[
+\Var (T_i) = \Var [ E(T_i \mid Y_i)] + E[ \Var(T_i \mid Y_i)].
+\]
+\item We already found $E(T_i \mid Y_i)$ above.  What is $\Var[E(T_i \mid Y_i)]$?
+\item Show how to derive
+\[
+\Var(T_i \mid Y_i) = \frac{1}{(\lambda_i+\mu_i)^2} + (1-Y_i)
+[ \Var(T_{i=1}) + \Var(T_i)].
+\]
+{\em Use the fact that the time until the next transition is exponential with
+variance $1/(\lambda_i+\mu_i)^2$, along with independence the results from the Markov 
+property.}
+\item Based on the above answer, what is $E[\Var(T_i \mid Y_i)]?$
+\item Now put it all together to find $\Var(T_i)$ in terms of 
+$\Var(T_{i-1})$, $E(T_i)$, and $E(T_{i-1})$.
+\end{itemize}
+
+\vspace{2ex}
+Almost certainly not enough time for this:
+\begin{itemize}
+\item What happens to the formulas for $E(T_i)$ and $\Var(T_i)$
+in simple cases like $\lambda_i=\mu_i$?
+\item What about
+$\lambda_i=\lambda$ and $\mu_i=\mu$?
+\end{itemize}
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

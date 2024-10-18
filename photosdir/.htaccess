@@ -1,0 +1,6 @@
+AuthType Basic
+AuthName "For photos"
+AuthUserFile /home/mharan/public_html/photosdir/.htpasswd
+require valid-user
+order deny,allow
+allow from all 

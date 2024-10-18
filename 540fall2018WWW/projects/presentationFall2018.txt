@@ -1,0 +1,48 @@
+WEEK 1
+
+Mengqi Liu: A Comparison of Algorithms for Spatio-temporal Data Imputation  
+
+Dave Foley: Parallel Computation of Maximum Likelihood for Generalized Linear Mixed Models with Data Cloning
+
+Huy Dang: Inference in Latent Variable Models using Composite
+Likelihood
+
+Jordan Awan: Approximate Bayesian Computing for Differential Privacy 
+====
+
+Harris Quach: Sufficient Dimension Reduction for Summary Statistics in Approximate Bayesian Computations
+
+Limeng Cui: A Study of Stochastic Gradient Descent Methods for L-1 and
+Elastic Net Regression
+
+Qianying Zhou: Gaussian Variational Inference and the Expectation-Maximization Algorithm for Generalized Linear Mixed Models 
+
+Beomseok Seo: Modified Expectation-Maximization Algorithms for High-Dimensional Clustering 
+====
+
+Roopali Singh: Approximate Bayesian Computation for Archimedian Copula
+Models
+
+Han Xiao: Sequential Monte Carlo Methods for High-dimensional Latent  
+Variable(?) Models  
+====
+
+WEEK 2
+
+Samidha Shetty: MM Algorithms for Quantile Regression of Censored Data with Missing Observations 
+
+Jun Tao: The Adam Algorithm for Optimization
+
+Qing Sun: Sparse Singular Value Decomposition Methods for the Spiked Mean Model
+
+Zihao Wang: Title??
+
+====
+
+Huaxiu Yao: Title??
+
+Vijay Kumar: Computationally Efficient Methods for Stochastic Generator Expansion Planning
+
+Ian Laga: Efficient Algorithms for Point-level Spatial Zero-inflate Count Data
+
+Sina Sanei: A Study of Evolutionary Algorithms

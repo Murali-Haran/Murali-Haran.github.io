@@ -1,0 +1,741 @@
+\documentclass{beamer}
+\newcommand{\beaa}{\begin{eqnarray*}}
+\newcommand{\eeaa}{\end{eqnarray*}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\setbeamercolor{title}{fg=orange!50!black} % instead of above (dark background, white foreground)
+\setbeamertemplate{frametitle}[default][center] % by default have it center-justified
+%\setbeamercolor{frametitle}{fg=white,bg=orange!50!black}
+\setbeamercolor{frametitle}{fg=orange!50!black} % instead of above (dark background, white foreground)
+\setbeamercolor{structure}{fg=orange!50!black}
+\setbeamertemplate{navigation symbols}{} % suppress all navigation symbols
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\title[Spatial Models and Computation] % (optional, use only with long paper titles)
+% {Gaussian processes for complex computer models and classification}
+{Statistical Inference for Complex Models}
+ \subtitle{(with connections to computer model emulation and calibration)}
+\author{Murali Haran}
+
+\institute[Penn State] % (optional, but mostly needed)
+{
+%  \inst{1}%
+  Department of Statistics\\
+  Penn State University\\
+\vspace{0.2in}
+%(references Rasmussen and Williams (2006) and others.)
+}
+%
+\date[SOS 03-2006] % (optional, should be abbreviation of conference name)
+{Guest Lecture, EE 576\\ Inversion Techniques in Remote Sensing (T. Kane). \\ December 2010}
+%{Theory of Continuous Space and Space-Time Processes. \\SAMSI, November 2009}
+
+%## Total: around 80 slides since 80x2 = 160 = 2 hr.40mins.
+
+%## 2 slides: intro
+%## 10 slides: computer models
+%## 20 slides: computer model calibration (including toy + real examples?)
+%## 10 slides: GPs for classification
+%## 20 slides: Computing: MCMC algorithms, Laplace approximation
+
+\input{slides.definitions}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Statistical inference basics}
+
+
+\begin{frame}
+\frametitle{ }
+\begin{center}
+{\LARGE Statistical inference basics}
+\end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Basics: Probability and Inference}
+Scientific research based on data, whether from experimental studies or observational studies, can be summarized as follows:\\
+{\bf {\color{blue} Given the data (what we have observed), what can we infer about the process that generated the data?}}
+ \figonebig{probinf2.pdf}
+\end{frame}
+%(insert picture from Wasserman, 2005) pg. ix.
+
+\begin{frame}
+  \frametitle{Probability and Inference}
+  {\bf Probability}: Given a data generating process, what are the properties of the outcomes (observations)?\\
+  Toy example: If you know the probability $p$ of ``Heads'' on a coin
+  toss is 0.7, and $X$ is the number of heads on 100 independent coin tosses, what is the
+  distribution of $X$?\\
+  Non-toy examples: If you have a stochastic model for the spread of an infectious disease, you can use it to study how the disease will spread over space and time for different initial conditions/parameter values that describe the model. You can study other important questions, e.g. how likely is an epidemic?\\
+If you have modeled the dynamics of a fluid, how is the fluid likely to behave? How will it behave under different initial conditions?
+\end{frame}
+
+\begin{frame}
+\frametitle{Probability and Inference}
+{\bf Inference}: Given the outcomes (our observations), what can we say about the process that generated the data?\\
+Toy example: If you know $X$ (\# of heads on 100 independent coin tosses) what can you say about $p$?\\
+Non-toy example: Given space-time data on the spread of an infectious disease, what are the (unknown) parameters of the stochastic model?  Does the model fit (match) the observations?\\
+{\bf Estimation and prediction} are two of the most important component of inference.\\
+ Since there is typically randomness in how the data generating process produces the data, our inference should account for this variability. 
+\end{frame}
+
+
+% \begin{frame}
+%   \frametitle{What is a statistical model?}
+%   % \pgfuseimage{fhbphoto}
+%   \begin{itemize}
+% %  \item A mathematical model describes the patterns in data using a mathematical function. 
+%   \item A statistical model for data is a set of distributions that
+%     describes the data generating process. 
+% \item Statistical modeling allows for uncertainty (randomness). This is important for at least two major reasons:
+% \begin{itemize}
+% \item If we account for randomness, we can express a degree of certainty (`confidence') regarding our estimates. Without this, hard to tell if we have accurate estimates or if we are `being fooled by randomness' (we are infering something erroneous based on a chance occurrence).
+% \item Variability may be of interest in its own right. E.g. less variability ( more uniformity) in spatial distribution of species across a region may be of scientific interest.
+% that there is greater competition for limited resources.
+% \end{itemize}
+% \end{itemize}
+% \end{frame}
+
+\begin{frame}
+  \frametitle{A statistical model}
+  % \pgfuseimage{fhbphoto}
+  \begin{itemize}
+\item A (parametric) statistical model for {\bf data $x$} can be described as a set of distributions $\{
+    f(x,\theta),\mbox{ for some set of permissible values of }
+    \theta\}$. {\bf $\theta$ is the parameter} or parameters of the model.
+\item Simple example: You observe n data points, $x_1,\dots,x_n$ and you assume that these data values are independent of each other and have the same distribution. For instance, assume $x_1,\dots,x_n$ have a normal distribution with some mean and some variance, i.e., $x_1,\dots,x_n\stackrel{iid}{\sim} N(\mu,\sigma^2).$ 
+\item $\mu,\sigma^2$ are parameters ($\theta$) for this simple model.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Maximum likelihood inference} %Inference for a statistical model}
+  \begin{itemize}
+  \item Frequentist inference: assume the parameters $\theta$ are fixed and unknown. 
+  \item Write down the distribution of the data and plug in the observations ($Y$) to obtain the {\bf likelihood}, ${\cal L}(\theta; Y)$. The result is a function of only the parameters $\theta$.\\
+\item Inference is based on maximizing this function: find $\theta$ that maximizes ${\cal L}(\theta; Y)$. To describe uncertainty about $\theta$, use asymptotic approximations or simulation methods like the bootstrap.
+%{\it Likelihood} is actually a technica
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Bayesian inference} %Inference for a statistical model}
+  \begin{itemize}
+  \item Assume the parameters $\theta$ are random variables. Uncertainty about $\theta$ captured in the distribution of $\theta$.
+  \item Write down prior distribution for $\theta$. This represents
+    uncertainty regarding $\theta$ before the data are observations and may come from scientific knowledge.
+  \item Inference is based on the posterior distribution:
+    $$\pi(\theta\mid Y) \propto {\cal L}(Y\mid \theta) p(\theta).  $$
+    {\it Given} what we have observed ($Y$), what is our updated
+    information (posterior distribution) for $\theta$?
+\item Uncertainty about $\theta$ is automatically described by its posterior distribution.
+\item Often use Markov chain Monte Carlo (MCMC) to estimate
+  $\pi(\theta\mid Y)$, which is not available in closed form.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Challenges posed by complex models} %Inference for a statistical model}
+  \begin{itemize}
+  \item There is extensive theory justifying the usage of maximum
+    likelihood and Bayesian inference and prediction.
+  \item Both classes of inference have their pros and cons, but they
+    are both very general and powerful approaches to performing
+    statistical inference.
+  \item Models are becoming increasingly scientifically plausible and
+    complex. Inference often becomes challenging with such models for
+    the following reasons:
+\begin{itemize}
+\item The likelihood might be very expensive to evaluate. Hard to optimize, hard to run an MCMC algorithm (both need lots of likelihood evaluations.)
+\item Models may be deterministic. May not be able to run the model quickly, nor write down closed form expressions relating input (parameters) to output.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\section{Complex Computer Models}
+\begin{frame}
+\frametitle{ }
+\begin{center}
+{\LARGE Complex computer models}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Deterministic models }
+\begin{itemize}
+\item Re-examining our notion of a model: 
+\begin{itemize}
+\item Scientists working in the physical and natural sciences are
+  often interested in learning about the mechanisms or `laws' and
+  processes underlying physical phenomena.\\
+(Not enough to simply fit standard statistical models to observations.)
+\end{itemize}
+%  about the dynamical system underlying scientific/physical phenomena.
+\item To learn about the mechanisms and processes, scientists build
+  complicated models.
+\begin{itemize}
+\item Usually numerical solutions of complex mathematical models. 
+%\item Output may be deterministic or stochastic.
+\item Translated into computer code so that they can study simulations
+  of their physical processes under different conditions.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Deterministic models (cont'd) }
+\begin{itemize}
+\item In each case, in addition to the model being less than perfect,
+  parameters of the model may be uncertain.
+\item There is often great interest in learning about the parameters
+  of the physical model that best explain observations of the
+  phenomena, either to `tune' the model or because the parameters are
+  of scientific interest.
+\item These `fitted' models may be useful for predictions/extrapolations.
+\item The notion of `uncertainty' --- many modelers talk about
+  uncertainty in terms of lack of knowledge about the `best'
+  input. Fits nicely into a Bayesian formulation.
+\item In some cases, the models may be stochastic.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Deterministic models }
+Statistical interpolation or ``nonparametric regression'' problem.
+\figoneAD{compmod2.pdf}
+\vspace{-0.6in}
+Green inputs/output are the training data.\\
+Red = the input where predictions are desired.\\
+Input, output need not be scalars
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Computer model emulation via Gaussian Processes }
+\begin{itemize}
+\item An emulator (or `meta-model') is an approximation of a complex
+  computer model.
+\item An emulator is constructed by fitting a model to a training set
+  of runs from the complex computer model.
+\item The emulator serves as a surrogate for the computer model, and
+  is much faster/simpler. Hence, it is possible to simulate output
+  from the emulator very quickly.
+\item The advantage of doing it in a probabilistic framework: 
+\begin{itemize}
+\item Uncertainties associated with interpolation (predictions), for
+  example greater uncertain where there is less training data information.
+\item Probability model: useful for statistical inference.
+\item ``Without any quantification of uncertainty, it is easy to dismiss
+  computer models.'' (A.O'Hagan)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Gaussian processes}
+
+
+\begin{frame}
+\frametitle{ }
+\begin{center}
+{\LARGE Gaussian processes}
+\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Begin discussion of GPs for computer model emulation and calibration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Modeling with Gaussian processes }
+\begin{itemize}
+\item Gaussian processes (GPs) are useful  models for
+    dependent processes, e.g. time series, spatial data.
+\item The use of GPs here is as generally discussed in the statistics
+  for computer models, computer science and engineering
+  literature. Gets listed under some of these labels: machine
+  learning, models for complex computer models, and computer model
+  calibration.
+% \item The methodology discussed here largely follows from the
+%   discussion of GPs for spatial modeling. Some key differences in the way in
+%   which GPs get used due to the different context.
+  \end{itemize}
+The above two uses are all {\it very} closely related.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Basic Gaussian process (linear) model}
+  \begin{itemize}
+  \item Process at location $\bs \in D$ is $Z(\bs) = \mu(\bs)
+    + w(\bs)$. Location may be physical or in ``input space''. 
+    \begin{itemize}
+    \item $\mu_{\bbeta}(\bs)$ is the mean. Generally keep this simple, though if more is known about the form of the mean, it is useful to add that information.  For generality, assume $\mu$ is a function of $\bbeta$.
+    \end{itemize}
+  \item Model dependence among spatial random variables by modeling
+    $\{w(\bs):\bs \in D\}$ as a Gaussian process (infinite-dimensional).
+  \item For any $n$ locations, $\bs_1,\dots,\bs_n$,
+    $\bw=(w(\bs_1),\dots,w(\bs_n))^T$ is multivariate normal with
+    covariance specified by a parametric covariance function with
+    parameters $\Theta$.
+  \item Let $\bZ=(Z(\bs_1),\dots,Z(\bs_n))^T,$ so $$\bZ | \Theta, \bbeta \sim N(\mu_{\bbeta}, \Sigma(\Theta)).$$
+%    This specifies the likelihood, ${\mathcal L}(\bZ|\Theta,\bbeta)$.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{GP linear model:  [cont'd.] }
+\begin{itemize}
+\item For this model, once priors for $\Theta,\bbeta$ specified, inference is based on posterior $\pi(\Theta,\bbeta\mid \bZ)$. 
+\item $\Theta$ has low dimensions, while dimensions of $\bZ$
+  can be large.
+\item Relatively easy to construct MCMC algorithm to sample from
+  $\pi(\Theta,\bbeta\mid \bZ)$. 
+\item Maximum likelihood framework, maximize likelihood with respect to $\Theta, \bbeta$.
+\item Note: matrix computations involving $\Sigma(\Theta)$ ($n\times n$)
+  are of order $n^3$. Expensive for large $n$. (Many strategies for dealing with this, e.g. in Rasmussen and Williams, 2006).
+%\item Make predictions by conditioning on 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{GP linear model prediction}
+\begin{itemize}
+\item Predictions ${\bf Z} ^* = (Z({\bf s}_1^*),\dots,Z({\bf
+    s}_m^*))^T$, ${\bf s}_1^*,\dots,{\bf s}_m^* \in D$, obtained from
+  the posterior predictive distribution,
+\begin{equation*}
+\pi({\bf Z} ^*|{\bf Z} ) = \int
+\pi({\bf Z} ^*|{\bf Z} ,\Theta,\mbox{\boldmath $\beta$}) \pi(\Theta,\mbox{\boldmath $\beta$}|{\bf Z} )
+d\Theta d\mbox{\boldmath $\beta$}. 
+\end{equation*}
+Under the GP assumption ($\bmu_1,\bmu_2,\Sigma$ depend on $\bbeta,\Theta$):
+%${\bf Z} ,{\bf Z} ^*$ given $\Theta,\mbox{\boldmath $\beta$}$ is
+\begin{equation}\label{eq:multnorm}
+\begin{bmatrix} {\bf Z} \phantom{a} \\ {\bf Z} ^* \end{bmatrix} \mid \Theta, \mbox{\boldmath $\beta$} \sim N
+\left(
+  \begin{bmatrix} {\mbox{\boldmath $\mu$}}_1\\ {\mbox{\boldmath $\mu$}}_2 \end{bmatrix},
+\begin{bmatrix} \Sigma_{11} & \Sigma_{12} \\ \Sigma_{21} & \Sigma_{22} \end{bmatrix}\right),
+\end{equation}
+\item Draws from the posterior predictive distribution are obtained in
+  two steps: 
+\begin{enumerate}
+\item Simulate $\Theta',\mbox{\boldmath $\beta$}' \sim
+  \pi(\Theta,\mbox{\boldmath $\beta$}|{\bf Z} )$ by 
+  Metropolis-Hastings.
+\item Simulate ${\bf Z} ^* |  \Theta',\mbox{\boldmath $\beta$}',{\bf
+    Z} $ from  conditional multivariate normal density (from
+\eqref{eq:multnorm} and basic
+  normal theory) using $\Theta',\mbox{\boldmath $\beta$}'$ above.
+\end{enumerate}
+% where ${\mbox{\boldmath $\mu$}}_1$ and ${\mbox{\boldmath $\mu$}}_2$
+% are the linear regression means of ${\bf Z} $ and ${\bf Z} ^*$
+% (functions of covariates and $\mbox{\boldmath $\beta$}$), and
+% $\Sigma_{11},\Sigma_{12},\Sigma_{21},\Sigma_{22}$ are block partitions
+% of the covariance matrix $\Sigma(\Theta)$ (functions of covariance
+% parameters $\Theta$). By basic normal theory \citep[e.g.][]{anderson2003ims},
+% ${\bf Z} ^*\mid {\bf Z} , \mbox{\boldmath $\beta$},\Theta$,
+% corresponding to the first term in the integrand in
+% \eqref{eq:postpred}, is normal with mean and covariance
+% \begin{equation}\label{eq:condtlref}
+%   E({\bf Z} ^*|{\bf Z} , \mbox{\boldmath $\beta$},\Theta)={\mbox{\boldmath $\mu$}}_2 + \Sigma_{21} \Sigma_{11}^{-1} ({\bf Z} -{\mbox{\boldmath $\mu$}}_1), \mbox{     and } \mbox{Var}({\bf Z} ^*|{\bf Z} , \mbox{\boldmath $\beta$},\Theta)=\Sigma_{22} - \Sigma_{21} \Sigma_{11}^{-1} \Sigma_{12}.
+% \end{equation}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{GP linear model prediction: ML}
+\begin{itemize}
+\item In maximum likelihood framework, same idea as before except fix $\Theta, \bbeta$ at maximum likelihood estimates (MLEs) and then do prediction based on the MLE (instead of based on the posterior distribution  of the parameters.)
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{GP model for dependence: toy 1-D example  }
+\begin{figure}
+\figonebig{toyex1color.pdf}
+ \end{figure}
+% Black: 1-D AR-1 process simulation.  Green: independent error.\\ Red: GP with exponential, Blue: GP with gaussian covariance. 
+ Black: 1-D AR-1 process simulation.  Green: independent error.\\ (Red, blue): GP with (exponential, gaussian) covariances.
+ \end{frame}
+
+\begin{frame}
+\frametitle{GP for function approximation: toy 1-D example  }
+\vspace{-0.2in}
+\begin{figure}
+  \figtwoA{lingpemul1.pdf}{lingpemul2.pdf}
+ \end{figure}
+\vspace{-0.1in}
+ Suppose we ran the two toy computer models at `input' values $x$
+ equally spaced between 0 and
+ 20 to evaluate the function (black dots). Can we predict between black dots?\\
+ Pretend we don't know the ``model'' (functions). The red curves are
+ interpolations using {\it the same, simple GP model}:\\ 
+{\color{blue} $y(x)=\mu + w(x)$,  $\{w(x),x\in (0,20)\}$ is a zero-mean GP.}
+%  interpolations using a simple GP model, along with some idea of
+%  uncertainty. Nice fit for both functions!
+\end{frame}
+
+\begin{frame}
+\frametitle{GPs for  function approximation  }
+\begin{itemize}
+\item The usual spatial models discussion of GPs largely 
+  focuses on accounting for dependence  (first toy example).
+\item But GPs are a flexible model for functions (second toy
+  example).  Well known observation, summarized as follows:
+\begin{itemize}
+\item ``What is one person's (spatial) covariance structure may be another
+person's mean structure.'' (Cressie, 1993, pg.25).
+\end{itemize}
+\item GP models allow a simple covariance to substitute for a complicated
+mean with an unknown functional form.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{GPs for modeling complicated functions }
+\begin{itemize}
+\item Consider the following problem: We are
+  interested in modeling the response $y$ as a function of a predictor
+  $x$ so $y=f(x)$.%  The second term allows for a
+%   non-deterministic relationship.
+\item We have observations in terms of 
+  (response,predictor) or (input, output) pairs:
+  $(x_1,y_1),\dots,(x_n,y_n)$. 
+\item Based on the observations, called a `training set' in machine
+  learning, want to build a model that will predict $y$ for a new set
+  of inputs $(x^*_1,\dots,x^*_n)$.
+\item May not want to assume a particular functional form for
+  relationship between $x$ and $y$. Use a GP prior on $f(x)$.
+\item With GPs: {\it statistical interpolation}, obtain uncertainty estimates.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{GP function emulation: toy example }
+\begin{figure}
+  \figtwoA{pts10expnonugplus.pdf}{pts20expnonugplus.pdf}
+ \end{figure}
+The effect of predictions as well as prediction intervals when data
+points are increased from 10 to 20.
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{GP function emulation: toy example }
+\begin{figure}
+  \figtwoA{pts20expnonugplus.pdf}{pts40expnonugplus.pdf}
+ \end{figure}
+The effect of predictions as well as prediction intervals when data
+points are increased from 20 to 40.
+\end{frame}
+
+
+
+
+\section{Computer models}
+
+
+\begin{frame}
+\frametitle{ }
+\begin{center}
+{\LARGE Computer model emulation with Gaussian processes}
+\end{center}
+\end{frame}
+
+% \begin{frame}
+%   \frametitle{Gaussian processes for non-spatial settings  }
+% Moving from spatial models to non-spatial models. 
+% \begin{itemize}
+% \item Simple spatial model setting: $Y(\bs) = \bbeta X(\bs) + \epsilon(\bs)$
+%   where $\bs$ vary over index set $D\subset \Real^d$. The stochastic
+%   process is therefore $\{Y(\bs): s\in D \}$. Often $d=2$ or 3. Mainly
+%   concerned with {\it modeling spatial dependence} among $Y$s although
+%   well known that this model is also useful for protecting against model
+%   (mean function) misspecification, unmeasured spatially-varying
+%   covariates etc. (cf. Cressie, 1993).
+% \item In the machine learning setting: let locations $\bs$ correspond
+%   to inputs so distances are no longer physical but in `input space,'
+%   and $Y(\bs)$ are `outputs'.  Interpolate assuming input values close
+%   to each other result in outputs that are similar.
+%   \end{itemize}
+% \end{frame}
+
+
+
+% % \begin{frame}
+% % \frametitle{GP model for function approximation: toy 1-D example}
+% % \begin{figure}
+% %   \figtwoA{lingptoyex3.pdf}{lingptoyex4.pdf}
+% %  \end{figure}
+% %  Functions: $ f(x) = \sin(x)$ and $f(x)=\exp(-x/5)\sin(x).$ \\
+% %  Both fit with {\it same} linear GP model $f(x) = \alpha + \epsilon(x)$,
+% %  where $\{ \epsilon(x),\: x\in (0,20)\}$ is a zero-mean GP. $\alpha$
+% %  is a constant.
+% % \end{frame}
+
+
+
+
+
+\begin{frame}
+  \frametitle{GP model emulation }
+\begin{itemize}
+\item GP model emulation: fit a GP model to the training data (model runs), then
+  make predictions at new inputs based on fitted model, conditioning
+  on training data.
+\end{itemize}
+\begin{itemize}
+\item Gaussian processes are extremely useful for emulating complicated models in situations where: 
+\begin{itemize}
+\item Simulator output varies smoothly in response to
+  changing its inputs.
+\item There are no discontinuities or very rapid changes in responses
+  to inputs.
+\item The number of inputs is relatively small.
+\end{itemize}
+% \item Examples: 
+% \begin{itemize}
+% \item Deterministic: general circulation models (GCMs) for modeling
+%   global climate.
+% \item Stochastic: epidemiology models for modeling disease dynamics.
+% \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Examples of deterministic model emulation }
+{\bf Vehicle crash model} (Bayarri et al., 2007):
+\begin{itemize}
+\item Non-linear dynamics analysis code using a finite element
+  representation of the vehicle.
+\item E.g. of input: materials used in the components of the
+  vehicle. Many other uncertain inputs, some fixed by modelers, some
+controllable.
+\item E.g. of output: velocity changes after impact at key positions
+  on the vehicle, e.g. driver seat. Computer model takes 1-5 days for
+  each run. Computationally expensive.
+\item Field data: crashing of prototype vehicles. Expensive!
+\end{itemize}
+Note: field data may not always be available.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples of deterministic model emulation }
+{\bf Climate models} (Sanso et al., 2008; Bhat et al., 2010): 
+\begin{itemize}
+\item E.g. of input: Parameters that describe key characteristics of the
+climate. For instance, climate sensitivity = the change in global mean
+temperature in response to a doubling of atmospheric $CO_2$.
+\item E.g. of output: Climate characteristics around the world. For instance,
+temperature fields (output on a spatial grid). \\
+General circulation models (GCMs): {\it very} expensive ($\approx$ 1-2
+months). Earth climate models of intermediate complexity (EMICs): much
+faster, weeks or days.\\
+\item Field data: temperature measurements over the past
+century. May have errors, not on the same locations as model output,
+may be aggregates/averages.
+\end{itemize}
+\end{frame}
+
+\section{Computer model calibration}
+
+\begin{frame}
+\frametitle{ }
+\begin{center}
+{\LARGE Computer model calibration}
+\end{center}
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Computer models and inference }
+\begin{itemize}
+\item Suppose scientists present a deterministic model to us and give
+  us observations (field data) to go along with them.  How do we infer
+  the values of the parameters in their deterministic models?  No
+  standard notions of probability and statistical inference apply
+  here.
+\item Several issues: (a) the model is deterministic, not even a
+  statistical model! (b) the model may be very complicated, impossible
+  to write down in closed form, (c) the model may be so complicated
+  that it takes {\it very} long to simulate values from it. 
+\item Issues (b) and (c) arise even when the model is stochastic.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Complex stochastic models and likelihood inference }
+\begin{itemize}
+\item Consider the general case that the probability model for $Z$
+  depends on some parameter $\theta$.
+\item If the likelihood function for this probability model is
+  explicit, we have ${\cal L}(Z\mid \theta)$ and we can perform
+  likelihood-based inference, either finding the maximum likelihood
+  estimator of $\theta$ or the posterior distribution for $\theta \mid
+  Z$ after specifying a prior for $\theta$.
+\item If the (assumed) mechanism/process to simulate $Z$ is provided,
+  but no likelihood corresponding to it is available, the likelihood
+  is {\it implicit} and hence likelihood-based inference may be
+  challenging. Advantage of this: scientists build models that
+  correspond to their scientific interests and goals. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Computer model calibration }
+  \begin{itemize}
+  \item Statistical problem: Given data sources (i) computer model
+    output at several inputs, and (ii) observations of the real process
+    being modeled by the computer code, what is the value of the input
+    that best `fits' the observations?
+  \item Notation: 
+\begin{itemize}
+\item Computer model output $\bY = (Y(\theta_1),\dots, Y(\theta_n))$.
+\item Observation $Z$, assumed to be a realization of computer model
+  at `true' $\theta$ + discrepancy + measurement error.
+% \item Want to perform Bayesian inference and obtain a posterior
+%   distribution, $\pi(\theta \mid \bY, Z)$.
+\item Want to perform inference for `true' $\theta$.
+  \end{itemize}
+\item Ideally done in a Bayesian setting:
+\begin{itemize}
+\item There is
+  often real prior information about $\theta$. 
+\item The likelihood surface for $\theta$ may often be highly
+multimodal; useful to have access to the full posterior distribution.
+\item If $\theta$ is multivariate, may be important to look at
+  bivariate and marginal distributions (easier w/ sample-based approach).
+  \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Computer model calibration: background }
+  \begin{itemize}
+  \item `Old fashioned' calibration: not statistical. Search input
+    space for best fit to the data, using a crude measure of fit
+    (e.g. least squares).
+\item Does not provide a framework for obtaining probability
+  distributions for $\theta$, which is often of great interest.
+\item If model runs are very expensible, this is infeasible.
+  \item Kennedy and O'Hagan (2001) laid out the basic framework for
+    Bayesian model calibration. 
+  \item Series of papers by Bayarri et al., Higdon, Rougier, O'Hagan,
+    Craig, Goldstein and co-authors.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Computer model calibration [cont'd] }
+  \begin{itemize}
+%  \item Reality = computer model + model 
+\item Field data = computer model + model discrepancy (structural
+    error, biases) + measurement error
+    $$ Z(x) = Y(x,\theta) + \delta(x,\theta) + \epsilon(x).$$
+x: controllable input, $\theta$ is unknown input.
+  \item It is important to model $\delta(x,\theta)$ (not appropriate to
+    assume i.i.d.\ error), as this may result in over-fitting/biased
+    $\theta$ as it tries to compensate for model inadequacy.%  Useful to
+%     look at joint distribution of $\theta$ and $\delta(\theta)$.
+\begin{itemize}
+\item GP model for $Y(\theta)$ since it is an unknown function.
+\item GP model for $\delta(\theta)$. It is also an unknown function.
+\item $\epsilon(x) \stackrel{iid}{\sim} N(0,\psi), \psi > 0.$
+\item Replications (multiple field output at same $x$) are useful.
+  \end{itemize}
+\item Obvious that there are a lot of identifiability issues.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Computer model calibration [cont'd] }
+  \begin{itemize}
+  \item Scientists can often provide strong prior information for
+    $\theta$. % May need to use importance sampling to assess
+%     sensitivity if there are competing priors from different
+%     scientists.
+  \item Priors for model discrepancy, Gaussian process covariance may
+    not be obvious. Work on reference priors (Berger et al., 2001;
+    Paulo, 2004; De Oliveira, 2007), though these can be
+    computationally expensive.
+  \item Markov chain Monte Carlo (MCMC) for sampling from posterior
+    distribution,
+    $\pi(\Theta_{Y},\bbeta_Y,\Theta_{\delta},\bbeta_{\delta},\theta\mid
+    Z,\bY)$. Covariance, regression parameters $\Theta_{Y},\bbeta_Y$
+    for emulator and $\Theta_{\delta},\bbeta_{\delta}$ for
+    discrepancy; variance of i.i.d.\ error $\psi$.
+\item Posterior distribution is likely to be multimodal in many cases:
+  need well designed MCMC algorithm that escapes local modes,
+  e.g. slice sampler.  Run long chains, assess MCMC s.errors.
+  \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Example: climate science }
+  \begin{itemize}
+  \item Future climate predictions usually made using climate models.
+  \item Climate models can be extremely computationally
+    expensive. %  e.g. GCMs can take months to run. EMICs (Earth system
+%     models of intermediate complexity) can take days or weeks to run.
+    Cannot see what happens at all interesting input
+    settings. Input settings=boundary conditions, key model
+    parameters. Parameters may have important physical meaning or may
+    be tuning parameters or representations of unresolved physics,
+  \item If we have observations, we may want to learn about the
+    computer model inputs most `compatible' with reality.  e.g. we can
+    compare measurements of temperature values across the world to the
+    climate model output to infer inputs/parameters.
+%\item Also useful for making predictions. 
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Recap}
+ We have discussed how Gaussian processes can be very useful.
+  \begin{itemize}
+  \item Can emulate complex computer models and performing inference
+    based on these models, largely due to their flexibility as a prior
+    for functions.
+  \item Lots of open research problems (e.g. multivariate output, dynamic
+    models), applications to interdisciplinary research (most of which
+    generate new methodological problems), and many computational
+    challenges.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Some references }
+{\small 
+    \begin{itemize}
+\item Kennedy, M.C. and O'Hagan, A.( 2001), Bayesian calibration of
+  computer models, 
+\textit{JRSS(B)}.
+\item Sanso, B. and Forest, C.E. and Zantedeschi, D (2008) , Inferring Climate System Properties Using a Computer Model, \textit{Bayesian Analysis (with discussion)}.
+\item {\color{blue} Bhat, K.S., Haran, M., Tonkonojenkov, R., Keller, K. (2010)
+  ``Inferring likelihoods and climate system characteristics using
+  climate models and multiple tracers.''}
+%      \item Banerjee, Carlin, and Gelfand. (2004) Hierarchical Modeling and Analysis for Spatial Data.
+      \end{itemize}
+}
+\end{frame}
+
+\end{document}

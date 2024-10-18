@@ -1,0 +1,134 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Feb.~8}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item
+Finish Reading Section 5.2 for Monday.
+\item 
+No class on Friday.
+\item 
+No office hours tomorrow (but next Thursday is back to normal)
+\end{itemize}
+\end{frame}
+
+\startframe{4.4 Limiting probabilities}
+\begin{itemize}
+\item
+A word about limiting distribution vs. stationary distribution\ldots
+\item
+Although ergodicity lists positive recurrence as a condition, it's often more
+practical to
+  \begin{itemize}
+  \item check irreducibility
+  \item check aperiodicity
+  \item solve $\pi^\top = \pi^\top P$ to get $\pi$ (if possible).
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\startframe{4.8 Time Reversible Markov Chains}
+``Consider a stationary ergodic Markov chain (that is, an ergodic Markov chain
+that has been in operation for a long time)\ldots''
+\begin{itemize}
+\item We now know what ``ergodic'' means:
+\item There is a limiting distribution $\pi$ that uniquely solves the
+equations $\pi^\top = \pi^\top P$.
+\end{itemize}
+\end{frame}
+
+\startframe{4.8 Time Reversible Markov Chains}
+\begin{itemize}
+\item
+Define $Q_{ij} = P(X_t = j \mid X_{t+1} = i)$.
+\item
+Use Bayes' theorem to prove 
+\[
+Q_{ij} = \frac{\pi_j P_{ji}}{\pi_i}.
+\]
+\item
+What if $P_{ij}=Q_{ij}$ for all $i,j$?
+\end{itemize}
+\end{frame}
+
+\startframe{4.8 Time Reversible Markov Chains}
+\begin{itemize}
+\item
+When $P_{ij}=Q_{ij}$ for all $i,j$, the process is said
+to be {\em time reversible}.
+\item 
+To gain intuition, write
+\[
+Q_{ij} = P_{ij} = \frac{\pi_j P_{ji}}{\pi_i}
+\quad\mbox{as}\quad
+\pi_iP_{ij} = \pi_j P_{ji}.
+\]
+\item
+Interpretation:  Proportionally, there are just as many $i\rightarrow j$
+transitions as $j\rightarrow i$ transitions.
+\end{itemize}
+\end{frame}
+
+\startframe{4.8 Time Reversible Markov Chains}
+\begin{itemize}
+\item
+$\pi_iP_{ij} = \pi_j P_{ji}$ is called {\em detailed balance}.
+\item
+Interpretation:  There are just as many $i\rightarrow j$
+transitions as $j\rightarrow i$ transitions.
+\item 
+Prove:  If $\pi$ exists satisfying detailed balance, then $\pi$ solves
+\[
+\pi_j = \sum_i \pi_i P_{ij} \qquad \mbox{for all $j$.}
+\]
+(These are the ergodic equations!)
+\end{itemize}
+\end{frame}
+
+\startframe{4.8 Time Reversible Markov Chains}
+\begin{itemize}
+\item Example of a time reversible Markov chain:
+random walk on $0, 1, \ldots, M$ where you can stay at the edges (0 and $M$) but you
+can't go beyond them.
+\item The fact that this MC is time reversible can help find its stationary probabilities.
+\end{itemize}
+\end{frame}
+
+\startframe{4.8 Time Reversible Markov Chains}
+\begin{itemize}
+\item Example of a time reversible Markov chain:
+random walk on $0, 1, \ldots, M$ where you can stay at the edges (0 and $M$) but you
+can't go beyond them.
+\item The fact that this MC is time reversible can help find its stationary probabilities.
+\end{itemize}
+\end{frame}
+
+
+
+\startframe{4.8 Time Reversible Markov Chains}
+\begin{itemize}
+\item
+$\pi_iP_{ij} = \pi_j P_{ji}$ is called {\em detailed balance}.
+\item
+Equivalently, we can derive the so-called 
+Kolmogorov circulation condition:
+\[
+P_{ij}P_{jk}P_{ki} = P_{ik}P_{kj}P_{ji}
+\]
+is a special case.
+\end{itemize}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

@@ -1,0 +1,52 @@
+## An R function for computing consistent batch means estimate of standard error
+## Galin L. Jones, Murali Haran, Brian S. Caffo, and Ronald Neath, "Fixed-Width Output Analysis for Markov Chain Monte Carlo" (2006) to appear in the Journal of the American Statistical Association
+## author: Murali Haran
+
+## input: vals, a vector of N values (from a Markov chain),bs=batch size and g, a function
+## default bs (batch size) is sqroot=> number of batches is the square root of the run length
+## if bs is cuberoot, number of batches is the cube root of the run length
+## output: estimate of E(g(x)) and an estimate of the Monte Carlo standard error of estimate of E(g(x))
+id <- function(x) return(x)  # default: identity function
+
+# new version: Sep.12, 2005
+bm <- function(vals,bs="sqroot",g=id,warn=FALSE)
+  {
+    N <- length(vals)
+    if (N<1000)
+      {
+        if (warn) # if warning
+          cat("WARNING: too few samples (less than 1000)\n")
+        if (N<10)
+          return(NA)
+      }
+
+    if (bs=="sqroot") 
+      {
+        b <- floor(sqrt(N)) # batch size
+        a <- floor(N/b) # number of batches
+      }
+    else
+      if (bs=="cuberoot") 
+        {
+          b <- floor(N^(1/3)) # batch size
+          a <- floor(N/b) # number of batches
+        }
+    else # batch size provided
+      {
+        stopifnot(is.numeric(bs))  
+        b <- floor(bs) # batch size
+        if (b > 1) # batch size valid
+          a <- floor(N/b) # number of batches
+        else
+          stop("batch size invalid (bs=",bs,")")
+      }
+    
+    Ys <- sapply(1:a,function(k) return(mean(g(vals[((k-1)*b+1):(k*b)]))) )
+
+    muhat <- mean(g(Ys))
+    sigmahatsq <- b*sum((Ys-muhat)^2)/(a-1)
+
+    bmse <- sqrt(sigmahatsq/N)
+
+    return(list(est=muhat,se=bmse,bs=bs))
+  }

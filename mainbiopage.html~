@@ -1,0 +1,42 @@
+Summary of research interests
+
+Dr. Haran's research interests are primarily in three areas:
+statistical computing, spatial modeling for problems in environmental
+science, and statistical techniques in software engineering.
+
+His statistical computing work focuses on finding ways to construct
+efficient and nearly automated Markov chain Monte Carlo (MCMC)
+algorithms for estimating properties of complicated distributions. He
+has worked on ways to constuct algorithms that produce accurate
+estimates quickly, along with some guarantees regarding the accuracy.
+
+His spatial modeling work is motivated by research problems in diverse
+areas including Geosciences, Ecology and Epidemiology. He has ongoing
+collaborations with faculty members from each of these disciplines,
+and some recent projects have included climate change research,
+studying invasive plant species and space-time models for crop
+epidemics. This work is, in turn, leading to methodological work in
+analyzing large spatial data sets, using Gaussian processes for
+emulating computer models, studying and applying spatial
+generalized linear models, and more research in computing algorithms.
+
+Dr.Haran's collaborations with software engineers have involved using
+ statistical classification techniques to model failures in large
+ software systems.
+
+
+Representative publications: <br><br>
+<LI><b> Haran, M.</b>, Bhat, K.S., Molineros, J, and De Wolf, E. (2008)
+<A HREF="http://www.stat.psu.edu/~mharan/crop1.pdf"> Estimating the risk of a crop epidemic from coincident spatiotemporal processes </A>, <em> Journal of Agricultural, Biological and Environmental Statistics </em>. <br> <br>
+
+<LI>Flegal, J.M., <b> Haran, M.</b>, and <a
+href="http://www.stat.umn.edu/~galin"> Jones, G.L.</a> (2008) <A HREF="mcse_rev2.pdf"> Markov chain Monte
+Carlo: Can we trust the third significant figure? </A> 
+ <em> Statistical Science,</em> <b> 23,</b>250--260. 
+
+<LI> <b> Haran, M.</b> and <A Href = "http://www.stat.uiowa.edu/~luke">
+Tierney, L.</A>, Exact and approximate sampling for Markov random field models, <em> Under Revision </em>. <br> <br>
+
+<LI>Jones, G.L., <b> Haran, M.</b>, Caffo, B.S. and Neath, R. (2006)
+ <A HREF="http://www.bepress.com/jhubiostat/paper72"> Fixed Width Output Analysis for Markov chain Monte Carlo </A> <em>,
+ Journal of the American Statistical Association, 101:1537--1547 </em>. <br> <br>

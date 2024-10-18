@@ -1,0 +1,45 @@
+---
+title: Homework 8 due Thursday April 27 at 10am
+output: html_document
+author: Your Name
+---
+
+
+### 1. SQL basics via R 
+
+```{r setup, include=FALSE}
+library(DBI)
+library(RSQLite)
+```
+
+Preliminaries: Connect to the database. Important: first make sure your file path is set to the directory where the file lean_imdbpy_2010.db  is located. You can download this database file, which is a miniature version of the full IMDB database. You can download it from here  http://stat.psu.edu/~mharan/380/data/lean_imdbpy_2010.db
+
+```{r}
+drv <- dbDriver('SQLite')
+con <- dbConnect(drv, dbname = 'lean_imdbpy_2010.db')
+```
+
+#### 1(a)
+
+Each actor is associated with a unique ID. Find the ID for Vin Diesel.
+
+#### 1(b)
+
+Each movie role (actor, actress, producer, etc.) is associated with its own unique ID. Find the ID indicating that the person was an actor in a particular movie.
+
+#### 1(c)
+
+Each kind of work (movie, TV series, made-for-TV movie, video game, etc.) is associated with its own unique ID. Find the ID indicating that a work is a movie.
+
+#### 1(d)
+
+Find all movies in this database that featured Vin Diesel as an actor. You should use the results from the first three parts in your query. Return the title of the movie and the year it was released.
+
+### 2. Email spam filtering preliminaries. Here you will return to the last homework,
+
+#### 2(a) 
+You already have a function from last week that  will delete the header of an email. Call it deleteHead. Now write a new function that finds and deletes all html code in the email. Call this function deleteHTML. As in the previous homework, make sure that you can apply your code to at least 3 examples each of spam and ham email messages in the folders “spam” and “easy_ham” in the directory: http://sites.stat.psu.edu/~mharan/380/data/spam/
+
+#### 2(b) 
+Write a new function called countWords that, after you have applied the above two functions to remove the header and all html code, just counts the number of words in the email. Again, make sure that you can apply your code to at least 3 examples each of spam and ham email messages in the folders “spam” and “easy_ham” in the directory: http://sites.stat.psu.edu/~mharan/380/data/spam/
+

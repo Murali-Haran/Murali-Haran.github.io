@@ -1,0 +1,181 @@
+\documentclass[12pt]{article}
+%\usepackage{psfig}
+\usepackage{amsbsy,amsmath,amsthm,amssymb,graphicx}%
+\newcommand{\bX}{{\bf X}}
+\newcommand{\bY}{{\bf Y}}
+\newcommand{\bx}{{\bf x}}
+\newcommand{\bpi}{{\mathbf \pi}}
+%\newcommand\lo[1]{_{\nano{#1}}}
+\newcommand\lo[1]{_{#1}}
+\newcommand\hi[1]{^{#1}}
+\newcommand{\field}[1]{\mathbb{#1}}
+\newcommand{\R}{\field{R}}
+\newcommand{\F}{\field{F}}
+\newcommand{\p}{\field{P}}
+\newcommand{\N}{\field{N}}
+\newcommand{\Z}{\field{Z}}
+\newcommand{\X}{\field{X}}
+\newcommand{\E}{\field{E}}
+
+\def\qed{\hfill$\diamondsuit$}
+\def\II{I\negthinspace I}
+\def\B{I\negthinspace\negthinspace B}
+\def\ccirc{\negthinspace\circ}
+\def\median{\mathop{\mbox{med}}}
+\def\argmax{\mathop{\mbox{argmax}}}
+\def\argmin{\mathop{\mbox{argmin}}}
+\theoremstyle{example}
+\theoremstyle{remark}
+\theoremstyle{lemma}
+\theoremstyle{definition}
+\theoremstyle{corol}
+\theoremstyle{proposition}
+\theoremstyle{condition}
+\newtheorem{thm}{Theorem}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{corol}{Corollary}
+\newtheorem{condition}{Condition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{assumption}{Assumption}
+
+
+ \def\Cod{\buildrel {\cal D}\over\Longrightarrow}
+
+\def\cod{\stackrel{d}{\longrightarrow}}
+\def\cop{\stackrel{\cal P}{\longrightarrow}}
+\def\eqd{\stackrel{\cal D}{=}}
+\def\eqp{\stackrel{\cal P}{=}}
+\def\ap#1{\smash{\mathop{\approx}\limits^{#1}}}
+\def\lf{\lfloor}
+\def\rf{\rfloor}
+\def\lc{\lceil}
+\def\rc{\rceil}
+\def\trans{^{\rm T}}
+\oddsidemargin 0.0in
+\evensidemargin 1.0in
+\textwidth 6.0in
+%\headheight 1.0in
+\headheight 0.3in
+\topmargin -0.8in
+\textheight 9.0in
+
+%\input{slides.definitions}
+
+\begin{document}
+
+\begin{center}
+{\bf \large \noindent Bayesian computation lab\\ Astroinformatics Summer School, Penn State
+  University, June 2018.  \\
+Instructor: Murali Haran
+}
+\end{center}
+
+\noindent \hrulefill
+Suppose observations $Y_i,\:i=1,\dots,n$ are modeled as a linear
+  function of a predictor $X_i$, with two additive sources of error,
+  one Gaussian with mean 0 and variance $\tau$, and the other
+  exponential with parameter $\lambda$. Given a data set
+  $(X_1,Y_1), \dots, (X_n,Y_n)$, we are interested in estimating
+  $\beta$ (regression coefficient relating $Y$'s to $X$'s), and the
+  error parameters $\tau, \lambda$. The $Y_i$s are called
+  exponentially modified Gaussian random variables (EMG). An
+  EMG($\mu, \tau, \lambda$) random variable is continuous with density
+$$f(x;\mu, \tau, \lambda) = \frac{\lambda}{2} \exp\left(\frac{\lambda}{2} (2\mu + \lambda\tau^2 - 2x)\right) \mbox{erfc}\left(\frac{\mu + \lambda\tau^2 - x}{\sqrt{2} \tau} \right), $$
+and erfc is the complementary error function defined as
+$$\mbox{erfc}(x) = \frac{2}{\pi} \int_x^{\infty} e^{-t^2} dt.$$
+ Suppose we have independent observations $Y_i$ with fixed (nonrandom)
+$X_i$ that satisfy %Consider a regression of a variable $Y$ on $X$ where the regression model is as follows,
+$Y_i \sim EMG(\beta X, \tau, \lambda),\: i=1,..,n.$ 
+These data may be obtained from\\ http://personal.psu.edu/muh10/expregdat.txt
+\begin{enumerate}
+\item Assume that $\tau$ is known to be 2. We are interested in Bayesian inference 
+for $\beta, \lambda$. Let the independent priors for 
+$\beta, \lambda$ be $p(\beta), p(\lambda)$
+respectively where $p(\beta)\propto 1$  (``flat prior'') and
+$p(\lambda)$ is Gamma$(a=1,b=10)$ so $p(\lambda) = \frac{1}{\Gamma(a)
+  b^a} \lambda^{a-1} e^{-\lambda/b}$. The resulting posterior
+distribution, 
+\begin{equation*}
+\begin{split}
+\pi(\beta,\lambda\mid \bY) & \propto \prod_{i=1}^n f(Y_i\mid \beta,
+\lambda) p(\lambda) p(\beta) \\ %p(\tau)\\
+& \propto \prod_{i=1}^n \frac{\lambda}{2}
+\exp\left(\frac{\lambda}{2}\left(2X_i\beta + \lambda\tau - 2Y_i 
+  \right)\right)\mbox{erfc}\left(\frac{X_i\beta + \lambda\tau -
+      Y_i}{\sqrt{2\tau}} \right) p(\beta) p(\lambda) \\%p(\tau) 
+& \propto \lambda^n\prod_{i=1}^n \mbox{erfc}\left(\frac{X_i\beta + \lambda\tau -
+  Y_i}{\sqrt{2\tau}}\right)  \times\exp\left( \frac{\lambda}{2}\sum_{i=1}^n 
+  (2X_i\beta + \lambda\tau - 2Y_i) \right)p(\beta)p(\lambda)%p(\tau) 
+\end{split}
+\end{equation*}
+Hence, full conditionals are: 
+\begin{equation*}
+\begin{split}
+\pi(\beta\mid \lambda, \bY) & \propto \lambda^n\prod_{i=1}^n \mbox{erfc}\left(\frac{X_i\beta + \lambda\tau -
+  Y_i}{\sqrt{2\tau}}\right)  \times\exp\left( \frac{\lambda}{2}\sum_{i=1}^n 
+  (2X_i\beta + \lambda\tau - 2Y_i) \right)p(\beta)p(\lambda)\\%p(\tau) 
+\pi(\lambda\mid \beta, \bY) & \propto \lambda^n\prod_{i=1}^n \mbox{erfc}\left(\frac{X_i\beta + \lambda\tau -
+  Y_i}{\sqrt{2\tau}}\right)  \times\exp\left( \frac{\lambda}{2}\sum_{i=1}^n 
+  (2X_i\beta + \lambda\tau - 2Y_i) \right)p(\beta)p(\lambda)%p(\tau) 
+\end{split}
+\end{equation*}
+On log scale, 
+\begin{equation*}
+\begin{split}
+\log(\pi(\beta\mid \lambda, \bY)) & =\sum_{i=1}^n \mbox{logerfc}\left(\frac{X_i\beta + \lambda\tau -
+  Y_i}{\sqrt{2\tau}}\right) + \left( \frac{\lambda}{2}\sum_{i=1}^n 
+  (2X_i\beta + \lambda\tau - 2Y_i) \right) + \log(p(\beta))\\%p(\tau) 
+\log(\pi(\lambda\mid \beta, \bY)) & = n\log(\lambda) + \sum_{i=1}^n \mbox{logerfc}\left(\frac{X_i\beta + \lambda\tau -
+  Y_i}{\sqrt{2\tau}}\right) + \left( \frac{\lambda}{2}\sum_{i=1}^n 
+  (2X_i\beta + \lambda\tau - 2Y_i) \right) \\
+& + \log(p(\lambda))%p(\tau) 
+\end{split}
+\end{equation*}
+
+% \item Provide pseudocode for a Metropolis-Hastings algorithm to
+%   construct a Markov chain with stationary distribution $p(\beta_0,
+%   \beta, \lambda\mid {\mathbf Y}, {\mathbf X})$ for a data set of size $n$,
+%   $(X_1,Y_1),\dots, (X_n,Y_n)$.  ${\mathbf Y}, {\mathbf X}$ are
+%  $(Y_1,\dots, Y_n)$, $(X_1,\dots, X_n)$ respectively. You should provide enough detail so
+%   anyone reading it should be able to write code based on your
+%   description. You do not have to provide starting values or specific
+%   tuning parameters since those will depend on the particulars of the
+%   data. You should, however, list at the beginning of the algorithm
+%   any/all tuning parameters for the algorithm that you will have to
+%   adjust in order to make it work well. You should also show any
+%   distributions you derive/use for constructing this algorithm. Please write the algorithm and associated distributions etc. as clearly as possible.
+\item Approximate (i) $E_{\pi}(\lambda)$, (ii)
+  $E_{\pi}\left(\frac{1}{\beta + \lambda}\right)$, (iii) the posterior
+  correlation between $\beta$ and $\lambda$.
+\item Take a look at a histogram and then a smoothed histogram
+  (plot(density(x)) to get an idea of the marginal posterior distributions.
+\item Use the R package {\tt mcmcse} and the command {\tt mcse} to
+  find the standard errors of the Monte Carlo approximations of
+  the parameters, as well as the effective sample size (ESS) for each parameter.
+\item Determine an appropriate length of the Markov chain 
+\item Go through the MCMC checklist from the tutorial today. You may
+  have to modify and re-run the algorithm. In particular, try at least
+  3 different initial values and run the chains for long enough to see
+  if they produce similar results. 
+\item Once you are confident you are have reliable answers, you are
+  ready to also estimate $\tau$. Assume the same prior for $\tau$ as
+  for $\lambda.$ For this you will need to augment the
+  MCMC code you have been provided. Repeat the above exercise.
+\item Suppose your collaborator changes her mind and says that the
+  prior for $\lambda$ should be Gamma(2,5) instead. Without re-running
+  your MCMC algorithm, use importance sampling to reweight the Markov
+  chain you already have in order to approximate the new posterior
+  expectations of $\beta, \lambda,\tau$.
+\item Return to the two-dimensional case (where $\tau$ is known). Now
+  use a Laplace approximation to approximate the expectations of each
+  parameter. You may find it useful to use the {\tt optim} command in
+  order to do an optimization for the Laplace approximation. Please
+  note that the default of optim is to minimize, not maximize, so you
+  will need to either change the controls, or use the negative of the 
+  posterior distribution.
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,135 @@
+<HTML>
+<HEAD>
+<TITLE> Murali Haran </TITLE>
+</HEAD>
+<body background="stucco.gif">
+<CENTER>
+<FONT SIZE=8> Murali Haran's Homepage
+</FONT>
+</CENTER>
+<BR> <P>
+<HR>
+ <B>A little bit about me...</B>
+<P>
+<HTML>
+I'm working on a Ph.D. in Statistics at the <A
+HREF="http://www.stat.umn.edu/"> School of Statistics </A> , <A
+HREF="http://www1.umn.edu/tc"> University of Minnesota </A>,
+Minneapolis, MN (since September 1997).  I graduated with a B.S. in
+Computer Science and minors in Statistics and Film from <A
+HREF="http://www.cmu.edu/"> Carnegie Mellon University </A>,
+Pittsburgh, PA. (May 1997). I received an M.S. in Statistics from the
+University of Minnesota (June 2001). I finished my thesis proposal in
+the summer of 2001, so I am now officially a Ph.D. <em>
+candidate</em>. <BR><BR>I have been a Research Assistant with <L1> <A
+HREF="http://www.stat.umn.edu/~luke"> Luke Tierney </A> since Fall
+1999 and have been working with <L1> <A
+HREF="http://www.biostat.umn.edu/~brad"> Brad Carlin </A> since Summer
+2000. They are jointly advising me on my dissertation (currently
+titled <b>Efficient Perfect and MCMC Sampling Methods for Bayesian
+Spatial and Components of Variance Models</b>).
+<BR>
+I am currently working on Bayesian computation for spatial models. In
+particular, I am investigating sampling techniques for hierarchical
+models that use Gaussian Markov Fields (GMRFs). I am also studying
+hierarchical Bayesian modeling techniques used for disease mapping and
+particulate matter exposure studies.<BR><BR> The following paper
+contains some results from research in MCMC block sampling techniques
+for GMRFs.
+<P>
+<LI> 
+<b> Haran, M.</b>, 
+<A Href = "http://www.biostat.umn.edu/~hodges">
+Hodges, J.S.</A>, and <A Href = "http://www.biostat.umn.edu/~brad">
+Carlin, B.P.</A>, ``<A
+HREF="ftp://muskie.biostat.umn.edu/pub/2001/rr2001-003.ps.gz">
+Accelerating computation in Markov random field models for spatial
+data via structured MCMC,</A>'' to appear  <em> Journal of Comp. and
+Graph. Statistics </em>, June 2003. 
+
+<! (Research Report 2001-003, Division of Biostatistics, University of Minnesota, 2001).  </li>
+
+<BR><BR> For results from a real world application of Bayesian
+modeling (for particulate matter exposure), see
+<P>
+<LI> <b> Haran, M.</b>, <A Href = "http://www.biostat.umn.edu/~brad"> Carlin, B.P.</A>, Adgate, J.L., Ramachandran, G., <A Href = "http://www.sph.emory.edu/bios/faculty/waller.html"> Waller, L.A.</A>, and <A Href = "http://www.stat.duke.edu/~alan/"> Gelfand, A.E.</A>, 
+``<A HREF="http://www.stat.umn.edu/~mharan/hapspgh.ps">
+Hierarchical Bayes models for relating particulate matter exposure
+measures,</A>, Case Studies in Bayesian Statistics, Volume VI, 
+eds. C.Gatsonis, et al., New York:  Springer-Verlag, 2002.
+<BR><BR> I am currently working on perfect sampling approaches for Bayesian disease mapping models. For more information on perfect sampling, see <A Href = "http://dbwilson.com/exact/"> D.B.Wilson's website </A>.
+Among the research interests I would like to pursue in the future (in addition to statistical computing and hierarchical models) are: spatial modeling, prior elicitation and measurement error modeling. 
+
+<!-- My <A Href = "http://www.stat.umn.edu/~mharan/cv1.pdf"> curriculum vitae </A> -->
+<BR><BR>
+In addition to research and working on required course work, I have been a teaching assistant for <BR>
+STAT 3091 : Probability and Statistics for Engineers (Dr. J.Dickey), Fall 1997 & Winter 1997.<BR>
+STAT 1001: Introduction to Statistics (Dr. C.Posse), Spring 1998. <BR>
+STAT 5021: Statistical Practice (Dr. D.Hawkins), Fall 1998, Spring 1999. <BR>
+STAT 5021: Statistical Practice (Dr. S.Weisberg), Winter 1999. <BR> <BR>
+
+<HR>
+<STRONG> Favorite (Favourite) Links </STRONG>
+<P>
+<UL>
+  <LI> <A HREF="http://www.stat.umn.edu/~mharan/quotes.html"> Quotes </A>
+  <LI> <A HREF="http://www1.umn.edu/tc/"> U.Minnesota </A>
+  <LI> <A HREF="http://www.cnn.com/"> CNN </A>
+  <LI> <A HREF="http://www.nfl.com/"> National Football League </A>
+  <LI> <A HREF="http://www.nba.com/"> National Basketball Association </A>
+  <LI> <A HREF="http://www.timesofindia.com/"> Times of India </A> 
+  <LI> <A HREF="http://www.imdb.com/"> Internet Movie Database  </A>
+  <LI> <A HREF="http://ESPN.SportsZone.com/"> ESPN </A>
+  <LI> <A HREF="http://www.stat.umn.edu/~tiso1/"> Maurizio Tiso, The Great One </A>
+  <LI> <A HREF="http://www.stat.umn.edu/~tsiamyrt/"> Once again, Panagiotis Tsiamyrtzis </A>
+  <LI> <A HREF="http://www.stat.umn.edu/~pontla/"> Ragazza (Laura)! </A>
+  <LI> <A HREF="http://www.stat.umn.edu/~matt/"> The Man from UPanema (Matt) </A>
+  <LI> <A HREF="http://cweb.middlebury.edu/f99/ac200a/jazz_and_blues.htm"> West End Blues (Louis Armstrong) and other great music </A>
+  <LI> <A HREF="http://www.stat.umn.edu/~mharan/songs.html"> Song Lyrics/Poetry </A>
+  <LI> <A HREF="http://www.stat.umn.edu/~mharan/music.html"> Music </A>
+  <LI> <A HREF="http://www.stat.umn.edu/~mharan/comedies.html"> Favorite Comedies </A>
+  <LI> <A HREF="http://www.oldbaseball.com/mmedia/whos_on_first.ra"> "First Things First" by Abbot and Costello
+</UL>
+<P>
+<STRONG> Useful Links </STRONG>
+<P>
+<UL>
+  <LI> <A HREF="http://www.stat.umn.edu/~mharan/journals.html"> Journals </A>
+  <LI> <A HREF="http://www.stat.ufl.edu/system/man/R/doc/html"> The R Language </A>
+  <LI> <A HREF="http://lib.stat.cmu.edu/www/otherplaces/"> Other Depts. </A>
+</UL>
+<P>
+
+<HR>
+<STRONG> Random Pictures </STRONG>
+<UL>
+  <LI> <A HREF="http://www.stat.umn.edu/~mharan/archive.html"> Family Archives </A>
+  <LI> <A HREF="meeramusic.jpg"> Meera sings while I accompany her on the tabla (my tabla teacher is seated to my right) </A>
+  <LI> <A HREF="Buca.jpg"> Maurizio's b'day at Buca de Beppo </A>
+  <LI> <A HREF="mad1.html"> Madrid, July 2002. </A>
+  <LI> <A HREF="http://www.stat.umn.edu/~mharan/autrijodi.html"> Autri-Jodi wedding, July 2002 </A>
+  <LI> <A HREF="lodka.jpg"> Oarsmen by Vassily Surikov (1902), Art Museum, Nizhni-Novgorod.</A>
+  <LI> <A HREF="http://www.stat.umn.edu/~mharan/muraliSP.jpg"> My favorite photo of myself </A>
+</UL>
+<STRONG> Sporting Stuff </STRONG>
+<UL>
+  <LI> <A HREF="winter_team3.jpg"> Winter '99 Team:Andy J.,Rui,Autri,Rich,Dennis,Murali,Andy W.</A>
+  <!--  <LI> <A HREF="chr1_07.jpg"> With Autri (tennis team captain) and friends </A>-->
+  <LI> <A HREF="Team_pic_Winter00.jpg"> Fall/Spring 2000-2001 Team</A>
+  <LI> <A HREF="MuraliServe1.jpg"> Play like Murali (16 easy steps)</A>
+  <LI> <A HREF="Image025_5B1_5D.jpg"> On a ski lift</A>
+  <LI> <A HREF="Image026_5B1_5D.jpg"> On snow! </A>
+  <LI> <A HREF="Image030_5B1_5D.jpg"> The frozen look at -1 F. (-20 F. windchill)</A>
+</UL>
+
+<P>
+<HR NOSHADE>
+<H2> ANY QUESTIONS ??? </H2><BR>
+<L1>
+<TR><TD><IMG SRC="http://www.stat.umn.edu/~mharan/001022_carter_f.jpg"> </TD>
+<TD> 
+<L1>
+<FONT COLOR="BLACK"><P>Please send your comments or questions to </FONT><cite>
+<a href=mailto:mharan@stat.umn.edu> mharan@stat.umn.edu</a>
+
+</HTML>

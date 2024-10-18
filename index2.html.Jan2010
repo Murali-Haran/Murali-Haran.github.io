@@ -1,0 +1,77 @@
+
+<HTML>
+<HEAD>
+<TITLE> Murali Haran </TITLE>
+</HEAD>
+<body bgcolor=EEE8CD> <!-- C1CDCD -->
+<blockquote>
+<blockquote>
+
+<b> Some Lists </b>
+<UL>
+  <LI> <A HREF="quotes.html"> Quotes </A>
+  <LI> <A HREF="humor.html"> Humor </A>
+<!--  <LI> <A HREF="songs.html"> Song Lyrics/Poetry </A> -->
+  <LI> <A HREF="sillymoviequotes.html"> Silly Quotes from Film</A>
+  <LI> <A HREF="music.html"> Music </A>
+<!--  <LI> <A HREF="comedies.html"> Comedies </A> -->
+  <LI> <A HREF="comedians.html"> Comedians </A>
+  <LI> <A HREF="sportsart.html">  Sports as high art </A>
+  <LI> <A HREF="films"> A few film recommendations </A>
+  <LI> <A HREF="badmovies.html"> A few film non-recommendations </A>
+  <LI> <A HREF="hitchcock"> Hitchcock's films </A>
+</UL>
+<HR>
+<b> Sports, music, comedy </b>
+
+<UL>
+  <LI> <A HREF="http://www.nfl.com/"> National Football League </A>: <A HREF="http://www.vikings.com/"> Vikings </A> and <A HREF="http://www.steelers.com/"> Steelers </A>
+  <LI> <A HREF="http://www.musicindiaonline.com/music/hindustani_instrumental/"> A huge selection of free Indian music (classical and popular) </A>
+  <LI> <A HREF="http://cweb.middlebury.edu/f99/ac200a/jazz_and_blues.htm"> West End Blues (Louis Armstrong) and other old jazz classics </A>
+  <LI> <A HREF="http://www.oldbaseball.com/mmedia/whos_on_first.ra"> "First Things First" by Abbot and Costello </A>
+</UL>
+
+<!-- <STRONG> Statistics Links </STRONG> -->
+<!-- <P> -->
+<!-- <UL> -->
+<!--   <LI> <A HREF="http://www.stat.psu.edu/~mharan/journals.html"> Statistics journals </A> -->
+<!-- <\!--   <LI> <A HREF="http://lib.stat.cmu.edu/www/otherplaces/"> Other Depts. </A> -\-> -->
+<!-- </UL> -->
+<!-- <P> -->
+<HR>
+<b> Photographs </b>
+<UL>
+<!-- <LI>  <A HREF="manini.jpg"> My niece </A> <br>-->
+<LI>  <A HREF="manini.sarong.jpg"> My niece </A> <br>
+<LI>  <A HREF="sporting.html"> Sporting Stuff </A> </STRONG> <br> 
+<LI>  <A HREF="india05.html"> India Trip 2004-2005 </A></STRONG> <br> 
+ <LI> <A HREF="tabla.html"> music related </STRONG> </A> <br> 
+<LI>  <A HREF="muraliSP.jpg"> My favorite photo of myself </A> <br>
+<!-- <LI>  <A HREF="cooldog.jpg"> My favorite photo </a> of an associate (a cool <a href="RyelyFluffpeeking.jpg"> dawg </a>) <br> -->
+<LI>  <A HREF="photosdir/photos.html"> More photographs (restricted) </A> </STRONG> <br> 
+</UL>
+
+<HR NOSHADE>
+<H4> ANY QUESTIONS ?? </H4><BR>
+
+<TR><TD><IMG SRC="http://www.stat.psu.edu/~mharan/001022_carter_f.jpg"> </TD>
+<TD> 
+<L1>
+<!-- <FONT COLOR="BLACK"><P>Please send your comments or questions to </FONT><cite> -->
+<!-- <a href=mailto:mharan@stat.umn.edu> mharan@stat.umn.edu</a> -->
+
+<HR>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12028033-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</HTML>
+
+Return to <a href="http://www.stat.psu.edu/~mharan"> home page</a>

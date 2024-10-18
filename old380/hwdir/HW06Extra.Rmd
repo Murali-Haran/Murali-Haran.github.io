@@ -1,0 +1,6 @@
+(c) Compute average monthly temperatures across the whole time period. That is, calculate mean and standard deviations of monthly temperatures for each of the 12 months.
+
+(d) Build a regression model for temperature versus time to see if there is a trend. That is, your regression model should look like: temperature = alpha + beta*time   In R, you use the command lm. Look up help on lm. 
+
+(e) Use what you know about regression (from previous courses) to decide whether your regression model is reasonable. In particular, you should do the usual checks ("diagnostics") about residuals (do they look independent, are the errors homoskedastic, are there outliers etc.). Summarize with no more than 4 plots and 5 sentences what your regression diagnostics told you.
+

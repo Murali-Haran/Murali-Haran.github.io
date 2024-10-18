@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage{url}
+\pagestyle{empty}
+\setlength{\textwidth}{6in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{9in}
+
+\begin{document}
+
+\begin{center}
+{\bf STAT 515}
+
+{\bf Homework \#1, due Friday, Jan. 20 at 2:30pm}
+\end{center}
+
+\begin{enumerate}
+
+  %Chapter 3 exercise 8
+  \item A fair 6-sided die is rolled repeatedly. Let $X$ equal the number of
+  rolls required to obtain the first 5 and $Y$ the number required to obtain the
+  first 6. Calculate
+
+  \begin{enumerate}
+
+  \item $E(X)$
+
+  \item $E(X \mid Y=1)$
+
+  \item $E(X \mid Y=5)$
+
+  \end{enumerate}
+
+  % Not in book; similar to Chapter 3 exercise 13
+  \item Suppose that $X$ is exponentially distributed with parameter $\lambda$;
+  i.e., $E(X)=1/\lambda$. Calculate $P(X-2 \le t\mid X>2)$ for an arbitrary
+  $t>0$. Based on your answer, what is the conditional distribution of $X-2$
+  given $X>2$?
+
+  % Chapter 2 exercise 
+  \item A coin having probability $p$ of resulting in heads is successively
+  flipped until the $r$th head appears. Let $X$ be the total number of flips
+  required. Then $X$ is called a {\em negative binomial} random variable with
+  parameters $r$ and $p$. (NB: A geometric random variable results in the
+  special case $r=1$.)
+
+  Argue that the probability mass function of $X$ is given by
+  \[
+  %Original, incorrect version:  p(k) = {{n-1}\choose{r-1}} p^r(1-p)^{n-r} \quad\mbox{for k=r, r+1, \ldots}.
+  p(k) = {{k-1}\choose{r-1}} p^r(1-p)^{k-r} \quad\mbox{for k=r, r+1, \ldots}.
+  \]
+  {\bf Hint:}  How many successes must there be in the first $k-1$ trials?
+
+  % Chapter 3 exercise 2
+  \item Suppose that $X_1$ and $X_2$ are independent geometric random variables
+  with the same parameter $p$. Prove that the conditional distribution of $X_1$
+  given $X_1+X_2=n+1$, for some positive integer $n$, is discrete uniform.
+
+  {\bf Hint:} The sum of independent geometric random variables with the same
+  mean is negative binomial.
+
+  \item\label{party} Suppose that you arrive at a party, along with a random
+  number, $X$, of additional people, where $X\sim\mbox{Poisson}(10)$. The times
+  at which people (including you) arrive at the party are independent
+  uniform(0,1) random variables.
+
+  \begin{enumerate}
+
+    \item Find the expected number of people who arrive before you.
+
+    \item Find the variance of the number of people who arrive before you.
+
+  \end{enumerate}
+
+  \item A short simulation exercise: Estimate the answers you obtained for
+  Problem~\ref{party} above via simulation. You already have the answer so you
+  can compare your estimates with the answer. Use 1000 replications of the
+  process (one replicate of the process = one randomly sampled party.)
+
+  \begin{itemize}
+
+      \item First download and install {\tt R}; see the course webpage,
+      \url{http://sites.stat.psu.edu/~dhunter/515/}, for a link to ``R
+      statistical software links'' provided by Dr.~Haran.
+
+      \item You can find a simple example for random variate simulation here:
+      \url{http://www.stat.psu.edu/~dhunter/515/hw/hw1ex.R}. You can adapt this
+      example to estimate the expectation and variance for this problem.
+
+  \end{itemize}
+
+  Ideally, you should also be reporting simulation (Monte Carlo) standard errors
+  for your estimates; we will discuss this later in the course.
+
+  Because this is your first assignment and your {\tt R} code here will be quite
+  short, please include a printout of your {\tt R} code with the assignment.
+
+  {\bf Optional: } Typeset your homework solutions using \LaTeX. You might find
+  it helpful to consult the ``LaTeX mathematical writing links'' at
+  \url{http://sites.stat.psu.edu/~dhunter/515/} (again, thanks to Dr.~Haran!).
+
+\end{enumerate}
+
+\end{document}
+

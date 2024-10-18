@@ -1,0 +1,101 @@
+<TITLE> Stochastic Modeling and Computational Statistics, fall 2012  </TITLE>
+<center> <FONT SIZE=5> Stochastic Modeling and Computational Statistics, fall 2012 </FONT> <br>
+This working group will meet Thursdays 9:30am-10:30am in Thomas 327 <br><br>
+
+ <table border="7" >
+<tr> <th scope = "col">Date</th> <th scope = "col">Speaker </th><th scope = "col">Topic </th>
+
+<tr><td> Aug 30
+<td> 
+Debashis Ghosh <td> 
+ Multivariate Multiple Testing Methods, with
+applications to finding gene fusion in TCGA data
+
+<tr><td> Sep 6
+<td> 
+Pavel Krivitsky <td>
+Fitting Dynamic Network Models to Static Network Data
+
+<tr><td> Sep 13
+<td> 
+Won Chang
+<td>
+Models for High-Dimensional Spatial Data using Spatial Basis Functions
+
+<tr><td> Sep 20
+<td> 
+Dave Hunter
+<td> 
+Scalable statistical estimation methods for large, time-varying networks
+(Joint work with Duy Vu, Arthur Asuncion, Marcel Salathé, Padhraic Smyth, and Shashank Khandelwal)
+
+<tr><td> Sep 27
+<td> 
+Prabhani Kuruppumullage
+<td>
+Bi-clustering with EM algorithm
+
+
+<tr><td> Oct 4
+<td> 
+<i> No meeting </i>
+<td>
+
+<tr><td> Oct 11
+<td> 
+Guido Montufar
+<td>
+Scaling of Model Approximation Errors\\and Expected Entropy Distances
+
+<tr><td> Oct 18
+<td> 
+Xiaoyue (Maggie) Nue 
+<td>
+Fast Inference for Latent Space Network Models using Case-control Likelihood Approximation
+
+<tr><td> Oct 25
+<td> 
+Marco Ferreira
+<td>
+EMCMC methods for optimal Bayesian adaptive design for random 
+function estimation
+
+<tr><td> Nov 1
+<td> 
+Josh Goldstein
+<td>
+Modeling and Computation for a Spatial Point Process
+
+<tr><td> Nov 8
+<td> 
+<i> No meeting </i>
+<td>
+
+<tr><td> Nov 15
+<td>
+Le Bao 
+<td>
+Incremental Mixture Importance Sampling
+
+<tr><td> Nov 22
+<td> 
+<i> No meeting (Thanskgiving) </i>
+<td>
+
+<tr><td> Nov 29
+<td> 
+Seonjin Kim
+<td>
+Efficient estimation for time-varying coefficient longitudinal models
+
+<tr><td> Dec 6
+<td> 
+Murali Haran
+<td>
+Inference for Spatial Random Effects Models
+
+</table>
+</center>
+
+</body>
+</html>

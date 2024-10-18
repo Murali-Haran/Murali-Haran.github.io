@@ -1,0 +1,27 @@
+students=scan("~/Dropbox/540spring18/projects/talkSchedule2018.txt",what="character")
+students=students[1:11]
+students=sort(students,decreasing=TRUE)
+for (i in 1:11) cat(students[i],"\n")
+
+20 minutes/talk
+max: 14 slides (including title slide)
+
+Day 1 April 17 (TUESDAY)
+Zhao 
+Xu 
+Wikle 
+
+Day 2 April 23 (MONDAY)
+Wei 
+Walder 
+Sterge 
+
+Day 3 April 24 (TUESDAY)
+Rao 
+Liang 
+Kumar 
+
+Day 4 April 26 (THURSDAY)
+Kelling 
+Boschi 
+

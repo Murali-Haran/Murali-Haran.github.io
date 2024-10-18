@@ -1,0 +1,55 @@
+\documentclass[11pt]{article}
+\usepackage[sort,longnamesfirst]{natbib}
+\usepackage{psfig}
+\usepackage{amsmath}%
+\newcommand{\bthet}{ \mbox{\boldmath $\theta$}}
+\newcommand{\bOne}{ {\bf 1} }
+\newcommand{\lambdaT}{\lambda_{\theta}}
+\newcommand{\bTheta}{ \mbox{\boldmath $\Theta$}}
+\begin{document}
+\pagestyle{empty}
+\begin{center}
+\Large
+{\bf  Bayesian chain point model}\\
+\end{center}
+% Suggestion: please start this homework as early as possible as it is
+% likely to be more time consuming than your previous assignments.\\
+\normalsize
+Consider the following hierarchical changepoint model for the number
+of occurrences $Y_i$ of some event during time interval $i$ with change point $k$.
+\begin{equation*}
+\begin{split}
+Y_i |k,\theta,\lambda \sim & \mbox{Poisson}(\theta) \mbox{ for } i=1,\dots,k\\
+Y_i |k,\theta,\lambda \sim & \mbox{Poisson}(\lambda) \mbox{ for } i=k+1,\dots,n
+\end{split}
+\end{equation*}
+Assume the following prior distributions:
+\begin{equation*}
+\begin{split}
+  \theta|b_1 \sim & \mbox{Gamma}(0.5,b_1)\:\:\:\:\:\:\:\:\:\:\mbox{(pdf=} g_1(\theta|b_1))\\
+  \lambda|b_2 \sim &  \mbox{Gamma}(0.5,b_2)\:\:\:\:\:\:\:\:\: \mbox{(pdf=} g_2(\lambda|b_2))\\
+  b_1 \sim & \mbox{Gamma}(0.01,100)\:\:\:\:\:\:\:\:\: \mbox{(pdf=} h_1(b_1))\\
+  b_2 \sim & \mbox{Gamma}(0.01,100)\:\:\:\:\:\:\:\:\: \mbox{(pdf=} h_2(b_2))\\
+  k \sim & \mbox{Uniform}(1,\dots,n)\:\:\:\:\:\:\:\:\: \mbox{(pmf =} u(k))
+\end{split}
+\end{equation*}
+
+$k,\theta,\lambda$ are conditionally independent and $b_1,b_2$ are independent. \\ Assume the Gamma density parameterization Gamma$(\alpha,\beta) = \frac{1}{\Gamma(\alpha)\beta^{\alpha}} x^{\alpha-1} e^{-x/\beta}$\\\\
+Inference for this model is therefore based on the 5-dimensional
+{\bf posterior} distribution $f(k,\theta,\lambda,b_1,b_2| {\bf Y})$ where
+{\bf Y}=$(Y_1,\dots,Y_n)$. The posterior distribution is obtained {\it upto a constant} by
+taking the product of all the conditional distributions. Thus we have
+\begin{equation*}
+\begin{split}
+f(k,\theta,\lambda,b_1,b_2| {\bf Y}) & \propto \prod_{i=1}^k f_1(Y_i|\theta,\lambda,k) \prod_{i=k+1}^n f_2(Y_i|\theta,\lambda,k)\\
+& \times g_1(\theta|b_1) g_2(\lambda|b_2) h_1(b_1) h_2(b_2) u(k)\\
+& = \prod_{i=1}^k \frac{\theta^{Y_i} e^{-\theta}}{Y_i !} \prod_{i=k+1}^n \frac{\lambda^{Y_i} e^{-\lambda}}{Y_i !} \\
+& \times  \frac{1}{\Gamma(0.5)b_1^{0.5}} \theta^{-0.5} e^{-\theta/b_1} \times \frac{1}{\Gamma(0.5)b_2^{0.5}} \lambda^{-0.5} e^{-\lambda/b_2}\\ 
+& \times FIX e^{-b_1} e^{-b_2} \frac{1}{n}
+\end{split}
+\end{equation*}
+If we are able to draw samples from this distribution, we can answer
+questions of interest. % For instance, to obtain a good estimate of
+% $E(\theta)$ or $E(\lambda)$ we could use sample averages of each parameter.
+
+\end{document}

@@ -1,0 +1,103 @@
+<body bgcolor=E6E6FA>
+<HEAD>
+<TITLE> Brief Bio (Murali Haran)</TITLE>
+</HEAD>
+<!-- <body background="stucco.gif"> -->
+<CENTER>
+<FONT SIZE=5> Academic background and research interests
+</FONT> <BR><BR>
+</CENTER>
+<HR>
+<font size=4> Background </FONT> <br><br>
+I am an Assistant Professor at the <A HREF="http://www.stat.psu.edu/"> Department of Statistics </A>, Pennsylvania State University.
+
+I have an M.S. and Ph.D. in Statistics from the <A
+HREF="http://www.stat.umn.edu/"> School of Statistics </A> , <A
+HREF="http://www1.umn.edu/tc"> University of Minnesota </A>,
+Minneapolis, MN (2003), and I was a postdoctoral fellow at the <A
+HREF="http://www.niss.org/"> National Institute of Statistical
+Sciences/Duke </A>, Research Triangle Park, North Carolina (2003-2004). I
+graduated with a B.S. in Computer Science and minors in Statistics and
+Film from <A HREF="http://www.scs.cmu.edu/"> Carnegie Mellon University
+</A>, Pittsburgh, PA. (May 1997).  <BR><br>
+
+I was jointly advised by <L1> <A
+HREF="http://www.stat.uiowa.edu/~luke"> Luke Tierney</A>* and <L1> <A
+HREF="http://www.biostat.umn.edu/~brad"> Brad Carlin</A>** on my
+dissertation <b>Efficient Perfect and MCMC Sampling Methods for
+Bayesian Spatial and Components of Variance Models</b>.  I worked on
+Bayesian computation for spatial models and some hierarchical
+models. In particular, I investigated sampling techniques for
+hierarchical models that use Gaussian Markov Fields (GMRFs). A major
+portion of my thesis contains work on perfect sampling approaches for
+Bayesian disease mapping models. For more on perfect sampling, see
+D.B.Wilson's <A Href = "http://dbwilson.com/exact/"> website </A>.
+While in graduate school, I also studied hierarchical Bayesian
+modeling techniques used for disease mapping and particulate matter
+exposure studies. As a postdoctoral fellow I studied statistical
+approaches for software engineering problems.
+<br> <br>
+<HR>
+<font size=4> Research Interests </FONT> <br>
+
+<UL>
+<LI> <b> Markov chain Monte Carlo (MCMC) algorithms </b> <br>
+
+MCMC algorithms are very widely used for both Bayesian and frequentist
+statistical inference. It is typically difficult to design MCMC
+algorithms that are generally efficient even for fairly narrow classes
+of models. I am interested in designing algorithms that have good
+properties, meaning that the algorithm does not take long to produce
+estimates that are accurate. I am particularly interested in
+algorithms that are automated, i.e., where the user needs to provide
+minimal input. Some approaches I have considered include:
+
+<UL>
+
+<LI> Exact/perfect sampling: This is an interesting (and
+extremely clever) class of algorithms that use Markov chains to
+produce i.i.d. draws from the target distribution. Unfortunately, it
+has been generally difficult to get this to work for non-toy Bayesian
+models. I have worked on implementing exact sampling for a class of
+Gaussian Markov random field models.
+
+<LI> Theoretically sound estimators for assessing the accuracy of
+MCMC-based estimates and automated rules for stopping MCMC algorithms:
+My collaborators and I have shown that using a <i> consistent batch
+means </i> estimate of standard errors and then using the standard
+errors as a criteria for stopping an MCMC run works very well in
+practice.
+
+<LI> Fast mixing algorithms: I have worked on designing MCMC
+algorithms that explore the state space quickly, demonstrating their
+effectiveness via empirical studies and theoretical results wherever
+possible.
+
+</UL>
+
+<LI> <b> Hierarchical models for spatial data </b> <br> Spatially
+associated or spatiotemporally associated data appear in areas as
+diverse as ecology, environmental statistics, public health,
+climatology, crime mapping, forestry and demography. My methodological
+work in this area is motivated by scientific problems and complex data
+sets.
+
+I am interested in interdisciplinary research and have worked with
+environmental scientists at the <a href="http://enhs.umn.edu/"> School
+of Public Health</a>, University of Minnesota and have recently begun
+multiple collaborations at Penn State with:
+<UL>
+<LI> <a href="http://www.geog.psu.edu/"> Geography </a> on studying how ecological factors can impact coastal aquatic ecosystems.
+<LI> <a href="http://www.geosc.psu.edu/"> Geosciences </a> (and Meteorology) on using large spatiotemporal data sets (e.g. from large oceanic observation systems) to learn about indicators of climate change.
+<LI> <a href="http://www.ppath.cas.psu.edu/"> Plant Pathology </a> on estimating risks of crop epidemics.
+</UL>
+
+<LI> <b> Software Engineering </b> <br>
+I have also worked with computer scientists on statistical issues in software engineering.
+
+</UL>
+<HR>
+<br> <br>
+<FONT SIZE=2> * A member of the <a href="http://www.r-project.org/contributors.html"> R core group </a> and author of <a href="http://lib.stat.cmu.edu/xlispstat/"> Xlisp-stat </a>. <b> Not</b> the op-ed writer for the NY Times. <br>
+** Author of the books <a href="http://www.amazon.com/exec/obidos/ASIN/1584881704/qid=962030389/sr=1-3/103-4693956-6104567"> Bayes and Empirical Bayes Methods for Data Analysis </a> and  <a href="http://www.amazon.com/exec/obidos/tg/detail/-/158488410X/qid=1073681597/sr=1-1/ref=sr_1_1/104-0636558-1307933?v=glance&s=books/"> Hierarchical Modeling and Analysis for Spatial Data </a>.  <b>Not</b> the Carlin of the (closely related) book "Bayesian Data Analysis", nor the Karlin of the Karlin and Taylor books on Stochastic Processes (that Karlin is spelled with a "K"). However, Taylor of "Karlin and Taylor" fame was Luke Tierney's advisor but now I'm just confusing you... <br>
+</FONT> <br> <br>

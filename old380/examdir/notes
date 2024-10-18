@@ -1,0 +1,5 @@
+1. Suppose you want to analyze daily temperatures at 3 different
+locations and that the number of days where data are available at
+these locations is quite different. What kind of data structure would
+you use to store all these data and why? 
+

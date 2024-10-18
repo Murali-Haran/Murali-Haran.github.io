@@ -1,0 +1,8 @@
+@article{haran2007tce,
+  title={{Techniques for Classifying Executions of Deployed Software to Support Software Engineering Tasks}},
+  author={Haran, M. and Karr, A. and Last, M. and Orso, A. and Porter, A.A. and Sanil, A. and Fouch{\'e}, S.},
+  journal={IEEE TRANSACTIONS ON SOFTWARE ENGINEERING},
+  pages={287--304},
+  year={2007},
+  publisher={IEEE Computer Society}
+}

@@ -1,0 +1,150 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Apr.~25}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+Make sure you do not communicate with anyone (except me) 
+about the take-home final.
+\item 
+Sorry for the delay on the solution for hw\#11; hopefully by tomorrow\ldots
+\item
+Office hours will take place as usual tomorrow.
+\end{itemize}
+\end{frame}
+
+
+\startframe{Markov chain Monte Carlo}
+MCMC standard errors for estimate of $E_\pi g(X)$
+\begin{itemize}
+\item Batch means idea (where $n=ab$):
+\[
+\mbox{Let}\quad
+Y_1 = \frac{X_1+ \cdots + X_b}{b}, 
+Y_2 = \frac{X_{b+1}+ \cdots + X_{2b}}{b}, \ldots
+\]
+\item Then $\hat\sigma^2 = \frac{1}{a-1} \sum_{i=1}^a b(Y_i - \hat\mu)^2$.
+And $\widehat{\mbox{MCMCse}} = \hat\sigma/\sqrt{n}$.
+\item Jones et al (2006):  Take, for example, $b=\sqrt{n}$.
+\end{itemize}
+\notes{I went through the logic of this method.  See the notes from this slide I posted
+in the Apr.~23 lecture.}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+\begin{itemize}
+\item 
+Effective sample size
+(ESS) may be defined as 
+\[
+\mbox{ESS} = n \left( \frac{ \Var(\hat\mu_{\rm iid}) }
+{ \Var(\hat\mu_{\rm corr}) } \right).
+\]
+\item For a stationary chain, we may write this as $\mbox{ESS} = n/\kappa_n$, where
+\[
+\kappa_n=1 + 2\sum_{i=1}^{n-1} \frac{n-i}{n}\Corr(X_1, X_{1+i}).
+\]
+\end{itemize}
+\notes{
+It's not a bad idea to make sure you could derive the form of $\kappa_n$---do
+you understand where it comes from?
+}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+How to estimate $\kappa=1+2\sum_{i=1}^\infty \rho_i$, the ``autocorrelation time''.
+\begin{itemize}
+\item Take $\hat\kappa = 1 + \sum_{i=1}^M \hat \rho_i$.
+\item How to choose $M$?  
+  \begin{itemize}
+  \item  Smallest $M$ with $|\hat \rho_i | < .1$
+  \item IMSE (Initial Monotone Sequence Estimator) (Geyer, 1992)
+  
+  Take largest $M$ with $\hat\rho_{0}-\hat\rho_1 > \cdots > \hat\rho_{M-1}+\hat\rho_{M}>0$
+  \end{itemize}
+\end{itemize}
+\notes{We did not talk about this very much.  
+Some of the notation above is slightly different than 
+what we saw in class.
+}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+A word on ``burnin'' and ``thinning''\ldots
+\notes{
+Thinning means only keeping every $s$th iteration in your Markov chain, which essentially
+means that each actual step of the chain you're sampling consists of $s$ steps of the original
+chain.  To do this is to throw away information.  However, sometimes there is a good reason,
+namely, when storage space is limited and so only a fixed number of values can be kept.
+When a chain is thinned, the values tend to be less correlated than the values of the original
+chain.  One way to look at burnin:  A type of thinning that only applies at the beginning of 
+the chain.
+}
+\end{frame}
+
+
+\startframe{STAT 515 brief recap}
+\begin{itemize}
+\item Chapters 1 and 2:  Review of probability concepts
+\item Chapter 3:  Conditional probability and conditioning (omit 3.6, 3.7)
+\item Chapter 4:  Disc.-time, disc.-space Markov chains (omit 4.10, 4.11)
+\item Chapter 5:  Exp. distribution, Pois. processes (omit some of 5.3, 5.4)
+\item Midterm exam:  Chapters 1--5
+\item Chapter 6:  Cont.-time, disc.-space Markov chains (omit 6.7)
+\item Monte Carlo methods
+\item Markov chain Monte Carlo
+\end{itemize}
+\notes{
+The in-class final will be comprehensive, but it will be more heavily weighted toward the
+material seen after the midterm.  On the next slide, the last two major topics (Monte Carlo 
+methods and MCMC) are outlined in greater detail.  Friday's class will consist of discussing
+the topics on the next slide.
+}
+\end{frame}
+
+\startframe{STAT 515 brief recap}
+More detail on the last two\ldots
+\begin{itemize}
+\item Monte Carlo methods
+  \begin{itemize}
+  \item Understanding what ``pseudo-random'' numbers are
+  \item Inversion method
+  \item Rejection method
+  \item Simulating multivariate normals
+  \item Importance Sampling
+  \item Ratio importance sampling
+  \item Standard error estimation
+  \end{itemize}
+\item Markov chain Monte Carlo
+  \begin{itemize}
+  \item Metropolis-Hastings algorithms
+    \begin{itemize}
+    \item Special case:  Symmetric proposal (Metropolis alg.)
+    \item Special case:  Propose from full cond. (Gibbs samp.)
+    \end{itemize}
+  \item Disc.-time, cont.-space Markov chains
+    \begin{itemize}
+    \item Markov transition density $k ( y\mid x)$
+    \item Stationary density $\pi(x)$.
+    \item Harris ergodicity ($\pi$-irreducibility, aperiodicity, Harris recurrence)
+    \end{itemize}
+  \item Variable-at-a-time MH; full conditionals
+  \item MCMC standard errors using batch means
+  \item Effective sample size
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+
+
+

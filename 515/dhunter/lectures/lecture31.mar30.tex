@@ -1,0 +1,90 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Mar.~30}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+HW \#9 is due on Friday, April 6 at 2:30pm.
+\item 
+All homework must be turned in electronically from now on.
+\item Have a look at Section 11.6; we'll discuss parts of it.
+\end{itemize}
+\end{frame}
+
+
+\startframe{Monte Carlo methods}
+Recall:  Suppose that 
+\begin{itemize}
+\item
+$f(x)=\alpha r(x)$ and $g(x)=\beta s(x)$ are density functions
+\item
+$r(x)$ and $s(x)$ are known functions (but $\alpha$ and $\beta$ might be unknown).  
+\item
+$K=\sup_x r(x)/s(x)$ is finite
+and known.  
+\item 
+Let $X\sim g(x)$ and $U\sim \mbox{unif}(0,1)$ be independent. 
+\end{itemize}
+\[
+\mbox{Then} \quad X \mid U \le \frac{r(X)}{Ks(X)} \sim f.
+\]
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Two cases in which $f(x)$ may only be known up to a constant:
+\begin{itemize}
+\item $f(\vec x) \propto \exp \{- \theta \sum_{i} x_i x_{i+1}\}$, where
+$x_i = \pm 1$ for all $i$.
+\item Bayesian model:  
+\[
+\mbox{posterior density} =f(\theta\mid x) \propto L(x \mid \theta) p(\theta).
+\]
+\end{itemize}
+\end{frame}
+
+
+\startframe{Monte Carlo methods}
+How to simulate from a multivariate normal:
+\begin{itemize}
+\item Goal: $\vec X \sim N_p(\vec\mu, \Sigma)$.
+\item Use fact that $\Var (M\vec Y) = M (\Var \vec Y )M^\top$.
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Importance Sampling:
+\begin{itemize}
+\item Goal:  Find $\mu = \int g(x)f(x)\,dx = \E_f g(X)$.
+\item Rewrite as 
+\[
+\mu = \int \frac{g(x)f(x)}{q(x)} q(x) \,dx = \E_q \frac{g(X)f(X)}{q(X)}.
+\]
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Why implement importance sampling?
+\begin{itemize}
+\item Estimators of $\mu$:
+\[
+\hat\mu_1 = \frac1n \sum_{i=1}^n g(X_i),
+\mbox{for $X_i \stackrel{\rm iid}{\sim} f$}
+\quad \mbox{\ vs.\ } \quad
+\hat\mu_2 = \frac1n \sum_{i=1}^n \frac{g(X_i)f(X_i)}{q(X_i)},
+\mbox{for $X_i \stackrel{\rm iid}{\sim} q$}.
+\]
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

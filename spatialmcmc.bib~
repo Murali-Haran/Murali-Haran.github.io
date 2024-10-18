@@ -1,0 +1,9 @@
+@inproceedings{hara:2010,
+   author = {Haran, M.},
+   title = {Gaussian random field models for spatial data},
+   year = 2010,
+   booktitle = {Markov chain {M}onte {C}arlo Handbook Eds. Brooks,
+  S.P., Gelman, A.E. Jones,  G.L. and Meng, X.L.},
+   publisher = {Springer-{V}erlag},
+   keywords = {Gaussian fields}
+}

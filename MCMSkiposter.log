@@ -1,0 +1,324 @@
+This is pdfTeX, Version 3.14159-14h-released-20010417 (Web2C 7.3.3.1) (format=pdflatex 2003.2.18)  17 DEC 2004 17:02
+**MCMSkiposter.tex
+(./MCMSkiposter.tex{/usr/share/texmf/pdftex/config/pdftex.cfg}
+LaTeX2e <2001/06/01>
+Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, i
+talian, nohyphenation, loaded.
+(/usr/share/texmf/tex/latex/base/report.cls
+Document Class: report 2001/04/21 v1.4e Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size10.clo
+File: size10.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/share/texmf/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks14
+\ex@=\dimen103
+))
+(/usr/share/texmf/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen104
+)
+(/usr/share/texmf/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count88
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count89
+\leftroot@=\count90
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count91
+\DOTSCASE@=\count92
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
+\dotsspace@=\muskip10
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
+\tag@help=\toks15
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
+\andhelp@=\toks16
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks17
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+(/usr/share/texmf/tex/latex/misc/doublespace.sty)
+(/usr/share/texmf/tex/latex/misc/fullpage.sty
+Style Option FULLPAGE Version 2 as of 15 Dec 1988
+) (/usr/share/texmf/tex/latex/graphics/color.sty
+Package: color 1999/02/16 v1.0i Standard LaTeX Color (DPC)
+
+(/usr/share/texmf/tex/latex/config/color.cfg)
+Package color Info: Driver file: pdftex.def on input line 125.
+
+(/usr/share/texmf/tex/latex/graphics/pdftex.def
+File: pdftex.def 2001/11/29 v0.03i graphics/color for pdftex
+\Gread@gobject=\count100
+))
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texmf/tex/latex/config/graphics.cfg)
+Package graphics Info: Driver file: pdftex.def on input line 80.
+)
+(/usr/share/texmf/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2001/10/25 v2.2f
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 132.
+)
+(/usr/share/texmf/tex/latex/tools/indentfirst.sty
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
+(/usr/share/texmf/tex/generic/pstricks/pstricks.sty
+Package: pstricks 1997/03/25 package wrapper for PSTricks pstricks.tex
+
+(/usr/share/texmf/tex/generic/pstricks/pstricks.tex
+`PSTricks' v97 patch 10  <1999/03/24> (tvz)
+\pst@dima=\dimen112
+\pst@dimb=\dimen113
+\pst@dimc=\dimen114
+\pst@dimd=\dimen115
+\pst@dimg=\dimen116
+\pst@dimh=\dimen117
+\pst@hbox=\box28
+\pst@boxg=\box29
+\pst@cnta=\count101
+\pst@cntb=\count102
+\pst@cntc=\count103
+\pst@cntd=\count104
+\pst@cntg=\count105
+\pst@cnth=\count106
+\pst@toks=\toks19
+(/usr/share/texmf/tex/generic/pstricks/pstricks.con)
+\psunit=\dimen118
+\psxunit=\dimen119
+\psyunit=\dimen120
+\pslinewidth=\dimen121
+\pst@customdefs=\toks20
+\pslinearc=\dimen122
+\everypsbox=\toks21
+\psframesep=\dimen123
+\pslabelsep=\dimen124
+\theoverlaybox=\box30
+))
+(/usr/share/texmf/tex/plain/dvips/colordvi.tex)
+No file MCMSkiposter.aux.
+\openout1 = `MCMSkiposter.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+(/usr/share/texmf/tex/context/base/supp-pdf.tex
+(/usr/share/texmf/tex/context/base/supp-mis.tex
+loading : Context Support Macros / Missing
+\protectiondepth=\count107
+\scratchcounter=\count108
+\scratchtoks=\toks22
+\scratchdimen=\dimen125
+\scratchskip=\skip46
+\scratchmuskip=\muskip11
+\scratchbox=\box31
+\scratchread=\read1
+\scratchwrite=\write3
+\zeropoint=\dimen126
+\nextbox=\box32
+\nextdepth=\dimen127
+\everyline=\toks23
+\!!counta=\count109
+\!!countb=\count110
+\recursecounter=\count111
+)
+loading : Context Support Macros / PDF
+\nofMPsegments=\count112
+\nofMParguments=\count113
+\everyMPtoPDFconversion=\toks24
+) [1
+Non-PDF special ignored!
+Non-PDF special ignored!
+
+{/usr/share/texmf/dvips/config/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 146--150
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 146--150
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmss on input line 155
+.
+LaTeX Font Info:    No file OMScmss.fd. on input line 155.
+
+LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbullet' on input line 155.
+
+[2]
+LaTeX Font Info:    Try loading font information for U+msa on input line 164.
+ (/usr/share/texmf/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2002/01/19 v2.2g AMS font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 164.
+
+(/usr/share/texmf/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2002/01/19 v2.2g AMS font definitions
+)
+Underfull \hbox (badness 10000) in paragraph at lines 178--183
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 178--183
+
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 195--210
+
+ []
+
+[4
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!] [5] [6]
+Overfull \hbox (19.04932pt too wide) in paragraph at lines 254--256
+/cmss17/Difficult to ob-tain en-ve-lope for a com-pli-cated dis-tri-bu-tion, $/
+cmmi12@17.28pt/P/cmr17/([]/cmmi12@17.28pt/; []; ^^\[]; ^^\[]$/cmss17/). 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 254--256
+
+ []
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <17.28> not available
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 272.
+
+
+[7]
+Overfull \hbox (13.94165pt too wide) in paragraph at lines 289--290
+[] 
+ []
+
+
+Overfull \hbox (9.11198pt too wide) in paragraph at lines 296--297
+[]/cmss17/Sample $/cmr17/([]/cmmi12@17.28pt/; []/cmr17/) /cmsy10@17.28pt/^^X /c
+mmi12@17.28pt/R[]/cmr17/([]/cmmi12@17.28pt/; []/cmsy10@17.28pt/j/cmmi12@17.28pt
+/^^\[]; ^^\[]/cmr17/)$/cmss17/, us-ing sam-pled value of $/cmr17/(/cmmi12@17.28
+pt/^^\[]; ^^\[]/cmr17/)$/cmss17/. 
+ []
+
+[8
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!] [9]
+Overfull \hbox (8.70685pt too wide) in paragraph at lines 364--365
+[]/cmss17/Producing a sam-ple from the pro-posal and eval-u-at-ing Metropolis-
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 370--382
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 370--382
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 370--382
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 387--392
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 387--392
+
+ []
+
+[11] [12] (./MCMSkiposter.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ )
+(\end occurred inside a group at level 1) 
+Here is how much of TeX's memory you used:
+ 2545 strings out of 50453
+ 29188 string characters out of 688420
+ 92475 words of memory out of 1500001
+ 5530 multiletter control sequences out of 10000+25000
+ 16576 words of font info for 61 fonts, out of 400000 for 1000
+ 14 hyphenation exceptions out of 10000
+ 27i,6n,22p,232b,249s stack positions out of 3000i,500n,3000p,50000b,5000s
+</usr/share/texmf/fonts/type1/bluesky/
+cm/cmtt12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmssi17.pfb></usr/share/
+texmf/fonts/type1/bluesky/cm/cmr17.pfb></usr/share/texmf/fonts/type1/bluesky/cm
+/cmex10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb></usr/share/tex
+mf/fonts/type1/bluesky/cm/cmmib10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/
+cmr10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr12.pfb></usr/share/texmf/
+fonts/type1/bluesky/cm/cmmi10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi
+12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy10.pfb></usr/share/texmf/fo
+nts/type1/bluesky/cm/cmssbx10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmss
+12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmss17.pfb>
+Output written on MCMSkiposter.pdf (12 pages, 89595 bytes).

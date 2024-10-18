@@ -1,0 +1,184 @@
+---
+title: "Homework 6 due Thursday April 6 at 10am"
+author: "Your name and SID"
+output: html_document
+---
+
+### (1) State College temperature data (GHCN)
+We now return to the State College temperature data set from a previous homework. Read it in again from 
+http://www.stat.psu.edu/~mharan/380/data/tempGHCN/DailyTempSCE20022016.csv
+As you will recall, this data set has daily temperature data for State College, PA. Now that you know a lot more about string manipulation, I would like you to carry out the exercise I asked you to think about on that homework. Specifically, write code to 
+
+(a) create a new data set using daily mean temperatures and translate it into monthly temperatures that is in the following format, with three columns: Month Year AverageTemp
+Months should be 1-12 for January-December.
+
+(b) Once you have this data set ready plot the monthly average temperature over the entire length of the data set. That is, on the x-axis plot the months while on the y-axis, plot the averages.
+
+### (2) Twitter data
+
+In this problem, you will extract features from a sample of tweets from @RealDonaldTrump. These tweets cover the period from 21 Jan through 11 Oct 2016.  In addition to the tweet itself, twitter also provides meta information about the tweet. This information includes the date of the tweet and the type of device on which the tweet was made.
+
+There is a conjecture that @RealDonaldTrump tweets from an Android are different from tweets from an iPhone. We will investigate this conjecture in this homework asssignment. And some say that Donald Trump himself uses only one of these devices.
+
+To study this conjecture, we will create the following variables from the tweets and their meta data:
+
+* device on which the tweet was sent -- `dev`, factor with levels, Android, iPhone, and Other.
+* number of characters in the tweet -- `numC`, numeric
+* number of words in the treat (ok to count a url as a word) -- `numW`, numeric
+* indicator for whether the tweet begins with a quotation mark -- `beginQ`, factor
+* indicator for whether the tweet begins with RT (meaning a retweet) -- `rt`, factor
+* indicator for whether the tweet contains a link -- `link`, factor
+* number of hashtags in the tweet -- `numHT`, numeric
+* number of twitter usernames in the tweet -- `numAt`, numeric
+* hour of the day the tweet was sent -- `hr`, numeric
+
+In addition, we take the 5 most popular hashtags and the 5 most popular usernames and create factors for each that indicate whether that hashtag or username appears in the tweet. I have provided these for you in a data frame at
+"http://www.stat.berkeley.edu/users/nolan/data/topHashAndAt.rda"
+
+#### The Data
+
+The data are in a json file and can be read into R with the `RJSONIO` package. After you install and load the package, read in the data with
+
+```{r load}
+library(RJSONIO)
+tweetLines = readLines(url("http://sites.stat.psu.edu/~mharan/380/data/realDonaldTrump.json"))
+tweetList = fromJSON(paste(tweetLines, collapse = " "))
+names(tweetList) = NULL
+```
+
+Explore the list structure. Examine the top of each element to find where the tweet text, time, and device
+appear. Extract the text of the tweets and place them in a character vector called `tweets`
+
+```{r tweets, error=TRUE}
+tweets = 
+```
+
+#### Derive features 
+
+Next derive the 9 variables listed above, i.e., `dev`, `numC`, `numW`, `beginQ`, `rt`, `link`, `numHT`, `numAt`, and `hr`.  In lab, you wrote code to create `rt`, and `hr` and you wrote code that will help you create `numHT` and `numAt`. 
+
+#### Create `dev`
+
+This variable is a factor with 3 levels. We lump together all devices other than the Android and iPhone. You may find it easiest to use `grepl` to create two logical vectors for whether the tweet was from an Android or an iPhone and combine these into a factor with the levels Android, iPhone, and Other. 
+
+```{r dev, error=TRUE}
+dev = 
+```
+
+#### Create `numC` and `numW`
+
+Remember how to count characters in a string with `nchar`.  Also, it may be easiest to count the words by splitting each text string up into words. It's OK for a url to be a word. Careful not to split works like don't into don and t. 
+
+```{r num, error = TRUE}
+numC = 
+  
+numW  = 
+  
+```
+
+#### Create `beginQ`, `rt`, and `link`
+
+The variables `beginQ` and `rt` are similar to create because they both look at the start of the string for a particular pattern. Also, the `grepl` function may be useful here. You can convert a logical into a factor after extracting the desired information as a logical.
+
+```{r begin, error=TRUE}
+
+rt = 
+
+rt = factor(rt, levels = c(TRUE, FALSE), 
+            labels = c("yes", "no"))
+
+beginQ = 
+
+beginQ = factor(beginQ, levels = c(TRUE, FALSE), 
+                labls = c("yes", "no"))
+
+  
+```
+
+In addition, search the tweet strings for a link(s) and create a factor variable, `link` that indicates whether or not there is a link in the tweet
+
+```{r link, error=TRUE}
+link = grepl()
+
+link = factor(link, ...)  
+  
+```
+
+#### Create `numHT` and `numAt`
+
+Recall that hashtags begin with # and do not include punctuation or blanks. Usernames have similar rules: they begin with an @ and do not include punctuation or blanks. 
+Use the `gregexpr` call that you developed in the lab to find the locations of the nodes. Recall that you named this list `hashLocs`. Write a short function to sapply over the numeric vectors in `hashLocs` and return the number of hashtags in the tweet. Note that if the vector is -1 then the corresponding tweet has no hashtags and you want to return 0. Otherwise, return the length of the vector. 
+
+
+```{r numHash, error=TRUE}
+hashLocs = gregexpr(pattern = "PUT YOUR PATTERN HERE",
+                    tweets)
+
+numHT = sapply(hashLocs, function(x) {
+  
+})
+```
+
+Very similar code can be used to find and count the number of usernames in the tweets. 
+
+```{r numAt, error = TRUE}
+atLocs = gregexpr(pattern = "PUT YOUR PATTERN HERE",
+                  tweets)
+
+numAt = sapply(atLocs, function(x) {
+  
+})
+```
+
+#### Create `hr`
+
+Finally create the variable `hr`, which is the hour of the day that the tweet was sent. Remember that you wrote code to do this in the lab assignment.
+
+```{r hr, error=TRUE}
+
+hr = 
+  
+```
+
+
+### Putting it all together
+
+Create a data frame containing all 9 variables.
+Merge this data frame with the one available on the web that contains ten variables -- factors indicating whether a particular hashtag or username appears in the tweet.
+Use `cbind` to perform the merge. Call this data frame `trumpDF`
+
+```{r, error=TRUE}
+
+trumpDF = data.frame( .... )
+trumpDF = cbind(trumpDF, )
+
+```
+
+#### Explore the variables
+
+Before we proceed with developing a predictor, make a few (~4) simple visualizations (e.g., boxplots, barplots) of the variables that you created.  We are particularly interested in which variables, if any, might distinguish between tweets sent from an Android and tweets sent from an iPhone. Make visualizations that will help uncover possible relationships.  In a few sentences, describe what you see in each plot.
+
+```{r plot1}
+
+```
+
+plot1 findings:
+
+```{r plot2}
+
+```
+
+plot2 findings:
+
+```{r plot3}
+
+```
+
+plot3 findings:
+
+```{r plot4}
+
+```
+
+plot4 findings:
+

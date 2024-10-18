@@ -1,0 +1,150 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Jan.~23}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+Read Section 4.4 (both editions) before Wednesday's class.
+\end{itemize}
+\end{frame}
+
+
+\startframe{4.1 Introduction to Markov Chains}
+Consider the simple weather example with states ``rain'' and ``no rain'':
+\[
+P=
+\begin{bmatrix}
+\alpha & 1-\alpha \\
+\beta & 1-\beta
+\end{bmatrix}
+=
+\begin{bmatrix}
+0.7 & 0.3 \\
+0.4 & 0.6
+\end{bmatrix}
+\]
+On Friday, I wrote $\pi_1 = P\pi_0$, which should have been 
+$\pi_1^\top = \pi_0^\top P$.
+\end{frame}
+
+\startframe{4.1 Introduction to Markov Chains}
+More complicated rain example with four states:
+
+(0) rain, rain; (1) no rain, rain; (2) rain, no rain; (3) no rain, no rain
+
+\[
+P=
+\begin{bmatrix}
+0.7 & 0 & 0.3 & 0 \\
+0.5 & 0 & 0.5 & 0 \\
+0 & 0.4 & 0 & 0.6 \\
+0 & 0.2 & 0 & 0.8
+\end{bmatrix}
+\]
+\notes{I fixed the states!  Now state 1 and 2 agree with the example 
+in the book (Example 4.4 in Section 4.1).  This example points out that even a process 
+where the dependence is farther back in time than one step can be made Markovian
+by broadening the notion of ``state''.}
+\end{frame}
+
+\startframe{4.1 Introduction to Markov Chains}
+\question{If $P$ is the transition matrix for a finite-state Markov chain 
+$X_0, X_1, X_2, \ldots$, and if the $X_i$ are i.i.d., then:}
+{Each (horizontal) row of $P$ is the same.}
+{Each (vertical) column of $P$ is the same.}
+{Each column of $P$ sums to 1.}
+{None of A, B, or C.}
+\notes{Answer:  A.  Almost nobody got this at first.  We had a discussion about
+why an i.i.d.\ sequence is technically a Markov chain (albeit an uninteresting one).}
+\end{frame}
+
+\startframe{4.1 Introduction to Markov Chains}
+\begin{itemize}
+\item
+Suppose $Z_1, Z_2, \ldots$ are i.i.d.\ with $P(Z_i=j)=p_j$ for any 
+integer $j\ge 0$.
+\item $\sum_{j=0}^\infty p_j=1$
+\item
+Define $X_0=0$ and $X_n=\sum_{i=1}^n Z_i$ for $n\ge 1$.
+\item 
+What is $P$ for the Markov chain $X_0, X_1, \ldots$?
+\end{itemize}
+\notes{We derived 
+\[
+P = 
+\begin{bmatrix}
+p_0 & p_1 & p_2 & p_3 & p_4 & \ldots \\
+0 & p_0 & p_1 & p_2 & p_3 & \ldots \\
+0 & 0 & p_0 & p_1 & p_2 &  \ldots \\
+0 & 0 & 0 & p_0 & p_1 &  \ldots \\
+\vdots & && & & \ddots
+\end{bmatrix}
+\]
+}
+\end{frame}
+
+\startframe{4.2 Chapman-Kolmogorov Equations}
+Summary of Section 4.2:
+\[
+\pi_{t+1}^\top = \pi_{t}^\top P \quad\mbox{becomes} \quad
+\pi_{t+n}^\top = \pi_t^\top P^n.
+\]
+\notes{This is a simplistic representation of what the Chapman-Kolmogorov equations
+say.}
+\end{frame}
+
+\startframe{4.3 Classification of States}
+Def'n:  An equivalence relation, say $\mbox{\textregistered}$, must satisfy three properties:
+\begin{enumerate}
+\item Reflexivity:  $x \mbox{\textregistered} x$ for all $x$.
+\item Symmetry: If $x \mbox{\textregistered} y$, then $y \mbox{\textregistered} x$ for all $x, y$.
+\item Transitivity:  If $x \mbox{\textregistered} y$ and $y \mbox{\textregistered} z$, then $x \mbox{\textregistered} z$
+for all $x, y, z$.
+\end{enumerate}
+Fact:  $\mbox{\textregistered}=$``communicates with'' is an equivalence relation on states.
+\notes{
+Any equivalence relations partition a set into non overlapping classes of equivalent objects.
+In Section 4.3, we learn that every class is composed of either recurrent states or transient
+states; there is never a mixture of the two in the same class.}
+\end{frame}
+
+\startframe{4.3 Classification of States}
+Gambler's Ruin:
+\begin{itemize}
+\item Start with $i$ dollars, $0\le i\le N$.
+\item Play independent games, winning each with probability $p$.
+\item Bet 1 dollar per game (win \$1 if you win, lose \$1 if you lose)
+\item Continue until you have \$0 or $\$N$, then stay there.  
+
+(Modify a random walk so that
+0 and $N$ become absorbing states.)
+\end{itemize}
+\end{frame}
+
+\startframe{4.3 Classification of States}
+Gambler's ruin:
+\begin{itemize}
+\item
+The (equivalence) classes are $\{0\}, \{1, \ldots, N-1\}, \{N\}$.
+\item Which classes are recurrent, and which are transient?
+\item What is the probability that we wind up at $N$
+(as a function of $X_0=i$)?
+\end{itemize}
+\notes{We'll pick up this example on Wednesday.  In the last three minutes, we
+discussed random walks briefly:  In a one-dimensional random walk, if $p=1/2$ then
+all states are recurrent.  But if $p\ne 1/2$, then all states are transient.}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

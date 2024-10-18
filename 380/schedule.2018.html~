@@ -1,0 +1,32 @@
+<TITLE> Data Science through Statistical Reasoning and Computation, Spring 2017  </TITLE>
+<center>
+Tentative schedule for STAT 380<br> Data Science through Statistical Reasoning and Computation, Spring 2018 <b> (check
+back often!) </b> <br>
+<!-- Sections refer to the ??? textbook -->
+ <table border="7" >
+<tr> <th scope = "col">Date</th> <th scope = "col">Topics</th> <th scope = "col"> Reading</th>
+
+<tr><td> Week 1 (Jan 8) <td> R basics review <td> 1.1-7, 1.13-15
+<tr><td> Week 2 (Jan 15)  <td> Vectorized operations and EDA <td> 1.8-9, 2.7
+<tr><td> Week 3 (Jan 22)  <td> Graphics <td> 3.1-5
+<tr><td> Week 4 (Jan 29)   <td> Data structures <td> 1.10-11, 2.4-6, 4.2
+<tr><td> Week 5  (Feb 5)  <td> Introduction to Programming <td> 5.1-6
+<tr><td> Week 6  (Feb 12) <td> Debugging and style; Simulation; <td> 5.8-9; 5.7, 7.1-3, 15.11
+<tr><td> Week 7  (Feb 19) <td>  Representation of Numbers <td> 
+<tr><td> Week 8  (Feb 26)  <td> Review and midterm
+<tr><td>           <td><font color="#FF0000"> 
+ IN CLASS Midterm exam: Thursday, Mar 1 </font>
+<tr><td>   (March 5) <td> <em> spring break </em>
+<tr><td> Week 9 (March 12) <td> Shell <td>  2.1-3, 10.1-5
+<tr><td> Week 10 (March 19) <td> Regular expressions and text mining <td> 8.1-5, 15.9
+<tr><td> Week 11 (March 26) <td> XML and simple web scraping <td> 11.2-3, 4.4
+<tr><td> Week 12 (April 2) <td> SQL <td> 9.1-5
+<tr><td> Week 13 (April 9) <td> Special topics: resampling <td> 6.1-2, 6.4
+<tr><td> Week 14 (April 16) <td> Special topics: nearest neighbor methods <td> 6.4, 15.1
+<tr><td> Week 15 (April 23) <td> Review <td> 
+<tr><td> Tuesday May 1  <td><font color="#FF0000"> Comprehensive final
+  exam 4:40-6:30 in HHD (Health and Human Development) 254 </font> 
+</table>
+</center>
+</body>
+</html>

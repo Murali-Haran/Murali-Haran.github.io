@@ -1,0 +1,75 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Feb.~17}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item
+For Monday,
+read Section 5.4.1
+\item 
+HW\#5 will be due next Friday.  {\em It must be submitted electronically!}
+\item
+The midterm will be \ldots ???  (Wednesday evening?)
+\end{itemize}
+\notes{HW\#5 is somewhat shorter than normal because it must be done electronically.}
+\end{frame}
+
+\startframe{5.3 The Poisson Process}
+A Poisson process is a special type of counting process:
+\begin{itemize}
+\item Counts of events in disjoint time intervals are independent.
+\item For any $0\le s<t$, the number of events in $(s,s+t]$ is Poisson with parameter
+$\lambda t$.
+\item Technically, we should also say $N(0)=0$.
+\end{itemize}
+\notes{This is the ``Poisson-based'' definition of the Poisson process.  It's the one we
+discussed on Wednesday.}
+\end{frame}
+
+\startframe{5.3 The Poisson Process}
+A Poisson process is a special type of counting process
+(equivalent re-definition):
+\begin{itemize}
+\item Counts of events in disjoint time intervals are independent.
+\item $P[N(s+h)-N(s)=1] = \lambda h + o(h)$ as $h\to 0$.
+\item $P[N(s+h)-N(s)\ge2] = o(h)$ as $h\to 0$.
+\item Technically, we should also say $N(0)=0$.
+\end{itemize}
+\notes{This is the ``first-principles'' definition of the Poisson process.  To understand it,
+we had to define the little-o notation:  If $f(x)=o(x)$ as $x\to0$, this means
+that $f(x)/x\to0$ as $x\to0$.  Intuitively, $f(x)=o(x)$ as $x\to0$ means that
+$f(x)$ goes to zero faster than $x$ does.  An important special case of this notation
+is this:  If $f(x)=o(1)$ as $x\to0$, then $f(x)\to0$ as $x\to0$.}
+\end{frame}
+
+\startframe{5.3 The Poisson Process}
+Why are the two definitions equivalent?
+\begin{itemize}
+\item How can we check that the first definition (``Poisson'') 
+implies the second (``first principles'')?
+\item How about the other way around (i.e., first principles implies Poisson)?
+\end{itemize}
+\notes{The first proof may be done directly (using ``brute force'')
+and uses the fact that $e^{-\lambda h}=1-\lambda h + o(h)$ as $h\to 0$.
+The second proof requires some type of moment-generating function approach
+(the book uses the Laplace transform, which is similar to the MGF).  However,
+it is possible to understand the intuition by dividing a time interval of length $t$ into
+$k$ equal subintervals, then studying what happens as $k$ goes to infinity.  Basically,
+the distribution of the number of events can be shown to be roughly binomial with 
+parameters $(k, \lambda t/k)$, and therefore the Poisson approximation to the binomial
+(with parameter $t\lambda$) gets more and more accurate as $k\to\infty$.
+}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

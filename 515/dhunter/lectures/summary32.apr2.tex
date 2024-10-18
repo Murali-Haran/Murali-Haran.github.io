@@ -1,0 +1,103 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Apr.~2}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+HW \#9 is due on Friday, April 6 at 2:30pm.
+\item 
+All homework must be turned in electronically from now on.
+\item Problem \#2 is not as straightforward as I had intended, but go ahead and solve it as asked.
+This may involve numerically finding the root of a 4th-degree polynomial.
+\end{itemize}
+\notes{There is a numerical root-finder called {\tt uniroot} in R.  
+I have posted some sample code on the web page that uses it.
+}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Ratio Importance Sampling:
+\begin{itemize}
+\item Goal:  Find $\mu = \int g(x)f(x)\,dx = \E_f g(X)$.
+\item Ratio estimator is
+\[
+\tilde \mu = 
+\frac{\frac1n \sum_i  g(X_i)r(X_i)/q(X_i)}{\frac1n \sum_i  r(X_i)/q(X_i)}
+\]
+where $X_1, \ldots, X_n \stackrel{\rm iid}{\sim} q$ and $r(x) = f(x)/\alpha$.
+\end{itemize}
+\notes{
+We discussed the fact that it is not necessary for the numerator and the denominator
+to use the same random variables $X_i$ nor even the same density $q$.
+As long as the numerator estimates $\mu/\alpha$ and the denominator estimates
+$1/\alpha$, $\tilde\mu$ is a sensible estimator.
+}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Ratio importance sampling.
+\begin{itemize}
+\item Unlike $\hat\mu=\frac1n \sum_i  g(X_i)f(X_i)/q(X_i)$, $\tilde \mu$
+is not unbiased. 
+\item However, $\mbox{MSE}(\tilde \mu) \le \mbox{MSE}(\hat\mu)$.
+
+( J. Liu, {\it Monte Carlo Strategies in Scientific Computing})
+\item Must assume that $f(x)>0$ implies $q(x)>0$.
+\end{itemize}
+\notes{We will see where the last fact comes into play in an example in 
+the next class.}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Importance sampling standard errors
+\begin{itemize}
+\item Plain importance sampling:  Easy
+\item Ratio importance sampling:  Use delta method to derive
+\[
+\Var \left[ \sqrt{n} ( \tilde \mu - \mu)  \right] \approx \tilde\sigma^2,
+\]
+where $\tilde \sigma^2 = \alpha^2 (1,-\mu) \Sigma (1,-\mu)^\top$ and $\Sigma=\ldots$
+\end{itemize}
+\notes{
+Here, 
+\[
+\Sigma = \begin{bmatrix}
+\Var A_1 & \Cov (A_1, B_1) \\
+\Cov(A_1, B_1) & \Var B_1
+\end{bmatrix}
+\]
+where $A_i = g(X_i) r(X_i) / q(X_i)$ and $B_i = r(X_i)/q(X_i)$.  Since $E A_i=\mu/\alpha$
+and $E B_i=1/\alpha$, the $Sigma$ matrix automatically contains a factor of $1/\alpha^2$,
+which is cancelled by the $\alpha^2$ arising from the delta method.  We spent a LONG time
+deriving the delta method result in class (too long!), but this is a deep topic by itself and
+we really could not do it justice.
+}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Importance Sampling Example:  What is $P(X>4.5)$ for $X\sim N(0,1)$?
+\begin{itemize}
+\item Try naive approach.
+\item Try importance sampling with $q(x) = \exp\{-(x-4.5)\} I\{x>4.5\}$.
+\item Try ratio importance sampling.  (Careful!)
+\end{itemize}
+\notes{
+We first calculated the exact value to be $3.400\times 10^{-6}$.  In a naive simulation
+using only a million normal variables, we found that our estimator was quite imprecise.
+We will continue with this example in the next class.
+}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

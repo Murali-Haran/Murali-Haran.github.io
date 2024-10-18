@@ -1,0 +1,107 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Feb.~3}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item
+Please read Sections 5.1, 5.2.1, 5.2.2, and 5.2.3 (both editions) for Monday.
+\item 
+No class next Friday.
+\end{itemize}
+\end{frame}
+
+
+\startframe{4.8 Time Reversible Markov Chains}
+``Consider a stationary ergodic Markov chain (that is, an ergodic Markov chain
+that has been in operation for a long time)\ldots''
+\begin{itemize}
+\item ergodic?
+\end{itemize}
+\end{frame}
+
+\startframe{4.4 Limiting Probabilities}
+Some terminology (with which you've already dealt to some extent!)
+\begin{itemize}
+\item period
+\item aperiodic
+\item positive recurrent
+\item ergodic
+\end{itemize}
+\end{frame}
+
+\startframe{4.3 Classification of States}
+Remember this?
+
+\question{If all of the states of a Markov chain communicate with each other,
+the chain is said to be}
+{irreducible}
+{ergodic}
+{recurrent}
+{transient}
+\end{frame}
+
+\startframe{4.4 Limiting Probabilities}
+Theorem:  For an irreducible ergodic (time-homogeneous) 
+Markov chain with transition matrix $P$,
+\[
+\lim_{n\to\infty} P^n_{ij} 
+\]
+exists and it does not depend on $i$ (it does generally depend on $j$).
+\end{frame}
+
+\startframe{4.4 Limiting Probabilities}
+Corollary:  For an irreducible ergodic (time-homogeneous) 
+Markov chain with transition matrix $P$,
+the equations 
+\[
+\pi_j = \sum_{i=0}^{\mbox{\# states}} \pi_i P_{ij}, \qquad j = 0, 1, 2, \ldots
+\]
+have solution 
+\[
+\pi_j=\lim_{n\to\infty} P^n_{ij}.
+\]
+\end{frame}
+
+\startframe{4.4 Limiting Probabilities}
+One last bit of notation:
+\begin{itemize}
+\item stationary probability
+\end{itemize}
+\end{frame}
+
+\startframe{4.4 Limiting Probabilities}
+More facts we will not prove:
+\begin{itemize}
+\item If we assume $\sum_j \pi_j=1$, then the solution in the corollary is unique.
+\item The $\pi_j$ from the corollary are the stationary probabilities.
+\item Aperiodicity is not necessary in order for the equations in the corollary to have a 
+unique solution.  However, for irreducible chains, positive recurrence is necessary.
+\item Stationary probabilities exist even for periodic irreducible chains.
+\end{itemize}
+\end{frame}
+
+\startframe{4.8 Time Reversible Markov Chains}
+\begin{itemize}
+\item
+Define $Q_{ij} = P(X_t = j \mid X_{t+1} = i)$.
+\item
+Use Bayes' theorem to prove 
+\[
+Q_{ij} = \frac{\pi_j P_{ji}}{\pi_i}.
+\]
+\item
+To be continued\ldots
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

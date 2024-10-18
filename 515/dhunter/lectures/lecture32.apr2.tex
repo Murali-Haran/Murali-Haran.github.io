@@ -1,0 +1,83 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Apr.~2}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+HW \#9 is due on Friday, April 6 at 2:30pm.
+\item 
+All homework must be turned in electronically from now on.
+\item Problem \#2 is not as straightforward as I had intended, but go ahead and solve it as asked.
+This may involve numerically finding the root of a 4th-degree polynomial.
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Ratio Importance Sampling:
+\begin{itemize}
+\item Goal:  Find $\mu = \int g(x)f(x)\,dx = \E_f g(X)$.
+\item Ratio estimator is
+\[
+\tilde \mu = 
+\frac{\frac1n \sum_i  g(X_i)r(X_i)/q(X_i)}{\frac1n \sum_i  r(X_i)/q(X_i)}
+\]
+where $X_1, \ldots, X_n \stackrel{\rm iid}{\sim} q$ and $r(x) = f(x)/\alpha$.
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Ratio importance sampling.
+\begin{itemize}
+\item Unlike $\hat\mu=\frac1n \sum_i  g(X_i)f(X_i)/q(X_i)$, $\tilde \mu$
+is not unbiased. 
+\item However, $\mbox{MSE}(\tilde \mu) \le \mbox{MSE}(\hat\mu)$.
+
+( J. Liu, {\it Monte Carlo Strategies in Scientific Computing})
+\item Must assume that $f(x)>0$ implies $q(x)>0$.
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Importance sampling standard errors
+\begin{itemize}
+\item Plain importance sampling:  Easy
+\item Ratio importance sampling:  Use delta method to derive
+\[
+\Var \left[ \sqrt{n} ( \tilde \mu - \mu)  \right] \approx \tilde\sigma^2,
+\]
+where $\tilde \sigma^2 = (1,-\mu) \Sigma (1,-\mu)^\top$ and $\Sigma=\ldots$
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Importance Sampling Example:  What is $P(X>4.5)$ for $X\sim N(0,1)$?
+\begin{itemize}
+\item Try naive approach.
+\item Try importance sampling with $q(x) = \exp\{-(x-4.5)\} I\{x>4.5\}$.
+\item Try ratio importance sampling.  (Careful!)
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+Ratio importance sampling application:
+\begin{itemize}
+\item Goal:  Estimate $\mu(\theta) = \E_{f_\theta} g(X)$ for $\theta\in\Theta$.
+\item Plain importance sampling:  Draw new sample for each $\theta\in\Theta$.
+\item Ratio importance sampling:  Draw a single sample from $q(x)$\ldots
+
+(Need: $f_\theta(x)>0$ implies $q(x)>0$ for all $\theta$.)
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

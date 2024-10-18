@@ -1,0 +1,195 @@
+---
+title: "EDA of Bike Sharing"
+author: "Your name and SID"
+output: html_document
+---
+
+DUE: Thursday Feb 2 (online) at 10am
+
+## Introduction
+
+In this assignment you will gain practice in: 
+(a) reading plain text delimited data into R,
+(b) preparing data for analysis, 
+(c) using EDA to learn about your data 
+(d) to learn how to make informative plots
+
+This assigment includes both specific tasks to perform and open-ended
+questions to investigate. The open-ended questions ask you to use
+statistical / data science thinking to decide on a plot to make and to
+summarize information gleaned from these visualizations.
+
+There are 4 parts to this assignment: data preparation, exploring the
+distribution of riders, exploring the relationship between time and
+rider counts, and exploring the relationship between weather and rider
+counts. The data preparation section gives you specific tasks to
+perform.  Then in each of the next three sections, you are asked to
+create 2 plots. The first plot is described in some detail and the
+second plot is one of your choosing. Be sure to choose a plot that
+provides additional information about the distributions and
+relationships in the data. Remember that we are interested in how ride
+sharing works so, e.g., plots that examine the weather in DC without
+reference to ride sharing are not interesting.
+
+Be sure that your plots have informative titles, axis labels, and legends. 
+
+## (1) (a) The Data
+
+You will work with data on bike sharing in Washington D.C.  These data
+are available here: http://www.stat.berkeley.edu/users/nolan/data/bikeshare.txt
+
+You can download the data to your computer and examine it in a plain
+text editor to figure out the delimiters and whether the file has a
+header. Use this information to decide how to call the read.table
+function (as done in class). Read the data set into a variable named
+bike.
+
+```{r, eval=FALSE}
+# You can use the read.table command as before
+```
+
+The variables in this data frame (bike) are defined as:
+
+  - instant: record index
+  - dteday : date
+  - season : season (1:spring, 2:summer, 3:fall, 4:winter)
+  - yr : year (0: 2011, 1:2012)
+  - mnth : month ( 1 to 12)
+  - hr : hour (0 to 23)
+  - holiday : whether day is holiday or not
+  - weekday : day of the week
+  - workingday : if day is neither weekend nor holiday
+  - weathersit : 
+      - 1: Clear or partly cloudy 
+      - 2: Mist + clouds
+      - 3: Light Snow or Rain
+      - 4: Heavy Rain or Snow
+  - temp : Normalized temperature in Celsius (divided by 41)
+  - atemp: Normalized feeling temperature in Celsius (divided by 50)
+  - hum: Normalized percent humidity (divided by 100)
+  - windspeed: Normalized wind speed (divided by 67)
+  - casual: count of casual users
+  - registered: count of registered users
+  - cnt: count of total rental bikes including casual and registered
+
+
+## 1(b) Data Preparation
+
+Many of the variables that are numeric/integer should be factors.
+These include holiday, weekday, workingday, and weathersit.  Convert
+these 4 variables to factors and use appropriate labels for the
+levels. In particular use the 3 letter label, e.g., Sun, Mon, ... for
+weekday. You may simply use yes/no for holiday and
+workingday. Overwrite the corresponding variables in the data
+frame. (As shown in class, better to be safe and make a copy of the
+original data frame before you do this.)
+
+
+
+Check that date (*dteday*) is of class Date. It's easier to work with dates in the POSIXct format. Convert *dteday* to POSIXct and add it to the data frame *bike*. Call this new variable *newDate*.  We want the date to contain the hour of the day. This information is in the *hr* variable.
+POSIXct understands addition, and we can simply add these 2 vectors together - EXCEPT that the times are recorded in second so you will need to rescale *hr* so it is in seconds and then add it to *newDate*. Save the revised date in *newDate*
+
+```{r, eval=FALSE}
+class(bike$dteday)
+bike$newDate = as.POSIXct(bike$dteday)
+head(bike$newDate)
+# the times are off by 8 hours
+# We try adding 8 to each data and find that this only adds 8 seconds
+head(bike$newDate + 8)
+# We add 8 * 60 * 60 - the number of seconds in 8 hours
+head(bike$newDate + 8*60*60)
+```
+```
+
+
+Confirm that your code works as expected. One potential problem is with the time zone and the starting time. It's fine to leave the time zone as is, but you may need to add 8 hours to all values in *newDate* to get them to match the correct time.
+
+
+## (2) Exploring the Distribution of Riders
+
+Begin by comparing the distribution of the counts of casual and registered riders. Use a quantile-quantile plot to make this comparison.
+
+
+```{r exploreRiderCounts}
+
+```
+
+What does this plot tell you about the similarities and differences between these two distributions?
+
+Why would superposing 2 density curves not be a good approach for comparing these 2 distributions?
+
+Your Turn: Make another plot that examines the distribution of the counts of riders. Explain what additional insights your plot provides.
+
+```{r myExploreRiderCounts}
+
+```
+
+
+## (3) Exploring Ride Sharing and Time
+
+Use *newDate* to make a line plot for the number of casual riders and super-pose on it a line plot for the number of registered riders. Restrict the time interval to the month of June in 2011. Use color to distinguish between the 2 types of riders.
+
+```{r rideTime}
+
+```
+
+This plot has several intersting features. How do the number of casual and registered riders compare for different times of day and days of the week? 
+
+Your Turn: Make another plot that examines the relationship between time and rider counts. Explain what additional insights your plot provides. (Recall that there are several other variables in the plot that contain time-related information)
+
+```{r myRideTimePlot}
+
+```
+
+
+
+## (4) Exploring Ride Sharing and Weather
+
+Create a new variable called *propCasual* that is the proportion of casual riders among total riders in an hour. Add this variable to the data frame *bike*.  Make a scatter plot of *propCasual* and *temp*. The temperature should be jittered to avoid overplotting. Also, color the points according to the day of the week or to the weather, whichever you find is more informative.
+
+```{r exploreWeather}
+
+```
+
+What interesting aspect about this relationship do you see in this plot?  
+
+Your Turn: Make another plot that examines the relationship between weather and rider counts. Explain what additional insights your plot provides. (Recall that there are several other variables in the plot that contain weather-related information.)
+
+```{r myRideWeatherPlot}
+
+```
+
+## (5) State College temperature data (GHCN)
+
+Read in the temperature data set we have been studying in class from
+http://www.stat.psu.edu/~mharan/380/data/tempGHCN/DailyTempSCE20022016.csv
+This data set has daily temperature data for State College, PA.
+
+Process the data as we did in class, and perhaps adding more if you
+need it, listing all the steps you took along the way. That is, lay
+out:
+Step 1: Examined tobs variable for missing data
+Step 2: Summarize values in tobs and so on...
+
+## (6) Exploratory data analysis for temperatures
+
+Again, make sure that the plots are very carefully labeled and easy to read and understand. 
+
+(a) Make a plot of the annual mean temperature (the tobs variable)
+from 2002 to 2016. That is, your x-axis should be year and the y-axis
+should be the average tobs value for each year. Summarize what you see
+in 1-2 sentences.
+
+(b) Compare the three different daily temperature data sets (tmin,
+tmax, tobs): Overlay the daily data for daily minimum (tmin), maximum
+(tmax) and average (tobs) for 2 different years, 2013 and
+2016. Summarize what you see in 1-2 sentences.
+
+(c) Compare the distribution of daily tmin between 2002, 2006, 2010,
+2014. That is, show estimated densities for each of 4 years in a way
+that makes it easy to see what is going on. Summarize what you see.
+
+(d) (You do not have to do this problem for this week, but you will
+need to do it at some point so worth thinking about this.) Plot
+monthly averages of the variable tobs over the entire period 2002
+through 2016.

@@ -1,0 +1,97 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Feb.~27}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+For Wednesday, work old homework problems and new homework problems.
+\item 
+Midterm exam:  7:00pm on Wednesday, Feb.~29 in 105 Willard.
+(NB:  Change of room!)
+\item 
+HW \#6 will be due on Friday (Mar.~2) at 2:30.
+\end{itemize}
+\end{frame}
+
+
+\startframe{Midterm practice}
+\question{
+Let $X$ be an exponential random variable.  Without any 
+computations, which of the following is correct?  
+}
+{$E[X^2 \mid X>1] = E[(X+1)^2]$}
+{$E[X^2 \mid X>1] = E[X^2]+1$}
+{$E[X^2 \mid X>1] = (1+E[X])^2$}
+{None of these}
+\end{frame}
+
+\startframe{Midterm practice}
+\question{A doctor has scheduled two appointments, one at 1:00 and one at 1:30.
+The amounts of time that appointments last are independent exponential
+random variables with mean 30 minutes.  If both patients are on time, the expected 
+amount of time that the 1:30 appointment spends at the doctor's office is\ldots}
+{Less than 30 minutes}
+{Between 30 and 60 minutes}
+{More than 60 minutes}
+{}
+\end{frame}
+
+\startframe{Midterm practice}
+In a two-server queueing system, customers arrive according to a Poisson
+process with rate $\lambda$.  If at least one of the two servers is free when
+a customer arrives, the customer is immediately served; otherwise, the customer
+departs immediately and is lost.  Service times are exponential (independently)
+with rate $\mu$.
+\end{frame}
+
+\startframe{Midterm practice}
+In the two-server system (customer rate=$\lambda$, service rate=$\mu$),
+\begin{itemize}
+\item Starting from both servers busy, what is the expected time until the next
+customer is served?
+\item Starting empty, find the expected time until both servers are busy.
+\item What is the expected time between two successive lost customers?
+\end{itemize}
+\end{frame}
+
+\startframe{Midterm practice}
+Consider a single server queueing system where customers arrive according to a
+Poisson process with rate $\lambda$, service times are exponential with rate $\mu$,
+and customers are served in the order of their arrival.  If a customer arrives and finds
+$n-1$ others in the system, and $X$ is the number in the system when that
+customer departs, find the pmf of $X$.
+\end{frame}
+
+\startframe{6.2 Continuous-Time Markov chains}
+Given a continuous-time, discrete-space MC, let us define
+$P(t)$ to be the implied transition probability matrix at
+time $t$.  What properties can we establish for $P(t)$?
+(NB:  Not easy to compute $P(t)$ in general.)
+\begin{itemize}
+\item $P(0) = ??$
+\item $\sum_j P_{ij}(t) = ??$
+\item $P(s)P(t) = ??$
+\end{itemize}
+\end{frame}
+
+\startframe{6.8 Computing the Transition Probabilities}
+The generator (or rate) matrix $R$:
+\begin{itemize}
+\item Take $r_{ij} = \mbox{rate of $i\to j$ transitions}$, $i\ne j$.
+\item Take $r_{ii} = -\sum_{j\ne i} r_{ij}$.
+\item This implies $\sum_{j} r_{ij} = \ldots$
+\end{itemize}
+What is $R$ for the on-off process?
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

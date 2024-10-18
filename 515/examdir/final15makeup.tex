@@ -1,0 +1,294 @@
+\documentclass[12pt]{article}
+%\usepackage{psfig}
+\usepackage{amsbsy,amsmath,amsthm,amssymb,graphicx}%
+\newcommand{\bX}{{\bf X}}
+\newcommand{\bx}{{\bf x}}
+\newcommand{\bpi}{{\mathbf \pi}}
+\oddsidemargin 0.0in
+\evensidemargin 1.0in
+\textwidth 6.0in
+%\headheight 1.0in
+\headheight 0.3in
+\topmargin -0.8in
+\textheight 9.0in
+
+\begin{document}
+%\pagestyle{empty}
+\begin{center}
+{\bf Makeup Stat 515 Final, Penn State Statistics}\\ 
+{June 1, 2015.}
+\end{center}
+\begin{flushleft}
+NAME
+\end{flushleft}
+
+\begin{enumerate}
+
+%% Simple Markov chain problem
+%% from final 2005/old M.S. exam
+%% augmented with basic MC theory question
+\item 
+\begin{enumerate} 
+%% HW 2 and 3, 2015
+\item Consider three urns, one colored red, one white, and one blue.
+  The red urn contains 1 red and 4 blue balls; the white urn contains
+  3 white balls, 2 red balls, and 2 blue balls; the blue urn contains
+  4 white balls, 3 red balls, and 2 blue balls.  At the initial stage,
+  a ball is randomly selected from the red urn and then returned to
+  that urn. At every subsequent stage, a ball is randomly selected
+  from the urn whose color is the same as that of the ball previously
+  selected and is then returned to that urn. 
+ Write the state space of this process and the associate initial
+  distribution and transition probability matrix. Explain why this
+  process is a Markov chain. Let $X_0$ be the initial
+  state of the Markov chain. What is $E(X_2)$ if red, white and blue
+  are coded as 1,2,3 respectively? [3pts]
+\item Consider a Markov chain with transition matrix with $p_1,p_2 \in (0,1)$:
+\begin{equation*}
+  P=
+  \begin{bmatrix}
+    0 & p_1 & p_1\\
+    p_2 & p_1 & p_2 \\
+    p_2 & p_2 & p_1 \\
+  \end{bmatrix}
+\end{equation*}
+Does this Markov chain have a limiting distribution (you do not have
+to find this limiting distribution)? If so, carefully show how the conditions for this
+theoretical result are satisfied.  If not, state any conditions that
+are violated. [4pts]
+\end{enumerate}
+% {\it Soln} (a)
+% The transition probability matrix associated with the Markov chain
+% $\{X_n\}$ where $X_n$ is the weather on the $nth$ day and $X_n=0,1,2$
+% when the day is sunny, cloudy and rainy respectively is:
+% \begin{equation*}
+%   P=
+%   \begin{bmatrix}
+%     0 & 1/2 & 1/2\\
+%     1/4 & 1/2 & 1/4 \\
+%     1/4 & 1/4 & 1/2 \\
+%   \end{bmatrix}
+% \end{equation*}
+% The equations for the long run proportions are:
+% \begin{equation*}
+% \begin{split}
+% \pi_0 =& \frac{1}{4} \pi_1 + \frac{1}{4} \pi_2\\
+% \pi_1 =& \frac{1}{2} \pi_0 + \frac{1}{2} \pi_1 + \frac{1}{4}\pi_2\\
+% \pi_2 =& \frac{1}{2} \pi_0 + \frac{1}{4} \pi_1 + \frac{1}{2}\pi_2\\
+% & \pi_0 + \pi_1 + \pi_2 = 1 \mbox{ (redundant equation).}
+% \end{split}
+% \end{equation*}
+% Solution to the above yields: $\pi_0=1/5,\pi_1=2/5,\pi_2=2/5$. Hence
+% long run proportion of sunny and cloudy days are 1/5 and 2/5
+% respectively.  \\
+
+% (b) Yes, it has a limiting distribution. Since 0 and 1 communicate
+% ($P_{01}>0, P_{10}>0$) and 0 and 2 communicate ($P_{02}>0, P_{20}>0$),
+% all 3 states communicate. The chain is therefore {\it irreducible.}\\
+% Since it is irreducible and the state spate space is finite, all
+% states are {\it positive recurrent}.\\
+% $P_{11}>0$ so the period of state 1 is 1. Since all states are in the
+% same class, they all have the same period, and the chain is {\it aperiodic.}\\
+% Thus, the chain is irreducible, positive recurrent and aperiodic,
+% which means it has a limiting distribution. Note that this Markov
+% chain is a generalization of the one from part (a).
+
+%% exponential distribution problem
+\newpage
+\item Suppose $n$ lightbulbs are placed in a room and switched on at
+  time $0$. Assume the lifetime of each bulb is independently
+  distributed according to Exponential($\theta$) with $\theta>0$, i.e., they have
+ expected lifetimes of $\theta$. Suppose you walk into the room at some time
+  $\tau > 0 $ and the only information you have is the number of bulbs
+  still working, $W$.
+\begin{enumerate}
+\item Suppose the time you walk into the room is random, with $\tau \sim U(a,b)$, $b > a >0$. What is the expected value of $W$ ? [3pts]
+\item Now assume $\tau$ is fixed (but the rest of the description of
+  the experiment stays the same as above.) What is the expected {\it total}
+  lifetime of all the bulbs that are still working at time $\tau$?
+  [3pts]
+%\item Continue to assume $\tau$ is fixed. What is the minimum lifetime of all the bulbs that are still working at time $\tau$ ? 
+\end{enumerate}
+% {\it Soln:} (a) $W \mid \tau \sim$Binomial$(n,e^{-tau/\theta})$, so $E(W)=  E(E(W\mid \tau)) = n E(e^{-tau/\theta}) $. Using the pdf of $\tau$, we get $E(W) = n \theta(e^{-a/\theta} - e^{-b/\theta}).$\\
+% (b) Since $\tau$ is fixed, a bulb still working at time $\tau$ has
+% lifetime = $\tau + X $ where $X\sim \mbox{Exp}(\theta)$ by memoryless
+% property of exponential random variables. Hence a bulb still working
+% at time $\tau$ has expected lifetime = $\tau + \theta $. Let total
+% lifetime of still working bulbs be $T$. Expected total lifetime of
+% bulbs still working at time $\tau$= $E(E(T\mid W)) = E(W(\tau + \theta))  = 
+% n e^{-\tau/\theta} (\tau + \theta)$.
+
+\newpage
+
+%% Poisson process
+\item Consider a (time-homogeneous) Poisson process $\{N(t),\:t>0\}$ with $\lambda=5$. 
+%% IMPORTANT: CHANGED: (0,2) to (0,4) and (1,2) to (1,4)
+\begin{enumerate}
+\item What is the probability of seeing 10 events in the time interval (0,4) {\it and} 5 events in the time interval (1,4) ? [3pts]
+\item Suppose you know 10 events occurred in the interval (0,2). What is the distribution of the occurrence of the very first event? [3pts]
+%% Problem below changed, 
+\item A doctor has scheduled two appointments, one at 1pm and
+the other at 1:30pm. Amount of time that appointments last are
+independent exponential random variables with mean 30 minutes.
+Assuming that both patients are on time, find the expected amount of
+time that the 1:30 appointment spends at the doctor's office. [3pts]
+% {\it Soln}: Condition on whether the 1pm appointment is still with the
+% doctor at 1:30, and use the fact that if he is still with the doctor
+% then the remaining time spent is exponential with mean 30. This gives:
+% E(time spent in office by 1:30 appointment) = $30 (1 - \exp(-30/30)) + (30 +30) \exp(-30/30) = 30 + 30\exp(-1)$.
+
+\end{enumerate} % {\it Soln:} (a)
+% (b) Occurrence of time of first event has the same distribution as that of the minimum of 10 i.i.d.\ Unif(0,2) random variables.\\
+% (c) First recall that the Markov assumption for a continuous-time
+% discrete state space Markov process $\{X(t)\}$ with $i,j\in\Omega$ is: $$P(X(t+s) = j \mid
+% X(s) = i, X(u)=x(u), u \in [0,s)) = P(X(t+s)=j \mid X(s)=i).$$
+% Note that if the process is time homogeneous, $$P(X(t+s)=j \mid X(s)=i) = P(X(t)=j \mid X(0)=i). $$
+% Now define $T_i$ as the time the process leaves state $i$ given that
+% it was at $i$ at time 0. (Note: for the Poisson process described
+% here,
+% it can only move from $i$ to $j = i+1$). 
+% By memoryless property of exponentials, we know that for $s,t >0$, 
+% \begin{equation}\label{eq1}
+%  P(T_i > s+t \mid
+% T_i>s) = P(T_i > t).
+% \end{equation}
+%   But, \begin{equation}\label{eq2}
+%  P(T_i > t) = P(N(u)= i, u\in(0,t] \mid N(0)=i), 
+%  \end{equation}
+%  and 
+%  \begin{equation}\label{eq3}
+%  P(T_i > s+t \mid T_i > s) = P(N(u)=i,s<u\leq s+t \mid N(u)=i, u\in [0,s]).
+%  \end{equation}
+%  Hence, from \eqref{eq1},\eqref{eq2},\eqref{eq3}, it is
+%   clear that $$P(N(u)=i, s<u\leq s+t \mid N(u)=i, u\in [0,s]) =
+%   P(N(u)= i, u\in (0,t] \mid N(0)=0),$$
+%   thereby satisfying the Markovian
+%   assumption.\\
+% (Students who stated the Markov assumption for continuous-time discrete state space Markov processes received partial credit. An answer that informally stated that the exponential waiting times/memoryless property led to the Markov property received most of the credit.  A more detailed argument along the lines above resulted in full credit.)
+
+\newpage
+
+%% Continuous-time Markov chain problem/birth-death processes
+%% from 2008 final
+%% Important: changed 20 per day to 50 per day
+\item Helicopters land at a small hangar (a place for storing
+  aircraft) at the Poisson rate of 50 per day.  However, they will
+  only land if there are either 0 or 1 helicopters (including the one
+  being worked on) at the hangar. That is, they will not land if there
+  are 2 or more helicopters at the hangar. The hangar can only work on
+  one helicopter at a time. Assume that the amount of time required to
+  service a helicopter is exponentially distributed with a mean of 2
+  hours.
+\begin{enumerate}
+\item What is the generator matrix (following class notation this is denoted by $G$) for this continuous-time Markov chain? [3pts]
+\item Does this process satisfy the detailed balance condition ? Justify your answer. [3pts]
+\item Every hour without any helicopters results in a loss of
+  $\$1,000$ for the hangar, while every hour with at least one
+  helicopter results in a profit of $\$5,000$. In the long run, how
+  much profit can the hangar expect to make per hour? (Note: you do not have to simplify your final answer.) [3pts]
+\end{enumerate}
+% {\it Soln:} (a) $G$, for this process.
+% \begin{equation*} G=
+%   \begin{bmatrix}
+%     -20 & 20 & 0\\
+%     12 & -32 & 20\\
+%     0 & 12 & -12 
+%   \end{bmatrix},
+% \end{equation*}
+% (b) We can find $\bpi$ such that detailed balance is satisfied, so:
+% $$\pi_1= \frac{5}{3} \pi_0,\:\: \pi_2 = \frac{5}{3} \pi_1 =
+% \left(\frac{5}{3}\right)^2 \pi_0.$$
+% Since $\sum_{i=0}^2 \pi_i = 1$,
+% $\pi_0 = (1 + \frac{5}{3} + \left(\frac{5}{3}\right)^2)^{-1}
+% =\frac{9}{49}$, and $\pi_1=\frac{15}{49}, \pi_2 =\frac{25}{49}$, so
+% answer = $\pi_1+\pi_2 = \frac{40}{49}$.  Equivalently, we could solve part (c) and plug $\bpi$ in to show detailed balance holds. 
+
+% (c) To get long run proportion of times spent in each state, let
+% $\bpi=(\pi_0,\pi_1,\pi_2)$. $\bpi$ that satisfies detailed balance
+% also solves $\bpi G = 0$ (or, equivalently, one could directly solve
+% $\bpi G = 0$). Hence, long run proportion of time spent in state 0 (no
+% helicopters) = $\frac{9}{49}$, and long run proportion of time spent
+% in states 1 or 2 is $\frac{40}{49}$. So expected profit per hour =
+% -1000($\frac{9}{49}$) + 5000$\frac{40}{49}$ = \$3897.959.
+
+\newpage
+
+% %% Brownian motion and martingales
+ \item  Let $\{X(t),t\geq 0\}$ be standard Brownian motion. That is,
+   $X(0)=0$, every increment $X(s+t)-X(s)$ is N($0,t$), and for every
+   set of $n$ disjoint time intervals, the increments are independent
+   random variates.
+ \begin{enumerate}
+ \item Show that $\{X(t),t\geq 0\}$ is an example of a continuous-time
+   continuous-state-space Markov process. [4pts]%
+% CHANGED: now hw07 from 2015
+\item Let $\{X(t), t>0\}$ be standard Brownian motion. Prove that the
+  process $\{M(t), t>0\}$ where $M(t) = \exp\left(\lambda X(t) -
+    \frac{1}{2} \lambda^2 t\right)$, is a martingale.
+%% Ross book, Ch. 10, problem 20
+ \item Define $\{Z(t),t\geq 0\}$ as $Z(t)=\exp(\lambda X(t) - \lambda^2
+   t/2)$, 
+  $\lambda$ is a constant. $\{Z(t),t\geq 0\}$ is known to be a martingale (you
+   do not have to prove this). Let $T$ be the first time that $X(t)$
+   reaches 2-4$t$, that is,  $T=$min$\{t: X(t)= 2-4t\}$. What is
+   $E(T)$? Fully justify your answer. [4pts]
+ \end{enumerate}
+
+\newpage
+
+
+%% M-H algorithm question + importance sampling/Monte Carlo
+%%%%% from take home exam
+\item Consider a regression of a variable $Y$ on $X$ where the regression model is as follows,
+$Y_i \sim EMG(\beta_0 + \beta_1X, \sigma, \lambda),$ 
+where the exponentially modified Gaussian random variable, EMG($\mu, \sigma, \lambda$), has pdf
+$f(x;\mu, \sigma, \lambda) = \frac{\lambda}{2} \exp(\frac{\lambda}{2} (2\mu + \lambda\sigma^2 - 2x)) \mbox{erfc}\left(\frac{\mu + \lambda\sigma^2 - x}{\sqrt{2} \sigma} \right), $
+and erfc is the complementary error function defined as
+%$$\mbox{erfc} = 1 - \mbox{erf}(x) = \frac{2}{\pi} \int_x^{\infty} e^{-t^2} dt.$$
+$$\mbox{erfc}(x) = \frac{2}{\pi} \int_x^{\infty} e^{-t^2} dt.$$
+Assume that $\sigma$ is known. Let the independent priors for
+$\beta_0, \beta_1, \lambda$ be $p(\beta_0), p(\beta_1), p(\lambda)$
+respectively.
+% The EMG distribution is obtained when a normal density is convolved
+% with an exponential density. That is, for the regression above, the
+% error contains a normal error (with standard deviation $\sigma$) added
+% to an exponential error (with rate $\lambda$, that is, expected value
+% $1/\lambda$). 
+\begin{enumerate}
+\item Provide pseudocode for a Metropolis-Hastings algorithm to
+  construct a Markov chain with stationary distribution $\pi(\beta_0,
+  \beta_1, \lambda\mid {\mathbf Y}, {\mathbf X})$ for a data set of size $n$,
+  $(X_1,Y_1),\dots, (X_n,Y_n)$.  ${\mathbf Y}, {\mathbf X}$ are
+ $(Y_1,\dots, Y_n)$, $(X_1,\dots, X_n)$ respectively. You should provide enough detail so
+  anyone reading it should be able to write code based on your
+  description. You do not have to provide starting values or specific
+  tuning parameters since those will depend on the particulars of the
+  data. You should, however, list at the beginning of the algorithm
+  any/all tuning parameters for the algorithm that you will have to
+  adjust in order to make it work well. [5pts]
+\item Suppose your Markov chain is $(\beta_0 ^{(1)}, \beta_1 ^{(1)}, \lambda ^{(1)}) ,\dots
+ (\beta_0^{(n)}, \beta_1 ^{(n)}, \lambda ^{(n)})$. Provide estimators for (i)
+ $E_{\pi}(\lambda)$, and (ii)
+  $E_{\pi}\left(\frac{1}{\beta_1 + \lambda}\right)$. [2pts]
+\item State the theoretical result that justifies the use of the above
+  estimator of $E_{\pi}(\lambda)$. State sufficient conditions for the theorem
+  to hold (you do not have to prove that these conditions hold). [3pts]
+\item You are worried about the influence of the priors on the
+  posterior so you would like to see how the posterior changes if the
+  prior is modified to $p^*(\beta_0), p^*(\beta_1), p^*(\lambda)$,
+  independent of each other. Describe in detail how you would use the
+  Markov chain above (do not construct a new Metropolis-Hastings
+  algorithm) to approximate $E_{\pi^*}(\lambda)$ where $\pi^*$ is the
+  new posterior pdf. Briefly explain when your approach is likely to
+  work well and when it will not. [4pts]
+\item Now suppose that $\sigma$ is also assumed to be unknown, and has
+  prior $p(\sigma)$. Describe all the ways in which your MCMC
+  algorithm from part (a) will change when you now have to approximate expectations
+  with respect to $\pi(\beta_0, \beta_1, \lambda, \sigma \mid  {\mathbf Y}, {\mathbf X})$. [3pts]
+\newpage
+\phantom{boo}
+\newpage
+\phantom{boo}
+\end{enumerate}
+\end{enumerate}
+\end{document}

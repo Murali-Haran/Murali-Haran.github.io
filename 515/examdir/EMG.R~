@@ -1,0 +1,17 @@
+datMarbleHills = read.table("~/cosmogAntarctic/Code/datasets/MarbleHills.csv", sep=",", header=TRUE)
+names(datMarbleHills)=c("height", "age", "uncert")
+datMarbleHills = datMarbleHills[-c(27,32,33), ]
+n = length(datMarbleHills$height)
+X = datMarbleHills$height
+
+n=100
+X = runif(n)
+Y = 2*X + rnorm(n, 0, sd=1) + rexp(n, 2)
+testdat = list(height=X, age=Y, uncertainty=rep(1, n))
+mhout = cosmoMCMC(NUMIT=10000, cosmodat=testdat, taub=0.5, taum=0.5, tauk=0.5, init=c(10, 2000, 10000))
+
+rexpgauss <- function(n, mu, sigma, lambda)
+  {
+    samp <- rnorm(n, mu, sigma)+rexp(n,lambda) 
+    return(samp)
+  }

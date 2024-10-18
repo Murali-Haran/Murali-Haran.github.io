@@ -1,0 +1,724 @@
+\documentclass{beamer}
+\usepackage{amsfonts} % Worcester's
+\usepackage{amssymb, amsfonts, latexsym, amsmath}
+\usepackage{multirow,array,graphicx,rotating,epsfig}
+\usepackage{verbatim}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{multicol}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{setspace}
+\renewenvironment{knitrout}{\begin{singlespace}}{\end{singlespace}}
+%\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+urlcolor=cyan,
+linkcolor=blue  
+}
+
+\newcommand{\ba}{{\bf a}}
+\newcommand{\bA}{{\bf A}}
+\newcommand{\mcA}{{\mathcal A}}
+\newcommand{\bB}{{\bf B}}
+\newcommand{\bb}{{\bf b}}
+\newcommand{\mfB}{{\mathfrak B}}
+\newcommand{\mcB}{{\mathcal B}}
+\newcommand{\bc}{{\bf c}}
+\newcommand{\bC}{{\bf C}}
+\newcommand{\mcC}{{\mathcal C}}
+\newcommand{\mbC}{{\mathbb C}}
+\newcommand{\mcD}{{\mathcal D}}
+\newcommand{\be}{{\bf e}}
+\newcommand{\bE}{{\bf E}}
+\newcommand{\mcF}{{\mathcal F}}
+\newcommand{\mcG}{{\mathcal G}}
+\newcommand{\bh}{{\bf h}}
+\newcommand{\bH}{{\bf H}}
+\newcommand{\mcH}{{\mathcal H}}
+\newcommand{\mbH}{{\mathbb H}}
+\newcommand{\mcI}{{\mathcal I}}
+\newcommand{\bK}{{\bf K}}
+\newcommand{\mcL}{{\mathcal L}}
+\newcommand{\mcN}{{\mathcal N}}
+\newcommand{\mcP}{{\mathcal P}}
+\newcommand{\bq}{{\bf q}}
+\newcommand{\bQ}{{\bf Q}}
+\newcommand{\mbR}{{\mathbb R}}
+\newcommand{\bR}{{\bf R}}
+\newcommand{\mcS}{{\mathcal S}}
+\newcommand{\mfS}{{\mathfrak S}}
+\newcommand{\bs}{{\bf s}}
+\newcommand{\mcT}{{\mathcal T}}
+\newcommand{\bv}{{\bf v}}
+\newcommand{\bV}{{\bf V}}
+\newcommand{\mcV}{{\mathcal V}}
+\newcommand{\bW}{{\bf W}}
+\newcommand{\bw}{{\bf w}}
+\newcommand{\bX}{{\bf X}}
+\newcommand{\bx}{{\bf x}}
+\newcommand{\bY}{{\bf Y}}
+\newcommand{\bZ}{{\bf Z}}
+
+\newcommand{\bzero}{{\bf 0}}
+\newcommand{\bone}{{\bf 1}}
+
+\newcommand{\bbeta}{{\boldsymbol{\beta}}}
+\newcommand{\bep}{{\boldsymbol{\vep}}}
+\newcommand{\bmu}{{\boldsymbol{\mu}}}
+\newcommand{\vep}{\varepsilon}
+\newcommand{\bvep}{{\boldsymbol{\vep}}}
+%\newcommand{\bVep}{{\boldsymbol{\Varepsilon}}}
+\newcommand{\bLambda}{{\boldsymbol{\Lambda}}}
+\newcommand{\bPhi}{{\boldsymbol{\varPhi}}}
+\newcommand{\bSigma}{{\boldsymbol{\Sigma}}}
+\newcommand{\bxi}{{\boldsymbol{\xi}}}
+\newcommand{\bXi}{{\boldsymbol{\Xi}}}
+
+\DeclareMathOperator\E{E}
+\DeclareMathOperator\Cov{Cov}
+\DeclareMathOperator\Corr{Corr}
+\DeclareMathOperator\diag{diag}
+\DeclareMathOperator\logit{logit}
+\DeclareMathOperator\sign{sign}
+\DeclareMathOperator\Span{span}
+\DeclareMathOperator\vc{vec}
+\DeclareMathOperator\Var{Var}
+\DeclareMathOperator\trace{trace}
+
+\DeclareMathOperator\convD{\overset{\mcD}{\to}}
+\DeclareMathOperator\convP{\overset{\mcP}{\to}}
+\DeclareMathOperator\convas{\overset{as}{\to}}
+
+
+
+%%%%%% Beamer Options
+%\useoutertheme{infolines}
+\definecolor{PSUblue}{RGB}{0,48,135}
+\beamertemplatenavigationsymbolsempty
+\setbeamerfont{page number in head/foot}{size=\small}
+\setbeamertemplate{footline}[frame number]
+%\addtobeamertemplate{headline}{}{\rule{\paperwidth}{3pt}}
+\makeatletter
+\def\th@mystyle{%
+    \normalfont % body font
+    \setbeamercolor{block title example}{bg=PSUblue,fg=white}
+    \setbeamercolor{block body example}{bg=PSUblue!20,fg=black}
+    \def\inserttheoremblockenv{exampleblock}
+}
+\makeatother
+\theoremstyle{mystyle}
+\newtheorem{mytheorem}{Theorem}
+
+
+%%%%%% Knitr Options
+\usepackage{etoolbox} 
+\makeatletter 
+\preto{\@verbatim}{\topsep=0pt \partopsep=0pt } 
+\makeatother
+
+
+
+ \begin{document}
+% \SweaveOpts{concordance=TRUE}
+% <<echo=FALSE,results='hide',message=FALSE>>=
+% opts_knit$set(width=20,out.width=20)
+% options(width=50)
+% library(fda)
+% library(refund)
+% set.seed(2016)
+% @
+
+\title{
+Data Types, Vectors, and Subsetting
+}
+\author{
+}
+\date{}
+
+\begin{frame}[fragile]
+\titlepage
+\end{frame}
+
+
+\begin{frame}{Data analyst's perspective}
+\begin{itemize}
+\item Think in terms of variables – an ordered collection of measurements on a group of subjects
+\item Care about the kind of measuremet values: it informs the type of analysis we might perform, e.g., it makes sense to compute the mean/median of numeric values, but not categorical values
+\item Care about missing data – we adjust our analyses depending on the amount and kind of missingness
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Data types}
+\begin{itemize}
+\item R has a number of built-in data types.  The three most basic types are numeric, character, and logical 
+\item You can check the type using the class function.
+\end{itemize}
+\begin{singlespace}
+<<echo=TRUE,fig.height=5>>=
+class(3.5)
+class("Hello there")
+class(TRUE)
+@
+\end{singlespace}
+\begin{itemize}
+\item Another important type is factor
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Note about data types}
+\begin{itemize}
+\item Actually, the types are numeric, character, and logical vectors.  There’s no such thing as a scalar in R, just a vector of length one.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Vectors}
+\begin{center}
+    {{\resizebox*{1.1\textwidth}{1.1\textheight}
+        {\rotatebox{0}{\includegraphics{Vectors.pdf}}}} \par}
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Vectors: family data example}
+\begin{itemize}
+\item We have data on a 14-member family – vectors of first names, age, gender, weight, height, whether or not they are over weight (BMI above 25).
+\item What are the data types?
+<<echo=TRUE,fig.height=5>>=
+load(url(
+  "http://www.stat.berkeley.edu/users/nolan/data/afamily.rda"))
+@
+\item More readable:\\ load(url(
+"http://www.stat.berkeley.edu/
+users/nolan/data/afamily.rda"))
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{First names and ages}
+<<echo=TRUE,fig.height=5>>=
+fnames
+class(fnames)
+fage
+class(fage)
+@
+\end{frame}
+
+\begin{frame}[fragile]{Gender and over weight}
+<<echo=TRUE,fig.height=5>>=
+fsex
+class(fsex)
+foverWt
+class(foverWt)
+@
+\end{frame}
+
+\begin{frame}[fragile]{More on data types}
+\begin{itemize}
+\item A logical vector contains values that are either TRUE or FALSE. 
+\item A factor vector is a special storage class used for qualitative data. The values are internally stored as integers by each integer corresponds to a level, which is a character string
+\end{itemize}
+<<echo=TRUE,fig.height=5>>=
+levels(fsex)
+@
+\end{frame}
+
+\begin{frame}[fragile]{Special values}
+\begin{itemize}
+\item The missing value symbol is NA  
+\item It stands for “Not Available”
+\item NA can be an element of a vector of any type  
+\item NA is different from the character string “NA” 
+\item You can check for the presence of NA values using the is.na() function.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Special values}
+\begin{itemize}
+\item Other special values are NaN, for “not a number,” which typically arises when you try to compute an indeterminate form such as 0/0.
+<<echo=TRUE,fig.height=5>>=
+0/0
+@
+\item The result of dividing a non-zero number by zero is Inf (or -Inf).
+<<echo=TRUE,fig.height=5>>=
+12/0
+@
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Special values}
+\begin{itemize}
+\item Other special values are NaN, for “not a number,” which typically arises when you try to compute an indeterminate form such as 0/0.
+<<echo=TRUE,fig.height=5>>=
+0/0
+@
+\item The result of dividing a non-zero number by zero is Inf (or -Inf).
+<<echo=TRUE,fig.height=5>>=
+12/0
+@
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Special values}
+\begin{itemize}
+\item NULL is a special value value that denotes an empty vector
+<<echo=TRUE,fig.height=5>>=
+names(fweight)
+@
+\item Here we asked for the names of the elements of the vector fweight. The function names returns a character vector of element names. Since this vector has no element names, the return value is a NULL vector
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Finding out more information}
+\begin{itemize}
+\item Retrieve the number of elements in the vector
+\item Examine the first 6 elements in the vector
+\item Elements can have names – height has names 
+\item Are any of the elements in the vector missing?
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Finding out information: R code}
+<<echo=TRUE,fig.height=5>>=
+length(fweight)
+head(fweight)
+names(fheight)
+is.na(fweight)
+@
+\end{frame}
+
+\begin{frame}[fragile]{Finding out information (contd)}
+\begin{itemize}
+\item Aggregator functions operate on the elements of the vector
+\item Functions can tell us the about the data type 
+\item Check if a vector is empty
+\item Convert a vector to a specified data type
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Finding out information (contd): R code}
+<<echo=TRUE,fig.height=5>>=
+min(fweight)
+is.logical(fweight)
+is.null(fheight)
+as.numeric(fsex)
+@
+\end{frame}
+
+\begin{frame}[fragile]{Managing variables in the workspace}
+\begin{itemize}
+\item Give names of all variables
+\item Remove one or more variables
+\item Save objects for future use
+\item Restore saved variables
+\item Save an entire workspace, and it will automatically load when you start R again 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Managing variables: R code}
+<<echo=TRUE,fig.height=5>>=
+ls()
+rm(x)
+save(fage, fbmi, fweight, fheight, 
+     fsex, file="cdc200.rda")
+load("cdc200.rda")
+@
+\end{frame}
+
+
+\begin{frame}[fragile]{Subsetting: Extracting information}
+BMI of the 10th person in the family\\
+Ages of all but the first person in the family
+<<echo=TRUE,fig.height=5>>=
+fbmi[10]
+fage[-1]
+@
+\end{frame}
+
+\begin{frame}[fragile]{Suppose we want:}
+Height of person "j" (subset by name)
+Genders of the family members who are overweight (subset by logical value)
+<<echo=TRUE,fig.height=5>>=
+fheight["j"]
+fsex[foverWt]
+@
+\end{frame}
+
+\begin{frame}[fragile]{Assign values to elements of a vector}
+\begin{itemize}
+\item In general, the same indexing may be used to assign values to elements of a vector.  
+\item Make sure the vector exists first, or you will get an error.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Assign values to elements of a vector}
+\begin{itemize}
+\item Can you guess what fheight will look like after each of the following lines?
+\item fheight 
+ fheight[2]=61
+ fheight[-13]=62
+ fheight["e"]=67
+ fheight[overWt]=NA
+ fheight[] = 70
+ fheight = 70
+\end{itemize}
+(Hint: inclusion, exclusion, name, logical, all, problem!)
+% <<echo=TRUE,fig.height=5>>=
+% fheight
+% fheight[2]
+% fheight[-13]
+% fheight["e"]
+% fheight[overWt]
+% fheight[] = 70
+% fheight = 70
+% @
+
+\end{frame}
+
+\begin{frame}[fragile]{More examples}
+ a  b  c  d  e  f  g  h  i  j  k  l  m  n \\
+70 64 73 67 61 68 68 65 68 71 67 66 66 62 
+<<echo=TRUE,fig.height=5>>=
+fheight[2]=61
+fheight
+fheight[-13]=62
+fheight
+fheight["e"]=67
+fheight
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{More examples (logical)}
+T    F    F    F    F    T     T     F   T      T     T   F    F    F
+<<echo=TRUE,fig.height=5>>=
+fheight[foverWt]=NA
+fheight
+fheight[]=70
+fheight
+fheight=70
+fheight
+@
+\end{frame}
+
+\begin{frame}[fragile]{Suppose we are interested in}
+\begin{itemize}
+\item Age of those who are not overweight
+\item Weights of the women in our family
+\item BMI of Tim and Tom
+\item Create a new variable for last name, all “Smith” 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{We need to better understand:}
+\begin{itemize}
+\item How to use logical operators to create logical vectors
+\item How to create vectors with specific numbers and/or letters
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{SUBSETTING: Subset by position}
+\begin{center}
+    {{\resizebox*{1.1\textwidth}{1.1\textheight}
+        {\rotatebox{0}{\includegraphics{Subsetpos1.pdf}}}} \par}
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Subset by position (2)}
+\begin{center}
+    {{\resizebox*{1.1\textwidth}{1.1\textheight}
+        {\rotatebox{0}{\includegraphics{Subsetpos2.pdf}}}} \par}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]{Subset by exclusion}
+\begin{center}
+    {{\resizebox*{1.1\textwidth}{1.1\textheight}
+        {\rotatebox{0}{\includegraphics{Subsetexcl.pdf}}}} \par}
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Subset by logical}
+\begin{center}
+    {{\resizebox*{1.1\textwidth}{1.1\textheight}
+        {\rotatebox{0}{\includegraphics{Subsetlogical.pdf}}}} \par}
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Subset by name}
+\begin{center}
+    {{\resizebox*{1.1\textwidth}{1.1\textheight}
+        {\rotatebox{0}{\includegraphics{Subsetname.pdf}}}} \par}
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Five ways to subset a vector}
+\begin{itemize}
+\item Position - indices of the element you want
+\item Exclusion - indices of elements to exclude 
+\item Logical - logical vector the same length as the vector being subset. Keep the elements corresponding to TRUE. 
+\item Name - character vector of names of elements to keep. Vector being subsetted must have names associated with elements
+\item All - all the elements
+\end{itemize}
+\end{frame}
+
+% \begin{frame}[fragile]{Logical operations}
+% \begin{itemize}
+% \item 
+% \end{itemize}
+% \end{frame}
+
+\begin{frame}[fragile]{Logical/relational operators}
+\begin{itemize}
+\item In addition to operators such as +, -, *, and /  R also has logical operators
+\item They are relational operators                          $>, <, >=, <=, !=$, and $==$
+\item These return a value of TRUE or FALSE
+\item They are also vectorized operations
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Examples}
+<<echo=TRUE,fig.height=5>>=
+4 < 3
+"a"=="A"
+"A"=="A"
+4!=3
+@
+\end{frame}
+
+\begin{frame}[fragile]{}
+<<echo=TRUE,fig.height=5>>=
+fweight > 150
+fsex!="m"
+fbmi
+fbmi==25.16239
+@
+% Note: sprintf("%.10f",fbmi[1])
+\end{frame}
+
+\begin{frame}[fragile]{Weights of the women in our family}
+\begin{itemize}
+\item Create a logical expression that identifies the women in the family
+<<echo=TRUE,fig.height=5>>=
+fsex=="f"
+@
+\item Use this logical expression to subset the vector of fweight
+<<echo=TRUE,fig.height=5>>=
+fweight[fsex=="f"]
+@
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Boolean algebra}
+\begin{itemize}
+\item Boolean algebra is a mathematical formalization of the truth or falsity of statements.  
+\item It has three operations, “not,” “or,” and “and.”  
+\item Boolean algebra tells us how to evaluate the truth or falsity of compound statements that are built using these operations.  For example, if A and B are statements, some compound statements are
+\item A and B
+\item (not A) or B
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{}
+\begin{itemize}
+\item The "not" operation just causes the statement following it to switch its truth value. \\
+So not TRUE is FALSE and not FALSE is TRUE. 
+      \item The compound statement A and B is TRUE only if both A and B are TRUE. 
+\item The compound statement A or B is TRUE if either or both A or B is TRUE.
+\item In R, we write ! for "not," \& for "and," and $|$ for "or."  Note: all of these are vectorized!
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{}
+<<echo=TRUE,fig.height=5>>=
+!(fweight > 150)
+(fweight > 150) & (fnames == "Tom")
+(fweight > 150) | (fage > 65)
+@
+\end{frame}
+
+\begin{frame}[fragile]{Two other functions: all and any}
+Guess what these functions are doing:
+<<echo=TRUE,fig.height=5>>=
+all(fage > 18)
+any(fage < 18)
+any(fweight < 150)
+all(fweight < 150)
+@
+\end{frame}
+\begin{frame}[fragile]{Examples: of all and any}
+<<echo=TRUE,fig.height=5>>=
+fage < 50
+fsex == "f"
+!foverWt
+(fsex == "m") &(fheight < 70)
+@
+\end{frame}
+
+\begin{frame}[fragile]{Examples (contd)}
+Previous: Under 50, Women, Not over weight, Males who are under 70 inches tall
+
+<<echo=TRUE,fig.height=5>>=
+fbmi[fnames =="Tim" | fnames == "Tom" ]
+fbmi[fheight >72] = NA
+fage[fsex == "f"] = 
+ fage[fsex == "f"] + 5
+@
+Above: BMI of Tim and Tom, Assigns BMI an NA for those over 72 inches tall, Add 5 years to all female ages
+\end{frame}
+
+\begin{frame}[fragile]{Use logical expressions to obtain the following subsets}
+<<echo=TRUE,fig.height=5>>=
+fage[ !foverWt ]
+fsex[ fage > 50 ]
+fbmi[ fheight == max(fheight) ]
+@
+Ages of all non-overweight members of the family, Genders of those over 50, BMI of the tallest member of the family
+\end{frame}
+
+\begin{frame}[fragile]{Creating vectors}
+Concatenate:
+<<echo=TRUE,fig.height=5>>=
+c(3, 2, 1)
+c(bob =3, alice = 2, john = 1)
+@
+\begin{itemize}
+\item A vector of three numbers, 3, 2, 1, in that order
+\item Elements in a vector – this time with names
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Subset vector based on names}
+<<echo=TRUE,fig.height=5>>=
+fheight[c("a", "c", "f")]
+fheight[c("a", "f", "f", "c")]
+@
+\begin{itemize}
+\item Order of names determines order in subset 
+\item If we repeat a name we get the element multiple times
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Construct vectors of sequences}
+<<echo=TRUE,fig.height=5>>=
+1:3
+10:6
+1.1:5.7
+5.7:-1.1
+@
+\begin{itemize}
+\item Convenient way to create vectors containing a sequence of numbers
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{seq function to construct vectors of sequences}
+<<echo=TRUE,fig.height=5>>=
+seq(1, 6, by = 2)
+seq(1, 6, length = 3)
+seq(to = 6, length = 3, by = 2)
+seq(from = 1, length = 3, by = 2)
+@
+\begin{itemize}
+\item Arguments: from, to, by, length
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Use seq to subset vector}
+<<echo=TRUE,fig.height=5>>=
+fbmi[seq(from = 1, to = length(fbmi),
+       by = 2)]
+@
+\end{frame}
+
+\begin{frame}[fragile]{rep command}
+<<echo=TRUE,fig.height=5>>=
+rep(3,2)
+x = c(7,1,3)
+rep(x, 2)
+rep(x, c(3, 2, 1))
+rep(x, each = 2)
+@
+\end{frame}
+
+\begin{frame}[fragile]{Repeat characters}%{Vector of last names}
+<<echo=TRUE,fig.height=5>>=
+flastnames = rep("Smith",times = length(fbmi))
+flastnames = character(length = length(fbmi))
+flastnames[ ] = "Smith"
+@
+\begin{itemize}
+\item vector where repeat "Smith" multiple (length of fbmi) times
+\item vector of characters multiple (length of fbmi) times
+\item each element of this vector gets "Smith"
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Producing vectors without typing all values out}%{Vector of last names}
+<<echo=TRUE,fig.height=5>>=
+rep(seq(0, 8, by = 2), each = 5)
+rep(1:5, 5)
+rep(1:5, 5) + rep(0:4, each = 5)
+@
+\begin{itemize}
+\item Code to produce 
+0 0 0 0 0 2 2 2 2 2 4 4 4 4 4 6 6 6 6 6 8 8 8 8 8?
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{sort function}%{Vector of last names}
+<<echo=TRUE,fig.height=5>>=
+fage
+sort(fage)
+sort(fage, decreasing = TRUE)
+@
+\end{frame}
+
+\begin{frame}[fragile]{order function}%{Vector of last names}
+<<echo=TRUE,fig.height=5>>=
+fage
+order(fage)
+@
+order tells us 12th element of fage is smallest, the 5th is the second smallest,...
+This function has a decreasing argument too. 
+\end{frame}
+
+\begin{frame}[fragile]{Assign values to elements of a vector}
+<<echo=TRUE,fig.height=5>>=
+fheight
+fheight[2] = 61      
+fheight[-13] = 62    
+fheight["e"] = 67    
+fheight[overWt] = NA 
+fheight[] = 70       
+fheight = 70           
+@
+By inclusion, exclusion, name, logical, all
+\end{frame}
+
+\begin{frame}[fragile]{}
+<<echo=TRUE,fig.height=5>>=
+fheight[foverWt]
+fheight
+fheight[] = 70 
+fheight
+fheight = 70 
+@
+By inclusion, exclusion, name, logical, all
+\end{frame}
+
+\begin{frame}[fragile]{Summary of functions}
+\begin{itemize}
+\item c()
+\item :
+\item seq()
+\item rep()
+\item sort()
+\item order()
+\end{itemize}
+\end{frame}
+
+\end{document}
+
+
+

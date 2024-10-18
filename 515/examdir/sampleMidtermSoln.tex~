@@ -1,0 +1,284 @@
+\documentclass{article}
+
+\setlength{\topmargin}{-.75in}
+\setlength{\oddsidemargin}{.0in}
+\setlength{\evensidemargin}{.0in}
+\setlength{\textheight}{9.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\parindent}{0in}
+%\parskip=.125in
+
+\usepackage{amsmath,bm}%
+\usepackage{amsfonts}%
+
+
+\newcommand{\beaa}{\begin{eqnarray*}}
+\newcommand{\eeaa}{\end{eqnarray*}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\svskip}{\vspace{.2in}}
+\newcommand{\mvskip}{\vspace{.25in}}
+\newcommand{\lvskip}{\vspace{.5in}}
+\def\E{\mathop{\rm E\,}\nolimits}
+\def\Var{\mathop{\rm Var\,}\nolimits}
+\def\Cov{\mathop{\rm Cov\,}\nolimits}
+\def\Cor{\mathop{\rm Corr\,}\nolimits}
+\def\Tr{\mathop{\rm Tr\,}\nolimits}
+\def\diag{\mathop{\rm diag\,}\nolimits}
+\def\midd{\mathop{\,|\,}\nolimits}
+\def\cip{\mathop{\stackrel{P}{\rightarrow}}\nolimits}
+\def\cid{\mathop{\stackrel{d}{\rightarrow}}\nolimits}
+\def\ciqm{\mathop{\stackrel{\mbox{\scriptsize qm}}{\rightarrow}}\nolimits}
+\def\defn{{\stackrel{\mbox{\scriptsize def}}{=}}}
+\def\eid{{\stackrel{{\cal D}}{=}}}
+\def\rvseq{\mathop{X_1, X_2, \ldots}\nolimits}
+\def\rvseqn{\mathop{X_1, \ldots, X_n}\nolimits}
+\def\u#1{{\underline{#1}}}
+\def\o#1{{\overline{#1}}}
+\def\n#1{^{(#1)}}
+\newcommand{\qed}{\rule{2mm}{2mm}}
+
+
+\def\cas{\mathop{\stackrel{\mbox{\scriptsize as}}{\rightarrow}}\nolimits}
+
+\pagestyle{empty}
+
+%%-------------------------------------------------------------------
+
+\begin{document}
+        \hrule
+        \begin{center}
+        \Large\bf Stat 515: Stochastic Processes I \hfill Spring 2012\\
+        Midterm  \hfill WITH SOLUTIONS
+        \end{center}
+        \hrule
+
+%\mvskip {\bf Name:  \rule{4in}{.01in}}
+
+\mvskip 
+This midterm is worth 20 points.  You have 60 minutes.  
+{\bf For full credit, you must explain all of your work!}
+Naturally, you may use any results that you know.
+
+\mvskip 
+{\bf Problem 1. [8 points]\ } 
+A Markov chain $\{X_t: t=0, 1, \ldots\}$ with state space $\{0, 1, 2\}$ has transition probability matrix
+\[
+P=
+\begin{bmatrix}
+%\frac13 & \frac13 & \frac13 \\ 
+%\frac13 & \frac23 & 0 \\
+%0 & 1 & 0
+1/3 & 1/3 & 1/3 \\ 
+1/3 & 2/3 & 0 \\
+0 & 1 & 0
+\end{bmatrix}.
+\]
+
+\svskip
+{\bf(a) [2 points]\ }
+Suppose $P(X_0=0) = P(X_0=2) = \frac12$.  Find $E(X_2)$.  Show all work.
+  \begin{quotation}{\bf Solution:}
+  \[
+  \begin{bmatrix}
+  \frac12 & 0 & \frac12
+  \end{bmatrix}
+  \times
+  \begin{bmatrix}
+  1/3 & 1/3 & 1/3 \\ 
+  1/3 & 2/3 & 0 \\
+  0 & 1 & 0
+  \end{bmatrix}
+  \times
+  \begin{bmatrix}
+  1/3 & 1/3 & 1/3 \\  
+  1/3 & 2/3 & 0 \\
+  0 & 1 & 0
+  \end{bmatrix} =
+  \begin{bmatrix}
+  \frac16 & \frac23 & \frac16
+  \end{bmatrix}
+  \times
+  \begin{bmatrix}
+  1/3 & 1/3 & 1/3 \\ 
+  1/3 & 2/3 & 0 \\
+  0 & 1 & 0
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+  \frac{5}{18} & \frac{12}{18} & \frac{1}{18}
+  \end{bmatrix}.
+  \]
+  This is the distribution on the three states $\{0, 1, 2\}$ after two steps of the chain.
+  Therefore, $E(X_2) = (12/18) + 2\times(1/18) = 7/9$.
+  \end{quotation}
+  
+\svskip 
+{\bf(b) [2 points]\ }  
+Straightforward calculation shows that
+$P^3$ consists only of nonzero entries.
+%\[
+%P^3= \frac{1}{27} \times
+%\begin{bmatrix}
+%8 & 17 & 2 \\ 
+%8 & 16 & 3 \\
+%9 & 15 & 3
+%\end{bmatrix}.
+%\]
+Using this fact, explain how the Chapman-Kolmogorov equations (the equations that relate
+$P_{ij}^{n+m}$ to $P^n$ and $P^m$ for each $i$ and $j$) imply that
+ $P^n$ consists only of nonzero entries for $n\ge 3$.
+  \begin{quotation}{\bf Solution:}
+  {\em NB:  Fixed mistake in original solution.}
+  For any $n\ge 3$, the Chapman-Kolmogorov equations state that
+  for all $i$ and $j$,
+  \[
+  P_{ij}^{n} = \sum_{k=0}^2 P_{ik}^{n-3}P_{kj}^3.  
+  \]
+  Since the $P_{ik}^{n-3}$ values sum to one, at least one of them must be nonzero.  Since each of the 
+  $P_{kj}^3$ values is nonzero, this means that the sum is nonzero, which is what we had to prove.
+  \end{quotation}
+  
+
+\svskip 
+{\bf(c) [2 points]\ }  
+Prove that in the long run, no matter which state the chain starts in, the number of steps 
+that the chain spends in states 0, 1, and 2, respectively, will approach the
+ratios $3:6:1$.
+  \begin{quotation}{\bf Solution:}
+  Since all entries in $P^3$ are positive, this chain is ergodic (because 
+  all states communicate and are 
+  aperiodic and there are only finitely many of them).  Therefore, it suffices to 
+  check that
+  $\pi^\top P=\pi^\top$, where $\pi$ has its entries in the ratio $3:6:1$,
+  since this will imply that $\pi$ is the unique stationary (and limiting)
+  probability vector.   We find immediately that
+  \[
+  \begin{bmatrix}
+  \frac3{10} & \frac6{10} & \frac1{10}
+  \end{bmatrix}
+  \times
+  \begin{bmatrix}
+  1/3 & 1/3 & 1/3 \\ 
+  1/3 & 2/3 & 0 \\
+  0 & 1 & 0
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+  \frac3{10} & \frac6{10} & \frac1{10}
+  \end{bmatrix}.
+  \]
+  \end{quotation}
+
+\svskip 
+{\bf(d) [2 points]\ }  
+Is this Markov chain time-reversible? Explain your answer.
+  \begin{quotation}{\bf Solution:}
+  Detailed balance is a necessary condition for time-reversibility, and in this case
+  detailed balance is obviously not satisfied by $\pi$ of part (c), since for example
+  $P_{13}=0$ but $P_{31}\ne 0$, which means that
+  \[
+  \pi_1P_{13} \ne \pi_3P_{31}.
+  \]
+  We conclude that the chain is not time-reversible.
+  \end{quotation}
+
+\mvskip 
+{\bf Problem 2.  [4 points]\ } 
+A Markov chain has transition probability matrix
+\[
+P=
+\begin{bmatrix}
+0 & 0.5 & 0 & 0 & 0 & 0.5 \\
+0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 1 \\
+0.5 & 0 & 0 & 0 & 0.5 & 0 \\
+\end{bmatrix}.
+\]
+
+\svskip 
+{\bf(a) [2 points]\ }  
+Classify each state as transient, null recurrent, or positive recurrent.  Explain.
+  \begin{quotation}{\bf Solution:}
+  By inspection, we find that it is possible to go from 
+  $1\to2\to3\to4\to1$ and from $1\to6\to5\to6\to1$.  Therefore, all states communicate.
+  Therefore they all have the same classification, and because there are only finitely
+  many of them, they cannot all be transient nor null recurrent.  We conclude that
+  all states are positive recurrent.
+  \end{quotation}
+
+\svskip 
+{\bf(b) [2 points]\ }  
+Is the chain ergodic?  Explain.
+  \begin{quotation}{\bf Solution:}
+  If the chain starts at time zero in, say, state 1, then states $\{1, 3, 6\}$ can only be 
+  visited at even times, whereas $\{2, 4, 5\}$ can only be visited at odd times.
+  This means that the chain is periodic, so it is not ergodic.
+  \end{quotation}
+
+\mvskip
+{\bf Problem 3.  [8 points]\ } 
+Buses arrive at a certain bus stop according to a Poisson process with rate
+2 per hour.  
+%The number of hours between successive bus arrivals at a certain stop is uniformly 
+%distributed on $(0,1)$.  
+Passengers arrive according to an independent Poisson process with rate
+10 per hour.  The instant a bus arrives, all passengers at the stop at that instant board the
+bus and the bus departs.  
+
+\svskip
+{\em Fact:  An exponential random variable with rate $\lambda$ has
+mean $1/\lambda$ and variance $1/\lambda^2$.}
+
+\mvskip
+{\bf(a) [2 points]\ }  
+Assume that there are currently no passengers at the bus stop.
+What is the probability that the next bus will pick up no passengers?  Explain.
+  \begin{quotation}{\bf Solution:}
+  The sum of the two Poisson processes has rate $10+2=12$, and each event in 
+  the combined process is a bus with probability $2/12$.  So the probability
+  that the next event is a bus (which is equivalent to the next bus picking up no passengers)
+  is 2/12.
+  \end{quotation}
+
+\svskip
+{\bf(b) [2 points]\ }  
+If you arrive at the stop at noon, what is the expected amount of time you will have to wait until
+the next arrival of any type (bus or passenger)?  Explain.
+  \begin{quotation}{\bf Solution:}
+  The rate of the combined process is 12, so we have to wait on average 1/12 hour, or 5 minutes.
+  By the memoryless property, we do not have to know how long before noon the last event happened.
+  \end{quotation}
+
+\svskip
+{\bf(c) [2 points]\ }  
+At 2:00, there are 2 passengers waiting for the bus.
+Given this information, what is the expected arrival time of the next bus after 2:00?
+Explain.
+  \begin{quotation}{\bf Solution:}
+  The next bus will arrive in 1/2 hour on average, or at 2:30.  By the memoryless property,
+  the information about the number of passengers present at 2:00 is irrelevant.
+  \end{quotation}
+
+\svskip 
+{\bf(d) [2 points]\ }  
+Assume that there are currently no passengers at the bus stop.
+Let $X$ be the number of people at the stop when the next bus arrives.
+Find $E(X)$ and $\Var(X)$, showing all your work.
+  \begin{quotation}{\bf Solution:}
+  Let $T$ be the time (in hours from now) when the next bus will arrive.  Then
+  $T$ is exponential with mean $1/2$ and variance $1/4$.  Also, 
+  given $T$, $X$ is Poisson with mean $10T$, which means that
+  $E(X\mid T)=\Var(X\mid T)=10T$.
+  Therefore, conditioning on $T$ gives
+  \begin{eqnarray*}
+  E(X) &=& E[ E(X\mid T) ] = E[ 10T] = 10 E[T] = 5 \\
+  \Var(X) &=& E[ \Var(X\mid T)] + \Var[E(X \mid T)] = 
+  E[10T] + \Var[10T] = 10E[T] + 100\Var[T] = 5+25=30.
+  \end{eqnarray*}
+  \end{quotation}
+
+
+\end{document}

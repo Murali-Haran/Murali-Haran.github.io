@@ -1,0 +1,136 @@
+\documentclass[10pt]{article}
+\usepackage[sort,longnamesfirst]{natbib}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{graphics,enumerate}
+\usepackage{amsmath}%                                                                                                         
+\newcommand{\bthet}{ \mbox{\boldmath $\theta$}}
+\newcommand{\bOne}{ {\bf 1} }
+\newcommand{\trace}{ \mbox{tr}}
+\newcommand{\diag}{ \mbox{diag}}
+\newcommand{\lambdaT}{\lambda_{\theta}}
+\newcommand{\bTheta}{ \mbox{\boldmath $\Theta$}}
+\begin{document}
+
+\begin{center}
+{\bf Penn State STAT 540}
+
+{\bf Homework \#1, due Thursday, October 4, 2018}\\
+
+\end{center}
+\noindent What you have to submit in a Canvas submission folder: (i)
+Your {\tt R} code in a file titled PSUemailidHW1.R (e.g. muh10HW1.R),
+(ii) pdf file that contains a clear writeup for the questions below
+named PSUemailidHW1.pdf (e.g. muh10HW1.pdf). Note that
+your code should be readily usable, without any modifications.
+\begin{enumerate}
+% Matrix computations, e.g. using Sherman-Woodbury-Morrison identity
+\item Matrix inversion: Consider matrices of the form $\Sigma=\sigma I
+  + KK'$ where $K$ is an $N\times M$ matrix of iid Gamma($\alpha=2,\beta=2$) random
+  variates and $\sigma=0.2$. Fix $M=50$. Compute the inverse of the
+  matrix using two different algorithms: (i) directly (by using the
+  {\tt solve} function in R) and (ii) using the Sherman-Morrison-Woodbury
+  identity discussed in class. I have provided example code for
+  simulating the matrix for the case where $K$ is based on iid N(0,1)
+  random variables here
+  \url{http://personal.psu.edu/muh10/540/hwdir/hw01.R} 
+\begin{enumerate}
+\item Plot the CPU time versus $N$ for algorithm 1 and
+  algorithm 2 (you will have to determine the grid and range of $N$
+  values that are feasible).
+\item A plot of floating point operations (flops) versus
+  $N$ for algorithm 1 and algorithm 2.
+\item Briefly summarize what you
+  observe based on a comparison of the computational costs for the two
+  algorithms using flops and using CPU time. Do you see any
+  differences? If so, what is your explanation for the differences?
+\item How does the computational cost scale with $M$? Run the code for
+  matrix inversions and plot the
+  increase in cost for $N=1,000$ for $M=50,100,\dots,1,000$ and
+  overlay the cost for $N=5,000$ for $M=50,100,\dots,1,000$. (You
+  should have a total of 4 curves.)
+\end{enumerate}
+% Basic Monte Carlo (w/ multivariate normals) (from D. Richards)\i
+\item Let $O(p)$ be the set of $p \times p$ orthogonal
+  matrices. Consider $H$, a random matrix that is uniformly
+  distributed on $O(p)$, $h_{ij}$, the $(i,j)$th entry of $H$. Let $X$
+  be any $p \times p$ matrix. Define 
+\begin{equation}
+\begin{split}
+M_2(X) := & \mbox{tr}(X^2),\\
+M_{11}(X) := & (1/2)[(\trace(X))^2 - \trace (X^2)]\\
+C(X) := & M_2(X) -  (2/3) M_{11}(X), 
+\end{split}
+\end{equation}
+where $\trace(X)$ is the trace of the matrix $X$. 
+ $A = \diag(a_1,…,a_p),$ a diagonal matrix with
+  $a_1 > … > a_p > 0$, $B =\diag(b_1,…,b_p)$, a diagonal matrix with
+  $b_1 > … > b_p > 0$. Suppose that $1 \le s < t \le p,$ and $1 \le j
+  \le p$.  Define $f_{s,t,j}(H) = \sum_{i=1}^j (h_{is}^2 - h_{it}^2).$
+  Approximate $E [C(HAH’B) f_{s,t,j}(H)]$ using Monte Carlo. Do this
+  for $A=\diag(a_1,\dots,a_p)$ where $a_i=1/i, i=1,\dots,p$, and  
+$B=\diag(b_1,\dots,b_p)$ where $b_i=1/i, i=1,\dots,p$. Note: To
+  simulate a matrix uniformly distributed on $O(p)$: (i) Generate a
+  $p\times p$ matrix $Z$ whose entries are i.i.d. N(0,1) random variables, and (ii) form the matrix $H = (ZZ')^{-1/2} Z$. %The matrix $H$ is uniformly distributed on $O(p)$.
+\begin{enumerate}
+\item Report the Monte Carlo approximation, along with its Monte Carlo
+  standard error, for each of $p=10, 100, 1000, 10000$. What is the
+  largest $p$ for which you are able to do this approximation within 2
+  hours of wall time on your computer? If this $p$ is different from
+  the four values listed above, report your results for it as
+  well. (Note that wall time is the actual time elapsed as
+  measured by a clock.) Report the Monte Carlo approximation for this $p$,
+  along with its Monte Carlo standard error. 
+\item What is the computational complexity of this Monte Carlo
+  algorithm? You may assume that the cost of generating a N(0,1)
+  random variate is 1 flop.
+\item Based on the Monte Carlo approximations above, would you say
+  that the true expectation is positive? (This question is based on a
+  conjecture from Sheena (2005), via Don Richards, that this
+  expectation is always positive.)
+\end{enumerate}
+% rejection sampling
+\item Define the univariate Poisson kernel density function (Yang, 2004;
+or see ``wrapped Cauchy'' in Levy (1939) and Wintner (1947)) as 
+follows:
+\begin{equation}
+  f(\theta;\mu,\rho) = \frac{1}{2\pi} \frac{1-\rho^2}{1-2\rho \cos(\theta-\mu) + \rho^2},\:\: \mu-\pi \leq \theta \leq \mu + \pi 
+\end{equation}
+Approximate the expectation $E_f(\theta^2)$ for $\mu=3, \rho=0.7$ using rejection sampling. State the proposal distribution you used and report associated Monte Carlo standard errors. 
+
+% importance sampling: Monte Carlo s.error derivation
+\item Consider approximating $\mu=E_{\pi} g(X)$ for some real-valued
+  function $g$ and distribution $\pi$.  Construct a ratio important
+  sampling approximation, $\tilde{\mu}_n$, with different importance
+  functions for the numerator and denominator, $q_1, q_2$
+  respectively. % so $$\tilde{\mu}_n=\frac{ }{}.$$
+  Derive a formula for the Monte Carlo standard error approximation of
+  $\tilde{\mu}$ using the samples
+  $X^{(1)},\dots, X^{(n)} \stackrel{iid}{\sim} q_1(\cdot)$ and
+  $Y^{(1)},\dots, Y^{(m)} \stackrel{iid}{\sim} q_2(\cdot)$. You may
+  adapt the derivation sketch provided in the lecture notes to answer
+  this question, but you must show your work.
+
+\item Consider the conditionally independent random variates
+  $Y_1,\dots,Y_n|\alpha \sim \mbox{Poisson}(\exp(\alpha))$, and
+  $\alpha \sim t_{10}(0,100)$, a t-density with $\nu=10$ degrees of
+  freedom and mean $\mu$=0, $\sigma^2=100$ (so
+  variance=$\nu \sigma^2/(\nu-2)$) The observed data are
+  5,4,7,4,4,3,2,5,10,6,6,8,6,6,4,5,8,11,4,3. For both questions below,
+  provide Monte Carlo standard errors and other details about your
+  importance sampling algorithm. 
+% (available at \\
+  % \url{http://www.stat.psu.edu/~mharan/515/hwdir/hw7.dat}. We are
+\begin{enumerate}
+\item Approximate $E(\alpha|Y)$ using importance sampling. 
+\item Approximate $E(\alpha|Y)$ using importance sampling, but now
+  assume $\alpha \sim t_3 (0,100)$. Do not change the importance
+  function you used before. Is this a good approximation? If it is not,
+  change your importance function, and explain the argument for the
+  change. 
+\item Approximate $P(\alpha<0.5|Y)$ using importance sampling. 
+\end{enumerate}
+% add part (b) where they would need to find $E(\theta^2)$ for fixed $\mu=3$ but as a function of $\rho$, that is for several values of $\rho=0.1,0.2,\dots,0.9$, using a single set of samples.
+% Constructing a simulation study
+\end{enumerate}
+\end{document}

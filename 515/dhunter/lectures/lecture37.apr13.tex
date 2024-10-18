@@ -1,0 +1,114 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Apr.~13}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+Review Xiaotian's comments from HW \#9.
+\item 
+Only 1 more homework!  (Only best 10 out of 11 grades will count.)
+\item
+Tentative take-home final plan:  The exam will be available on Saturday, Apr.~21 and due
+at 5:00pm on Wednesday, May~2.
+\end{itemize}
+\end{frame}
+
+
+\startframe{Markov chain Monte Carlo}
+What do we mean by the transition ``matrix'' $P(x,y)$?
+\begin{itemize}
+\item For continuous-state case, use instead $P(x, A)$.
+\item For {\it Markov transition density} $k(y\mid x)$, 
+\[
+P(x,A) = \int_A k(u\mid x) \, du.
+\]
+\end{itemize}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+For continuous-state case,
+\begin{itemize}
+\item A stationary {\em density} $\pi(x)$ satisfies
+\[
+\pi(y) = \int k(y \mid x) \pi(x)\, dx \quad\mbox{for all $y$}
+\]
+\item Notice analogy to $\pi_j = \sum_i P_{ij} \pi_i$
+\end{itemize}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+If our continuous-time Markov chain with stationary $\pi$ is:
+\begin{itemize}
+\item $\pi$-irreducible,
+\item Aperiodic,
+\item Harris recurrent,
+\end{itemize}
+Then $\| P^n(x, \cdot) - \pi(\cdot) \| \to 0$ for all $x$ and 
+$\frac1n\sum_i g(X_i)\stackrel{\rm as}{\to} E_\pi g(X)$.
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+For concise definitions of\ldots
+\begin{itemize}
+\item $\pi$-irreducible
+\item Aperiodic
+\item Harris recurrent
+\end{itemize}
+\ldots see p.~1711 of Tierney (1994, {\it Annals of Statistics})
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+What about burnin?
+\begin{itemize}
+\item What is it?  
+\item Is it necessary?
+\end{itemize}
+Check out Jones and Hobert (2001, {\it Stat. Sci.})
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+\begin{itemize}
+\item ``All at once'' MH:  Go from $\vec X^{(i)} \to \vec X^{(i+1)}$.
+\item 
+``Variable-at-a-time'' MH:
+\[
+\begin{bmatrix}
+X_1^{(i)} \\ X_2^{(i)} \\ \vdots \\ X_k^{(i)}
+\end{bmatrix}
+\to
+\begin{bmatrix}
+X_1^{(i+1)} \\ X_2^{(i)} \\ \vdots \\ X_k^{(i)}
+\end{bmatrix}
+\to
+\begin{bmatrix}
+X_1^{(i+1)} \\ X_2^{(i+1)} \\ \vdots \\ X_k^{(i)}
+\end{bmatrix}
+\to \cdots \to
+\begin{bmatrix}
+X_1^{(i+1)} \\ X_2^{(i+1)} \\ \vdots \\ X_k^{(i+1)}
+\end{bmatrix}
+\]
+\end{itemize}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+Some notes about VAATMH:
+\begin{itemize}
+\item Each $X_k$ might be multivariate.
+\item Avoids (or lessens) curse of dimensionality.
+\item Need to define ``Full conditional distributions''
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+
+
+

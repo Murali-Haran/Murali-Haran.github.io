@@ -1,0 +1,70 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Feb.~29}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+Midterm exam:  7:00pm tonight, Feb.~29 in 105 Willard.
+(NB:  Change of room!)
+\item 
+HW \#6 will be due on Friday (Mar.~2) at 2:30.
+\end{itemize}
+\notes{I discussed the beta distribution as it relates to exercise \#1
+on your homework.  This discussion is summarized in the example code file
+that you will find if you go to the course homework page.
+}
+\end{frame}
+
+\startframe{6.2 Continuous-Time Markov chains}
+Given a continuous-time, discrete-space MC, let us define
+$P(t)$ to be the implied transition probability matrix at
+time $t$.  What properties can we establish for $P(t)$?
+(NB:  Not easy to compute $P(t)$ in general.)
+\begin{itemize}
+\item $P(0) = ??$
+\item $\sum_j P_{ij}(t) = ??$
+\item $P(s)P(t) = ??$
+\end{itemize}
+\notes{Using the definition $P_{ij}(t) = P[X(t)=j \mid X(0)=i]$,
+we argued that $P(0)$ is the identity, each row of $P(t)$ sums
+to one, and $P(s)P(t)=P(s+t)$.  That last fact is due to the Kolmogorov-Chapman
+equations.}
+\end{frame}
+
+\startframe{6.8 Computing the Transition Probabilities}
+The generator (or rate) matrix $R$:
+\begin{itemize}
+\item Take $r_{ij} = \mbox{rate of $i\to j$ transitions}$, $i\ne j$.
+\item Take $r_{ii} = -\sum_{j\ne i} r_{ij}$.
+\item This implies $\sum_{j} r_{ij} = \ldots$
+\end{itemize}
+What is $R$ for the on-off process?  A homogeneous Poisson process?
+\notes{We discussed the equation $P(s)P(t)=P(s+t)$ and how it suggests
+that $P(t)$ is some kind of a ``matrix exponential'' function.  In a certain sense,
+we will see that $P(t)$ is $\exp\{Rt\}$.
+}
+\end{frame}
+
+\startframe{6.4 The Transition Probability Function}
+The entries of $R$ were introduced much earlier (but not in this form).
+\begin{itemize}
+\item Take $q_{ij} = \mbox{rate of $i\to j$ transitions}$, $i\ne j$.
+\item Take $v_{i}$ so that $P_{ij}=q_{ij}/v_{i}$.
+\item Clearly this implies $v_i=\sum_{j\ne i} q_{ij}$.
+\end{itemize}
+\notes{In the book, $q_{ij}$ is used for $r_{ij}$ when $j\ne i$
+and $v_i=-r_{ii}$.}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

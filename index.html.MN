@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<TITLE> Murali Haran </TITLE>
+</HEAD>
+<body background="stucco.gif">
+<CENTER>
+<FONT SIZE=8> Murali Haran
+</FONT>
+</CENTER>
+<BR> <P>
+<HR>
+<P>
+<HTML>
+I am currently a postdoctoral fellow at the 
+<A HREF="http://www.niss.org/">  National Institute of Statistical Sciences </A>, Research Triangle Park, North Carolina. I will be at <A HREF="http://www.stat.psu.edu"> Pennsylvania State University </A> starting August, 2004. <BR><BR>
+
+I have a Ph.D. in Statistics from the <A
+HREF="http://www.stat.umn.edu/"> School of Statistics </A> , <A
+HREF="http://www1.umn.edu/tc"> University of Minnesota </A>,
+Minneapolis, MN (June 2003).  I graduated with a B.S. in Computer
+Science and minors in Statistics and Film from <A
+HREF="http://www.cmu.edu/"> Carnegie Mellon University </A>,
+Pittsburgh, PA. (May 1997). I received an M.S. in Statistics from the
+University of Minnesota (June 2001). <BR><BR>I was jointly advised by
+<L1> <A HREF="http://www.stat.uiowa.edu/~luke"> Luke Tierney </A> and
+<L1> <A HREF="http://www.biostat.umn.edu/~brad"> Brad Carlin </A> on
+my dissertation <b>Efficient Perfect and MCMC Sampling Methods for
+Bayesian Spatial and Components of Variance Models</b>.  I worked on
+Bayesian computation for spatial models and some hierarchical
+models. In particular, I investigated sampling techniques for
+hierarchical models that use Gaussian Markov Fields (GMRFs). A major
+portion of my thesis contains work on perfect sampling approaches for
+Bayesian disease mapping models. For more information on perfect
+sampling, see <A Href = "http://dbwilson.com/exact/"> D.B.Wilson's
+website </A>.  I also studied hierarchical Bayesian modeling
+techniques used for disease mapping and particulate matter exposure
+studies.  <BR><BR> The following paper contains some results from
+research in MCMC block sampling techniques for GMRFs.  <BR> <BR> <LI>
+<b> Haran, M.</b>, 
+<A Href = "http://www.biostat.umn.edu/~hodges">
+Hodges, J.S.</A>, and <A Href = "http://www.biostat.umn.edu/~brad">
+Carlin, B.P.</A>, (2003) ``<A
+HREF="ftp://muskie.biostat.umn.edu/pub/2001/rr2001-003.ps.gz">
+Accelerating computation in Markov random field models for spatial
+data via structured MCMC,</A>'', <em> Journal of Comp. and
+Graph. Statistics </em>, 12, 249-264. 
+
+<! (Research Report 2001-003, Division of Biostatistics, University of Minnesota, 2001).  </li>
+
+<BR><BR> For results from an application of Bayesian
+modeling to particulate matter exposure modeling, see
+<P>
+<LI> <b> Haran, M.</b>, <A Href = "http://www.biostat.umn.edu/~brad">
+Carlin, B.P.</A>, Adgate, J.L., Ramachandran, G., <A Href =
+"http://www.sph.emory.edu/bios/faculty/waller.html"> Waller, L.A.</A>,
+and <A Href = "http://www.stat.duke.edu/~alan/"> Gelfand, A.E.</A>,
+``<A HREF="http://www.stat.umn.edu/~mharan/hapspgh.ps"> Hierarchical
+Bayes models for relating particulate matter exposure measures,</A>,
+Case Studies in Bayesian Statistics, Volume VI, eds. C.Gatsonis, et
+al., New York: Springer-Verlag, 2002.  <BR><BR> 
+
+Some of my current research projects: <BR>
+<LI> Probabilistic modeling for web data <BR>
+<LI> Perfect samplers for some hierarchical Bayes models<BR> 
+<LI> Methods for computing MCMC standard errors <BR>
+<LI> Hierarchical models for connecting PM2.5 exposure to health effects<BR>
+<BR>
+Among other research interests I would like to pursue in the future are:
+spatial modeling, prior elicitation and measurement error modeling.
+
+<!-- My <A Href = "http://www.stat.umn.edu/~mharan/cv1.pdf"> curriculum vitae </A> -->
+<BR><BR>
+<HR>
+<A HREF="http://www.stat.umn.edu/~mharan/index2.html"> Everything Else </A>

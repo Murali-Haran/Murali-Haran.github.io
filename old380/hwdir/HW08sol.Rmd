@@ -1,0 +1,66 @@
+---
+title: Homework 8 due Thursday April 27 at 10am
+output: html_document
+author: Your Name
+---
+
+
+### 1. SQL basics via R 
+
+```{r setup, include=FALSE}
+library(DBI)
+library(RSQLite)
+```
+
+## Connect to the database
+
+```{r}
+drv <- dbDriver('SQLite')
+con <- dbConnect(drv, dbname = '~/Dropbox/380/data/lean_imdbpy_2010.db')
+```
+
+## Part 1
+
+Each actor is associated with a unique ID. Find the ID for Vin Diesel.
+
+```{r}
+q1 <- 'SELECT id FROM name2 WHERE name = "Diesel, Vin"'
+id_vin_diesel <- dbGetQuery(con, q1)
+id_vin_diesel
+```
+
+## Part 2
+
+Each movie role (actor, actress, producer, etc.) is associated with its own unique ID. Find the ID indicating that the person was an actor in a particular movie.
+
+```{r}
+q2 <- 'SELECT * FROM role_type WHERE role = "actor"'
+id_actor <- dbGetQuery(con, q2)
+id_actor
+```
+
+## Part 3
+
+Each kind of work (movie, TV series, made-for-TV movie, video game, etc.) is associated with its own unique ID. Find the ID indicating that a work is a movie.
+
+```{r}
+q3 <- 'SELECT * FROM kind_type WHERE kind = "movie"'
+id_movie <- dbGetQuery(con, q3)
+id_movie
+```
+
+## Part 4
+
+Find all movies in this database that featured Vin Diesel as an actor. You should use the results from the first three parts in your query. Return the title of the movie and the year it was released.
+
+```{r}
+q4 <- 'SELECT title, production_year
+       FROM title2 JOIN cast_info2
+       ON title2.id = cast_info2.movie_id
+       WHERE cast_info2.person_id = 514507
+        AND cast_info2.role_id = 1
+        AND title2.kind_id = 1'
+diesel_movies <- dbGetQuery(con, q4)
+diesel_movies
+```
+

@@ -1,0 +1,240 @@
+\documentclass{beamer}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{amsfonts} % Worcester's
+\usepackage{amssymb, amsfonts, latexsym, amsmath}
+\usepackage{multirow,array,graphicx,rotating,epsfig}
+\usepackage{verbatim}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{multicol}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{setspace}
+\renewenvironment{knitrout}{\begin{singlespace}}{\end{singlespace}}
+%\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+urlcolor=cyan,
+linkcolor=blue  
+}
+
+\newcommand{\ba}{{\bf a}}
+\newcommand{\bA}{{\bf A}}
+\newcommand{\mcA}{{\mathcal A}}
+\newcommand{\bB}{{\bf B}}
+\newcommand{\bb}{{\bf b}}
+\newcommand{\mfB}{{\mathfrak B}}
+\newcommand{\mcB}{{\mathcal B}}
+\newcommand{\bc}{{\bf c}}
+\newcommand{\bC}{{\bf C}}
+\newcommand{\mcC}{{\mathcal C}}
+\newcommand{\mbC}{{\mathbb C}}
+\newcommand{\mcD}{{\mathcal D}}
+\newcommand{\be}{{\bf e}}
+\newcommand{\bE}{{\bf E}}
+\newcommand{\mcF}{{\mathcal F}}
+\newcommand{\mcG}{{\mathcal G}}
+\newcommand{\bh}{{\bf h}}
+\newcommand{\bH}{{\bf H}}
+\newcommand{\mcH}{{\mathcal H}}
+\newcommand{\mbH}{{\mathbb H}}
+\newcommand{\mcI}{{\mathcal I}}
+\newcommand{\bK}{{\bf K}}
+\newcommand{\mcL}{{\mathcal L}}
+\newcommand{\mcN}{{\mathcal N}}
+\newcommand{\mcP}{{\mathcal P}}
+\newcommand{\bq}{{\bf q}}
+\newcommand{\bQ}{{\bf Q}}
+\newcommand{\mbR}{{\mathbb R}}
+\newcommand{\bR}{{\bf R}}
+\newcommand{\mcS}{{\mathcal S}}
+\newcommand{\mfS}{{\mathfrak S}}
+\newcommand{\bs}{{\bf s}}
+\newcommand{\mcT}{{\mathcal T}}
+\newcommand{\bv}{{\bf v}}
+\newcommand{\bV}{{\bf V}}
+\newcommand{\mcV}{{\mathcal V}}
+\newcommand{\bW}{{\bf W}}
+\newcommand{\bw}{{\bf w}}
+\newcommand{\bX}{{\bf X}}
+\newcommand{\bx}{{\bf x}}
+\newcommand{\bY}{{\bf Y}}
+\newcommand{\bZ}{{\bf Z}}
+
+\newcommand{\bzero}{{\bf 0}}
+\newcommand{\bone}{{\bf 1}}
+
+\newcommand{\bbeta}{{\boldsymbol{\beta}}}
+\newcommand{\bep}{{\boldsymbol{\vep}}}
+\newcommand{\bmu}{{\boldsymbol{\mu}}}
+\newcommand{\vep}{\varepsilon}
+\newcommand{\bvep}{{\boldsymbol{\vep}}}
+%\newcommand{\bVep}{{\boldsymbol{\Varepsilon}}}
+\newcommand{\bLambda}{{\boldsymbol{\Lambda}}}
+\newcommand{\bPhi}{{\boldsymbol{\varPhi}}}
+\newcommand{\bSigma}{{\boldsymbol{\Sigma}}}
+\newcommand{\bxi}{{\boldsymbol{\xi}}}
+\newcommand{\bXi}{{\boldsymbol{\Xi}}}
+
+\DeclareMathOperator\E{E}
+\DeclareMathOperator\Cov{Cov}
+\DeclareMathOperator\Corr{Corr}
+\DeclareMathOperator\diag{diag}
+\DeclareMathOperator\logit{logit}
+\DeclareMathOperator\sign{sign}
+\DeclareMathOperator\Span{span}
+\DeclareMathOperator\vc{vec}
+\DeclareMathOperator\Var{Var}
+\DeclareMathOperator\trace{trace}
+
+\DeclareMathOperator\convD{\overset{\mcD}{\to}}
+\DeclareMathOperator\convP{\overset{\mcP}{\to}}
+\DeclareMathOperator\convas{\overset{as}{\to}}
+
+
+
+%%%%%% Beamer Options
+%\useoutertheme{infolines}
+\definecolor{PSUblue}{RGB}{0,48,135}
+\beamertemplatenavigationsymbolsempty
+\setbeamerfont{page number in head/foot}{size=\small}
+\setbeamertemplate{footline}[frame number]
+%\addtobeamertemplate{headline}{}{\rule{\paperwidth}{3pt}}
+\makeatletter
+\def\th@mystyle{%
+    \normalfont % body font
+    \setbeamercolor{block title example}{bg=PSUblue,fg=white}
+    \setbeamercolor{block body example}{bg=PSUblue!20,fg=black}
+    \def\inserttheoremblockenv{exampleblock}
+}
+\makeatother
+\theoremstyle{mystyle}
+\newtheorem{mytheorem}{Theorem}
+
+
+%%%%%% Knitr Options
+\usepackage{etoolbox} 
+\makeatletter 
+\preto{\@verbatim}{\topsep=0pt \partopsep=0pt } 
+\makeatother
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+% \SweaveOpts{concordance=TRUE}
+% <<echo=FALSE,results='hide',message=FALSE>>=
+% opts_knit$set(width=20,out.width=20)
+% options(width=50)
+% library(fda)
+% library(refund)
+% set.seed(2016)
+% @
+
+\title{
+Graphics 
+}
+\author{
+}
+\date{}
+
+\begin{frame}[fragile]
+\titlepage
+\end{frame}
+
+\begin{frame}[fragile]{Why are we studying graphics?}
+\begin{itemize}
+\item Good graphics today requires the computer
+\item Visualization enters every step of the data analysis cycle
+\begin{itemize}
+\item Data cleaning – are there anomalies?
+\item Exploration
+\item Model checking
+\item Reporing results
+\end{itemize}
+\item Plots can uncover structure in data that can’t be detected with numerical summaries
+\item Important communication skill
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Kaiser study}
+ \begin{knitrout}
+ \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+ \begin{alltt}
+load(url("hlp://www.stat.berkeley.edu/ 
+users/nolan/data/babiesLab133.rda")) 
+ \end{alltt}
+ \end{kframe}
+ \end{knitrout}
+\begin{itemize}
+\item Oakland Kaiser mothers
+\item 1960s
+\item Measure the babies weight (in ounces) at birth
+\item All babies: –  Male
+\item Single births (no twins, etc.) – Survived 28 days
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Information collected on mother's and their
+    babies}
+\begin{itemize}
+\item Birth weight (ounces)
+\item Gestation (weeks)
+\item Parity - total number of previous pregnancies •  Mother’s height and weight
+\item Mother’s smoking status
+\item Mother’s age, race, education level, income •  Father’s
+  information and more...
+\end{itemize}
+\end{frame}
+
+\end{document}
+
+
+

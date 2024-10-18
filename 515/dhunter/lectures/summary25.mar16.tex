@@ -1,0 +1,89 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Mar.~16}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+For Monday, March 19:  Read Sections 6.6, 6.8
+\item HW \#7 is due on Wednesday, March 21.  (Discuss?)
+\end{itemize}
+\notes{We decided that the due date will be Friday, March 23 instead 
+because it seems to be the preference of most students and 
+because I have no reason not to do this.  I have made the change on the course web site.}
+\end{frame}
+
+\startframe{6.5 Limiting Probabilities}
+Recall Section 4.4:
+\begin{itemize}
+\item
+If limiting probabilities existed, so did unique stationary (long-term) probabilities.
+\item Not conversely!  (Why not?)
+\item In Chapter 6, life is simpler in a certain sense.
+\end{itemize}
+\notes{
+In the discrete-time case, a Markov chain could be periodic, which destroys the possibility
+of limiting probabilities even though a unique set of stationary probabilities can exist.
+In the continuous-time case, however, periodicity cannot occur, so this issue does not
+arise.
+}
+\end{frame}
+
+
+\startframe{6.5 Limiting Probabilities}
+\begin{itemize}
+\item Suppose that $\lim_{t\to\infty}P_{ij}(t)$ exists and is independent of $i$ for all $i, j$.
+\item Denote $P^\infty= \lim_{t\to\infty}P_{ij}(t)$ with each row the same.  (How to label?)
+\item Derive:
+$0 = P^\infty R$.
+\end{itemize}
+\notes{
+The derivation of $0 = P^\infty R$ begins with the forward Kolmogorov equations.
+We discussed the interchange of the limit ($t\to\infty$) and the summation 
+(in $P^\infty R$); I mentioned that this interchange could prove problematic
+if we started with the backward Komogorov equations.  However, there is another,
+more obvious,  reason that the  backward equations don't lead to a useful
+equation here.  I overlooked this!  But we'll discuss it in Monday's class.
+}
+\end{frame}
+
+\startframe{6.5 Limiting Probabilities}
+The equations can be used to find the limiting $\pi$ vector:
+\begin{itemize}
+\item Another way to write $0 = P^\infty R$ is
+\[
+v_j\pi_j = \sum_{i\ne j} q_{ij}\pi_i
+\quad\mbox{for all $j$.}
+\]
+\item Find $\pi$ if
+\[
+R=
+\begin{bmatrix}
+-\lambda_1 & \lambda_1 \\
+\lambda_2 & -\lambda_2 
+\end{bmatrix}.
+\]
+\end{itemize}
+\notes{
+We did not discuss the first equation---this will happen on Monday---but the second one 
+(the rate matrix for the on-off process)
+leads to 
+\[
+\pi_1=\frac{\lambda_2}{\lambda_1+\lambda_2} \quad\mbox{and}\quad
+\pi_2=\frac{\lambda_1}{\lambda_1+\lambda_2}.
+\]
+}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

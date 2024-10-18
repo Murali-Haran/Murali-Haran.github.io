@@ -1,0 +1,60 @@
+\documentclass[11pt]{article}
+\usepackage[sort,longnamesfirst]{natbib}
+\usepackage{psfig}
+\usepackage{amsmath}%
+\newcommand{\bthet}{ \mbox{\boldmath $\theta$}}
+\newcommand{\bOne}{ {\bf 1} }
+\newcommand{\lambdaT}{\lambda_{\theta}}
+\newcommand{\bTheta}{ \mbox{\boldmath $\Theta$}}
+\begin{document}
+\pagestyle{empty}
+\begin{center}
+\Large
+{\bf  Version 2: Full conditional distributions for a Bayesian chain point model with Gamma hyperpriors}\\
+\end{center}
+Our goal is to draw samples from the 5-dimensional
+{\bf posterior} distribution $f(k,\theta,\lambda,b_1,b_2| {\bf Y})$  The posterior distribution is 
+\begin{equation}\label{joint}
+\begin{split}
+f(k,\theta,\lambda,b_1,b_2| {\bf Y}) & \propto \prod_{i=1}^k \frac{\theta^{Y_i} e^{-\theta}}{Y_i !} \prod_{i=k+1}^n \frac{\lambda^{Y_i} e^{-\lambda}}{Y_i !} \\
+& \times  \frac{1}{\Gamma(0.5)b_1^{0.5}} \theta^{-0.5} e^{-\theta/b_1} \times \frac{1}{\Gamma(0.5)b_2^{0.5}} \lambda^{-0.5} e^{-\lambda/b_2}\\ 
+& \times e^{-b_1} e^{-b_2} \frac{1}{n}
+\end{split}
+\end{equation}
+From \ref{joint} we can obtain full conditional distributions for each parameter by ignoring all terms that are constant with respect to the parameter.\\
+For $\theta$:
+\begin{equation}
+\begin{split}
+  f(\theta|k,\lambda,b_1,b_2,{\bf Y}) & \propto \prod_{i=1}^k
+  \frac{\theta^{Y_i} e^{-\theta}}{Y_i !} \times
+  \frac{1}{\Gamma(0.5)b_1^{0.5}} \theta^{-0.5} e^{-\theta/b_1}
+\end{split}
+\end{equation}
+For $\lambda$:
+\begin{equation}
+f(\lambda|k,\theta,b_1,b_2,{\bf Y}) \propto \prod_{i=k+1}^n \frac{\lambda^{Y_i} e^{-\lambda}}{Y_i !} \times \frac{1}{\Gamma(0.5)b_2^{0.5}} \lambda^{-0.5} e^{-\lambda/b_2}
+\end{equation}
+For $k$:
+\begin{equation}
+f(k|\theta,\lambda,b_1,b_2,{\bf Y}) \propto \prod_{i=1}^k \frac{\theta^{Y_i} e^{-\theta}}{Y_i !} \prod_{i=k+1}^n \frac{\lambda^{Y_i} e^{-\lambda}}{Y_i !}
+\end{equation}
+For $b_1$:
+\begin{equation}
+f(b_1 | k,\theta,\lambda,b_2, {\bf Y}) \propto \frac{1}{b_1^{0.5}} e^{-\theta/b_1}\times e^{-b_1} 
+\end{equation}
+For $b_2$:
+\begin{equation}
+f(b_2 | k,\theta,\lambda,b_1| {\bf Y}) \propto \times \frac{1}{b_2^{0.5}} e^{-\lambda/b_2} e^{-b_2}
+\end{equation}
+$f(b_1 | k,\theta,\lambda,b_2, {\bf Y})$ and $f(b_2 |
+k,\theta,\lambda,b_1| {\bf Y})$ are not any recognizable densities. We
+can use a Metropolis-Hastings accept-reject step to sample from their
+full conditionals. For example for the full conditional distribution of $b_1$, suppose the current value of $b_1$ is $b_1^{curr}$\\
+(1) Draw a proposed value $b_1^* \sim
+$Normal($b_1$,2)\\ % Gamma(1.5,1/6)
+(2) Accept the proposed value with probability $\alpha=\min\{1,
+\frac{f(b_1^*|\theta^{curr})}{f(b_1^{curr}|\theta^{curr})} \}$,i.e.
+draw U $\sim Unif(0,1)$ and set the update of the chain to $b_1^*$ if
+$U<\alpha$ else set the update of the chain to $b_1^{curr}$
+
+\end{document}

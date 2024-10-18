@@ -1,0 +1,43 @@
+## Simple R code for doing some exploratory data analysis of a spatial data set
+
+## read in the data (sep=" "  just means that the columns are separated by white space)
+surftemp = read.table("http://www.stat.psu.edu/~mharan/spatial/datasets/atmosphNASA/surftemp1.dat",sep=" ")
+
+## find the dimensions of the data set
+dim(surftemp)
+## (it should say 576  3, which means it is a 576 x 3 data matrix
+
+## now, take a look at the data
+## interpolate the data
+surftemp.interp = interp(surftemp[,1],surftemp[,2],surftemp[,3])
+image(surftemp.interp)
+## You can save the above plot into any format you like (that you can later insert into a document)
+## by clicking on the File-> Save as menu
+contour(surftemp.interp, add=T)
+## You can save this contour plot in the same way
+
+## IF YOU ARE USING UNIX/LINUX: 
+## now, to save these plots into image files (that you can later insert into a document)
+pdf("imageplot.pdf")
+image(surftemp.interp)
+dev.off()
+pdf("contourplot.pdf")
+contour(surftemp.interp, add=T)
+dev.off()
+
+## if you don't like pdf or run into problems with pdf, you can create jpg files instead
+jpeg("imageplot.jpg")
+image(surftemp.interp)
+dev.off()
+jpeg("contourplot.jpg")
+contour(surftemp.interp, add=T)
+dev.off()
+## END of UNIX/LINUX code
+
+## Simple summaries of the data values (the 3rd column, which is all surface temperature values across
+## the 576 different locations)
+summary(surftemp[,3])  # summary provides simple summary statistics for the 3rd column of the data matrix
+## paste the above summary into your document for handing in
+
+hist(surftemp[,3])  # hist provides a histogram for the 3rd column of the data matrix
+## again, save this histogram into a pdf/jpg file and insert it into your document

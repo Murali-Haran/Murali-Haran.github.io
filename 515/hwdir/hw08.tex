@@ -1,0 +1,88 @@
+
+\documentclass{article}
+\usepackage{amsmath, amsfonts,hyperref}
+\usepackage{url}
+\pagestyle{empty}
+\setlength{\textwidth}{6in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{9in}
+
+\begin{document}
+%\pagestyle{empty}
+\begin{center}
+\Large
+{\bf Homework 8, Stat 515, Spring 2015}\\
+\normalsize
+Due Wednesday, April 15, 2015 \underline{{\bf beginning of class}}\\
+\end{center}
+% Important things to keep in mind when writing {\tt R} code: 
+% \begin{enumerate}
+% \item[(a)] Organization: using functions where possible (modularization). 
+% \item[(b)]  Appearance: justification (indent) (for the last, using Rstudio or emacs will be helpful). 
+% \item[(c)]  Well commented code.
+% \item[(d)]  Sensible variable names: generally use descriptive names
+%   wherever possible.
+% \item[(e)]
+  {\bf Make sure you submit R code to the Angel drop folder, using
+  the same naming conventions as in the last homework, e.g. your name
+  should appear in the name of the R program. Please pay attention
+to good programming style in order to receive full credit.}
+%\end{enumerate}
+
+\begin{enumerate}
+\item Define the univariate Poisson kernel density function (Yang, 2004;
+or see ``wrapped Cauchy'' in Levy (1939) and Wintner (1947)) as
+follows:
+\begin{equation*}
+  f(\theta;\mu,\rho) = \frac{1}{2\pi} \frac{1-\rho^2}{1-2\rho \cos(\theta-\mu) + \rho^2},\:\: \mu-\pi \leq \theta \leq \mu + \pi
+\end{equation*}
+\begin{enumerate}
+\item Simulate 10,000 draws from this density for $\mu=3, \rho=0.7$
+  using a rejection sampler. Report the envelope density ($q$) and
+  bounding constant ($K$) used in the rejection sampler. You may use
+  any envelope density from which you are easily able to produce draws
+  in {\tt R} (or the statistical programming language you are
+  using). Plot the smoothed approximate density.
+\item Approximate the expectation $E(\theta^2)$ using samples from (a)
+  and report associated Monte Carlo standard errors.
+\item Approximate $P(\theta > 4)$ and report associated Monte Carlo
+standard errors.
+\end{enumerate}
+
+\item Write a program to simulate a non-homogeneous Poisson process on
+  the interval $(0,10)$ where the intensity function is
+  $\lambda(t)=\max(0.2,  3\sin(t))$. Simulate the process by first simulating the total number of
+  counts on the interval, then use rejection sampling to sample from
+  the conditional distribution of the location of the points given the
+  total number of points on the interval.
+\begin{enumerate}
+\item Provide pseudocode for your algorithm. (A clear description of your algorithm without using specific programming language. Fully specify any distributions you use or derive.) 
+\item Plot 2 realizations of this non-homogeneous Poisson process in
+  separate figures. Make sure you plot the events clearly, for example
+  if the vector {\tt arrivals} has all the arrival times of the
+  events,  you may choose to use {\tt plot(arrivals, rep(0.2,
+    length(arrivals)),    pch="x").} Of course you are free to choose better ways to draw this. 
+%\item Suppose each 
+\end{enumerate}
+
+\item Let $\{X(t), t>0\}$ be Brownian motion with 0 drift and variance parameter $\sigma^2$. Suppose $X(1)=B$. 
+\begin{enumerate}
+\item What is the joint distribution of $X(s_1), X(s_2),\dots,X(s_n)$ for $s_1,\dots, s_n \in (0,1)$? Clearly explain the main steps in your justification.
+\item Suppose $\sigma^2=3$, $B=10$, $s_1=0.1, s_2=0.3$. What is the correlation between $X(s_1)$ and $X(s_2)$? 
+\item Let $0<s_1<s_2<1$ and $\sigma^2=3$, $B=10$. Plot the correlation between $X(s_1), X(s_2)$ as a function of the distance, $d=\mid s_1-s_2\mid$.
+\end{enumerate}
+\item For the problem above, assume $\sigma^2=3$, $B=10$. Now assume
+  that $s_1,s_2$ are the order statistics of two Uniform(0,1) random
+  variates. Use Monte Carlo to approximate the probability that the
+  correlation between $X(s_1)$ and $X(s_2)$ is greater than
+  0.1. 
+
+\begin{enumerate}
+\item Provide pseudocode for your algorithm. 
+\item Report your Monte Carlo sample size and your Monte Carlo standard error.
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

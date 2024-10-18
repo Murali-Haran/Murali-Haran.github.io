@@ -1,0 +1,125 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Apr.~11}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+All homework must be turned in electronically from now on.
+\item 
+Only 2 more homeworks!  (Only best 10 out of 11 grades will count.)
+\item
+Tentative take-home final plan:  The exam will be available on Monday, Apr.~23 and due
+at 5:00pm on Wednesday, May~2.
+\end{itemize}
+\end{frame}
+
+
+\startframe{Markov chain Monte Carlo}
+\begin{itemize}
+\item Goal:  Estimate $\mu=E_\pi g(X)$ but
+cannot %use Monte Carlo directly since we cannot 
+sample $X_i\sim \pi$ directly.
+\item 
+Importance sampling may be difficult, particularly as dimension increases.
+\item 
+MCMC solution:  Take $\hat\mu = \frac1n\sum g(X_i)$, where
+$X_1, X_2, \ldots$ is a simulated Markov chain with stationary distribution $\pi$.
+\end{itemize}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+MCMC example (coming soon to a homework near you!):
+\begin{itemize}
+\item Suppose we observe $Y_1, \ldots, Y_n$
+\item $Y_i \mid \theta \sim N(\theta, 1)$, conditionally independent.
+\item $\theta \sim \mbox{log-$t$}(\mu, \sigma, r)$.
+\item Wanted: A sample from the posterior $\pi(\theta\mid \vec Y)$.
+\end{itemize}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+Metropolis-Hastings algorithm (recall HW\#4, problem 5):
+\begin{itemize}
+\item Start with $X_0=x_0$.  
+\item For $i=0, 1, \ldots$, 
+generate $Y \sim q(y\mid x_0)$.
+\item Define $\alpha(x,y) = \min\{1, \pi(y)q(x\mid y) / [\pi(x)q(y\mid x)]$.
+\item Let $X_{i+1}=Y$ with probability $\alpha(X_i,Y)$.
+\end{itemize}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+Metropolis algorithm (``random walk'' M-H):
+\begin{itemize}
+\item Take $q$ so that $q(x\mid y)=q(y\mid x)$.
+\item In this case, $\alpha(x,y) = \min\{1, \pi(y)/\pi(x)\}$.
+\item Example:  Take $Y \mid X_i=x \sim N(x, \tau^2)$.
+\item Consider the tradeoff involved in choosing $\tau^2$.
+\end{itemize}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+What do we mean by the transition ``matrix'' $P(x,y)$?
+\begin{itemize}
+\item For continuous-state case, use instead $P(x, A)$.
+\item For {\it Markov transition density} $k(y\mid x)$, 
+\[
+P(x,A) = \int_A k(u\mid x) \, du.
+\]
+\end{itemize}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+For continuous-state case,
+\begin{itemize}
+\item A stationary {\em density} $\pi(x)$ satisfies
+\[
+\pi(y) = \int k(y \mid x) \pi(x)\, dx \quad\mbox{for all $y$}
+\]
+\item Notice analogy to $\pi_j = \sum_i P_{ij} \pi_i$
+\end{itemize}
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+If our continuous-time Markov chain with stationary $\pi$ is:
+\begin{itemize}
+\item $\pi$-irreducible,
+\item Aperiodic,
+\item Harris recurrent,
+\end{itemize}
+Then $\| P^n(x, \cdot) - \pi(\cdot) \| \to 0$ for all $x$ and 
+$\frac1n\sum_i g(X_i)\stackrel{\rm as}{\to} E_\pi g(X)$.
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+For concise definitions of\ldots
+\begin{itemize}
+\item $\pi$-irreducible
+\item Aperiodic
+\item Harris recurrent
+\end{itemize}
+\ldots see p.~1711 of Tierney (1994, {\it Annals of Statistics})
+\end{frame}
+
+\startframe{Markov chain Monte Carlo}
+What about burnin?
+\begin{itemize}
+\item What is it?  
+\item Is it necessary?
+\end{itemize}
+Check out Jones and Hobert (2001, {\it Stat. Sci.})
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+
+
+

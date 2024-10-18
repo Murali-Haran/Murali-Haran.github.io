@@ -1,0 +1,21 @@
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  15 FEB 2013 08:46
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**\input slides.definitionsver2.tex
+(./slides.definitionsver2.tex)
+! Emergency stop.
+<*> \input slides.definitionsver2.tex
+                                     
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 109 strings out of 493633
+ 761 string characters out of 3143378
+ 49245 words of memory out of 3000000
+ 3509 multiletter control sequences out of 15000+200000
+ 3640 words of font info for 14 fonts, out of 3000000 for 9000
+ 831 hyphenation exceptions out of 8191
+ 7i,0n,6p,145b,8s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!

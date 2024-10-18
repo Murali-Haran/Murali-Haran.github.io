@@ -1,0 +1,88 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Jan.~30}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+Read Sections 4.6 through 4.8 (both editions)
+\item 
+HW \#3 should go up later today; it will be due Wednesday, Feb.~8
+\item
+Solutions for HW \#2 use Sweave (source file is provided)
+\item
+I will not be in class on:  
+
+Friday, Feb.~10;  Wednesday, Mar.~14; Monday, Mar.~12 (probably)
+\end{itemize}
+\end{frame}
+
+
+\startframe{4.3 Classification of States}
+State $i$ is recurrent if and only if, conditional on $X_0=i$, 
+\begin{itemize}
+\item $P(\mbox{ever revisiting $i$}) = 1$
+\item $E(\#\{T>0:  X_T = i\}) = \infty$.
+\item $\sum_{n=1}^\infty P_{ii}^n = \infty$.
+\end{itemize}
+\end{frame}
+
+\startframe{4.3 Classification of States}
+Theorem:  
+Recurrence (or transience) is a class property.
+
+How do we prove this?
+\end{frame}
+
+
+\startframe{4.3 Classification of States}
+Theorem:  
+All states of a finite, irreducible Markov chain are recurrent.
+
+How do we prove this?
+\end{frame}
+
+
+\startframe{4.3 Classification of States}
+\question{In a Markov chain, is impossible to move:}
+{from a transient state to a transient state}
+{from a recurrent state to a transient state}
+{from a transient state to a recurrent state}
+{from a recurrent state to a recurrent state}
+\end{frame}
+
+\startframe{Mean Time Spent in Transient States}
+Suppose you have \$2 and you bet on fair games of chance
+until you either go broke or have \$5.  
+\begin{itemize}
+\item What is the expected number of time steps that you have \$2?
+\item What is the probability that you will at some point have \$1?
+\end{itemize}
+\end{frame}
+
+\startframe{Mean Time Spent in Transient States}
+Let $s_{ij} \stackrel{\rm def}{=}E(\#\{ T: X_T=j \mid X_0=i \})$
+\begin{itemize}
+\item For which $i$ and $j$ is $s_{ij}$ meaningful?
+\item Let us show $S = I + P_TS$ for correctly defined $S$ and $P_T$.
+\end{itemize}
+\end{frame}
+
+\startframe{Mean Time Spent in Transient States}
+Let $f_{ij} \stackrel{\rm def}{=}P(\mbox{$X_t=j$ for some $t\ge0$} \mid X_0=t)$
+\begin{itemize}
+\item Demonstrate that $s_{ij} = I\{i=j\} + f_{ij} s_{jj}$.
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

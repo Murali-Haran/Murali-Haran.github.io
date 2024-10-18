@@ -1,0 +1,122 @@
+\input{summary}
+
+\begin{document}
+
+
+\def \thedate{Mar.~21}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+HW \#7 is now due on Friday, March 23.
+\item Office hours tomorrow (Thursday) as usual.
+\end{itemize}
+\end{frame}
+
+
+\startframe{6.6 Time reversibility}
+\begin{itemize}
+\item Analogue to Section~4.8:  A continuous-time ergodic Markov chain is
+time-reversible with limiting probabilities $\pi_i$ if and only if
+\[
+\pi_i q_{ij} = \pi_j q_{ji} \quad\mbox{for all pairs $i,j$.}
+\]
+{\em (The \# of $i\to j$ and $j\to i$ transitions per unit time are the same.)}
+\item This is {\em detailed balance}.
+\end{itemize}
+\notes{
+Note the clear similarity to the concept of detailed balance from Chapter 4.
+}
+\end{frame}
+
+
+\startframe{6.6 Time reversibility}
+Compare the balance equations to the detailed balance equations
+using a birth-death process.
+\begin{itemize}
+\item Solve for $\pi_i$ using balance.
+\item Solve for $\pi_i$ using detailed balance.
+\end{itemize}
+\notes{
+In the case of a birth-death process, which we have argued previously does satisfy 
+detailed balance, the balance (ergodic) equations are not too difficult to solve.  However,
+we showed in class that the detailed balance equations are even easier!  This example
+also gives a nice, simple way to compare ``overall'' balance with detailed balance.
+}
+\end{frame}
+
+\startframe{6.5 Limiting probabilities}
+Theorem:
+If a continuous-time M.C. $\{ X_t:t\ge0\}$ is irreducible and 
+has a stationary distribution $\pi$, then 
+\[
+\lim_{t\to\infty} P_{ij}(t) = \pi_j \quad \mbox{for all $j$.}
+\]
+NB:  Establishing positive recurrence is often complicated
+for continuous-time MCs.
+\notes{This result comes from the Durrett book referenced in the final slide.  It is a nice, simple
+result that is stated only indirectly in Ross.}
+\end{frame}
+
+\startframe{6.5 Limiting probabilities}
+Theorem:
+If a continuous-time M.C. $\{ X_t:t\ge0\}$ has rate (generator)
+matrix $R$, then $\pi$ is a stationary distribution if and only if
+$\pi R=0$.
+\notes{
+In combination with the theorem on the previous slide, this gives one way to check 
+for limiting probabilities that is often the easiest:  Find any solution to $\pi R=0$, then 
+show that the MC is irreducible, and these results imply that the solution is unique and
+equal to the limiting probabilities.
+}
+\end{frame}
+
+\startframe{6.8 Computing the transition probabilities}
+To find $P(t)$ (as opposed to $P(\infty)$), we can use
+\[
+P(t) = \exp\{ R t\} = \sum_{i=0}^\infty \frac{(Rt)^i}{i!}.
+\]
+\notes{
+Matrix exponentials are not very easy to calculate in general.  
+However, there is software available to do it, such as the
+{\tt expm} function in the {\tt Matrix} package for R.
+}
+\end{frame}
+
+\startframe{LOLN-like results}
+Theorem:
+If a continuous-time M.C. $\{ X_t:t\ge0\}$ is irreducible and 
+has a stationary distribution $\pi$, and if 
+$g:\Omega\to\bR$ satisfies $E_\pi |g(X)|<\infty$,
+then as $t\to\infty$,
+\[
+\frac1t \int_0^t g(X_s) \, ds \to E_\pi g(X) \quad
+\mbox{with probability 1.}
+\]
+Compare with Proposition 4.3 (the last proposition in Section 4.4).
+\notes{In class, I had omitted the phrase ``with probability 1,'' without which
+the statement is a bit difficult to interpret because the left-hand side is a RANDOM 
+function of $t$, rather than a deterministic one.  In class, we discussed the intuition of
+the left-hand side, namely, it is the total value of the $g(X(s))$ function, weighted by the 
+length of time spent in each state of the Markov chain, from zero to $t$, then
+divided by $t$.}
+\end{frame}
+
+\startframe{Further reading on Markov chains}
+\begin{itemize}
+\item Durrett, {\it Essentials of Stochastic Processes}
+\item Lange, {\it Applied Probability}
+\end{itemize}
+\notes{I would call each of these books more difficult than Ross in terms of mathematical
+level.  The Durrett book is a standard reference for stochastic processes.  The Lange book
+is much more diverse, having only a couple chapters on Markov chains.  Thus, its
+Markov chain material is much more concise though still quite thorough.}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

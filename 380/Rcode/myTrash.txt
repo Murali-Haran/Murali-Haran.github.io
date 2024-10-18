@@ -1,0 +1,3 @@
+From 12a1mailbot1@web.de  Thu Aug 22 13:17:22 2002
+Return-Path: <12a1mailbot1@web.de>
+Delivered-To: zzzz@localhost.spamassassin.taint.org

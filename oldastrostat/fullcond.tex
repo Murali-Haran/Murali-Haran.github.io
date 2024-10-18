@@ -1,0 +1,61 @@
+\documentclass[11pt]{article}
+\usepackage[sort,longnamesfirst]{natbib}
+\usepackage{psfig}
+\usepackage{amsmath}%
+\newcommand{\bthet}{ \mbox{\boldmath $\theta$}}
+\newcommand{\bOne}{ {\bf 1} }
+\newcommand{\lambdaT}{\lambda_{\theta}}
+\newcommand{\bTheta}{ \mbox{\boldmath $\Theta$}}
+\begin{document}
+\pagestyle{empty}
+\begin{center}
+\Large
+{\bf  Full conditional distributions for a Bayesian change point model}\\
+\end{center}
+Our goal is to draw samples from the 5-dimensional
+{\bf posterior} distribution $f(k,\theta,\lambda,b_1,b_2| {\bf Y})$  The posterior distribution is 
+\begin{equation}\label{joint}
+\begin{split}
+f(k,\theta,\lambda,b_1,b_2| {\bf Y}) & \propto \prod_{i=1}^k \frac{\theta^{Y_i} e^{-\theta}}{Y_i !} \prod_{i=k+1}^n \frac{\lambda^{Y_i} e^{-\lambda}}{Y_i !} \\
+& \times  \frac{1}{\Gamma(0.5)b_1^{0.5}} \theta^{-0.5} e^{-\theta/b_1} \times \frac{1}{\Gamma(0.5)b_2^{0.5}} \lambda^{-0.5} e^{-\lambda/b_2}\\ 
+& \times \frac{e^{-1/b_1}}{b_1} \frac{e^{-1/b_2}}{b_2} \times \frac{1}{n}% IG()=\frac{e^{-1/\beta x}} {\Gamma(\alpha) \beta^{\alpha} x^{\alpha + 1}}
+\end{split}
+\end{equation}
+From \ref{joint} we can obtain full conditional distributions for each parameter by ignoring all terms that are constant with respect to the parameter.\\
+For $\theta$:
+\begin{equation}
+\begin{split}
+  f(\theta|k,\lambda,b_1,b_2,{\bf Y}) & \propto \prod_{i=1}^k
+  \frac{\theta^{Y_i} e^{-\theta}}{Y_i !} \times
+  \frac{1}{\Gamma(0.5)b_1^{0.5}} \theta^{-0.5} e^{-\theta/b_1}\\
+  & \propto \theta^{\sum_{i=1}^k Y_i-0.5} e^{-\theta(k+ 1/b_1)}  \\
+  & \propto \mbox{Gamma}\left(\sum_{i=1}^k Y_i + 0.5, \frac{b_1}{k b_1+1}\right)
+\end{split}
+\end{equation}
+For $\lambda$:
+\begin{equation}
+\begin{split}
+f(\lambda|k,\theta,b_1,b_2,{\bf Y}) & \propto \prod_{i=k+1}^n \frac{\lambda^{Y_i} e^{-\lambda}}{Y_i !} \times \frac{1}{\Gamma(0.5)b_2^{0.5}} \lambda^{-0.5} e^{-\lambda/b_2} \\
+& \propto \mbox{Gamma}\left(\sum_{i=k+1}^n Y_i + 0.5, \frac{b_2}{(n-k) b_2+1}\right)
+\end{split}
+\end{equation}
+For $k$:
+\begin{equation}
+f(k|\theta,\lambda,b_1,b_2,{\bf Y}) \propto \prod_{i=1}^k \frac{\theta^{Y_i} e^{-\theta}}{Y_i !} \prod_{i=k+1}^n \frac{\lambda^{Y_i} e^{-\lambda}}{Y_i !}
+\end{equation}
+For $b_1$:
+\begin{equation}
+f(b_1 | k,\theta,\lambda,b_2, {\bf Y}) \propto \frac{1}{b_1^{0.5}} e^{-\theta/b_1}\times \frac{e^{-1/b_1}}{b_1}\propto b_1^{-1.5} e^{-(1+\theta)/b_1} \propto IG(0.5,1/(\theta+1))
+\end{equation}
+For $b_2$:
+\begin{equation}
+f(b_2 | k,\theta,\lambda,b_1| {\bf Y}) \propto \times \frac{1}{b_2^{0.5}} e^{-\lambda/b_2} \times \frac{e^{-1/b_2}}{b_2} \propto b_2^{-1.5} e^{-(1+\lambda)/b_2} \propto IG(0.5,1/(\lambda+1))
+\end{equation}
+Note: The Inverse Gamma density is said to be a {\bf conjugate} prior
+in this case since it results in a posterior that is also Inverse
+Gamma and therefore trivial to sample. As such, this density is
+mathematically convenient (due to its conjugacy property) but has
+poorly behaved moments; it may be better to adopt another prior
+density (such as a Gamma) instead.
+
+\end{document}

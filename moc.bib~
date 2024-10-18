@@ -1,0 +1,7 @@
+@techreport{rect:hara:rose:2009,
+ author =  {Recta, Virginia and Haran, Murali and Rosenberger, James L.}, 
+ title = {A two-stage model for incidence and prevalence in point-level spatial count data},
+ address = {Department of Statistics},
+ institution = {Pennsylvania State University},
+ year = 2009
+}

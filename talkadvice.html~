@@ -1,0 +1,32 @@
+Some general (slightly tongue-in-cheek) principles about giving
+talks. Some of this is based on what I like and dislike in talks I
+have seen, and some of it (items 1, 2 and 3 in particular) is based on
+conversations with good speakers like Bill Sudderth, Brad Carlin, Tom
+Louis, among others:
+
+<ul>
+<li> Nobody knows what you are talking about. (Start slowly, explain things as clearly as possible, keep reminding the audience about your notation and what you are discussing.)
+<li> Nobody cares about your research nearly as much as you. (Do your best to make it clear why this problem is interesting and/or useful.)
+<li> Get out of the way of the projector.
+<li> Stick to the time allotted to you. No one in the audience will complain if your talk ends a few minutes early.
+<li> <b> Rehearse: </b> Having nice slides is different from knowing what to say about them. The shorter the talk, the more you should rehearse it, and the less excuse you have to not rehearse it.
+<li> Keep reminding the audience about the overarching goal, themes, ideas, and notation. Do not assume they will remember notation you introduced on slide 1 when you get to slide 15.
+<li> Have a small number of slides. In general, aim for no more than 1 slide every 2 minutes. 
+<li> Avoid details unless they are critical to your talk. Try to give the audience general ideas; they can always ask follow up questions (or read your paper) if they want all the details.
+<li> Do not complain about how you can't say all the things you want to say because of the shortage of time. By complaining about this, you are wasting precious time, of which there is a shortage (remember your complaint?)
+</ul>
+
+Guidelines for very short introductory talks: 
+<ul>
+<li> Describe the scientific problem you are considering.
+<li> Describe the data set.
+<li> Explain what is 'spatial' about the problem, or whether you are using Gaussian processes, GMRFs or point process methodology.
+<li> Mention what method(s) you will consider (you can just list names of one or more possibilities). 
+<li> If you are doing something purely theoretical/algorithmic, describe the research problem, list any paper/papers you will be using, and describe what you intend to do (for e.g. what do you hope to learn from your simulation study? Do you hope to rederive/understand and explain a theoretical result?)
+<li> You can write on the board or use slides, or some combination, depending on what you think will be most helpful for the class.
+<li> If you are using slides: No more than 1 slide for every 2 minutes though you can have up to (but <b> no more than </b>) 1 slide per minute if you have some easily understood graphs/pictures.
+<li> Please rehearse your talk to make sure you convey the most important information as clearly as possible within the allotted time (rehearsing such a short talk will not take up much of your time!)  A nice talk will elicit useful comments and interest from the audience and is a good use of everyone's time.
+<li> You may choose to divide your talk among your project members or just have one person do all the talking.
+<li> Pay attention to other students' projects --- you may decide to join their group if the project work interests you!
+</ul>
+

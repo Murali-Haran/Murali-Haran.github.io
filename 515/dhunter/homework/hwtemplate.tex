@@ -1,0 +1,68 @@
+% This is a simple template you could adapt to typeset your homework assignments
+\documentclass{article}
+
+% Set the page margins a bit narrower than the defaults to save space:
+\setlength{\textwidth}{6in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{9in}
+
+
+\begin{document}
+
+\begin{center}
+{\bf STAT 515  Homework \#1 \\ Myname Goeshere}
+\end{center}
+
+\begin{enumerate} % automatically creates a numbered list
+
+\item A fair 6-sided die is rolled repeatedly.  Let $X$ equal the number of rolls required to
+obtain the first 5 and $Y$ the number required to obtain the first 6. 
+% The $ symbol is to open or close math mode; all variables should be typeset this way
+Here is how I will calculate the following:
+
+  \begin{enumerate} % Nesting of enumerate environments
+  \item 
+  \[ % The \[ is shorthand for starting the displayed equation environment.
+  E(X) = \mbox{my derivation goes here.} % \mbox is one way to typeset plain text in a math environment
+  \]
+  \item 
+  \begin{eqnarray*}
+  E(X \mid Y=1) &=& \mbox{It is possible} \\
+  &=& \mbox{to typeset} \\
+  &=& \mbox{multiline equations}
+  \end{eqnarray*}
+  \item \[ E(X \mid Y=5) = \ldots\]
+  \end{enumerate}
+
+\item Suppose that $X$ is exponentially distributed with parameter $\lambda$; i.e., 
+$E(X)=1/\lambda$.  
+\[
+P(X-2 \le t\mid X>2) = \ldots
+\]
+
+
+
+\item Here is an exercise in which the {\tt verbatim} environment is used to typeset 
+code in {\tt R}:
+\begin{verbatim}
+## A programming loop (to repeat some code) can be written in R 
+## using a "for loop". For example:
+NUMREP <- 1000
+foo <- rep(0, NUMREP)
+for (i in 1:NUMREP) # repeat code below NUMREP times
+  {
+    mysim <- runif(50) #  generate 50 random unif(0,1)
+    foo[i] <- sum(mysim<0.3) # count number of values less than 0.3
+  }
+
+myestimate <- mean(foo) 
+myestimate
+\end{verbatim}
+
+
+\end{enumerate}
+
+\end{document}
+

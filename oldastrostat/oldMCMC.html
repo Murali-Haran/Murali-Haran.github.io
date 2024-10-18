@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>CASt R: An application of Markov chain Monte Carlo</title>
+</head>
+<body style="background-color: rgb(255, 248, 229);">
+<div style="text-align: center;"><big><big><span
+ style="color: rgb(204, 0, 0);"><span style="font-weight: bold;">A Markov chain Monte Carlo example
+</span>
+ <br>
+</span></span></big></big></div> <br>   
+
+This module works through a single example of a Markov chain Monte
+Carlo algorithm for drawing samples from a multidimensional
+distribution.  We describe a model that is easy to specify but
+requires that we draw samples from a relatively complicated
+distribution for which classical Monte Carlo sampling methods are
+impractical. We describe how to implement a Markov chain Monte Carlo
+algorithm for this example. The purpose of this is twofold: first to
+illustrate how Markov chain Monte Carlo algorithms are easy to
+implement (at least in principle) in situations where classical Monte
+Carlo methods do not work; second to provide a glimpse of practical
+MCMC implementation problems and ways to try to resolve them. While it
+is very difficult to work through a truly complex example of a
+Metropolis-Hastings algorithm in a short tutorial, this simple example
+should provide enough experience for a beginning MCMC user to think
+about how to implement an MCMC procedure for a problem where classical
+Monte Carlo methods are unusable.
+
+<br> 
+<br>
+<br> <big><big><span style="color: rgb(204, 0, 0);"><span
+ style="font-weight: bold;"><small><span style="font-weight: bold;">
+Problem and model description
+</span></small></span></span></big></big><br> 
+<br>
+
+We describe a Bayesian model for a simple change point problem. CHANGE
+THIS: Consider a model for a situation where we have data that are
+counts but we know that there is a 'jump' at which the counts MMMM.
+The mathematical description of the model is in <a
+href="chptmodel.pdf"> change point model (pdf) </a>. Clearly, this is
+a simplistic model but it is adequate for illustrating the basic
+principles for constructing an MCMC algorithm.
+<br><br>
+We read in the data as follows:
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">chptdat = read.table("chpt.dat",header=T)
+</span><br>
+
+<br><br>
+We can begin with a simple time series plot as exploratory
+analysis. 
+<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">ts.plot(chptdat$Ener)</span><br>
+
+<br> <big><big><span style="color: rgb(204, 0, 0);"><span
+ style="font-weight: bold;"><small><span style="font-weight: bold;"> 
+Setting up the MCMC algorithm
+<br>
+</span></small></span></span></big></big><br> 
+
+Our goal is to simulate multiple draws from the posterior distribution
+which is a multidimensional distribution for which we only know the
+relevant function upto a constant. From this multidimensional
+distribution, we can easily derive the conditional distribution of
+each of the individual parameters (one dimension at a time). This is described in <a
+href="fullcond.pdf"> full conditional distributions (pdf) </a>.
+
+<br> <br> <big><big><span style="color: rgb(204, 0, 0);"><span
+ style="font-weight: bold;"><small><span style="font-weight: bold;">
+Programming an MCMC algorithm in R
+</span></small></span></span></big></big><br> <br> 
+
+We now start up an editor for our program by DOING THE
+FOLLOWING. Please paste in code from <a href="MCMCchpt.R"> MCMC
+template in R</a> into the editor. Save this file as MCMCchpt.R . We
+will first look through the code to understand it before we add to it.
+<br> <br>
+
+The MCMC algorithm is complete except for the update of one
+parameter. Please fill in the appropriate R code in your file. To check if you have the correct lines of code see <a href="updatepar.R"> code for updating parameter </a>. 
+<br><br>
+
+To run the program we use "source" within R. THIS IS DONE AS FOLLOWS:
+The MCMC algorithm is set to run for 500 iterations.
+<br> <br> 
+<br> <big><big><span style="color: rgb(204, 0, 0);"><span
+ style="font-weight: bold;"><small><span style="font-weight: bold;">
+MCMC output analysis
+</span></small></span></span></big></big><br> 
+
+Now that we have output from our sampler, we can treat this output as
+data from which we can estimate quantities of interest. For instance,
+to estimate the expectation of a marginal distribution for a
+particular parameter, we would simply average all draws for that
+parameter. There are a variety of different ways we could use the draws
+from the posterior for inference about the posterior distribution.
+For example: <br> 
+to obtain an estimate of E(theta) we would type:<br>
+&nbsp;&nbsp; <span style="font-weight: bold;">mean(mchain[1,])</span><br>
+to obtain an estimate of the entire posterior distribution: <br>
+&nbsp;&nbsp; <span style="font-weight: bold;">plot(density(mchain[1,]))</span><br>
+to find the probability that lambda is greater than 5 (???) <br>
+&nbsp;&nbsp; <span style="font-weight: bold;">sum(mchain[1,]>5)/length(mchain[1,])</span><br><br>
+
+There are two important issues to consider now that we have draws from
+a Markov chain Monte Carlo algorithm: (1) how do we assess the
+accuracy of our estimates based on the sample (how do we compute Monte
+Carlo standard errors?) (2) how long do we run the chain before we
+feel confident that our results are reasonably accurate ? <a
+href="convdetails.html"> Details regarding these issues </a>.  <br><br>
+
+There are many ways to compute Monte Carlo standard errors. We
+describe a simple but reasonable way of calculating it: <a
+href="batchmeans.R"> the Batch Means method in R </a> and <a
+href="batchmeans.pdf">  a brief description </a>. See <a
+href="geyer.ps"> Practical Markov chain Monte Carlo paper </a> and the
+references therein. <br> <br>
+
+There are hundreds of different proposals for dealing with the latter
+issue but they are all heuristics at best. We describe one method that
+is fairly simple, theoretically justified and seems to work reasonably
+well in practice. This method relies on requiring that the Monte Carlo
+standard error for each parameter be below a certain reasonable
+(user-defined) threshold; once this threshold is attained for all
+parameters, stop the simulation. See <a href="mcse.ps"> Monte Carlo
+output analysis paper </a> and the references therein.  <br> <br>
+
+For the purposes of this tutorial, simply run the MCMC algorithm
+again, this time for 100000 iterations (set NUMIT=100000). You can now
+obtain estimates of the posterior distribution of the parameters as
+before and compute the corresponding Monte Carlo standard error. See
+how the estimates and corresponding MC s.error have changed.
+<br> <br>
+
+In addition to deciding how long to run the sampler and how to compute
+Monte Carlo standard error, there are many possibilities for choosing
+how to update the individual parameters and more sophisticated methods
+used to make the Markov chain move around the posterior distribution
+efficiently. As a simple example, there are many different ways to
+update the b1 (??) parameter - it does not have to be a Metropolis
+random walk update. Some useful references for such methods and more
+detailed theoretical and practical information on implemention are
+listed here: <a href="MCMCrefs.html"> MCMC general references </a>. <br>
+<br>
+
+</body>
+</html>

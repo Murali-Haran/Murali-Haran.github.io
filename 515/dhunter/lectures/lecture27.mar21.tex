@@ -1,0 +1,90 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Mar.~21}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+HW \#7 is now due on Friday, March 23.
+\item Office hours tomorrow (Thursday) as usual.
+\end{itemize}
+\end{frame}
+
+
+\startframe{6.6 Time reversibility}
+\begin{itemize}
+\item Analogue to Section~4.8:  A continuous-time ergodic Markov chain is
+time-reversible with limiting probabilities $\pi_i$ if and only if
+\[
+\pi_i q_{ij} = \pi_j q_{ji} \quad\mbox{for all pairs $i,j$.}
+\]
+{\em (The \# of $i\to j$ and $j\to i$ transitions per unit time are the same.)}
+\item This is {\em detailed balance}.
+\end{itemize}
+\end{frame}
+
+
+\startframe{6.6 Time reversibility}
+Compare the balance equations to the detailed balance equations
+using a birth-death process.
+\begin{itemize}
+\item Solve for $\pi_i$ using balance.
+\item Solve for $\pi_i$ using detailed balance.
+\end{itemize}
+\end{frame}
+
+\startframe{6.5 Limiting probabilities}
+Theorem:
+If a continuous-time M.C. $\{ X_t:t\ge0\}$ is irreducible and 
+has a stationary distribution $\pi$, then 
+\[
+\lim_{t\to\infty} P_{ij}(t) = \pi_j \quad \mbox{for all $j$.}
+\]
+NB:  Establishing positive recurrence is often complicated
+for continuous-time MCs.
+\end{frame}
+
+\startframe{6.5 Limiting probabilities}
+Theorem:
+If a continuous-time M.C. $\{ X_t:t\ge0\}$ has rate (generator)
+matrix $R$, then $\pi$ is a stationary distribution if and only if
+$\pi R=0$.
+\end{frame}
+
+\startframe{6.8 Computing the transition probabilities}
+To find $P(t)$ (as opposed to $P(\infty)$), we can use
+\[
+P(t) = \exp\{ R t\} = \sum_{i=0}^\infty \frac{(Rt)^i}{i!}.
+\]
+\end{frame}
+
+\startframe{LOLN-like results}
+Theorem:
+If a continuous-time M.C. $\{ X_t:t\ge0\}$ is irreducible and 
+has a stationary distribution $\pi$, and if 
+$g:\Omega\to\bR$ satisfies $E_\pi |g(X)|<\infty$,
+then as $t\to\infty$,
+\[
+\frac1t \int_0^t g(X_s) \, ds \to E_\pi g(X) \quad
+\mbox{with probability 1.}
+\]
+Compare with Proposition 4.3 (the last proposition in Section 4.4).
+\end{frame}
+
+\startframe{Further reading on Markov chains}
+\begin{itemize}
+\item Durrett, {\it Essentials of Stochastic Processes}
+\item Lange, {\it Applied Probability}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

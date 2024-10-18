@@ -1,0 +1,281 @@
+\documentclass{article}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{bm}
+\pagestyle{empty}
+\setlength{\textwidth}{6in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textheight}{9.5in}
+
+\def\Var{\mbox{Var\,}}
+
+\usepackage{Sweave}
+\begin{document}
+
+\begin{center}
+{\bf STAT 515}
+
+{\bf Homework \#2 WITH SOLUTIONS}
+\end{center}
+
+
+\begin{enumerate}
+
+  \item\label{midtermprob} 
+  Consider a Markov chain on $\Omega=\{1, 2, 3, 4, 5, 6\}$ specified by the
+  transition probability matrix\\
+  \begin{equation*}
+    P=
+    \begin{bmatrix}
+      \frac{1}{4} & \frac{3}{4}   & 0  & 0 & 0 & 0\\
+      \frac{1}{2} & \frac{1}{2}   & 0  & 0 & 0 & 0\\
+       0 & 0  & 1  & 0 & 0 & 0\\
+       0 & 0   & \frac{1}{3}  & \frac{2}{3} & 0 & 0\\
+       1 & 0 & 0 & 0 & 0 & 0 \\
+       0 & 0   & 0  & 0 & 0 & 1\\
+    \end{bmatrix}.
+  \end{equation*}
+  \begin{enumerate}
+    
+    \item What are the (communicating) classes of this Markov chain? Is the
+    Markov chain irreducible ?
+    \begin{quotation}{\bf Solution:}
+    The classes are $\{1, 2\}$, $\{3\}$, $\{4\}$, $\{5\}$, and $\{6\}$.  In other words, states 3 through
+    6 do not communicate with any other states.  Because there is more than one class, 
+    the chain is not irreducible.
+    \end{quotation}
+    \item Which states are transient and which are recurrent? Justify your
+    answers.
+    \begin{quotation}{\bf Solution:}
+    Only $\{1, 2\}$, $\{3\}$, and $\{6\}$ are recurrent.  The other classes,
+    $\{4\}$ and $\{5\}$, are transient.  (Recall that recurrence is a class property,
+    which means that we may describe entire classes, rather than merely states, 
+    as being recurrent or not.)
+    \end{quotation}
+    
+    \item What is the period of each state of this Markov chain? Is the Markov
+    chain aperiodic ?
+    \begin{quotation}{\bf Solution:}
+    Whenever it is possible to stay in state $i$, given that you begin in state $i$, 
+    the period of the state is 1.  A sufficient condition for this is that $P_{ii}>0$, so
+    a look at the diagonal of $P$ shows that all states other than state 5 have period 1.
+    But state 5 is a bit odd in that $n=0$ is the {\em only} value for which $P_{55}^n>0$.
+    Therefore, we never return to state 5 after starting there, and so the definition of 
+    the period of state 5 is somewhat arbitrary.  One could make a case for calling the period
+    zero or infinity; I prefer zero since at least zero is a number.
+
+    Since not all states have period 1, this Markov chain is not aperiodic.
+    \end{quotation}
+    
+    \item\label{initial} Let $X_0$ be the initial state with distribution
+    $\pi_0 = (0, \frac{1}{4}, \frac{3}{4}, 0, 0, 0)^\top$
+    corresponding to the probability of being in states $ 1, 2, 3, 4, 5, 6$
+    respectively. Let $X_0, X_1, X_2,\dots$ be the Markov chain constructed
+    using $P$ above. What is E$(X_1)$?
+    \begin{quotation}{\bf Solution:}
+    We obtain $\pi_0^\top P=(1/8, 1/8, 3/4, 0,0,0)$.  This is the vector of probabilities with
+    which the random variable $X_1$ takes the values $(1, 2, 3, 4, 5, 6)$.
+    Therefore, 
+    \[
+    E(X_1) = 1\times \frac18 + 2\times \frac18 + 3\times \frac34 = \frac{21}{8}.
+    \]
+    \end{quotation}
+
+    \item What is Var$(X_1)$?
+    \begin{quotation}{\bf Solution:}
+    From the previous part, we obtain
+    \[
+    E(X_1^2) = 1\times \frac18 + 4\times \frac18 + 9\times \frac34 = \frac{59}{8}.    
+    \]
+    Therefore, $\Var X_1= 59/8 - (21/8)^2 = 31/64$.
+    \end{quotation}
+
+    \item What is E$(X_3)$? 
+    \begin{quotation}{\bf Solution:}
+    The variable $X_3$ puts probabilities $\pi_0^\top P^3=
+    (13/128, 19/128, 3/4, 0, 0, 0)$ on $(1, 2, 3, 4, 5, 6)$.  Therefore,
+    \[
+    E(X_3) = 1\times \frac{13}{128} + 2\times \frac{19}{128} 
+    + 3\times \frac34 = \frac{339}{128}.    
+    \]
+    \end{quotation}
+
+  \end{enumerate} 
+
+  \item Suppose that the probability of rain today depends on weather
+  conditions from the previous three days. If it has rained for the
+  past three days, then it will rain today with probability 0.7; if it
+  did not rain for any of the past three days, then it will rain today
+  with probability 0.1; if it rained each of the past two days but not three days
+  ago, it will rain with probability 0.8; and, in any other case, the weather today will
+  match yesterday's weather with probability 0.6.
+
+  \begin{enumerate}
+  
+  \item Describe this process using a Markov chain, i.e., define a state space
+  and the corresponding transition probability matrix for the process.
+    \begin{quotation}{\bf Solution:}
+    We will need each ``state'' of the Markov chain to include the weather for
+    each of the past three days.  With this in mind, we define the following:
+    
+    State 0:  no rain, no rain, no rain
+
+    State 1:  no rain, no rain, rain
+
+    State 2:  no rain, rain, no rain
+
+    State 3:  no rain, rain, rain
+
+    State 4:  rain, no rain, no rain
+
+    State 5:  rain, no rain, rain
+
+    State 6:  rain, rain, no rain
+
+    State 7:  rain, rain, rain
+    
+    Incorporating all of the information given above, the transition matrix is
+    \[
+    P = \begin{bmatrix}
+    0.9 & 0.1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0.4 & 0.6 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0.6 & 0.4 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0.2 & 0.8 \\
+    0.6 & 0.4 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0.4 & 0.6 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0.6 & 0.4 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0.3 & 0.7 \\
+    \end{bmatrix}
+    \]
+    \end{quotation}
+
+  \item Suppose you know that it rained on days one, two, and three. What is the
+  probability that it will rain on day seven? (You are welcome to use a computer
+  for this, but please explain what you did.)
+    \begin{quotation}{\bf Solution:}
+    The answer to this question will be found in the bottom row of $P^4$.
+    This is because we start in state 7 (rain, rain, rain) at time $t=3$ and take
+    four steps of the Markov chain to get to time $t=7$.  Thus, the bottom
+    row (corresponding to beginning in state 7) gives the probability of all eight
+    states.  The even states are ``no rain'' and the odd states are ``rain''.  Here is the
+    R code to calculate the answer:
+\begin{Schunk}
+\begin{Sinput}
+> r <- rep(0,8)
+> P <- matrix(c(9,1,r,4,6,r,6,4,r,2,8,6,4,r,4,6,r,6,4,r,3,7),8,8,byrow=T)/10
+> P4 <- P %*% P %*% P %*% P
+> sum(P4[8, c(2, 4, 6, 8)])
+\end{Sinput}
+\begin{Soutput}
+[1] 0.5305
+\end{Soutput}
+\end{Schunk}
+    \end{quotation}
+
+  \end{enumerate}
+
+  \item Prove that if state $i$ is recurrent and state $i$ does not communicate
+  with state $j$, then $P_{ij}=0$.
+
+  {\em This implies that once a process enters a recurrent class of states, it
+  can never leave that class. For this reason, a recurrent class is often
+  referred to as a {\em closed} class.}
+    \begin{quotation}{\bf Solution:}
+    Assume $P_{ij}>0$.  Then it must be true that $P_{ji}^n=0$ for all $n\ge 1$, since
+    otherwise $i$ and $j$ would communicate.  But this means that if the chain goes from
+    state $i$ to state $j$, it will never return to state $i$.  In other words,
+    \[
+    P(\mbox{return to  $i$} \mid \mbox{start in $i$}) < 1-P_{ij} < 1.
+    \]
+    therefore, $i$ is transient by definition, which is a contradiction.  Thus, $P_{ij}$ cannot
+    be larger than zero.
+    \end{quotation}
+
+
+  \item Computer problem: Use the Markov chain described in Problem~\ref{midtermprob}
+  and the initial distribution in~\ref{initial}.
+
+  \begin{enumerate}
+
+    \item Simulate a realization of the random variable $X_3$. Repeat this 1000
+    times---i.e., generate 1000 instances of $X_3$---and calculate the average.
+    This is your estimate of $E(X_3)$. (Ideally, you should report some sort of
+    confidence interval, but this is not required.) Compare your estimate with
+    your answer from Problem 1. Since this is a short program, include a
+    printout of your code with your homework.
+    \begin{quotation}{\bf Solution:}
+\begin{Schunk}
+\begin{Sinput}
+> X3 <- rep(0, 1000) # This is where the realizations will be stored
+> pi0 <- c(0, 1/4, 3/4, 0, 0, 0)
+> P <- matrix(c(.25, .5, 0, 0, 1, 0, .75, 0.5, 0, 0, 0, 0, 0, 0, 1, 1/3, 0, 0,
++             0, 0, 0, 2/3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1), 6, 6)
+> for(i in 1:1000) {
++   currentState <- sample(6, 1, prob=pi0)
++   for(j in 1:3) { # Sample according to the correct row in P
++     currentState <- sample(6, 1, prob=P[currentState,])
++   }
++   X3[i] <- currentState
++ }
+> # Here is a confidence interval for the true expectation:
+> mean(X3) + c(-1, 1)* sqrt(var(X3)/1000)
+\end{Sinput}
+\begin{Soutput}
+[1] 2.609898 2.652102
+\end{Soutput}
+\end{Schunk}
+In this case, we happen to know that the true mean is $21/8=2.625$.
+    \end{quotation}
+  
+    \item Simulate the Markov chain according to Problem 1 and run it for
+    100,000 steps. Now calculate the proportion of times the Markov chain was in
+    the states 1,2,3,4,5,6 respectively. Simulate two more realizations, each
+    also of length 100,000, and again record the proportion of times the Markov
+    chain was in the states 1,2,3,4,5,6 respectively. You only have to report
+    the proportions for each of the three realizations (do not print out your
+    Markov chains or your code for this!)
+    \begin{quotation}{\bf Solution:}
+    Here is one of the three realizations:
+\begin{Schunk}
+\begin{Sinput}
+> X <- rep(0, 100000) # This is where the realizations will be stored
+> pi0 <- c(0, 1/4, 3/4, 0, 0, 0)
+> P <- matrix(c(.25, .5, 0, 0, 1, 0, .75, 0.5, 0, 0, 0, 0, 0, 0, 1, 1/3, 0, 0,
++             0, 0, 0, 2/3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1), 6, 6)
+> currentState <- sample(6, 1, prob=pi0)
+> for(j in 1:100000) { # Sample according to the correct row in P
++   X[j] <- currentState <- sample(6, 1, prob=P[currentState,])
++ }
+> # Now summarize the states visited:
+> table(X)
+\end{Sinput}
+\begin{Soutput}
+X
+     3 
+100000 
+\end{Soutput}
+\end{Schunk}
+    Sometimes, only states 1 and 2 are visited (in roughly a 4 to 6 ratio), and 
+    usually, only state 3 is visited.  The latter happens three times more frequently
+    than the former, on average.
+    \end{quotation}
+
+    \item Use your answer to part (b) to find one or more vectors $\bm v$ such
+    that $\bm v^\top P=\bm v^\top$. Explain your reasoning.
+    \begin{quotation}{\bf Solution:}
+    The equation $\bm v^\top P=\bm v^\top$ suggests that $\bm v$ is a ``fixed point,''
+    i.e., a vector of probabilities that does not change after a step of the Markov chain.
+    Assuming that the proportions of the six states converge to something after a long
+    time, it stands to reason that this limiting vector of probabilities would provide a
+    possible $\bm v$ vector.  Thus, based on part (b), we could take $\bm v$ to be
+    either $(0.4, 0.6, 0, 0, 0, 0)^\top$ or $(0, 0, 1, 0, 0, 0)^\top$; it is easy to check that
+    each of these vectors satisfies $\bm v^\top P=\bm v^\top$.
+    \end{quotation}
+
+    \end{enumerate}
+
+\end{enumerate}
+
+\end{document}
+

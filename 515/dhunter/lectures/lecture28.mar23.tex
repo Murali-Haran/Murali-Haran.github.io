@@ -1,0 +1,78 @@
+\input{lecture}
+
+\begin{document}
+
+
+\def \thedate{Mar.~23}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\startframe{Announcements}
+\begin{itemize}
+\item 
+HW \#8 is due next Friday (March 30) at 2:30pm.
+\item 
+All homework must be turned in electronically from now on.
+\item
+There is a lot of computing on this assignment; please let me know
+early if there will be coding challenges!
+\end{itemize}
+\end{frame}
+
+
+\startframe{LOLN-like results}
+Theorem:
+If a continuous-time M.C. $\{ X_t:t\ge0\}$ is irreducible and 
+has a stationary distribution $\pi$, and if 
+$g:\Omega\to\bR$ satisfies $E_\pi |g(X)|<\infty$,
+then as $t\to\infty$,
+\[
+\frac1t \int_0^t g(X_s) \, ds \to E_\pi g(X) \quad
+\mbox{with probability 1.}
+\]
+Compare with Proposition 4.3 (the last proposition in Section 4.4).
+\end{frame}
+
+\startframe{Monte Carlo methods}
+\begin{itemize}
+\item Why ``Monte Carlo''?
+\item Ross Chapter 11 is a useful reference for some of the topics here.
+\item Example:  Approximating $\pi$
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+\begin{itemize}
+\item Goal:   Find $\mu=E_f g(X)$.
+\item Idea:   Use computer to generate i.i.d.~$X_1, \ldots, X_n \sim f$
+\item Take $\hat\mu = \frac1n \sum_{i=1}^n g(X_i)$.
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+$\hat\mu = \frac1n \sum_{i=1}^n g(X_i)$, where $X_i$ are i.i.d.~from $f$.
+\begin{itemize}
+\item Why this works:  (Strong or weak) law of large numbers
+\item More precise information is provided by the Central Limit Theorem.
+\item The above results are true for vectors $X_i$ of arbitrary 
+dimension.
+\item {\em Thinking about i.i.d.~Monte Carlo $\equiv$ thinking about basic statistics.}
+\end{itemize}
+\end{frame}
+
+\startframe{Monte Carlo methods}
+How does the computer generate ``random'' numbers?
+\begin{itemize}
+\item Recall approximating $\pi$ example.
+\item Everything starts with uniform pseudo-random numbers.
+\item ``Uniform random'' numbers are neither (!!)
+\item Refer to {\tt help(Random)} in R.
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+
